@@ -121,10 +121,17 @@ export class Chorus {
     switch (si) {
       case 0: {
         const e = ease.outQuart(u);
-        pos = [Math.sin(t * 0.7) * 0.6, 4.2 + Math.sin(u * 3) * 0.4, lerp(14, -70, e)];
-        look = [0, roseY * 0.8, roseZ];
-        fov = lerp(78, 58, e);
-        roll = (1 - e) * 0.12 * mirror;
+        if (v.key === 'ch2') {
+          // crane down from above the arches into the aisle
+          pos = [Math.sin(t * 0.7) * 0.6, lerp(34, 4.5, ease.inOutCubic(u)), lerp(-10, -70, e)];
+          look = [0, lerp(0, roseY * 0.8, ease.inOutCubic(u)), roseZ];
+          fov = lerp(70, 58, e);
+        } else {
+          pos = [Math.sin(t * 0.7) * 0.6, 4.2 + Math.sin(u * 3) * 0.4, lerp(v.key === 'fc' ? 40 : 14, -70, e)];
+          look = [0, roseY * 0.8, roseZ];
+          fov = lerp(v.key === 'fc' ? 92 : 78, 58, e);
+          roll = (1 - e) * (v.key === 'fc' ? 0.35 : 0.12) * mirror;
+        }
         break;
       }
       case 1: {
@@ -165,9 +172,22 @@ export class Chorus {
         break;
       }
       case 5: {
-        pos = [0, 1.4, lerp(-128, -140, u)];
-        look = [0, 14, -168];
-        fov = 70;
+        if (v.key === 'ch2') {
+          // high angle looking down the aisle
+          pos = [lerp(-6, 6, u), 30, lerp(-110, -130, u)];
+          look = [0, 3, -175];
+          fov = 60;
+        } else if (v.key === 'fc') {
+          // orbit low around the aisle centre
+          const a2 = lerp(-0.6, 0.6, u);
+          pos = [Math.sin(a2) * 9, 2.2, -150 + Math.cos(a2) * 9];
+          look = [0, 12, -175];
+          fov = 72;
+        } else {
+          pos = [0, 1.4, lerp(-128, -140, u)];
+          look = [0, 14, -168];
+          fov = 70;
+        }
         break;
       }
       case 6: {
@@ -485,8 +505,16 @@ export class Chorus {
         c.restore();
         sub(930);
       } else {
-        // サビでは (outline) 宗派も要らない (fill)
+        // サビでは (outline) 宗派も要らない (fill) — on a dark lens so it reads over the glass
         c.save();
+        const lens = c.createRadialGradient(960, 520, 60, 960, 520, 760);
+        lens.addColorStop(0, 'rgba(8,4,10,0.62)');
+        lens.addColorStop(0.6, 'rgba(8,4,10,0.35)');
+        lens.addColorStop(1, 'rgba(8,4,10,0)');
+        c.fillStyle = lens;
+        c.globalAlpha = clamp((t - s0) * 3);
+        c.fillRect(0, 0, 1920, 1080);
+        c.globalAlpha = 1;
         c.font = font(F.gothic, 230);
         c.lineWidth = 3;
         c.strokeStyle = 'rgba(255,240,220,0.95)';
@@ -622,6 +650,18 @@ export class Chorus {
     } else if (si === 7) {
       // 私たちが / 私たちの神 inside Raijin's drum ring
       const e = ep(s0, s0 + 1.2, t, ease.outCubic);
+      // dark heart inside the ring so the words read against the glass
+      c.save();
+      const heart = c.createRadialGradient(960, 520, 0, 960, 520, 330);
+      heart.addColorStop(0, 'rgba(10,4,8,0.72)');
+      heart.addColorStop(0.75, 'rgba(10,4,8,0.5)');
+      heart.addColorStop(1, 'rgba(10,4,8,0)');
+      c.fillStyle = heart;
+      c.globalAlpha = e;
+      c.beginPath();
+      c.arc(960, 520, 340, 0, TAU);
+      c.fill();
+      c.restore();
       drawRaiko(c, 960, 520, 330 + e * 40, { time: t, pulse: kickHit(t, 7), alpha: e, spin: beatF(t) * 0.08 + (1 - e) * -1.2 });
       c.save();
       c.font = font(F.mincho, 70);

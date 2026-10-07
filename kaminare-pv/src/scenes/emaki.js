@@ -229,6 +229,9 @@ export class Emaki {
     this.shu = new WashView(shu, [CENTERS[3] - PW / 2 + 800 - 260, 520 - 260, 520, 520]);
     this.type = new Layer2D();
     this.ls = lines('v1');
+    // kirikane: gold-leaf slivers scattered over the whole scroll
+    const R = rng(808);
+    this.flecks = Array.from({ length: 420 }, () => ({ x: R() * 7680, y: R() * 1080, s: 2 + Math.pow(R(), 3) * 16, r: R() * TAU, k: R() < 0.7 ? 0 : 1, ph: R() * TAU }));
   }
 
   pan(t) {
@@ -272,6 +275,18 @@ export class Emaki {
     c.translate(960, 540);
     c.scale(zoom, zoom);
     c.translate(-960 - panX, -540);
+    // gold leaf flecks (glinting as the scroll moves)
+    for (const f of this.flecks) {
+      if (f.x < panX - 40 || f.x > panX + 1960) continue;
+      const gl = 0.55 + 0.45 * Math.sin(f.ph + panX * 0.01 + t * 0.8);
+      c.save();
+      c.translate(f.x, f.y);
+      c.rotate(f.r);
+      c.fillStyle = `rgba(${200 + gl * 50 | 0},${150 + gl * 50 | 0},${60 + gl * 30 | 0},${0.55 + gl * 0.4})`;
+      if (f.k) c.fillRect(-f.s * 0.15, -f.s, f.s * 0.3, f.s * 2);
+      else c.fillRect(-f.s / 2, -f.s / 2, f.s, f.s);
+      c.restore();
+    }
     c.textAlign = 'center';
     c.textBaseline = 'middle';
     const cols = [

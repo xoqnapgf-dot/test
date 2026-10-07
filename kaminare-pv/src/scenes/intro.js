@@ -115,10 +115,33 @@ export class Intro {
 
     const g = this.glow.begin();
     const c = this.type.begin();
+    const flare = age > 0 ? Math.exp(-age * 1.2) : 0;
+    // ---- stage searchlights sweeping through the haze
+    g.save();
+    g.globalCompositeOperation = 'lighter';
+    for (let k = 0; k < 5; k++) {
+      const sx = 260 + k * 350;
+      const sp = age > 0 ? 1.8 : 0.35;
+      const ang = Math.sin(t * sp * (0.6 + k * 0.13) + k * 1.7) * 0.42 + (k - 2) * 0.08;
+      const L = 1300;
+      const ex = sx + Math.sin(ang) * L, ey = 1100 - Math.cos(ang) * L;
+      const a = (0.05 + flare * 0.08) * clamp(t * 0.4);
+      const grd = g.createLinearGradient(sx, 1100, ex, ey);
+      grd.addColorStop(0, `rgba(255,170,110,${a * 1.6})`);
+      grd.addColorStop(1, 'rgba(255,120,80,0)');
+      g.fillStyle = grd;
+      g.beginPath();
+      g.moveTo(sx - 6, 1100);
+      g.lineTo(sx + 6, 1100);
+      g.lineTo(ex + Math.cos(ang) * 160, ey + Math.sin(ang) * 160);
+      g.lineTo(ex - Math.cos(ang) * 160, ey - Math.sin(ang) * 160);
+      g.closePath();
+      g.fill();
+    }
+    g.restore();
     // ---- crowd penlights
     g.save();
     g.globalCompositeOperation = 'lighter';
-    const flare = age > 0 ? Math.exp(-age * 1.2) : 0;
     const sway = (p) => Math.sin(t * p.sp + p.ph) * p.amp * (1 + flare * 2);
     for (const p of this.crowd) {
       const s = lerp(11, 2.5, p.z) * (1 + flare * 0.4);

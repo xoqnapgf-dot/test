@@ -171,7 +171,7 @@ export class Post {
     this.g.draw(r, rt, { boost: 1.8 });
     this.l.draw(r, rt, {});
     return {
-      hudInk: 'light', bloom: 0.6, bloomThresh: 0.9, grain: 0.06, vig: 0.5, flash: crashF * 0.35,
+      hudInk: 'light', bloom: 0.6, bloomThresh: 0.9, grain: 0.06, vig: 0.5, flash: crashF * 0.22, flashCol: 0xe3402a,
       ca: 0.002 + kickHit(t, 10) * 0.004, contrast: 1.1,
     };
   }

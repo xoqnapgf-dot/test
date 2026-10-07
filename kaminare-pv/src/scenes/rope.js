@@ -74,7 +74,9 @@ const SHIDE_FRAG = /* glsl */ `
 uniform vec3 uCam; uniform float uFlash;
 varying float vShade; varying vec3 vW;
 void main(){
-  vec3 c = vec3(0.96,0.93,0.86) * vShade * (0.55 + uFlash*0.8);
+  float dn = length(vW - uCam);
+  if(dn < 7.) discard;
+  vec3 c = vec3(0.96,0.93,0.86) * vShade * (0.55 + uFlash*0.8) * smoothstep(7., 12., dn);
   float fog = 1. - exp(-pow(length(vW - uCam)*0.012, 1.5));
   c = mix(c, vec3(0.02,0.015,0.04), fog);
   gl_FragColor = vec4(c, 1.);
@@ -83,7 +85,7 @@ const LANTERN_VERT = /* glsl */ `
 attribute float aSeed; uniform float uTime; varying float vS; varying float vD;
 void main(){ vec3 p = position; p.y += sin(uTime*0.6 + aSeed*30.)*0.8;
   vec4 mv = viewMatrix*modelMatrix*vec4(p,1.); vD = -mv.z; vS = aSeed;
-  gl_PointSize = (2.5 + aSeed*4.) * 300. / vD; gl_Position = projectionMatrix*mv; }`;
+  gl_PointSize = min((2.5 + aSeed*4.) * 300. / vD, 46.); gl_Position = projectionMatrix*mv; }`;
 const LANTERN_FRAG = /* glsl */ `
 uniform float uTime; varying float vS; varying float vD;
 void main(){ vec2 q = gl_PointCoord - .5; float r = length(q);
@@ -186,7 +188,7 @@ export class Rope {
     const s = 20 + u * 260 + ep(a + 7.5, b, t, ease.inCubic) * 60;
     const ax = axis(s);
     const camA = [ax.x + 15, ax.y - 1.5, ax.z + 4];
-    const camB = [ax.x + 2.5, ax.y - 9, ax.z + 5];
+    const camB = [ax.x + 4, ax.y - 11, ax.z + 7];
     const camC = [ax.x + 5, ax.y + 3.5, ax.z + 9];
     const k1 = ep(a + 3.2, a + 4.6, t, ease.inOutCubic), k2 = ep(a + 7.3, a + 8.4, t, ease.inOutCubic);
     const P = camA.map((v, i) => lerp(lerp(v, camB[i], k1), camC[i], k2));

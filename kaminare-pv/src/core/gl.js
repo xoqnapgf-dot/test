@@ -72,7 +72,27 @@ export class CanvasLayer {
   begin(clear = true) {
     const c = this.ctx;
     c.setTransform(1, 0, 0, 1, 0, 0);
-    if (clear) c.clearRect(0, 0, this.w, this.h);
+    // the context is reused every frame: reset all drawing state so nothing leaks between frames
+    c.globalAlpha = 1;
+    c.globalCompositeOperation = 'source-over';
+    c.filter = 'none';
+    c.shadowBlur = 0;
+    c.shadowColor = 'rgba(0,0,0,0)';
+    c.lineWidth = 1;
+    c.lineCap = 'butt';
+    c.lineJoin = 'miter';
+    c.textAlign = 'start';
+    c.textBaseline = 'alphabetic';
+    if ('letterSpacing' in c) c.letterSpacing = '0px';
+    if (clear) {
+      c.clearRect(0, 0, this.w, this.h);
+      // Touch one pixel so the canvas always counts as modified: Chrome may otherwise hand
+      // WebGL a stale snapshot when a frame only cleared the canvas.
+      c.fillStyle = 'rgba(0,0,0,0.004)';
+      c.fillRect(0, 0, 1, 1);
+    }
+    c.fillStyle = '#000';
+    c.strokeStyle = '#000';
     c.setTransform(this.w / 1920, 0, 0, this.h / 1080, 0, 0);
     return c;
   }

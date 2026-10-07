@@ -62,6 +62,7 @@ export class Pre {
     const ls = this.l1;
     const ink = '#0f0b0a';
     const paperC = '#f3e9d7';
+    this.watermark(c, t, ls, ['這', '祈', '響', '一'], '#2a0806');
     // --- bass serpent: a crawling ribbon whose height is the bass groove history
     const baseY = 760;
     const pts = [];
@@ -162,7 +163,7 @@ export class Pre {
     if (tj > 0.001 && outJ > 0) {
       for (let i = 0; i < 5; i++) {
         const ax = 560 + i * 200, ay = -20;
-        const len = 300 + (i % 2) * 70;
+        const len = 500 + (i % 2) * 60;
         const sw = Math.sin(beatF(t) * Math.PI * 0.5 + i * 0.9) * 0.45 * (1 + kickHit(t, 5));
         const jx = ax + Math.sin(sw) * len, jy = ay + Math.cos(sw) * len * tj;
         c.save();
@@ -268,6 +269,25 @@ export class Pre {
     this.lyric(c, t, ls, '#f6eddc', 210);
   }
 
+  watermark(c, t, ls, chars, col) {
+    let k = -1;
+    for (let i = 0; i < ls.length; i++) if (t >= ls[i].t0 - 0.4) k = i;
+    if (k < 0) return;
+    const l = ls[k];
+    const a = ep(l.t0 - 0.4, l.t0 + 0.4, t) * (k < ls.length - 1 ? 1 - ep(ls[k + 1].t0 - 0.5, ls[k + 1].t0 - 0.3, t) : 1);
+    c.save();
+    c.globalAlpha = a * 0.13;
+    c.fillStyle = col;
+    c.font = font(F.brush, 900);
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    const s = 1 + (t - l.t0) * 0.03;
+    c.translate(k % 2 ? 560 : 1360, 560);
+    c.scale(s, s);
+    c.fillText(chars[k], 0, 0);
+    c.restore();
+  }
+
   lyric(c, t, ls, col, y) {
     let cur = null;
     for (const l of ls) if (t >= l.t0 - 0.3) cur = l;
@@ -295,6 +315,7 @@ export class Pre {
   drawPre2(c, g, t) {
     const ls = this.l2;
     const paperC = '#f1e8d6';
+    this.watermark(c, t, ls, ['名', '会', '頭', '弦'], '#050a24');
     const shu = '#e3402a';
     const gold = '#f2c766';
     // --- five strips: different names / different prayers

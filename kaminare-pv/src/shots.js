@@ -27,7 +27,7 @@ export const SHOTS = [
   { scene: 'solo', t0: S('solo'), tin: { type: 4, pre: 0.1, post: 0.5 } },
   { scene: 'bridge', t0: S('bridge'), tin: { type: 0, pre: 0.0, post: 0.12 } },
   { scene: 'chorus', t0: S('fc'), tin: { type: 3, pre: 0.04, post: 0.35 } },
-  { scene: 'outro', t0: S('outro'), tin: { type: 2, pre: 0.2, post: 1.1 } },
+  { scene: 'outro', t0: S('outro'), tin: { type: 3, pre: 0.12, post: 1.2 } },
 ];
 for (let i = 0; i < SHOTS.length; i++) SHOTS[i].t1 = SHOTS[i + 1] ? SHOTS[i + 1].t0 : 999;
 
