@@ -1,0 +1,14 @@
+{
+  "name": "kaminare-pv",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --format=iife --minify --target=es2020 --outfile=app.js --loader:.glsl=text",
+    "dev": "esbuild src/main.js --bundle --format=iife --sourcemap --target=es2020 --outfile=app.js --loader:.glsl=text --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "p5.brush": "^2.2.3",
+    "three": "^0.186.1"
+  }
+}
