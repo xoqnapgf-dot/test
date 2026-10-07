@@ -9,6 +9,7 @@ import { makeRoseMaterial } from '../gfx/rosewindow.js';
 import { symbolAtlas, SYMBOL_KEYS, EMBLEMS, drawSym } from '../gfx/symbols.js';
 import { bolt, drawBolt, strikeI } from '../gfx/lightning.js';
 import { drawRaiko } from '../gfx/raiko.js';
+import { MEMBER_COLORS } from './intro.js';
 import { canvasTexture } from '../core/gl.js';
 import { SEC, lines, beatF, B, kickHit, sinceKick, KICK_TIMES, beatPulse, loud } from '../core/music.js';
 import { F, font, layoutH, layoutV, REVEAL, caption, glyphV } from '../core/type.js';
@@ -662,7 +663,49 @@ export class Chorus {
       c.arc(960, 520, 340, 0, TAU);
       c.fill();
       c.restore();
-      drawRaiko(c, 960, 520, 330 + e * 40, { time: t, pulse: kickHit(t, 7), alpha: e, spin: beatF(t) * 0.08 + (1 - e) * -1.2 });
+      const kami = line.c[8]; // 神
+      const climax = v.key === 'fc' ? ep(kami - 0.3, kami + 0.4, t, ease.outCubic) : 0;
+      if (climax > 0) {
+        // five member-colour beams fanning out from the ring
+        gc.save();
+        gc.globalCompositeOperation = 'lighter';
+        for (let k = 0; k < 10; k++) {
+          const a = (k / 10) * TAU + beatF(t) * 0.05 - Math.PI / 2;
+          const L = 1400 * climax;
+          const col = MEMBER_COLORS[k % 5];
+          const gr = gc.createLinearGradient(960, 520, 960 + Math.cos(a) * L, 520 + Math.sin(a) * L);
+          gr.addColorStop(0, col + '00');
+          gr.addColorStop(0.25, col + '55');
+          gr.addColorStop(1, col + '00');
+          gc.fillStyle = gr;
+          gc.beginPath();
+          gc.moveTo(960, 520);
+          gc.lineTo(960 + Math.cos(a - 0.05) * L, 520 + Math.sin(a - 0.05) * L);
+          gc.lineTo(960 + Math.cos(a + 0.05) * L, 520 + Math.sin(a + 0.05) * L);
+          gc.closePath();
+          gc.fill();
+        }
+        // gold-leaf burst
+        for (let k = 0; k < 160; k++) {
+          const age = t - kami;
+          if (age < 0) break;
+          const a = hash1(k * 3 + 1) * TAU;
+          const sp = 300 + hash1(k * 5 + 2) * 900;
+          const x = 960 + Math.cos(a) * sp * age * (1 - age * 0.25);
+          const y = 520 + Math.sin(a) * sp * age * (1 - age * 0.25) + age * age * 260;
+          const rot = age * 8 + k;
+          gc.save();
+          gc.translate(x, y);
+          gc.rotate(rot);
+          gc.globalAlpha = Math.max(0, 1 - age * 0.7);
+          gc.fillStyle = k % 7 === 0 ? MEMBER_COLORS[k % 5] : '#ffd27a';
+          const sz = 4 + hash1(k) * 9;
+          gc.fillRect(-sz / 2, -sz * Math.abs(Math.cos(age * 9 + k)) / 2, sz, sz * Math.abs(Math.cos(age * 9 + k)) + 1);
+          gc.restore();
+        }
+        gc.restore();
+      }
+      drawRaiko(c, 960, 520, 330 + e * 40 + climax * 30, { time: t, pulse: Math.max(kickHit(t, 7), climax * Math.exp(-(t - kami) * 3)), alpha: e, spin: beatF(t) * 0.08 + (1 - e) * -1.2 + climax * (t - kami) * 0.8 });
       c.save();
       c.font = font(F.mincho, 70);
       c.fillStyle = ink;

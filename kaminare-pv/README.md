@@ -4,6 +4,8 @@ A three-minute music video for the song **カミナレ** (*kaminare*), rendered 
 browser. There's no video file: every frame is drawn in real time with WebGL shaders,
 procedural sumi ink, stained glass, lightning and kinetic type, all locked to the song.
 
+![Twelve frames from the video](preview.jpg)
+
 **Open `index.html` and press 奉納 (play).** It works straight from disk (`file://`) or from
 any static host. All paths are relative and nothing loads from the network.
 
@@ -51,9 +53,9 @@ octagram, taijitu and lotus exactly the same size, light and timing.
 | 1:23 | Pre II | Indigo. Different names and prayers (Latin, Japanese, Arabic, Sanskrit) meet in one chorus; a bowed crowd raises its heads on the claps; six strings carry every symbol |
 | 1:34 | Chorus II | The nave, gilded |
 | 1:57 | Interlude | Bass × keys as the two strands of a shimenawa rope, shide fluttering on the beat, lanterns |
-| 2:08 | Solo | A raymarched storm tunnel; a dove of light leads the lead guitar — then time freezes |
+| 2:08 | Solo | Soaring over a raymarched, moonlit cloud sea with lightning inside it; a dove of light carries the lead line — then time freezes |
 | 2:19 | Bridge | One candle. Keys rise as sparks; a church and a shrine are drawn in gold line and hauled onto a stage whose lights come on beat by beat |
-| 2:30 | Final chorus | Key change → the grade turns magenta/white; 4/4 equality sweeps down the aisle |
+| 2:30 | Final chorus | Key change → the grade turns magenta/white; 4/4 equality sweeps down the aisle; on the last 神 the drum ring fans out in the five member colours and bursts into gold leaf |
 | 2:53 | Outro | Back to paper: the last note falls into ink, a temple bell is brushed in, only its echo remains |
 
 ## How it's synced
@@ -81,7 +83,7 @@ time, so seeking anywhere is exact.
   shader threshold and scrubbing backwards just works.
 - **p5.brush** (standalone WebGL2 build) paints the watercolour moon and vermilion washes at load.
 - Rose window, storm sky, washi paper, gong, flame, Chladni plate and riso screen are all
-  procedural GLSL. There are no image files at all.
+  procedural GLSL. The piece loads no image files at all (`preview.jpg` is only for this README).
 
 ## Rebuild
 
