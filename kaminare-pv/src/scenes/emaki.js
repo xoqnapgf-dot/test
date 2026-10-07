@@ -204,7 +204,14 @@ export class Emaki {
   }
   init() {
     this.paper = new Paper('#ece2cf', '#d63a24');
-    const plates = [panelRosary(), panelHymn(), panelGourd(), panelSong()];
+    const T0 = performance.now();
+    const plates = [panelRosary, panelHymn, panelGourd, panelSong].map((f) => {
+      const a = performance.now();
+      const pl = f();
+      if (this.app.capture) console.log('plate', f.name, (performance.now() - a).toFixed(0), 'ms');
+      return pl;
+    });
+    if (this.app.capture) console.log('plates total', (performance.now() - T0).toFixed(0));
     this.views = plates.map((pl, i) => new PlateView(pl, [CENTERS[i] - PW / 2, 0, PW, 1080], '#120e0c'));
     // gold-leaf moon (p5.brush watercolour) for the gourd panel
     const moon = paint(420, 420, 9, (b) => {

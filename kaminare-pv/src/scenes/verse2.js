@@ -147,10 +147,10 @@ export class Verse2 {
   lyric(b, rr, t, l, i) {
     // big lyric set in Dela Gothic in blue with a red shadow plate
     const layouts = [
-      [120, 'left', 112], [960, 'center', 118], [120, 'left', 100], [960, 'center', 110], [1800, 'right', 100], [960, 'center', 104],
+      [120, 'left', 112], [960, 'center', 118], [120, 'left', 100], [960, 'center', 104], [1800, 'right', 100], [960, 'center', 104],
     ];
     const [x, al, sz] = layouts[i];
-    const y = i === 1 || i === 3 || i === 5 ? 930 : 170;
+    const y = i === 1 || i === 5 ? 930 : i === 3 ? 140 : 170;
     if (i === 2 || i === 4) {
       // paper label knocked out of the dark plate so the type stays legible
       b.save();
@@ -366,61 +366,74 @@ export class Verse2 {
 
   // 4 — altar → wall of sound
   wall(b, rr, t, l, u) {
-    const ws = l.c[4] - 0.1; // 音
-    const into = ep(ws - 0.6, ws + 0.4, t, ease.inOutCubic);
-    // altar with candles (fades into the amps)
+    const ws = l.c[2] - 0.15; // から: the altar gives way to the amps
+    const into = ep(ws - 0.2, ws + 0.5, t, ease.inOutCubic);
+    // altar: cloth, candles, a gilded frame — sinking as the amps arrive
+    const sink = into * 420;
     b.save();
-    b.globalAlpha = 1 - into;
+    b.globalAlpha = 1 - into * 0.85;
+    b.translate(0, sink);
     b.fillStyle = '#000';
-    b.fillRect(560, 620, 800, 60);
-    b.fillRect(620, 680, 680, 300);
-    for (let i = 0; i < 7; i++) {
-      const x = 640 + i * 107;
-      b.fillRect(x - 10, 520, 20, 100);
-      rr.save();
-      rr.globalAlpha = 1 - into;
-      rr.fillStyle = '#000';
-      rr.beginPath();
-      rr.ellipse(x, 495 + Math.sin(t * 9 + i) * 3, 9, 22, 0, 0, TAU);
-      rr.fill();
-      rr.restore();
-    }
+    b.fillRect(420, 600, 1080, 70); // mensa
+    b.fillRect(480, 670, 960, 330);
+    b.globalAlpha *= 0.45;
+    for (let k = 0; k < 9; k++) b.fillRect(520 + k * 104, 690, 40, 290); // cloth folds (halftone)
     b.restore();
-    // amp stacks arriving on the beats
-    const startB = Math.floor(beatF(ws - 0.6));
-    const nb = Math.floor(beatF(t)) - startB;
-    const cols = 7, rows = 3;
-    for (let k = 0; k < cols * rows; k++) {
-      const order = (k * 5) % (cols * rows);
-      if (order > nb * 2) continue;
-      const cx = 130 + (k % cols) * 237, cy = 300 + Math.floor(k / cols) * 230;
-      const drop = clamp((beatF(t) - startB - order / 2) * 3);
-      const y = cy - (1 - ease.outBack(clamp(drop))) * 300;
+    rr.save();
+    rr.globalAlpha = 1 - into;
+    rr.translate(0, sink);
+    rr.fillStyle = '#000';
+    rr.fillRect(470, 700, 980, 26); // antependium band
+    for (let i = 0; i < 9; i++) {
+      const x = 520 + i * 110;
+      const h = 120 + (i % 2) * 40 + (i === 4 ? 80 : 0);
       b.save();
+      b.globalAlpha = 1 - into;
+      b.translate(0, sink);
       b.fillStyle = '#000';
-      b.fillRect(cx, y, 220, 210);
-      // grille knock-out with halftone weave
-      b.globalCompositeOperation = 'destination-out';
-      b.fillRect(cx + 14, y + 40, 192, 156);
+      b.fillRect(x - 11, 600 - h, 22, h);
       b.restore();
-      b.save();
-      b.fillStyle = 'rgba(0,0,0,0.45)';
-      b.fillRect(cx + 14, y + 40, 192, 156);
-      b.restore();
-      rr.save();
-      rr.fillStyle = '#000';
-      rr.font = font(F.black, 24);
-      rr.fillText('Kaminare', cx + 18, y + 26);
-      // speaker cones pumping
-      const pump = kickHit(t, 10);
-      for (const [ox, oy] of [[60, 80], [160, 80], [60, 160], [160, 160]]) {
-        rr.beginPath();
-        rr.arc(cx + ox, y + oy, 30 + pump * 8, 0, TAU);
-        rr.lineWidth = 5;
+      rr.beginPath();
+      rr.ellipse(x, 600 - h - 26 + Math.sin(t * 9 + i) * 3, 10, 24, 0, 0, TAU);
+      rr.fill();
+    }
+    rr.restore();
+    // amp wall: three rows of eight drop in, bottom row first, one row per beat
+    const startB = Math.floor(beatF(ws));
+    const cols = 8, rows = 3;
+    const pump = kickHit(t, 10);
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const land = startB + row * 1 + (col % 2) * 0.5;
+        const drop = clamp((beatF(t) - land) * 2.5);
+        if (drop <= 0) continue;
+        const w = 226, h = 196;
+        const cx = 25 + col * 235, cyT = 860 - row * 206;
+        const y = cyT - (1 - ease.outBack(drop)) * 700;
+        b.save();
+        b.fillStyle = '#000';
+        b.fillRect(cx, y, w, h);
+        b.globalCompositeOperation = 'destination-out';
+        b.fillRect(cx + 12, y + 36, w - 24, h - 48);
+        b.restore();
+        b.save();
+        b.globalAlpha = 0.42;
+        b.fillStyle = '#000';
+        b.fillRect(cx + 12, y + 36, w - 24, h - 48);
+        b.restore();
+        rr.save();
+        rr.fillStyle = '#000';
+        rr.font = font(F.black, 22);
+        rr.fillText('Kaminare', cx + 16, y + 25);
         rr.strokeStyle = '#000';
-        rr.stroke();
+        rr.lineWidth = 5;
+        for (const [ox, oy] of [[62, 82], [164, 82], [62, 150], [164, 150]]) {
+          rr.beginPath();
+          rr.arc(cx + ox, y + oy, 28 + pump * 7, 0, TAU);
+          rr.stroke();
+        }
+        rr.restore();
       }
-      rr.restore();
     }
   }
 

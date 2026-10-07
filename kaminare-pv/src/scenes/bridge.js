@@ -148,7 +148,7 @@ export class Bridge {
     const ls = this.ls;
     const [A, Bt] = SEC.bridge;
     const stage = ep(ls[3].t0 - 0.2, ls[3].t0 + 1.2, t, ease.inOutCubic);
-    const gap = t > 150.02 && t < Bt ? 1 : 0; // the breath before the final chorus
+    const gap = t > 150.02 ? 1 : 0; // the breath before the final chorus (held through the cut)
     const camZ = 1 + stage * -0.25; // pull back as the stage arrives
     // candle flame (moves down as we pull back)
     const fu = this.flame.u;
