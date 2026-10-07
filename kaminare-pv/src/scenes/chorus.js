@@ -52,8 +52,8 @@ export class Chorus {
     this.ringLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(edgePts), new THREE.LineBasicMaterial({ color: new THREE.Color(2.2, 1.5, 0.7) }));
     this.ringLine.position.copy(frame.position);
     this.scene.add(this.ringLine);
-    this.layer = new Layer2D();
-    this.glow = new Layer2D();
+    this.layer = new Layer2D(0);
+    this.glow = new Layer2D(1);
     // a flock of doves (ch2 / fc) — billboards, stateless flight down the nave
     const dc = document.createElement('canvas');
     dc.width = dc.height = 256;

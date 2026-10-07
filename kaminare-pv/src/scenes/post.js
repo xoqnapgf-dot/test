@@ -17,8 +17,8 @@ export class Post {
   }
   init() {
     this.bg = new Paper('#141012', '#141012');
-    this.l = new Layer2D();
-    this.g = new Layer2D();
+    this.l = new Layer2D(0);
+    this.g = new Layer2D(1);
     this.ls = lines('post');
   }
   render(t, rt) {

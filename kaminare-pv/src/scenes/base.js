@@ -1,7 +1,7 @@
 // Shared building blocks for scenes: a paper background, ink plate display, a 2D layer
 // compositor and a 3D helper. Scenes render into whatever target the director has bound.
 import * as THREE from 'three';
-import { Pass, CanvasLayer, canvasTexture } from '../core/gl.js';
+import { Pass, CanvasLayer, canvasTexture, sharedLayer } from '../core/gl.js';
 import { PAPER } from '../gfx/glsl.js';
 
 // Composite a straight-alpha texture over the bound target. Optional displacement & tint.
@@ -24,8 +24,8 @@ void main(){
 }`;
 
 export class Layer2D {
-  constructor(w = 1920, h = 1080) {
-    this.cl = new CanvasLayer(w, h);
+  constructor(slot = 0) {
+    this.cl = sharedLayer(slot);
     this.pass = new Pass(LAYER_FRAG, {
       tTex: { value: this.cl.tex }, uA: { value: 1 }, uTint: { value: new THREE.Color(1, 1, 1) }, uTintAmt: { value: 0 },
       uOff: { value: new THREE.Vector2() }, uScale: { value: 1 }, uRot: { value: 0 }, uWarp: { value: 0 }, uTime: { value: 0 }, uBoost: { value: 1 },

@@ -29,9 +29,17 @@ export class Pass {
   }
 }
 
+// set once the renderer exists: HDR targets need a colour-buffer-float extension
+export const caps = { hdr: true };
+export function detectCaps(renderer) {
+  const gl = renderer.getContext();
+  caps.hdr = !!(gl.getExtension('EXT_color_buffer_float') || gl.getExtension('EXT_color_buffer_half_float'));
+  return caps;
+}
+
 export function makeRT(w, h, opts = {}) {
   const rt = new THREE.WebGLRenderTarget(w, h, {
-    type: opts.type ?? THREE.HalfFloatType,
+    type: opts.type ?? (caps.hdr ? THREE.HalfFloatType : THREE.UnsignedByteType),
     format: THREE.RGBAFormat,
     minFilter: THREE.LinearFilter,
     magFilter: THREE.LinearFilter,
@@ -99,6 +107,14 @@ export class CanvasLayer {
   end() {
     this.tex.needsUpdate = true;
   }
+}
+
+// Scenes draw and composite their 2D layers immediately, one scene at a time, so every
+// scene can share the same few full-size canvases (slot 0 = type, 1 = glow, 2 = spare).
+const POOL = [];
+export function sharedLayer(slot) {
+  if (!POOL[slot]) POOL[slot] = new CanvasLayer(1920, 1080);
+  return POOL[slot];
 }
 
 export function canvasTexture(canvas, srgb = true) {

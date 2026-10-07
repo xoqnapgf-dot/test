@@ -83,7 +83,7 @@ export class Outro {
     this.paper = new Paper('#ebe1ce', '#cf3320');
     this.bell = new PlateView(bellPlate(), [1110, 40, 760, 1000], '#120d0b');
     this.note = noteSprite();
-    this.layer = new Layer2D();
+    this.layer = new Layer2D(0);
     this.ls = lines('out');
   }
   render(t, rt) {

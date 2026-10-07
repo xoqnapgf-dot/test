@@ -137,8 +137,8 @@ export class Bridge {
   }
   init() {
     this.flame = new Pass(FLAME_FRAG, { uTime: { value: 0 }, uSize: { value: 40 }, uWind: { value: 0 }, uBright: { value: 1 }, uPos: { value: new THREE.Vector2(960, 740) } });
-    this.glow = new Layer2D();
-    this.type = new Layer2D();
+    this.glow = new Layer2D(1);
+    this.type = new Layer2D(0);
     this.ls = lines('br');
     this.church = church();
     this.shrine = shrine();

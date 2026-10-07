@@ -88,8 +88,8 @@ export class Solo {
     });
     this.up = new Pass(UP_FRAG, { tIn: { value: null } }, { noNoise: true });
     this.resize(this.app.rw, this.app.rh);
-    this.glow = new Layer2D();
-    this.type = new Layer2D();
+    this.glow = new Layer2D(1);
+    this.type = new Layer2D(0);
     this.wl = lines('br')[0];
   }
   resize(w, h) {
@@ -210,7 +210,7 @@ export class Solo {
     if (freeze > 0) {
       g.save();
       g.globalCompositeOperation = 'lighter';
-      const ra = (t - fz) * 1600;
+      const ra = Math.max(0, t - fz) * 1600;
       g.strokeStyle = `rgba(255,255,255,${Math.max(0, 1 - (t - fz) * 1.5) * 0.8})`;
       g.lineWidth = 2;
       g.beginPath();

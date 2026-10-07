@@ -21,8 +21,8 @@ export class Pre {
   }
   init() {
     this.paper = new Paper('#ece2cf', '#cf3320');
-    this.ink = new Layer2D();
-    this.glow = new Layer2D();
+    this.ink = new Layer2D(0);
+    this.glow = new Layer2D(1);
     this.l1 = lines('pre1');
     this.l2 = lines('pre2');
     const R = rng(91);

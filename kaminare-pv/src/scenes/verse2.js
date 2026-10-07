@@ -3,7 +3,7 @@
 // Shots: octagram sticks · twin kicks shatter the night · lead → white doves ·
 //        altar → wall of sound · sutra & strings · one vibration (Chladni sand).
 import * as THREE from 'three';
-import { Pass, CanvasLayer } from '../core/gl.js';
+import { Pass, sharedLayer } from '../core/gl.js';
 import { lines, SEC, beatF, kickHit, snareHit, KICK_TIMES, beatPulse, B } from '../core/music.js';
 import { F, font, layoutH, layoutV, REVEAL, caption } from '../core/type.js';
 import { gloss } from '../core/lyrics-meta.js';
@@ -94,8 +94,8 @@ export class Verse2 {
     this.app = app;
   }
   init() {
-    this.B = new CanvasLayer(1920, 1080);
-    this.R = new CanvasLayer(1920, 1080);
+    this.B = sharedLayer(0);
+    this.R = sharedLayer(1);
     this.pass = new Pass(RISO_FRAG, {
       tB: { value: this.B.tex }, tR: { value: this.R.tex }, uPaper: { value: new THREE.Color('#f1e9d6') },
       uBlue: { value: new THREE.Color('#2f4bb8') }, uRed: { value: new THREE.Color('#ff4f3a') },

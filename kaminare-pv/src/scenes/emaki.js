@@ -234,7 +234,7 @@ export class Emaki {
       b.circle(260, 260, 170);
     });
     this.shu = new WashView(shu, [CENTERS[3] - PW / 2 + 800 - 260, 520 - 260, 520, 520]);
-    this.type = new Layer2D();
+    this.type = new Layer2D(0);
     this.ls = lines('v1');
     // kirikane: gold-leaf slivers scattered over the whole scroll
     const R = rng(808);

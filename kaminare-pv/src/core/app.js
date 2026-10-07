@@ -1,7 +1,7 @@
 // App shell: renderer, clock (audio-locked), director (shots + transitions), UI.
 import * as THREE from 'three';
 import { Post } from './post.js';
-import { Pass, CanvasLayer } from './gl.js';
+import { Pass, CanvasLayer, detectCaps } from './gl.js';
 import { DURATION, SEC, CHAPTERS, beatF } from './music.js';
 import { clamp } from './util.js';
 
@@ -35,6 +35,7 @@ export class App {
       powerPreference: 'high-performance',
       preserveDrawingBuffer: !!this.capture,
     }));
+    detectCaps(r);
     r.outputColorSpace = THREE.LinearSRGBColorSpace;
     r.autoClear = false;
     r.setClearColor(0x000000, 1);

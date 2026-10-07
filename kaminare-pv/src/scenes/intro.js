@@ -78,8 +78,8 @@ export class Intro {
       uTime: { value: 0 }, uGong: { value: 0 }, uAge: { value: -1 }, uZoom: { value: 1 }, uLight: { value: 0 }, uOpen: { value: 0 },
       uC: { value: new THREE.Vector2(0.5, 0.5) }, uR: { value: 0.3 },
     });
-    this.glow = new Layer2D();
-    this.type = new Layer2D();
+    this.glow = new Layer2D(1);
+    this.type = new Layer2D(0);
     const R = rng(77);
     this.crowd = [];
     for (let i = 0; i < 230; i++) {

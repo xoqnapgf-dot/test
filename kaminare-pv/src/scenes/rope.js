@@ -177,7 +177,7 @@ export class Rope {
     const lan = new THREE.Points(lg, this.lanMat);
     lan.frustumCulled = false;
     this.scene.add(lan);
-    this.layer = new Layer2D();
+    this.layer = new Layer2D(0);
   }
 
   render(t, rt) {
