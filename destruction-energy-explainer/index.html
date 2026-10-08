@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>破坏的账本 — 材质与破坏能量</title>
+<meta name="description" content="一部实时渲染的科普短片：强度、破碎比能、相变、引力束缚能、持续通量——五本互不通用的账。">
+<meta name="theme-color" content="#0a0c10">
+<style>
+  :root { --ink: #e9e4d8; --dim: rgba(233,228,216,.55); --faint: rgba(233,228,216,.18);
+          --c0: #5cc8e8; --c1: #f2a43c; --c2: #ff6a45; --c3: #a98bff; --c4: #ecd35f; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #040506; color: var(--ink); overflow: hidden; }
+  body { display: grid; place-items: center; font-family: KSans, "PingFang SC", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
+  #stage { position: relative; background: #000; overflow: hidden; container-type: inline-size;
+           width: min(100vw, calc(100vh * 16 / 9)); height: min(100vh, calc(100vw * 9 / 16)); }
+  #gl { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  #boot { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; justify-content: center; padding: 0 9cqw;
+          background: radial-gradient(90% 80% at 30% 45%, rgba(30,34,44,.35), rgba(4,5,7,.92) 70%); transition: opacity 1s ease, visibility 1s; }
+  #boot.gone { opacity: 0; visibility: hidden; }
+  .b-k { font-family: KMono, monospace; font-size: .85cqw; letter-spacing: .35em; color: var(--dim); }
+  .b-title { font-family: KSerifH, serif; font-size: 6.4cqw; line-height: 1.1; margin: 1.4cqw 0 1.2cqw; letter-spacing: .04em; }
+  .b-sub { font-size: 1.45cqw; color: var(--dim); max-width: 46cqw; line-height: 1.7; }
+  .b-tabs { display: flex; gap: 1.6cqw; margin: 2.6cqw 0 2.8cqw; font-size: 1.05cqw; }
+  .b-tabs span { padding-bottom: .4cqw; border-bottom: 2px solid currentColor; }
+  .b-tabs i { font-style: normal; font-family: KMono, monospace; font-size: .8cqw; opacity: .7; margin-left: .5cqw; }
+  .b-row { display: flex; align-items: center; gap: 2cqw; }
+  #play { appearance: none; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer;
+          font: inherit; font-size: 1.25cqw; letter-spacing: .3em; padding: 1.05cqw 2.4cqw 1.05cqw 2.7cqw; border-radius: 99px; transition: background .25s, color .25s; }
+  #play:hover:not(:disabled) { background: var(--ink); color: #0a0c10; }
+  #play:disabled { opacity: .35; cursor: progress; }
+  .b-load { width: 12cqw; height: 1px; background: var(--faint); position: relative; }
+  .b-load i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--ink); transition: width .25s; }
+  #loadmsg { font-family: KMono, monospace; font-size: .78cqw; color: var(--dim); letter-spacing: .15em; }
+  .b-foot { position: absolute; left: 9cqw; bottom: 3cqw; font-family: KMono, monospace; font-size: .72cqw; color: var(--faint); letter-spacing: .2em; }
+  .b-foot kbd { font: inherit; border: 1px solid var(--faint); padding: .1em .45em; border-radius: 3px; }
+
+  #ui { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.4cqw 2.2cqw 1.1cqw; z-index: 4;
+        background: linear-gradient(transparent, rgba(0,0,0,.6)); opacity: 0; transition: opacity .4s; }
+  #ui.show { opacity: 1; }
+  #bar { position: relative; height: 1.4cqw; cursor: pointer; }
+  #bar .track { position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--faint); }
+  #bar .fill { position: absolute; left: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--ink); width: 0; }
+  #bar .tick { position: absolute; top: 50%; width: 1px; height: .8cqw; margin-top: -.4cqw; background: var(--dim); }
+  #bar .tick b { position: absolute; bottom: 1cqw; left: 50%; transform: translateX(-50%); font-weight: 400; font-size: .75cqw; color: var(--dim); white-space: nowrap; opacity: 0; transition: opacity .2s; }
+  #bar:hover .tick b { opacity: 1; }
+  #bar .head { position: absolute; top: 50%; width: .7cqw; height: .7cqw; margin: -.35cqw 0 0 -.35cqw; border-radius: 50%; background: var(--ink); left: 0; }
+  .row { display: flex; align-items: center; gap: 1.4cqw; margin-top: .5cqw; font-family: KMono, monospace; font-size: .8cqw; letter-spacing: .12em; color: var(--dim); }
+  .row button { appearance: none; background: none; border: 0; color: var(--ink); cursor: pointer; font: inherit; padding: .2cqw 0; opacity: .8; }
+  .row button:hover { opacity: 1; }
+  .row .sp { flex: 1; }
+  #fallback { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 4cqw; font-size: 1.2cqw; line-height: 2; color: var(--dim); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="boot">
+    <div class="b-k">A REAL-TIME EXPLAINER · 7 MIN 50 S · 配音解说</div>
+    <div class="b-title">破坏的账本</div>
+    <div class="b-sub">打碎一块混凝土，和打碎一颗星球，差的不只是数字——它们根本是两个不同的问题。</div>
+    <div class="b-tabs">
+      <span style="color:var(--c0)">强度<i>MPa</i></span>
+      <span style="color:var(--c1)">破碎比能<i>J/cc</i></span>
+      <span style="color:var(--c2)">相变<i>J/cc</i></span>
+      <span style="color:var(--c3)">引力束缚能<i>J</i></span>
+      <span style="color:var(--c4)">持续通量<i>W/m²</i></span>
+    </div>
+    <div class="b-row">
+      <button id="play" disabled>开始 ▶</button>
+      <div><div class="b-load"><i id="loadbar"></i></div><div id="loadmsg">载入中…</div></div>
+    </div>
+    <div class="b-foot"><kbd>Space</kbd> 播放/暂停　<kbd>←</kbd><kbd>→</kbd> 5 秒　<kbd>1</kbd>–<kbd>9</kbd> 章节　<kbd>C</kbd> 字幕　<kbd>F</kbd> 全屏</div>
+  </div>
+  <div id="ui">
+    <div id="bar"><div class="track"></div><div class="fill" id="fill"></div><div class="head" id="head"></div></div>
+    <div class="row">
+      <button id="pp">❚❚ 暂停</button>
+      <span id="tc">00:00 / 07:50</span>
+      <span id="chap"></span>
+      <span class="sp"></span>
+      <button id="subbtn">字幕 开</button>
+      <button id="qbtn">画质 ●●●</button>
+      <button id="fsbtn">全屏</button>
+    </div>
+  </div>
+  <div id="fallback">需要支持 WebGL2 的浏览器（新版 Chrome、Edge、Firefox 或 Safari）。</div>
+</div>
+<audio id="track" preload="auto">
+  <source src="assets/explainer.mp3" type="audio/mpeg">
+</audio>
+<script src="assets/fonts.js"></script>
+<script src="assets/textures.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
