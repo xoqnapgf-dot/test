@@ -5,6 +5,8 @@ Every project is a self-contained folder **named after its content**, with its o
 `index.html` and relative paths, so it runs from disk or from any static host
 (conventions in [`CLAUDE.md`](CLAUDE.md)).
 
+Each project is a fresh test: it is built from scratch, without reading earlier projects, unless the user asks otherwise (see `CLAUDE.md`).
+
 | Project | What it is |
 | --- | --- |
 | [`kaminare-pv/`](kaminare-pv/) | **カミナレ** — a 3-minute real-time music video (WebGL, sumi ink, stained glass, thunder). Open `kaminare-pv/index.html`. |
