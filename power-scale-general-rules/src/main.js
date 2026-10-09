@@ -271,12 +271,15 @@ async function boot() {
   }
   buildMarks();
   wire();
-  render(tNow);
+  // poster behind the start screen: the title over the energy axis
+  const startAt = tNow;
+  render(qs.has('t') ? tNow : 67.5);
   document.getElementById('cc').classList.toggle('off', !subsOn);
   const start = document.getElementById('start');
   start.classList.add('ready');
   start.querySelector('button').onclick = () => {
     start.classList.add('gone');
+    tNow = startAt;
     play();
     poke();
   };

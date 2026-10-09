@@ -19,6 +19,7 @@ export class G {
     this.mode = 'paper';
     this.p = PAL.paper;
     this.t = 0;
+    this.ga = 1; // alpha multiplier for content nested in a fading card
   }
   begin(scale, mode, t) {
     const x = this.x;
@@ -29,6 +30,7 @@ export class G {
     this.mode = mode;
     this.p = PAL[mode];
     this.t = t;
+    this.ga = 1;
     x.globalAlpha = 1;
     x.globalCompositeOperation = 'source-over';
     x.lineCap = 'round';
@@ -74,7 +76,7 @@ export class G {
     }
     c.textAlign = 'left';
     if (reveal >= 1 && !track) {
-      c.globalAlpha = alpha;
+      c.globalAlpha = this.ga * (alpha);
       c.fillText(str, x0, y);
     } else {
       const n = chars.length;
@@ -83,13 +85,13 @@ export class G {
       for (let i = 0; i < n; i++) {
         const k = clamp(reveal * (n + soft) - i, 0, soft) / soft;
         if (k > 0) {
-          c.globalAlpha = alpha * smooth(k);
+          c.globalAlpha = this.ga * (alpha * smooth(k));
           c.fillText(chars[i], px, y + (1 - ease.out3(k)) * (o.rise == null ? size * 0.25 : o.rise));
         }
         px += widths[i];
       }
     }
-    c.globalAlpha = 1;
+    c.globalAlpha = this.ga;
     c.shadowBlur = 0;
     return total;
   }
@@ -173,7 +175,7 @@ export class G {
     if (p < 1) q = cut(q, p);
     const c = this.x;
     c.save();
-    c.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    c.globalAlpha = this.ga * (o.alpha == null ? 1 : o.alpha);
     c.strokeStyle = this.col(o.color || 'ink');
     c.lineWidth = o.w || 2;
     if (o.dash) c.setLineDash(o.dash);
@@ -218,7 +220,7 @@ export class G {
     const hs = o.head || 14;
     const c = this.x;
     c.save();
-    c.globalAlpha = (o.alpha == null ? 1 : o.alpha) * smooth(p * 6);
+    c.globalAlpha = this.ga * ((o.alpha == null ? 1 : o.alpha) * smooth(p * 6));
     c.fillStyle = this.col(o.color || 'ink');
     c.translate(e[0], e[1]);
     c.rotate(ang);
@@ -259,7 +261,7 @@ export class G {
       R.push([q[i][0] - nx * hw, q[i][1] - ny * hw]);
     }
     c.save();
-    c.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    c.globalAlpha = this.ga * (o.alpha == null ? 1 : o.alpha);
     c.fillStyle = this.col(o.color || 'ink');
     if (o.glow && this.mode === 'cosmos') {
       c.shadowColor = c.fillStyle;
@@ -301,7 +303,7 @@ export class G {
     const p = o.p == null ? 1 : clamp(o.p);
     if (p <= 0 || r <= 0) return;
     c.save();
-    c.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    c.globalAlpha = this.ga * (o.alpha == null ? 1 : o.alpha);
     if (o.add) c.globalCompositeOperation = 'lighter';
     c.beginPath();
     const a0 = o.a0 == null ? -Math.PI / 2 : o.a0;
@@ -325,7 +327,7 @@ export class G {
   rect(x, y, w, h, o = {}) {
     const c = this.x;
     c.save();
-    c.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    c.globalAlpha = this.ga * (o.alpha == null ? 1 : o.alpha);
     c.beginPath();
     if (o.r) c.roundRect(x, y, w, h, o.r);
     else c.rect(x, y, w, h);
@@ -364,7 +366,7 @@ export class G {
     const c = this.x;
     const k = ease.out3(p);
     c.save();
-    c.globalAlpha = smooth(p * 1.5) * (o.alpha == null ? 1 : o.alpha);
+    c.globalAlpha = this.ga * (smooth(p * 1.5) * (o.alpha == null ? 1 : o.alpha));
     c.translate(x + w / 2, y + h / 2 + (1 - k) * (o.lift == null ? 30 : o.lift));
     if (o.rot) c.rotate(o.rot);
     c.translate(-w / 2, -h / 2);
@@ -387,7 +389,10 @@ export class G {
       c.beginPath();
       c.rect(0, 0, w, h);
       c.clip();
+      const ga = this.ga;
+      this.ga = c.globalAlpha;
       o.fn(this, w, h);
+      this.ga = ga;
       c.restore();
     }
     c.restore();
@@ -408,7 +413,7 @@ export class G {
     const k = clamp(p * 1.25);
     const sc = lerp(1.6, 1, ease.out4(k)) + 0.04 * Math.sin(clamp((p - 0.6) / 0.4) * Math.PI);
     c.save();
-    c.globalAlpha = smooth(k * 2.5) * (o.alpha == null ? 1 : o.alpha);
+    c.globalAlpha = this.ga * (smooth(k * 2.5) * (o.alpha == null ? 1 : o.alpha));
     c.translate(x, y);
     c.rotate(o.rot == null ? -0.06 : o.rot);
     c.scale(sc, sc);
@@ -432,7 +437,7 @@ export class G {
     const x0 = o.align === 'center' ? x - w / 2 : o.align === 'right' ? x - w : x;
     const c = this.x;
     c.save();
-    c.globalAlpha = smooth(p * 2) * (o.alpha == null ? 1 : o.alpha);
+    c.globalAlpha = this.ga * (smooth(p * 2) * (o.alpha == null ? 1 : o.alpha));
     c.translate(0, (1 - ease.out3(p)) * 10);
     c.beginPath();
     c.roundRect(x0, y - h / 2, w, h, h / 2);
@@ -455,7 +460,7 @@ export class G {
     if (!ic) return;
     const c = this.x;
     c.save();
-    c.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    c.globalAlpha = this.ga * (o.alpha == null ? 1 : o.alpha);
     c.translate(x - size / 2, y - size / 2);
     c.scale(size / 24, size / 24);
     c.strokeStyle = this.col(o.color || 'ink');
@@ -492,7 +497,7 @@ export class G {
     if (p <= 0) return;
     const c = this.x;
     c.save();
-    c.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    c.globalAlpha = this.ga * (o.alpha == null ? 1 : o.alpha);
     if (o.glow && this.mode === 'cosmos') {
       c.shadowColor = this.col(o.glowColor || o.color || 'ink');
       c.shadowBlur = o.glow;
