@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>判定通则 · 战力量级体系</title>
+<style>
+  :root { --u: 1px; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; color: #eee8da; }
+  body { font-family: "NSans", "PingFang SC", "Microsoft YaHei", sans-serif; }
+  body.nocursor { cursor: none; }
+  #gl { position: absolute; display: block; }
+  #stagebox { position: absolute; pointer-events: auto; }
+  .sub {
+    position: absolute; left: 6%; right: 6%; bottom: 5.2%; text-align: center; pointer-events: none;
+    font: 500 calc(var(--u) * 34) / 1.45 "NSans", "Stix", "Kai", sans-serif; letter-spacing: calc(var(--u) * 1.2);
+    color: #f3eee2; text-shadow: 0 0 calc(var(--u) * 10) rgba(0,0,0,.9), 0 calc(var(--u) * 2) calc(var(--u) * 4) rgba(0,0,0,.8);
+    transition: color .4s, text-shadow .4s;
+  }
+  .sub.paper { color: #1c1a1f; text-shadow: 0 0 calc(var(--u) * 10) rgba(236,229,214,.95), 0 0 calc(var(--u) * 3) rgba(236,229,214,1); }
+  body.capture .sub { display: none; }
+  #hud { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 calc(var(--u) * 36) calc(var(--u) * 26); opacity: 0; transition: opacity .35s; background: linear-gradient(transparent, rgba(0,0,0,.55)); }
+  #hud.show { opacity: 1; }
+  #hud.hidden { display: none; }
+  body.capture #hud { display: none; }
+  #bar { position: relative; height: calc(var(--u) * 26); cursor: pointer; touch-action: none; }
+  #bar::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 3px; transform: translateY(-50%); background: rgba(255,255,255,.22); border-radius: 2px; }
+  #fill { position: absolute; left: 0; top: 50%; height: 3px; transform: translateY(-50%); background: #e0b866; border-radius: 2px; width: 0; }
+  #bar i { position: absolute; top: 50%; width: 2px; height: 9px; transform: translate(-1px, -50%); background: rgba(255,255,255,.55); }
+  #row { display: flex; align-items: center; gap: calc(var(--u) * 18); font: 500 calc(var(--u) * 20) "NSans", sans-serif; }
+  #row button { background: none; border: 1px solid rgba(255,255,255,.3); color: #eee8da; font: inherit; padding: calc(var(--u) * 6) calc(var(--u) * 14); border-radius: 99px; cursor: pointer; }
+  #row button:hover { border-color: #e0b866; color: #e0b866; }
+  #row button.off { opacity: .45; }
+  #chap { flex: 1; color: #d9cfbb; letter-spacing: .08em; }
+  #time { font-family: "Mono", monospace; color: #b7b0a2; }
+  #start { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--u) * 26);
+    background: radial-gradient(ellipse at 50% 46%, rgba(4,6,12,.55), rgba(4,6,12,.94) 70%); transition: opacity .8s; z-index: 5; }
+  #start.gone { opacity: 0; pointer-events: none; }
+  #start h1 { margin: 0; font: 700 calc(var(--u) * 92) "NSerif", serif; letter-spacing: .12em; color: #f1ead9; }
+  #start h2 { margin: 0; font: 500 calc(var(--u) * 30) "NSerif", serif; letter-spacing: .5em; color: #e0b866; }
+  #start p { margin: 0; font: 400 calc(var(--u) * 22) "NSans", sans-serif; color: #a9a294; letter-spacing: .1em; }
+  #start button { margin-top: calc(var(--u) * 20); font: 600 calc(var(--u) * 28) "NSans", sans-serif; letter-spacing: .4em; padding: calc(var(--u) * 16) calc(var(--u) * 54) calc(var(--u) * 16) calc(var(--u) * 66);
+    color: #0a0b10; background: #e0b866; border: 0; border-radius: 99px; cursor: pointer; opacity: .25; pointer-events: none; transition: opacity .4s, transform .2s; }
+  #start.ready button { opacity: 1; pointer-events: auto; }
+  #start button:hover { transform: scale(1.04); }
+  #start .keys { font-size: calc(var(--u) * 17); color: #7e786e; }
+  body.capture #start { display: none; }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="stagebox">
+  <div id="sub" class="sub"></div>
+  <div id="start">
+    <h2>战力量级体系</h2>
+    <h1>判定通则</h1>
+    <p>用途 · 使用流程 · 第零部分十六条通则</p>
+    <button>开始</button>
+    <p class="keys">空格 播放/暂停　← → 快退/快进　1–9 跳章　C 字幕　F 全屏　H 隐藏控制条</p>
+  </div>
+  <div id="hud">
+    <div id="bar"><div id="fill"></div></div>
+    <div id="row">
+      <button id="pp" title="播放 / 暂停">▶︎ ❚❚</button>
+      <span id="chap"></span>
+      <span id="time"></span>
+      <button id="cc" title="字幕">字幕</button>
+      <button id="q" title="渲染画质">画质 高</button>
+      <button id="fs" title="全屏">全屏</button>
+    </div>
+  </div>
+</div>
+<audio id="audio" src="assets/narration.mp3" preload="auto"></audio>
+<script src="assets/fonts.js"></script>
+<script src="assets/images.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
