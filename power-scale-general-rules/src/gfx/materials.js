@@ -256,6 +256,7 @@ export function shellMaterial(o = {}) {
       uTime: { value: 0 },
       uFade: { value: 1 },
       uRings: { value: o.rings == null ? 1 : o.rings },
+      uCore: { value: o.core == null ? 1 : o.core },
     },
     transparent: true,
     depthWrite: false,
@@ -265,7 +266,7 @@ export function shellMaterial(o = {}) {
       varying vec3 vN; varying vec3 vW; varying vec3 vO;
       void main(){ vO = position; vec4 w = modelMatrix*vec4(position,1.0); vW = w.xyz; vN = normalize(mat3(modelMatrix)*normal); gl_Position = projectionMatrix*viewMatrix*w; }`,
     fragmentShader: /* glsl */ `
-      uniform vec3 uColor; uniform vec3 uEdge; uniform float uI; uniform float uTime; uniform float uFade; uniform float uRings;
+      uniform vec3 uColor; uniform vec3 uEdge; uniform float uI; uniform float uTime; uniform float uFade; uniform float uRings; uniform float uCore;
       varying vec3 vN; varying vec3 vW; varying vec3 vO;
       ${NOISE}
       void main(){
@@ -275,7 +276,7 @@ export function shellMaterial(o = {}) {
         vec3 p = normalize(vO);
         float n = fbm3(p * 5.0 + vec3(0.0, uTime * 0.3, 0.0));
         float rings = uRings * smoothstep(0.82, 1.0, sin((p.y + n * 0.08) * 60.0)) * 0.35;
-        vec3 c = mix(uColor, uEdge, fres) * (fres * 1.4 + 0.06 + 0.12 * n + rings);
+        vec3 c = mix(uColor, uEdge, fres) * (fres * 1.4 + (0.06 + 0.12 * n) * uCore + rings);
         gl_FragColor = vec4(c * uI * uFade, 1.0);
       }`,
   });

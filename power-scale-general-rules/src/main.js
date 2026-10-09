@@ -87,7 +87,8 @@ function render(t) {
   else stage.frame(t, A, null, 0, ctx);
   // global fade in / out
   stage.fin.u.uFade.value = Math.min(clamp(t / 2.2), clamp((TOTAL - t) / 3.5));
-  const txt = subsOn ? subtitleAt(t) : '';
+  const started = CAPTURE || document.getElementById('start').classList.contains('gone');
+  const txt = subsOn && started ? subtitleAt(t) : '';
   if (subEl.textContent !== txt) subEl.textContent = txt;
   subEl.className = 'sub ' + (A.mode === 'paper' && k > 0.5 ? 'paper' : !B && A.mode === 'paper' ? 'paper' : B && k < 0.5 && prev.mode === 'paper' ? 'paper' : '');
   updateHud(t);
@@ -215,7 +216,10 @@ function wire() {
     layout();
     if (!playing) render(tNow);
   };
-  document.getElementById('stagebox').addEventListener('click', () => (playing ? pause() : play()));
+  document.getElementById('stagebox').addEventListener('click', (e) => {
+    if (e.target.closest('#hud') || !document.getElementById('start').classList.contains('gone')) return;
+    playing ? pause() : play();
+  });
   window.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
       e.preventDefault();
@@ -273,11 +277,12 @@ async function boot() {
   wire();
   // poster behind the start screen: the title over the energy axis
   const startAt = tNow;
-  render(qs.has('t') ? tNow : 67.5);
+  render(qs.has('t') ? tNow : 34.6);
   document.getElementById('cc').classList.toggle('off', !subsOn);
   const start = document.getElementById('start');
   start.classList.add('ready');
-  start.querySelector('button').onclick = () => {
+  start.querySelector('button').onclick = (e) => {
+    e.stopPropagation(); // the start screen sits inside the stage, whose click toggles play/pause
     start.classList.add('gone');
     tNow = startAt;
     play();

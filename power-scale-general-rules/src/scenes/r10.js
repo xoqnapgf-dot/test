@@ -78,7 +78,7 @@ export function build() {
   three.add(beamHead);
 
   // spreading front (case B)
-  const frontM = shellMaterial({ color: '#FFB060', edge: '#FFF0D0', intensity: 0, rings: 0 });
+  const frontM = shellMaterial({ color: '#FFB060', edge: '#FFF0D0', intensity: 0, rings: 0, core: 0.12 });
   const front = new THREE.Mesh(new THREE.SphereGeometry(1, 96, 48), frontM);
   front.position.copy(A);
   three.add(front);
