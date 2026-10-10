@@ -1,0 +1,17 @@
+{
+  "name": "ai-constellation-cube",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Self-contained offline 3D Rubik cube with six evolving AI-inspired micro-worlds.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}
