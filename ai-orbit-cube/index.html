@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c1119" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="A quiet, self-contained 3D Rubik’s cube of six evolving AI worlds and 54 distinct capability cells." />
+    <link rel="stylesheet" href="./standalone/orbit-cube.css" />
+    <title>AI Orbit Cube — Six worlds, one turning field</title>
+  </head>
+  <body>
+    <main id="experience" aria-label="AI Orbit Cube interactive scene">
+      <canvas id="world-canvas" tabindex="0" role="application" aria-label="Interactive three-dimensional Rubik’s cube. Drag a sticker to turn a layer, drag the surrounding space to orbit, and use the mouse wheel or a two-finger pinch to zoom."></canvas>
+      <button id="help-trigger" class="help-trigger" type="button" aria-label="Open the field guide" aria-haspopup="dialog" aria-controls="help-dialog">
+        <span aria-hidden="true">?</span>
+      </button>
+      <div id="announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+      <div id="scene-fallback" class="scene-fallback" hidden>
+        <div class="fallback-mark" aria-hidden="true">◌</div>
+        <p>This browser could not create a WebGL scene.</p>
+        <p>Try enabling hardware acceleration or opening the static build in a recent browser.</p>
+      </div>
+
+      <dialog id="help-dialog" class="guide-dialog" aria-labelledby="guide-title" aria-describedby="guide-description">
+        <div class="guide-sheet">
+          <header class="guide-header">
+            <div>
+              <p class="eyebrow">FIELD GUIDE <span aria-hidden="true">·</span> SIX WORLDS</p>
+              <h1 id="guide-title">A little map of the cube</h1>
+              <p id="guide-description" class="guide-intro">Six independent model families meet on one turning cube. Every square is a different capability—not a score, endorsement, or fixed leaderboard.</p>
+            </div>
+            <button id="help-close" class="icon-button close-button" type="button" aria-label="Close the field guide"><span aria-hidden="true">×</span></button>
+          </header>
+
+          <section class="guide-controls" aria-labelledby="controls-title">
+            <h2 id="controls-title">Move through the field</h2>
+            <div class="control-grid">
+              <div class="control-note"><span class="control-symbol" aria-hidden="true">↗</span><span><strong>Turn a layer</strong><br />Drag a tile in a straight line. The tile’s row or column chooses the slice.</span></div>
+              <div class="control-note"><span class="control-symbol" aria-hidden="true">⤾</span><span><strong>Orbit the camera</strong><br />Drag empty space. Right-drag also orbits from over the cube.</span></div>
+              <div class="control-note"><span class="control-symbol" aria-hidden="true">⌕</span><span><strong>Zoom</strong><br />Use the wheel or a two-finger pinch. Double-click resets the view.</span></div>
+              <div class="control-note"><span class="control-symbol" aria-hidden="true">U</span><span><strong>Keyboard turns</strong><br />U R F D L B and M E S; Shift makes the inverse, Alt makes a half-turn. X Y Z rotate the whole cube.</span></div>
+            </div>
+          </section>
+
+          <section class="guide-actions" aria-label="Cube actions">
+            <button id="solve-button" class="action-button primary-action" type="button">Restore the exact solved orientation</button>
+            <button id="shuffle-button" class="action-button" type="button">Take a short shuffle</button>
+            <button id="camera-button" class="action-button" type="button">Reset camera</button>
+            <span id="solver-status" class="solver-status" aria-live="polite">The local solver is warming up quietly.</span>
+          </section>
+
+          <section class="family-intro" aria-labelledby="families-title">
+            <div>
+              <p class="eyebrow">NOT A RANKING</p>
+              <h2 id="families-title">Six separate worlds</h2>
+            </div>
+            <p>Capabilities are dated snapshots of notable public product and model claims. They overlap, change quickly, and are not a controlled comparison.</p>
+          </section>
+          <div id="family-catalog" class="family-catalog"></div>
+
+          <section class="source-note" aria-labelledby="notes-title">
+            <h2 id="notes-title">How to read the small details</h2>
+            <p>The tiny route couriers, mirror shard, and blue plate are qualified references, not verdicts. Sources, snapshot dates, survey limits, benchmark scope, and the OpenRouter traffic caveat are listed in the project README and <a href="SOURCES.md" target="_blank" rel="noreferrer">research notes</a>.</p>
+            <p class="source-note-small">Everything is generated locally in the browser. The scene does not send cube moves, model names, or analytics to a service.</p>
+          </section>
+          <footer class="guide-footer">
+            <span>AI ORBIT CUBE</span>
+            <span id="cell-count">54 capability cells</span>
+            <button id="help-close-footer" class="text-button" type="button">Back to the scene</button>
+          </footer>
+        </div>
+      </dialog>
+    </main>
+    <script defer src="./standalone/orbit-cube.js"></script>
+  </body>
+</html>
