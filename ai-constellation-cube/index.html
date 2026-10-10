@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111516">
+  <meta name="description" content="离线运行的 3D 魔方与六个微型世界。">
+  <title>六面星图</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <main id="stage" aria-label="六面星图 3D 魔方">
+    <canvas id="scene" aria-label="拖动魔方外部旋转视角，拖动方块切层，滚轮或双指缩放"></canvas>
+    <p id="hint" aria-hidden="true">空白处旋转视角 · 方块表面扭层</p>
+    <button id="restore" type="button" aria-label="缓慢还原魔方" tabindex="0">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20 11a8 8 0 0 0-14.9-3M4 4v4h4M4 13a8 8 0 0 0 14.9 3M20 20v-4h-4" />
+      </svg>
+    </button>
+    <p id="fallback" role="status" hidden>此浏览器无法创建 WebGL2 场景。请尝试更新浏览器或启用硬件加速。</p>
+  </main>
+  <script src="./app.bundle.js"></script>
+</body>
+</html>
