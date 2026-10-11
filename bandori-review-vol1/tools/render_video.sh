@@ -20,9 +20,9 @@ wait
 for i in 0 1 2; do
   set -- ${parts[$i]}
   ffmpeg -loglevel error -y -i "$OUT/v$((i+1)).mp4" -ss "$1" -to "$2" -i assets/audio.mp3 -map 0:v -map 1:a \
-    -c:v copy -c:a aac -b:a 160k -shortest -movflags +faststart "$OUT/邦多利角色个人向点评-上-part$((i+1)).mp4"
+    -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart "$OUT/邦多利角色个人向点评-上-part$((i+1)).mp4"
 done
 printf "file '%s'\n" v1.mp4 v2.mp4 v3.mp4 > "$OUT/list.txt"
-ffmpeg -loglevel error -y -f concat -safe 0 -i "$OUT/list.txt" -i assets/audio.mp3 -map 0:v -map 1:a -c:v copy -c:a copy \
+ffmpeg -loglevel error -y -f concat -safe 0 -i "$OUT/list.txt" -i assets/audio.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest \
   -movflags +faststart "$OUT/邦多利角色个人向点评-上-完整版.mp4"
 ls -la "$OUT"/*.mp4

@@ -28,7 +28,7 @@ SCENES.ars = (c, t, S) => {
       c.fillStyle = '#4e2a8a'; c.fillRect(-300, -390, 46, 780);
       c.strokeStyle = '#f6d36b'; c.lineWidth = 6; rrect(c, -230, -330, 480, 660, 10); c.stroke();
       txt(c, '傲娇学', 10, -200, { size: 120, fam: F.punch, color: '#fff' });
-      txt(c, '标准教科书', 10, -80, { size: 64, fam: F.black, color: '#f6d36b' });
+      txt(c, '第 3 版 · 必修', 10, -80, { size: 56, fam: F.black, color: '#f6d36b' });
       img(c, 'st0005', 10, 120, 260);
       txt(c, '范例：市谷有咲', 10, 290, { size: 44, fam: F.bold, color: '#fff' });
     });
@@ -42,11 +42,10 @@ SCENES.ars = (c, t, S) => {
     const speed = 0.6 + 6 * ez(t, S.L(6), 2.5, ease.in);
     const spin = (t - S.L(2)) * speed;
     gear(c, cx, cy, 120, 12, spin * 0.5, '#7a4cc4'); gear(c, cx + 150, cy - 120, 62, 9, -spin, '#c79bff');
-    txt(c, '永动机', cx, cy, { size: 46, fam: F.black, color: '#fff' });
-    chip(c, '条件反射永动机', cx, 360, { size: 60, bg: '#2a1846', color: '#f6d36b', scale: ease.back(kM) });
+    txt(c, '∞', cx, cy + 4, { size: 90, fam: F.round, color: '#fff' });
     const nodes = [
-      ['怪发言', 1, S.at(3, '一个满嘴')], ['吐槽', 5, S.at(3, '一个负责')], ['偷偷帮忙', 5, S.at(4, '一个偷偷')],
-      ['发现 · 点破', 1, S.at(4, '一个无意')], ['脸红否认', 5, S.at(5, '脸红')],
+      ['？！', 1, S.at(3, '一个满嘴')], ['ツッコミ', 5, S.at(3, '一个负责')], ['こっそり', 5, S.at(4, '一个偷偷')],
+      ['あっ！', 1, S.at(4, '一个无意')], ['ち、違う！', 5, S.at(5, '脸红')],
     ];
     nodes.forEach(([lab, who, tn], i) => {
       const a = -Math.PI / 2 + (i / nodes.length) * TAU, x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
@@ -70,7 +69,7 @@ SCENES.ars = (c, t, S) => {
       const ang = -Math.PI / 2 + spin * 1.2;
       for (let j = 0; j < 8; j++) { c.fillStyle = hexA('#f6d36b', (1 - j / 8) * k6); c.beginPath(); c.arc(cx + Math.cos(ang - j * 0.06) * R, cy + Math.sin(ang - j * 0.06) * R, 22 - j * 2, 0, TAU); c.fill(); }
       const n = Math.floor(Math.pow(ez(t, S.L(6), 2.2, ease.in), 2) * 9999);
-      chip(c, '循环次数 ' + (n >= 9999 ? '9999+' : n), cx, 1330, { size: 54, bg: '#2a1846', color: '#f6d36b', scale: k6 });
+      chip(c, '× ' + (n >= 9999 ? '9999+' : n), cx, 1330, { size: 54, bg: '#2a1846', color: '#f6d36b', scale: k6 });
     }
     c.restore();
   }
@@ -81,18 +80,16 @@ SCENES.ars = (c, t, S) => {
     chara(c, 'ars_b', 560 + sx, 600 + sy, 1500, { alpha: kE, shadow: 'rgba(60,20,90,.3)' });
     if (t > S.at(7, '戳穿') - 0.1 && t < S.L(8) + 0.2) {
       focusLines(c, 560, 600, t, 0.5 * (1 - ramp(t, S.L(8) - 0.2, 0.4)), '#fff');
-      chip(c, '被发现了！', 760, 380, { size: 64, bg: '#ff3b6b', color: '#fff', scale: pop(t, S.at(7, '戳穿') - 0.1), rot: 0.08 });
+      txt(c, '！', 800, 360, { size: 220 * pop(t, S.at(7, '戳穿') - 0.1), fam: F.punch, color: '#ff3b6b', stroke: '#fff', sw: 16 });
     }
     // blush
     const bl = ez(t, S.at(7, '戳穿'), 0.5) * (0.6 + 0.2 * Math.sin(t * 5));
     c.fillStyle = hexA('#ff5c8a', 0.45 * bl * kE); [[505, 668], [612, 668]].forEach(([x, y]) => { c.beginPath(); c.ellipse(x + sx, y + sy, 36, 16, 0, 0, TAU); c.fill(); });
     const k8 = ez(t, S.at(8, '才不是') - 0.2, 0.4, ease.back);
-    if (k8 > 0) bubble(c, '才、才不是！', 300, 1040, { size: 66, scale: k8, rot: -0.06, tail: [120, -120] });
+    if (k8 > 0) bubble(c, 'べ、別に…！', 300, 1040, { size: 66, scale: k8, rot: -0.06, tail: [120, -120] });
     const kT = ez(t, S.at(8, '心里') - 0.1, 0.45, ease.back);
     if (kT > 0) {
-      bubble(c, '（嘿嘿……被发现了~）', 640, 300, { size: 50, scale: kT, think: true, bg: '#fff6fb', border: '#aa66dd', color: '#7a3cc4', tail: [-120, 170] });
-      const v = ez(t, S.at(8, '得意'), 0.9);
-      meter(c, 140, 1290, 640, '内心得意度', v, '#ff5c8a', { value: v > 0.98 ? 'MAX!' : Math.round(v * 100) + '%', stroke: '#2a1846' });
+      bubble(c, '（えへへ……♪）', 640, 300, { size: 50, scale: kT, think: true, bg: '#fff6fb', border: '#aa66dd', color: '#7a3cc4', tail: [-120, 170] });
       stamp(c, 'st0005', 900, 1110, 260, t, S.at(8, '要命') - 0.1);
     }
   }
@@ -120,45 +117,27 @@ SCENES.otae = (c, t, S) => {
     c.restore();
     namePlate(c, 60, 1060, ez(t, S.at(0, 'otae'), 0.5) * (1 - ez(t, S.L(3), 0.4)), '花园多惠 · otae', "Poppin'Party · 吉他", '#0077dd');
   }
-  // line 1–2: 印象值
-  const kV = live(t, S.L(1), S.L(3) + 0.2, 0.4, 0.4);
-  if (kV > 0) {
-    c.save(); c.globalAlpha *= kV;
-    const v = lerp(0.08, 1, ez(t, S.at(2, '手游'), 2.2));
-    meter(c, 120, 1330, 600, '印象值', v, '#ffd36b', { value: Math.round(v * 100), stroke: '#0b2a55' });
-    ['手游', '主线', '活动剧情'].forEach((w, i) => { const ta = S.at(2, w); chip(c, w, 260 + i * 260, 300, { size: 46, bg: '#fff', color: '#0b4a9a', scale: pop(t, ta), alpha: t > ta ? 1 : 0, rot: (i - 1) * 0.06 }); });
-    c.restore();
-  }
   // lines 3–4: 腹黑? radar over other chibis
   const kR = live(t, S.L(3), S.at(5, '后来') + 0.3, 0.5, 0.4);
   if (kR > 0) {
     c.save(); c.globalAlpha *= kR;
-    chip(c, '腹黑？', 300, 380, { size: 70, bg: '#2a1846', color: '#ff6b8a', scale: pop(t, S.at(3, '腹黑') - 0.1), rot: -0.08 });
     const ppl = [[1, 170, 980], [3, 900, 950], [4, 880, 1250], [5, 190, 1260]];
     const sweep = (t * 2.2) % TAU;
     if (t > S.L(4) - 0.2) {
       c.save(); c.translate(cx, 800); c.rotate(sweep); const g = c.createLinearGradient(0, 0, 700, 0); g.addColorStop(0, 'rgba(120,255,200,.4)'); g.addColorStop(1, 'rgba(120,255,200,0)');
       c.fillStyle = g; c.beginPath(); c.moveTo(0, 0); c.arc(0, 0, 700, -0.25, 0.25); c.closePath(); c.fill(); c.restore();
       ppl.forEach(([id, x, y], i) => { img(c, st(id), x, y, 190 * pop(t, S.L(4) + i * 0.12)); const a = Math.atan2(y - 800, x - cx); const d = Math.abs(((sweep - a) % TAU + TAU) % TAU); if (d < 0.5) { c.strokeStyle = 'rgba(120,255,200,.9)'; c.lineWidth = 6; c.strokeRect(x - 100, y - 100, 200, 200); } });
-      chip(c, '观察中…', 760, 380, { size: 48, bg: '#78ffc8', color: '#123', alpha: 0.6 + 0.4 * Math.sin(t * 6) });
       if (t > S.at(4, '坏主意') - 0.2) bubble(c, '（……）', 860, 640, { size: 56, scale: pop(t, S.at(4, '坏主意') - 0.2), think: true, tail: [-120, 80] });
     }
     c.restore();
-  }
-  // line 5: 腹黑 ✗ → 天然电波
-  const k5 = live(t, S.at(5, '不是腹黑') - 0.1, S.L(7), 0.3, 0.4);
-  if (k5 > 0) {
-    chip(c, '腹黑', 260, 300, { size: 66, bg: '#2a1846', color: '#ff6b8a', alpha: k5, rot: -0.08 });
-    cross(c, 260, 300, 150, ez(t, S.at(5, '不是腹黑'), 0.3));
-    chip(c, '天然电波 · 呆', 680, 300, { size: 66, bg: '#9fd8ff', color: '#0b2a55', alpha: k5 * (t > S.at(5, '电波') ? 1 : 0), scale: pop(t, S.at(5, '电波')), rot: 0.05 });
   }
   // line 6: decoder
   const k6 = live(t, S.L(6), S.L(7) + 0.1, 0.4, 0.3);
   if (k6 > 0) {
     c.save(); c.globalAlpha *= k6; c.fillStyle = 'rgba(8,20,50,.85)'; rrect(c, 90, 1100, 900, 240, 26); c.fill();
-    txt(c, '语言系统 · 解码中', 130, 1150, { size: 38, fam: F.bold, color: '#78ffc8', align: 'left' });
+    txt(c, '信号接收中…', 130, 1150, { size: 38, fam: F.bold, color: '#78ffc8', align: 'left' });
     const glyphs = '兔◇☆兔？♪○兔△！兔…♡兔', n = Math.floor((t - S.L(6)) * 14);
-    let s = ''; for (let i = 0; i < 14; i++) s += glyphs[(i * 7 + n + (i % 3) * n) % glyphs.length];
+    let s = ''; for (let i = 0; i < 14; i++) s += glyphs[Math.floor(hash(i * 31 + n * 7) * glyphs.length)];
     txt(c, s, 540, 1230, { size: 64, fam: F.black, color: '#fff' });
     if (t > S.at(6, '听不懂')) chip(c, '解码失败', 820, 1150, { size: 38, bg: '#ff4058', color: '#fff', scale: pop(t, S.at(6, '听不懂')) });
     c.restore();
@@ -170,7 +149,7 @@ SCENES.otae = (c, t, S) => {
     const [sx, sy] = shake(t, S.at(7, '克制'), 22, 0.5);
     img(c, st(2), 250, 760, 380 * ease.back(clamp(kV7 * 1.3)));
     img(c, st(5), 830 + sx, 760 + sy, 380 * ease.back(clamp(kV7 * 1.3)), { filter: t > S.at(7, '克制') ? 'brightness(1.1)' : undefined });
-    chip(c, '电波', 250, 520, { size: 56, bg: '#0077dd', color: '#fff' }); chip(c, '傲娇', 830, 520, { size: 56, bg: '#aa66dd', color: '#fff' });
+    radioIcon(c, 250, 520, 60, '#9fd8ff', t); txt(c, '♡', 830, 520, { size: 90, fam: F.black, color: '#ff8ac0', stroke: '#fff', sw: 8 });
     if (t > S.at(7, '克制') - 0.2) {
       arrowLine(c, 420, 760, 650, 760, { color: '#ffd36b', lw: 18, k: ez(t, S.at(7, '克制') - 0.2, 0.25) });
       txt(c, '效果拔群！', 540, 990, { size: 96, fam: F.punch, color: '#ffd36b', stroke: '#0b2a55', sw: 16, alpha: ez(t, S.at(7, '克制'), 0.2) });
@@ -178,8 +157,9 @@ SCENES.otae = (c, t, S) => {
       meter(c, 700, 1080, 260, 'HP', 1 - ez(t, S.at(7, '克制'), 0.6) * 0.9, '#ff4058', { size: 34, stroke: '#0b2a55' });
     }
     if (t > S.L(8) - 0.1) {
-      txt(c, '电波  >  傲娇', 540, 1200, { size: 100, fam: F.punch, color: '#fff', stroke: '#0b2a55', sw: 16, alpha: ez(t, S.L(8) - 0.1, 0.3) });
-      seal(c, '天经地义', 790, 1300, 64, t, S.at(8, '天经地义'));
+      const ko = ez(t, S.L(8) - 0.1, 0.35, ease.back);
+      txt(c, 'K.O.', 540, 1220, { size: 150 * ko, fam: F.round, color: '#ffd36b', stroke: '#0b2a55', sw: 18 });
+      for (let j = 0; j < 4; j++) { const a = t * 3 + j * TAU / 4; star(c, 830 + Math.cos(a) * 120, 600 + Math.sin(a) * 40, 22, 5, 0.45, t * 4); c.fillStyle = '#ffd36b'; c.fill(); }
     }
     c.restore();
   }
@@ -189,7 +169,6 @@ SCENES.otae = (c, t, S) => {
     chara(c, 'otae', 330 - (1 - k9) * 300, 640, 1150, { alpha: k9 });
     chara(c, 'ars_b', 760 + (1 - k9) * 300, 640, 1150, { alpha: k9, flip: true });
     const hb = 1 + Math.sin(t * 8) * 0.06; c.fillStyle = '#ff5c8a'; heart(c, 545, 960, 90 * hb * ease.back(k9)); c.fill();
-    chip(c, '老邦 · 最爱组合之一', 540, 1180, { size: 58, bg: '#fff', color: '#0b4a9a', scale: ease.back(k9), border: '#ff5c8a' });
   }
 };
 
@@ -203,29 +182,23 @@ SCENES.moca = (c, t, S) => {
     // radar ping (line 1)
     const k1 = live(t, S.L(1), S.L(2) + 0.2, 0.3, 0.3);
     if (k1 > 0) for (let j = 0; j < 3; j++) { const r = ((t - S.L(1)) * 300 + j * 160) % 480; c.strokeStyle = hexA('#ff5c8a', k1 * (1 - r / 480)); c.lineWidth = 10; c.beginPath(); c.arc(700, 520, r, 0, TAU); c.stroke(); }
-    if (k1 > 0) chip(c, '审美 · 完全命中', 330, 420, { size: 54, bg: '#ff5c8a', color: '#fff', scale: pop(t, S.at(1, '审美')), alpha: t > S.at(1, '审美') ? k1 : 0, rot: -0.07 });
     const k2 = ez(t, S.L(2) - 0.3, 0.5, ease.back);
     if (k2 > 0) {
       withT(c, 300, 1010, -0.05, k2, () => {
         c.fillStyle = 'rgba(0,0,0,.2)'; rrect(c, -230, -230, 480, 470, 26); c.fill();
         c.fillStyle = '#fffdf6'; rrect(c, -240, -240, 480, 470, 26); c.fill();
-        txt(c, '我的审美清单', 0, -175, { size: 44, fam: F.black, color: '#1f6f62' });
+        heart(c, 0, -170, 34); c.fillStyle = '#ff5c8a'; c.fill();
         ['短发', '电波系', '吉他手'].forEach((w, i) => {
           const y = -80 + i * 110; c.strokeStyle = '#1f6f62'; c.lineWidth = 5; c.strokeRect(-190, y - 32, 64, 64);
           check(c, -158, y, 70, ez(t, S.at(2, w), 0.3));
-          txt(c, w, -95, y, { size: 56, fam: F.black, color: '#2a1846', align: 'left' });
+          [hairIcon, radioIcon, guitarIcon][i](c, 40, y, 50, '#1f6f62', t);
         });
       });
       seal(c, '命中率 100%', 780, 1250, 62, t, S.at(2, '吉他手') + 0.5);
     }
-    // line 3: aside
+    // line 3: aside — a little floating question mark
     const k3 = live(t, S.L(3) - 0.1, S.L(4), 0.4, 0.3);
-    if (k3 > 0) withT(c, 760, 820, 0.08, ease.back(k3), () => {
-      c.fillStyle = '#fff59b'; c.fillRect(-200, -120, 400, 240); c.fillStyle = 'rgba(0,0,0,.08)'; c.fillRect(-200, 100, 400, 20);
-      txt(c, '（小声）', 0, -60, { size: 38, fam: F.hand, color: '#6b5b2a' });
-      txt(c, '峰月律 = 电波？', 0, 10, { size: 50, fam: F.hand, color: '#2a1846' });
-      txt(c, '……应该不算吧', 0, 72, { size: 40, fam: F.hand, color: '#6b5b2a' });
-    });
+    if (k3 > 0) bubble(c, '？', 820, 760, { size: 90, scale: ease.back(k3), think: true, tail: [-90, 120] });
   }
   // line 4–6: 摩卡 ≈ otae, 压制 傲娇
   const kB = live(t, S.L(4) - 0.1, S.L(7), 0.5, 0.4);
@@ -233,20 +206,16 @@ SCENES.moca = (c, t, S) => {
     c.save(); c.globalAlpha *= kB;
     img(c, st(7), 280, 620, 300 * ease.back(clamp(kB * 1.3))); img(c, st(2), 800, 620, 300 * ease.back(clamp(kB * 1.3)));
     txt(c, '≈', 540, 620, { size: 160, fam: F.round, color: '#fff', stroke: '#1f6f62', sw: 14 });
-    chip(c, '表面呆呆', 280, 820, { size: 42, bg: '#fff', color: '#1f6f62', scale: pop(t, S.at(4, '呆呆')), alpha: t > S.at(4, '呆呆') ? 1 : 0 });
-    chip(c, '怪话连发', 800, 820, { size: 42, bg: '#fff', color: '#1f6f62', scale: pop(t, S.at(4, '奇怪')), alpha: t > S.at(4, '奇怪') ? 1 : 0 });
     if (t > S.L(5) - 0.1) {
       const k = ez(t, S.L(5) - 0.1, 0.4);
       img(c, st(5), 280, 1080, 250 * ease.back(k), { filter: 'brightness(.95)' }); img(c, st(6), 800, 1080, 250 * ease.back(k));
       arrowLine(c, 280, 780 + 0, 280, 950, { color: '#ff4058', lw: 12, k: ez(t, S.at(5, '压制'), 0.3) });
       arrowLine(c, 800, 780, 800, 950, { color: '#ff4058', lw: 12, k: ez(t, S.at(5, '压制'), 0.3) });
-      if (t > S.at(5, '压制')) chip(c, '天生压制', 540, 1000, { size: 50, bg: '#ff4058', color: '#fff', scale: pop(t, S.at(5, '压制')) });
     }
     // combo meter
     if (t > S.L(6) - 0.1) {
       const v = ez(t, S.at(6, '一个表情'), 1.3);
-      meter(c, 140, 1290, 640, '攻势', v, '#ff4058', { value: v > 0.98 ? 'MAX!!' : Math.round(v * 100) + '%', stroke: '#1f4f46' });
-      if (v > 0.98) focusLines(c, 540, 1000, t, 0.3);
+      if (v > 0.98) { focusLines(c, 540, 1000, t, 0.35); const [sx2, sy2] = shake(t, S.at(6, '一个表情') + 1.3, 20, 0.4); img(c, st(5), 280 + sx2, 1080 + sy2, 250, { rot: -0.2 }); img(c, st(6), 800 - sx2, 1080 + sy2, 250, { rot: 0.2 }); }
     }
     c.restore();
   }
@@ -257,7 +226,6 @@ SCENES.moca = (c, t, S) => {
     if (k7 > 0) {
       chara(c, 'moca_b', 560, 560, 1450, { alpha: kC * k7 });
       for (let j = 0; j < 4; j++) txt(c, ['？', '♪', '～', '？'][j], 260 + j * 190, 330 + Math.sin(t * 3 + j) * 30, { size: 90, fam: F.punch, color: '#fff', stroke: '#1f6f62', sw: 12, alpha: kC * k7 });
-      chip(c, '呆呆傻傻 认证', 540, 1120, { size: 56, bg: '#fff', color: '#1f6f62', scale: pop(t, S.at(7, '呆呆')), alpha: t > S.at(7, '呆呆') ? k7 : 0 });
     }
     const k8 = ez(t, S.L(8) - 0.2, 0.4);
     if (k8 > 0) {
@@ -289,17 +257,15 @@ SCENES.ran = (c, t, S) => {
   for (let i = 0; i < 3; i++) { c.save(); c.translate(200 + i * 340, -40); c.rotate(Math.sin(t * 0.8 + i * 2) * 0.25); const lg = c.createLinearGradient(0, 0, 0, 1200); lg.addColorStop(0, 'rgba(255,220,200,.5)'); lg.addColorStop(1, 'rgba(255,220,200,0)'); c.fillStyle = lg; c.beginPath(); c.moveTo(-30, 0); c.lineTo(30, 0); c.lineTo(220, 1200); c.lineTo(-220, 1200); c.closePath(); c.fill(); c.restore(); }
   chara(c, 'ran_stage', 470, 600, 1300, { alpha: kOn });
   txt(c, 'ON STAGE', 760, 340, { size: 80, fam: F.round, color: '#ff4058', alpha: kOn, ls: 6 });
-  meter(c, 600, 480, 360, '气场', ez(t, S.at(0, '气场'), 0.5), '#ff4058', { value: 'MAX', size: 36 });
   c.restore();
   if (kOff > 0) {
     c.save(); c.beginPath(); c.moveTo(0, split + 200); c.lineTo(W, split - 200); c.lineTo(W, H); c.lineTo(0, H); c.closePath(); c.clip();
     chara(c, 'ran_off', 720, 1080 + (1 - kOff) * 400, 1100, {});
     const bl = 0.5 + 0.3 * Math.sin(t * 5); c.fillStyle = hexA('#ff5c8a', bl * ez(t, S.at(1, '脸红'), 0.4)); [[688, 1086], [773, 1086]].forEach(([x, y]) => { c.beginPath(); c.ellipse(x, y, 26, 12, 0, 0, TAU); c.fill(); });
     txt(c, 'OFF STAGE', 300, 1235, { size: 62, fam: F.round, color: '#ff4f86', ls: 6 });
-    meter(c, 90, 1345, 330, '脸红', ez(t, S.at(1, '脸红'), 0.5), '#ff5c8a', { value: 'MAX', size: 36, labelColor: '#7a1a3a' });
     c.restore();
     c.strokeStyle = '#fff'; c.lineWidth = 14; c.beginPath(); c.moveTo(0, split + 200); c.lineTo(W, split - 200); c.stroke();
   }
-  if (t > S.at(2, '没什么') - 0.25) { bubble(c, '……没什么。', 380, 820, { size: 60, scale: pop(t, S.at(2, '没什么') - 0.25), tail: [140, 120] }); stamp(c, 'st0006', 160, 1000, 220, t, S.at(2, '没什么')); }
-  if (t > S.L(3) - 0.1) chip(c, '反差感', 540, 980, { size: 90, fam: F.punch, bg: '#2a1846', color: '#ffd36b', scale: pop(t, S.at(3, '反差')), alpha: t > S.at(3, '反差') ? 1 : 0, rot: -0.1 });
+  if (t > S.at(2, '没什么') - 0.25) { bubble(c, '……別に。', 380, 820, { size: 60, scale: pop(t, S.at(2, '没什么') - 0.25), tail: [140, 120] }); stamp(c, 'st0006', 160, 1000, 220, t, S.at(2, '没什么')); }
+  if (t > S.at(3, '反差') - 0.1) { const kx = ez(t, S.at(3, '反差') - 0.1, 0.4); arrowLine(c, 420, 1040, 640, 920, { color: '#ffd36b', lw: 14, k: kx }); arrowLine(c, 680, 960, 460, 1080, { color: '#ffd36b', lw: 14, k: kx }); }
 };

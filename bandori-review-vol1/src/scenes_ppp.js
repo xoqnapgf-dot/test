@@ -22,32 +22,19 @@ SCENES.intro = (c, t, S) => {
       txt(c, '上', 0, 4, { size: 100, fam: F.punch, color: '#fff' });
     });
   }
-  // line 0: 不是锐评 / 不是科普 → 纯个人向
-  const a1 = S.at(0, '锐评'), a2 = S.at(0, '科普'), a3 = S.at(0, '纯个人向');
-  const dimOut = 1 - ramp(t, S.L(1) - 0.2, 0.4);
-  if (dimOut > 0) {
-    chip(c, '锐评', 290, 700, { size: 64, bg: '#fff', color: '#2a1846', scale: pop(t, a1 - 0.15), alpha: dimOut * (t > a1 - 0.15 ? 1 : 0), rot: -0.08 });
-    cross(c, 290, 700, 130, ez(t, a1 + 0.35, 0.3) * dimOut);
-    chip(c, '科普', 540, 700, { size: 64, bg: '#fff', color: '#2a1846', scale: pop(t, a2 - 0.15), alpha: dimOut * (t > a2 - 0.15 ? 1 : 0), rot: 0.06 });
-    cross(c, 540, 700, 130, ez(t, a2 + 0.3, 0.3) * dimOut);
-    chip(c, '纯个人向', 830, 700, { size: 64, bg: '#ffe14d', color: '#2a1846', scale: pop(t, a3 - 0.1) * (1 + Math.sin(t * 6) * 0.03), alpha: dimOut * (t > a3 - 0.1 ? 1 : 0), rot: -0.05, border: '#2a1846' });
-  }
-  // line 1: 25 chibis → the 11 we talk about
-  const g0 = S.L(1) - 0.1, gSel = S.at(1, '只聊');
+  // 25 chibis of the five bands → the 11 this episode talks about
+  const g0 = S.L(0) + 0.1, gSel = S.at(0, '印象');
   for (let i = 0; i < 25; i++) {
     const col = i % 5, row = Math.floor(i / 5), id = i + 1;
-    const x = 160 + col * 190, y = 820 + row * 150 - (1 - ez(t, g0 + i * 0.03, 0.4)) * 60;
+    const x = 160 + col * 190, y = 700 + row * 150 - (1 - ez(t, g0 + i * 0.03, 0.4)) * 60;
     const k = pop(t, g0 + i * 0.03, 0.4); if (k <= 0) continue;
     const chosen = PICKED.includes(id), sel = ez(t, gSel + (chosen ? PICKED.indexOf(id) * 0.07 : 0), 0.35);
     const size = 150 * k * (chosen ? 1 + sel * 0.12 : 1 - sel * 0.25);
     const filter = !chosen && sel > 0 ? `grayscale(${sel}) brightness(${1 + sel * 0.15})` : undefined;
-    const al = (!chosen ? 1 - sel * 0.55 : 1) * (1 - ez(t, S.L(2) + 0.2, 0.6) * 0.55);
+    const al = !chosen ? 1 - sel * 0.55 : 1;
     if (chosen && sel > 0) { c.save(); c.globalAlpha = al * sel * 0.8; c.fillStyle = '#fff7a8'; c.beginPath(); c.arc(x, y, 78, 0, TAU); c.fill(); c.restore(); }
     img(c, st(id), x, y + Math.sin(t * 3 + i) * (chosen ? sel * 6 : 0), size, { alpha: al, filter });
   }
-  // line 2: 仅代表个人
-  const k2 = ez(t, S.at(2, '仅代表') - 0.1, 0.4, ease.back);
-  if (k2 > 0) chip(c, '主观 · 仅代表个人', W / 2, 700, { size: 60, bg: '#fff', color: '#2a1846', scale: k2, border: '#2a1846', rot: -0.03 });
 };
 
 SCENES['ksm-voice'] = (c, t, S) => {
@@ -66,7 +53,7 @@ SCENES['ksm-voice'] = (c, t, S) => {
     const kIn = ez(t, S.t0 + 0.05, 0.7, ease.back), soft = ez(t, S.L(2) - 0.1, 0.6);
     const sway = Math.sin(t * 0.9) * 10;
     if (soft < 1) chara(c, 'ksm_go', lerp(1300, 650, kIn), 640 + sway, 1500, { alpha: 1 - soft, shadow: 'rgba(80,20,0,.3)' });
-    if (soft > 0) chara(c, 'ksm_soft', 640 - (1 - soft) * 80, 600 + sway, 1450 * (1 + (t - S.L(2)) * 0.004), { alpha: soft * (1 - ez(t, S.L(3) + 0.2, 0.8) * 0.55) });
+    if (soft > 0) chara(c, 'ksm_soft', 640 - (1 - soft) * 80, 600 + sway, 1450 * (1 + (t - S.L(2)) * 0.004), { alpha: soft * (1 - ez(t, S.L(3) + 0.2, 0.8) * 0.55 * (1 - ez(t, S.L(5) - 0.2, 0.5))) });
     namePlate(c, 60, 860, ez(t, S.at(0, 'ksm'), 0.5) * (1 - ez(t, S.L(1) + 1.6, 0.5)), '户山香澄 · ksm', "Poppin'Party · 吉他 & 主唱", '#ff5522');
     // line 1: voice waves
     const wv = live(t, S.L(1) + 0.3, S.L(2), 0.6, 0.4);
@@ -78,22 +65,19 @@ SCENES['ksm-voice'] = (c, t, S) => {
         c.stroke();
       }
       c.restore();
-      chip(c, '唱歌的时候 · 特别明显', 540, 1020, { size: 44, bg: '#fff', color: '#c2410c', scale: pop(t, S.at(1, '唱歌')), alpha: t > S.at(1, '唱歌') ? 1 : 0 });
     }
-    // line 2: 笑着说再见 (handwriting reveal)
-    const l2 = S.L(2), l2o = S.L(3) + 0.3;
-    if (t > l2 && t < l2o + 0.5) {
-      const s = '笑着说再见', a = 1 - ez(t, l2o, 0.5);
-      for (let i = 0; i < s.length; i++) {
-        const ki = ez(t, l2 + 0.15 + i * 0.18, 0.4);
-        txt(c, s[i], 200 + i * 170, 1110 - (1 - ki) * 40, { size: 150, fam: F.hand, color: '#fff', alpha: ki * a, stroke: 'rgba(120,40,20,.45)', sw: 14 });
-      }
+    // line 2: a hand waving goodbye in warm backlight
+    const k2 = live(t, S.L(2), S.L(3) + 0.4, 0.5, 0.5);
+    if (k2 > 0) {
+      const g = c.createRadialGradient(820, 420, 20, 820, 420, 520); g.addColorStop(0, `rgba(255,236,190,${0.55 * k2})`); g.addColorStop(1, 'rgba(255,236,190,0)');
+      c.fillStyle = g; c.fillRect(300, -100, 1040, 1040);
+      withT(c, 210, 1180, Math.sin((t - S.L(2)) * 5) * 0.32, 1, () => hand(c, 0, 0, 95, '#fff3e0', k2));
     }
     // lines 3–4: two polaroids (秋天 / 毕业)
     const p1 = ez(t, S.at(3, '秋天') - 0.25, 0.6, ease.back), p2 = ez(t, S.at(4, '毕业') - 0.3, 0.6, ease.back);
     const pOut = 1 - ez(t, S.L(5) + 0.1, 0.5);
     c.save(); c.globalAlpha *= pOut;
-    polaroid(c, 310, 760, 430, 430, -0.09, p1, '秋天', (x, y, w, h) => {
+    polaroid(c, 310, 760, 430, 430, -0.09, p1, '', (x, y, w, h) => {
       const g = c.createLinearGradient(0, y, 0, y + h); g.addColorStop(0, '#ffcf8a'); g.addColorStop(1, '#e8613c'); c.fillStyle = g; c.fillRect(x, y, w, h);
       c.fillStyle = '#ffeaa8'; c.beginPath(); c.arc(x + w * 0.7, y + h * 0.42, 60, 0, TAU); c.fill();
       c.fillStyle = '#5a2a2a'; c.fillRect(x, y + h * 0.78, w, h * 0.22);
@@ -101,7 +85,7 @@ SCENES['ksm-voice'] = (c, t, S) => {
       for (let i = 0; i < 26; i++) leaf(c, x + w * 0.24 + Math.cos(i * 2.4) * (40 + (i % 5) * 18), y + h * 0.33 + Math.sin(i * 2.4) * (30 + (i % 4) * 12), 16, i, ['#d9452b', '#f0762a', '#f6c04a'][i % 3]);
       for (let i = 0; i < 6; i++) { const yy = ((t * 50 + i * 60) % h); leaf(c, x + 60 + i * 55 + Math.sin(t + i) * 15, y + yy, 12, t * 2 + i, '#f2a33a'); }
     });
-    polaroid(c, 770, 840, 430, 430, 0.08, p2, '毕业那几天', (x, y, w, h) => {
+    polaroid(c, 770, 840, 430, 430, 0.08, p2, '', (x, y, w, h) => {
       c.fillStyle = '#1f4d3a'; c.fillRect(x, y, w, h);
       c.fillStyle = '#7a5230'; c.fillRect(x, y + h - 26, w, 26);
       const s = '毕业快乐', kk = clamp((t - S.at(4, '毕业')) / 1.2);
@@ -111,19 +95,22 @@ SCENES['ksm-voice'] = (c, t, S) => {
     });
     c.restore();
     leaves(c, t, S.L(3) - 0.5, 22, autumn * (1 - song));
-    // line 5: 笑 / reflection 舍不得
-    const l5 = S.L(5), k5 = live(t, l5, endA + 0.2, 0.5, 0.4);
+    // line 5: the smile above the water, a bluer, rippling reflection below
+    const l5 = S.L(5), k5 = live(t, l5 - 0.1, endA + 0.2, 0.5, 0.4);
     if (k5 > 0) {
-      const wy = 980; c.save(); c.globalAlpha *= k5;
-      c.fillStyle = 'rgba(30,20,60,.35)'; c.fillRect(0, wy, W, 340);
-      c.strokeStyle = 'rgba(255,255,255,.5)'; c.lineWidth = 3; c.beginPath(); c.moveTo(80, wy); c.lineTo(W - 80, wy); c.stroke();
-      txt(c, '笑', W / 2, wy - 170, { size: 300, fam: F.hand, color: '#fff', stroke: 'rgba(120,40,20,.4)', sw: 16, alpha: ez(t, l5, 0.5) });
-      const kr = ez(t, S.at(5, '笑容底下'), 1.2);
-      for (let i = 0; i < 30; i++) {
-        c.save(); c.beginPath(); c.rect(0, wy + 20 + i * 8, W, 8); c.clip();
-        txt(c, '舍不得', W / 2 + Math.sin(t * 3 + i * 0.6) * 10 * (1 + i * 0.05), wy + 140, { size: 130, fam: F.hand, color: '#cfe1ff', alpha: kr * (0.75 - i * 0.02) });
+      const wy = 1060, fx = 640 + Math.sin(t * 0.9) * 10, fy = 600 + Math.sin(t * 0.9) * 10, size = 1450 * (1 + (t - S.L(2)) * 0.004);
+      c.save(); c.globalAlpha *= k5;
+      c.beginPath(); c.rect(0, wy, W, H - wy); c.clip();
+      const wg = c.createLinearGradient(0, wy, 0, H); wg.addColorStop(0, 'rgba(40,60,120,.85)'); wg.addColorStop(1, 'rgba(20,20,60,.95)'); c.fillStyle = wg; c.fillRect(0, wy, W, H - wy);
+      const kr = ez(t, S.at(5, '笑容底下') - 0.2, 1.0);
+      for (let i = 0; i < 28; i++) {
+        const y0 = wy + i * 18; c.save(); c.beginPath(); c.rect(0, y0, W, 18); c.clip();
+        c.translate(Math.sin(t * 2.4 + i * 0.7) * (4 + i * 0.8), 2 * wy); c.scale(1, -1);
+        chara(c, 'ksm_soft', fx, fy, size, { alpha: kr * (0.7 - i * 0.018), filter: 'saturate(.35) hue-rotate(185deg) brightness(.85)' });
         c.restore();
       }
+      c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 3; c.beginPath(); c.moveTo(0, wy); c.lineTo(W, wy); c.stroke();
+      for (let i = 0; i < 5; i++) { const r = ((t - l5) * 90 + i * 70) % 340; c.strokeStyle = `rgba(255,255,255,${0.35 * (1 - r / 340)})`; c.lineWidth = 2; c.beginPath(); c.ellipse(560, wy + 40, r, r * 0.12, 0, 0, TAU); c.stroke(); }
       c.restore();
     }
     c.restore();
@@ -166,7 +153,6 @@ SCENES['ksm-voice'] = (c, t, S) => {
     const k8 = live(t, S.at(8, '笑着挥手') - 0.2, S.L(9), 0.4, 0.3);
     if (k8 > 0) {
       [[170, 330], [910, 330]].forEach(([x, y], i) => withT(c, x, y, Math.sin(t * 7 + i * 2) * 0.35, 1, () => hand(c, 0, 0, 60, '#ffe9a8', k8)));
-      chip(c, '毕业季 · 笑着挥手', W / 2, 330, { size: 46, bg: '#fff', color: '#1b3fae', scale: ease.back(k8) });
     }
     // lines 9–11: ksm returns, determined
     const kK = live(t, S.L(9) + 0.2, S.E(12) - 0.2, 0.5, 0.6);
@@ -174,9 +160,11 @@ SCENES['ksm-voice'] = (c, t, S) => {
       const [sx, sy] = shake(t, S.at(10, '嘶吼'), 18, 0.5);
       focusLines(c, 540, 700, t, kK * (0.25 + 0.35 * ez(t, S.at(10, '嘶吼'), 0.2) * (1 - ez(t, S.L(11), 0.5))));
       chara(c, 'ksm_go', 640 + sx + (1 - kK) * 300, 640 + sy, 1350, { alpha: kK, shadow: 'rgba(0,0,40,.5)' });
-      if (t > S.at(10, '轻声嘶吼') - 0.1 && t < S.L(11)) {
-        const g = ez(t, S.at(10, '轻声嘶吼') - 0.1, 0.3);
-        for (let j = 0; j < 3; j++) txt(c, '轻声嘶吼', 380 + sx + noise1(t * 30 + j) * 8 * g, 980 + j * 2 + sy, { size: 120, fam: F.punch, color: ['#ff3b6b', '#3bd9ff', '#fff'][j], alpha: g * (j === 2 ? 1 : 0.6), stroke: j === 2 ? '#1b2a7a' : undefined, sw: 16 });
+      // line 10: a shock ring and flash on the 嘶吼
+      const tS = S.at(10, '嘶吼'), kS = ramp(t, tS - 0.05, 0.6);
+      if (kS > 0 && kS < 1) {
+        c.strokeStyle = `rgba(255,255,255,${0.8 * (1 - kS)})`; c.lineWidth = 18 * (1 - kS); c.beginPath(); c.arc(640, 640, 120 + kS * 700, 0, TAU); c.stroke();
+        c.fillStyle = `rgba(255,255,255,${0.35 * (1 - kS) * (1 - kS)})`; c.fillRect(0, 0, W, H);
       }
     }
     // song timeline (lines 7–11), hidden during the final pause
@@ -196,8 +184,8 @@ SCENES['ksm-voice'] = (c, t, S) => {
         c.fillStyle = hexA(col, 0.35 * k); rrect(c, a, y - 46, b - a, 92, 12); c.fill();
         chip(c, label, clamp((a + b) / 2, 230, W - 230), 1170, { size: 40, bg: col, color: '#fff', scale: ease.back(k), shadow: false });
       };
-      reg(0, 20, '藏在欢乐里的告别', '#ff7aa8', ez(t, S.L(7), 0.4) * (1 - ez(t, S.L(9), 0.4)));
-      reg(261, 296, '坚定 · 向前', '#ff5522', ez(t, S.L(9) + 0.1, 0.4));
+      reg(0, 20, '0:00', '#ff7aa8', ez(t, S.L(7), 0.4) * (1 - ez(t, S.L(9), 0.4)));
+      reg(261, 296, '4:21', '#ff5522', ez(t, S.L(9) + 0.1, 0.4));
       const px = lerp(x0, x1, clamp(ph / dur)); c.fillStyle = '#fff'; c.fillRect(px - 3, y - 50, 6, 100); c.beginPath(); c.arc(px, y - 52, 10, 0, TAU); c.fill();
       c.restore();
     }
@@ -215,7 +203,6 @@ SCENES['ksm-voice'] = (c, t, S) => {
       const hx = 560, hy = 960, s = 120 * ease.back(clamp(k12 * 1.2));
       c.save(); c.fillStyle = '#ff3b6b'; heart(c, hx, hy, s); c.fill(); c.restore();
       arrowLine(c, hx - 300, hy - 170, hx + 160, hy + 80, { color: '#fff', lw: 10, k: ez(t, S.at(12, '戳到'), 0.25) });
-      txt(c, '被戳到了', hx, hy + 200, { size: 70, fam: F.punch, color: '#fff', stroke: '#ff3b6b', sw: 12, alpha: k12 });
     }
     // final pause: big title
     if (pause > 0) {
@@ -239,7 +226,7 @@ SCENES['ksm-orbit'] = (c, t, S) => {
       c.save(); c.beginPath(); c.rect(-w / 2, -60, w, 120); c.clip(); c.fillStyle = '#1a1a1a';
       for (let x = -900 + ((t * 120) % 120); x < 900; x += 120) { c.beginPath(); c.moveTo(x, -60); c.lineTo(x + 60, -60); c.lineTo(x + 0, 60); c.lineTo(x - 60, 60); c.closePath(); c.fill(); }
       c.restore();
-      chip(c, '个人观点 · 不太主流', 0, 0, { size: 56, bg: '#1a1a1a', color: '#ffd400', shadow: false });
+      [-330, 0, 330].forEach((x) => warnSign(c, x, 0, 70, '#1a1a1a', '#ffd400'));
     });
   }
   // orbit diagram from line 1 on
@@ -265,7 +252,7 @@ SCENES['ksm-orbit'] = (c, t, S) => {
       const a = -Math.PI / 2 + i * (TAU / 4) + t * 0.12;
       if (kI > 0) img(c, st(id), cx + Math.cos(a) * 200, cy + Math.sin(a) * 200, 150 * ease.back(clamp(kI * 1.3 - i * 0.1)), {});
     });
-    if (kI > 0) chip(c, '核心位  4 / 4  已满', cx, cy + 300 + 10, { size: 44, bg: '#ff5522', color: '#fff', scale: ease.back(kI), alpha: kI });
+    if (kI > 0) chip(c, '4 / 4', cx, cy + 300 + 10, { size: 44, bg: '#ff5522', color: '#fff', scale: ease.back(kI), alpha: kI });
     // ksm at the centre
     const glow = c.createRadialGradient(cx, cy, 10, cx, cy, 170); glow.addColorStop(0, 'rgba(255,170,120,.7)'); glow.addColorStop(1, 'rgba(255,170,120,0)');
     c.fillStyle = glow; c.fillRect(cx - 170, cy - 170, 340, 340);
@@ -278,11 +265,10 @@ SCENES['ksm-orbit'] = (c, t, S) => {
       const tIn = S.at(6, '挤进去') - 0.9, bounce = ez(t, tIn, 0.7, ease.io) - ez(t, tIn + 0.7, 0.6, ease.out);
       const ra = 520 - 330 * clamp(bounce), aa = 0.75;
       const yx = cx + Math.cos(aa) * ra, yy = cy + Math.sin(aa) * ra;
-      if (t > tIn + 0.55 && t < tIn + 1.6) { const kk = 1 - ramp(t, tIn + 0.7, 0.9); c.strokeStyle = hexA('#ff4058', kk); c.lineWidth = 12; c.beginPath(); c.arc(cx, cy, 200, aa - 0.4, aa + 0.4); c.stroke(); chip(c, '满员', cx + Math.cos(aa) * 210 + 80, cy + Math.sin(aa) * 210 - 40, { size: 40, bg: '#ff4058', color: '#fff', alpha: kk }); }
+      if (t > tIn + 0.55 && t < tIn + 1.6) { const kk = 1 - ramp(t, tIn + 0.7, 0.9); c.strokeStyle = hexA('#ff4058', kk); c.lineWidth = 12; c.beginPath(); c.arc(cx, cy, 200, aa - 0.4, aa + 0.4); c.stroke(); padlock(c, cx + Math.cos(aa) * 200 + 70, cy + Math.sin(aa) * 200 - 40, 56, '#ff4058', kk); }
       // line 7: occasional beam ksm → 你 (看机会、看场合)
       const k7 = live(t, S.L(7), S.L(8) + 0.2, 0.3, 0.3);
       if (k7 > 0 && Math.sin(t * 9) > 0.2) { c.strokeStyle = hexA('#ffd36b', k7 * 0.9); c.lineWidth = 5; c.setLineDash([14, 10]); c.lineDashOffset = -t * 60; c.beginPath(); c.moveTo(cx, cy); c.lineTo(yx, yy); c.stroke(); c.setLineDash([]); }
-      if (k7 > 0) chip(c, '看机会 · 看场合', 300, 1180, { size: 44, bg: '#fff', color: '#2a1846', alpha: k7, rot: -0.05 });
       // line 8: one-way arrows
       const k8 = ez(t, S.L(8), 0.8);
       if (k8 > 0) {
@@ -291,30 +277,28 @@ SCENES['ksm-orbit'] = (c, t, S) => {
         c.globalAlpha = kD * (1 - k8 * 0.75);
         arrowLine(c, cx - nx * 18 + dx / L * -120, cy - ny * 18 + dy / L * -120, yx - nx * 18, yy - ny * 18, { color: '#ffd36b', lw: 4, dash: [10, 12] });
         c.globalAlpha = kD;
-        meter(c, 120, 1240, 560, '单向度', lerp(0.5, 0.93, k8), '#9fd8ff', { value: Math.round(lerp(50, 93, k8)) + '%' });
       }
       // line 9: magnifier
       const k9 = ez(t, S.at(9, '这种尴尬') - 0.2, 0.6, ease.back);
       c.fillStyle = '#c9c4d6'; c.beginPath(); c.arc(yx, yy, 34 * kY * (1 + k9 * 0.2), 0, TAU); c.fill();
       txt(c, '你', yx, yy + 2, { size: 40 * kY, fam: F.black, color: '#2a1846' });
+      // line 2: a sweat drop on 你
+      const k2 = live(t, S.at(2, '尴尬') - 0.1, S.L(3) + 0.3, 0.3, 0.3);
+      if (k2 > 0) { c.fillStyle = hexA('#7fc8ff', k2); c.beginPath(); c.ellipse(yx + 40, yy - 34 + ((t * 30) % 16), 10, 16, 0, 0, TAU); c.fill(); }
       if (k9 > 0) {
         const mx = 760, my = 1180, mr = 150 * k9;
         c.strokeStyle = '#fff'; c.lineWidth = 14; c.beginPath(); c.arc(mx, my, mr, 0, TAU); c.stroke();
         c.lineWidth = 22; c.beginPath(); c.moveTo(mx + mr * 0.7, my + mr * 0.7); c.lineTo(mx + mr * 1.25, my + mr * 1.25); c.stroke();
         c.save(); c.beginPath(); c.arc(mx, my, mr - 7, 0, TAU); c.clip(); c.fillStyle = 'rgba(255,255,255,.92)'; c.fillRect(mx - mr, my - mr, mr * 2, mr * 2);
         const zoom = 1 + (t - S.at(9, '这种尴尬')) * 0.6;
-        txt(c, '尴尬', mx, my, { size: 90 * Math.min(zoom, 2.6), fam: F.punch, color: '#2a1846' }); c.restore();
+        const zs = 70 * Math.min(zoom, 2.4);
+        c.fillStyle = '#c9c4d6'; c.beginPath(); c.arc(mx, my + 10, zs, 0, TAU); c.fill();
+        txt(c, '你', mx, my + 12, { size: zs * 1.1, fam: F.black, color: '#2a1846' });
+        for (let j = 0; j < 3; j++) { const dy = ((t * 60 + j * 30) % 70); c.fillStyle = '#7fc8ff'; c.beginPath(); c.ellipse(mx + zs * 0.9 + j * 18, my - zs * 0.6 + dy, 10, 15, 0, 0, TAU); c.fill(); }
+        c.restore();
         txt(c, '× ∞', mx + 170, my - 150, { size: 90, fam: F.round, color: '#ff4058', stroke: '#fff', sw: 10, alpha: ez(t, S.at(9, '无限'), 0.3) });
-        chip(c, '内向', 220, 1120, { size: 44, bg: '#9fd8ff', color: '#1c1838', scale: pop(t, S.at(9, '内向')), alpha: t > S.at(9, '内向') ? 1 : 0 });
-        chip(c, '敏感', 220, 1230, { size: 44, bg: '#c9a6ff', color: '#1c1838', scale: pop(t, S.at(9, '敏感')), alpha: t > S.at(9, '敏感') ? 1 : 0 });
       }
     }
-    // line 2: 尴尬 sweat
-    const k2 = live(t, S.at(2, '尴尬') - 0.1, S.L(3), 0.3, 0.3);
-    if (k2 > 0) { txt(c, '尴尬…', 820, 1120, { size: 84, fam: F.punch, color: '#fff', stroke: '#5b4aa8', sw: 12, alpha: k2 }); c.fillStyle = hexA('#9fd8ff', k2); c.beginPath(); c.ellipse(965, 1060 + (t % 1) * 20, 16, 24, 0, 0, TAU); c.fill(); }
-    // line 3: tags
-    const k3 = live(t, S.L(3), S.L(5), 0.3, 0.4);
-    if (k3 > 0) { chip(c, '外向', 200, 360, { size: 46, bg: '#ff7aa8', color: '#fff', scale: pop(t, S.at(3, '外向')), alpha: k3 * (t > S.at(3, '外向') ? 1 : 0), rot: -0.06 }); chip(c, '社交达人', 250, 450, { size: 46, bg: '#fff', color: '#2a1846', scale: pop(t, S.at(3, '爱交朋友')), alpha: k3 * (t > S.at(3, '爱交朋友') ? 1 : 0), rot: 0.04 }); }
     c.restore();
   }
 };

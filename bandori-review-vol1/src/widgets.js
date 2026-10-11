@@ -154,3 +154,36 @@ function vizLevel(t, b = -1) {
   if (b < 0) return (f[0] || 0) / 255;
   return (f[1 + b] || 0) / 255;
 }
+
+// warning triangle with "!" (drawn, no glyph needed)
+function warnSign(c, x, y, s, fg, bg) {
+  c.save(); c.translate(x, y); c.fillStyle = fg; c.beginPath(); c.moveTo(0, -s * 0.55); c.lineTo(s * 0.62, s * 0.5); c.lineTo(-s * 0.62, s * 0.5); c.closePath(); c.fill();
+  c.fillStyle = bg; c.fillRect(-s * 0.06, -s * 0.22, s * 0.12, s * 0.42); c.beginPath(); c.arc(0, s * 0.33, s * 0.07, 0, TAU); c.fill(); c.restore();
+}
+// padlock
+function padlock(c, x, y, s, color, alpha = 1) {
+  c.save(); c.translate(x, y); c.globalAlpha *= alpha; c.strokeStyle = color; c.lineWidth = s * 0.14;
+  c.beginPath(); c.arc(0, -s * 0.15, s * 0.3, Math.PI, 0); c.stroke();
+  c.fillStyle = color; rrect(c, -s * 0.45, -s * 0.15, s * 0.9, s * 0.7, s * 0.12); c.fill();
+  c.fillStyle = '#fff'; c.beginPath(); c.arc(0, s * 0.15, s * 0.09, 0, TAU); c.fill(); c.fillRect(-s * 0.035, s * 0.15, s * 0.07, s * 0.2); c.restore();
+}
+
+// small line icons (moca's checklist / type badges)
+function radioIcon(c, x, y, s, color, t = 0) {
+  c.save(); c.translate(x, y); c.strokeStyle = color; c.fillStyle = color; c.lineWidth = s * 0.12; c.lineCap = 'round';
+  c.beginPath(); c.arc(0, s * 0.25, s * 0.12, 0, TAU); c.fill();
+  for (let i = 1; i <= 3; i++) { c.globalAlpha = 0.5 + 0.5 * Math.abs(Math.sin(t * 3 - i)); c.beginPath(); c.arc(0, s * 0.25, s * 0.22 * i, -2.4, -0.74); c.stroke(); }
+  c.restore();
+}
+function hairIcon(c, x, y, s, color) {
+  c.save(); c.translate(x, y); c.fillStyle = color;
+  c.beginPath(); c.arc(0, -s * 0.05, s * 0.48, Math.PI, 0); c.lineTo(s * 0.5, s * 0.32); c.lineTo(s * 0.28, s * 0.32); c.lineTo(s * 0.28, 0); c.lineTo(-s * 0.28, 0); c.lineTo(-s * 0.28, s * 0.32); c.lineTo(-s * 0.5, s * 0.32); c.closePath(); c.fill();
+  c.fillStyle = '#fffdf6'; c.beginPath(); c.arc(0, s * 0.12, s * 0.27, 0, TAU); c.fill(); c.strokeStyle = color; c.lineWidth = s * 0.08; c.stroke();
+  c.restore();
+}
+function guitarIcon(c, x, y, s, color) {
+  c.save(); c.translate(x, y); c.rotate(-0.7); c.fillStyle = color;
+  c.beginPath(); c.arc(0, s * 0.28, s * 0.3, 0, TAU); c.fill(); c.beginPath(); c.arc(0, -s * 0.02, s * 0.22, 0, TAU); c.fill();
+  c.fillRect(-s * 0.06, -s * 0.75, s * 0.12, s * 0.75); c.fillRect(-s * 0.12, -s * 0.85, s * 0.24, s * 0.16);
+  c.fillStyle = '#fffdf6'; c.beginPath(); c.arc(0, s * 0.18, s * 0.08, 0, TAU); c.fill(); c.restore();
+}
