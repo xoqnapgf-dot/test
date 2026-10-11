@@ -679,7 +679,7 @@ SCENES['ksm-voice'] = (c, t, S) => {
         c.restore();
       }
       c.strokeStyle = 'rgba(255,255,255,.55)'; c.lineWidth = 3; c.beginPath(); c.moveTo(0, wy); c.lineTo(W, wy); c.stroke();
-      for (let i = 0; i < 5; i++) { const r = ((t - l5) * 90 + i * 70) % 340; c.strokeStyle = `rgba(255,255,255,${0.35 * (1 - r / 340)})`; c.lineWidth = 2; c.beginPath(); c.ellipse(560, wy + 40, r, r * 0.12, 0, 0, TAU); c.stroke(); }
+      for (let i = 0; i < 5; i++) { const r = (Math.max(0, t - l5) * 90 + i * 70) % 340; c.strokeStyle = `rgba(255,255,255,${0.35 * (1 - r / 340)})`; c.lineWidth = 2; c.beginPath(); c.ellipse(560, wy + 40, r, r * 0.12, 0, 0, TAU); c.stroke(); }
       c.restore();
     }
     c.restore();
