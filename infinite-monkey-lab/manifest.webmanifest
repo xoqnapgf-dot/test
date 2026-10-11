@@ -1,0 +1,28 @@
+{
+  "name": "无限猴子 · 纯随机像素实验室",
+  "short_name": "无限猴子",
+  "description": "320×180、256 色的纯随机像素实验；由可复现的伪随机数种子生成，不使用图像生成模型或 AI 推理。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#10131e",
+  "theme_color": "#10131e",
+  "icons": [
+    {
+      "src": "./icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
