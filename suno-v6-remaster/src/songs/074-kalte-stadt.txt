@@ -1,0 +1,108 @@
+#id: 074
+#slug: kalte-stadt
+#title: Kalte Stadt
+#album: 歌词2
+#lang: German
+#orig: f2:2833-2914
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 126
+#length: about 5:30
+#note: 原稿的内部提示词（24 小节冷贝斯前奏、16 小节间奏、后摇渐强、20 小节尾奏）已很完整，全部保留；德语歌词原稿没有任何句尾标点，已按语义补逗号/句号，一字未改。
+#note: 为防止被唱成英文口音，加了 [This is a German song]；Style 写了 sung in German。若 ß/ä 读错，用歌词精修。
+--- STYLE
+Cold driving post-punk with shoegaze reverb at 126 BPM in E minor, sung in German. A female vocalist sings close to the microphone, detached and cool in the verses, whispering into a belt in the pre-chorus, then driving and soaring in the chorus and emotional in the final climax. A cold driving bassline leads the song, a mechanical drum machine and a sparse shimmer guitar carry the intro, sharp guitar stabs answer the drums in the instrumental sections, and the chorus adds a wall of sharp guitars with shoegaze reverb creeping in. Lonely, urban mood of a woman walking an empty wet city of cold windows and unanswered phones, wanting out but staying. Ends with the bass and shimmer guitar fading together as the drum machine dissolves. Cold, wide, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, English vocals, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, orchestral strings
+--- LYRICS
+[This is a German song]
+
+[Intro | 24 bars, cold driving bass only, a mechanical drum machine joins on bar nine, a sparse shimmer guitar enters on bar seventeen, instrumental only]
+
+[Verse 1 | sparse arrangement, bass-driven, close-mic female vocals, a detached delivery, a breath after every line, slightly behind the beat]
+Stadtlicht fällt auf nasses Stein,
+Schatten gehn viel zu allein,
+Ich lauf durch die leere Nacht,
+Kaltes Licht, das nach mir lacht.
+
+Kalte Fenster, kalte Straßen,
+Niemand ruft nach meinem Namen,
+Papier fliegt vor meinen Füßen,
+Und der Wind kennt mein Verlangen.
+
+[Verse 2 | the drums tighten slightly, a colder delivery]
+U-Bahn schreit in dunklem Rohr,
+Schritte hallen, keiner hört,
+Signale blinken rot und rot,
+Eine Stadt, die langsam stirbt.
+
+Betonierte Träume brechen,
+Glas zerbricht im leeren Haus,
+Ich versteck mein kaltes Lachen,
+Hinter Mauern, ohne Licht.
+
+[Pre-Chorus | building tension, the bass climbs, whispered to belted, the last line is belted]
+Und die Uhren drehen sich,
+Langsam, kalt, sie warten nicht,
+Jede Sekunde fällt wie Blei,
+Kalte Stadt, ich bin allein.
+
+[Chorus | full band, sharp guitar stabs, shoegaze reverb creeping in, driving female vocals, long held line endings]
+Ich will raus, ich bleib doch hier,
+Kalte Stadt, du wartest nicht,
+Ich will Licht, du zeigst mir nichts,
+Kalte Stadt, du hörst mich nicht.
+
+[Interlude | 16 bars, an angular bass riff, sharp guitar stabs answered by the drum machine, a cold post-punk instrumental only]
+
+[Verse 3 | the bass groove returns, a colder and harder delivery, a breath after every line]
+Fenster leuchten, niemand wacht,
+Fremde Leben, fremde Nacht,
+Ein Telefon, das keiner hebt,
+Ein kaltes Herz, das trotzdem lebt.
+
+Züge fahren ohne Ziel,
+Scheiben spiegeln mein Gesicht,
+Ich bin Schatten, Schatten nur,
+In der Stadt aus kaltem Licht.
+
+[Pre-Chorus | the drums build, whispered, the bass climbs]
+Und die Uhren drehen sich,
+Langsam, kalt, sie warten nicht,
+Jede Sekunde fällt wie Blei,
+Kalte Stadt, ich bin allein.
+
+[Chorus | full band, a wall of sharp guitars, soaring female vocals, same melody as the first chorus]
+Ich will raus, ich bleib doch hier,
+Kalte Stadt, du wartest nicht,
+Ich will Licht, du zeigst mir nichts,
+Kalte Stadt, du hörst mich nicht.
+
+[Bridge | stripped down, bass and whispered vocals, a reverb swell, a pause after each pair of lines]
+Zehntausend Lichter,
+Und keine brennt für mich,
+Zehntausend Gesichter,
+Und keine sehn mich,
+Zehntausend Stunden,
+Und keine Uhr für mich,
+Zehntausend Nächte,
+Und keine löst mich.
+
+[Interlude | 16 bars, a post-rock section, reverb-drenched guitars swell, tremolo builds, the drum machine dissolves, slow dynamics, a slight post-rock crescendo, instrumental only]
+
+[Final Chorus | full band, maximum reverb, female vocals belting, an emotional climax, the second half is the loudest]
+Ich will raus, ich bleib doch hier,
+Kalte Stadt, du wartest nicht,
+Ich will Licht, du zeigst mir nichts,
+Kalte Stadt, du hörst mich nicht.
+Ich will raus, ich bleib doch hier,
+Kalte Stadt, du wartest nicht,
+Ich will Licht, du zeigst mir nichts,
+Kalte Stadt, du hörst mich nicht.
+
+[Outro | 20 bars, the bass and shimmer guitar fade together, the drum machine dissolves, instrumental only]
+[End]

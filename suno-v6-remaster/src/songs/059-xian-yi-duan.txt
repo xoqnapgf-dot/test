@@ -1,0 +1,71 @@
+#id: 059
+#slug: xian-yi-duan
+#title: 弦已断
+#title-note: 原稿无标题、无结构标签，取自结尾「弦已断…」，暂定此名，可自行改。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1499-1541
+#vocal: Male
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 66
+#length: about 4:20
+#note: 原稿只有 8 个按空行分开的小段、没有任何结构标签；我按重复关系推断：S1=Verse 1，S2=Pre-Chorus（出现 2 次），S3=Chorus（出现 2 次），S4=Verse 2，S5=Bridge，末三行省略号句=Outro。若你本意不同，改标签即可，文字不用动。
+#note: 每行中间的空格（如「你想为这天下 奏一曲新的乐章」）改成逗号做呼吸点；结尾「弦已断… / 曲未终… / 仍有回响…」的省略号保持，写成渐弱的低语。
+--- STYLE
+Poetic Chinese-style (guofeng) chamber ballad at 66 BPM in D minor, sung in Mandarin Chinese. A male baritone sings warm, weary and dignified, close to the microphone and nearly spoken in the verses, then rising to a wide, aching, sustained chorus with long held line endings and a faint harmony. A plucked guqin and a soft fingerpicked guitar carry the verses, a low cello and a warm pad enter in the pre-chorus, and the chorus adds a string section, a soft kick, a breathy bamboo flute and a distant choir. Proud, tragic mood of a musician who wanted to play the people's longing, whose string snapped at the highest note while the old nobles watched. Ends on a single guqin note fading into silence. Spacious, warm, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, female lead vocal, comedy, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a plucked guqin alone, a breathy bamboo flute joins on bar five, a faint wind texture, instrumental only]
+
+[Verse 1 | warm weary baritone, nearly spoken, guqin and guitar only, a breath after every line, slightly behind the beat]
+你想为这天下，奏一曲新的乐章，
+指尖下没有金戈铁马，只有麦浪与工商，
+你说这古老的琴弦，太过紧绷也太过悲凉，
+应弹出寻常巷陌里，人间的渴望。
+
+[Pre-Chorus | voice a little firmer, cello and pad enter, thunder rumbles faintly in the distance]
+可窗外雷声渐响，满座皆是旧日王孙，
+他们说你的乐音，太过自由也太过天真，
+你看见满座的犹疑，却只对自己虔诚。
+
+[Chorus | wide aching sustained voice, strings and a soft kick enter, flute sings above, distant choir, line endings held long]
+就让这根弦，断在最高亢的刹那，
+将一曲未完的歌，凝固成无声的画，
+从此怀抱残破的琴，再无人听我说话，
+我只是个凡人啊，却错生在了神话。
+
+[Verse 2 | back to the nearly spoken baritone, guqin and cello, a little colder, the street outside the window]
+你并未转身离去，也并未低下头颅，
+只是将所有的言语，都还给了最初的孤独，
+你看着窗外的世界，走上你画下的草图，
+那上面繁花似锦，只是再与你毫无干系。
+
+[Pre-Chorus | same as before, the thunder louder, strings tense]
+可窗外雷声渐响，满座皆是旧日王孙，
+他们说你的乐音，太过自由也太过天真，
+你看见满座的犹疑，却只对自己虔诚。
+
+[Chorus | stronger than the first, voice breaking open on the high notes, full strings and choir, same melody as the first chorus]
+就让这根弦，断在最高亢的刹那，
+将一曲未完的歌，凝固成无声的画，
+从此怀抱残破的琴，再无人听我说话，
+我只是个凡人啊，却错生在了神话。
+
+[Bridge | stripped down to guqin and the voice, quiet and bitter, a pause after each pair of lines, strings rise slowly on the last line]
+他们说江山无恙，不过是换了琴师，
+他们说繁华如常，谁还记得那段曲辞，
+可总有人在夜里，听到那一声脆响，
+像一道永不愈合的伤。
+
+[Outro | the voice fades to a whisper, each line spoken softly with a long pause between them, the guqin plays one last note and fades, then silence]
+弦已断…
+曲未终…
+仍有回响…
+[End]

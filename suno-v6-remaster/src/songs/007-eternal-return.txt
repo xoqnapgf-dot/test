@@ -1,0 +1,64 @@
+#id: 007
+#slug: eternal-return
+#title: Eternal Return
+#album: （Eternal Return）
+#lang: English
+#orig: f1:328-363
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 108
+#length: about 3:20
+#note: 原稿没有 intro/outro，已补；Verse 3 的「Stars reshuffle / Breaths restart」是两个短句，各自带逗号形成顿挫。
+#note: Poincare 读 /pwæ̃kɑːreɪ/，若读成英式 poin-care，用歌词精修只改这一个词的拼写即可。
+--- STYLE
+Cosmic synth-pop with an anthemic indie-rock lift at 108 BPM in E minor. A warm male tenor sings in English, intimate and clear in the verses, then open-chested and soaring in the chorus with long held vowels at the ends of phrases. Pulsing analog bass, a shimmering octave arpeggio and tight live drums drive the verses, and the chorus adds big reverb snare, wide supersaw pads, bright clean guitar and layered group harmonies. Romantic, vast and hopeful mood of two souls reborn again and again through stars and time. Ends on the arpeggio fading into a long shimmering pad. Polished wide stereo mix, vocal-forward.
+--- EXCLUDE
+female lead vocal, rap, growl, metal distortion, country, lo-fi, spoken word, trap hi-hats, orchestral brass
+--- LYRICS
+[Intro | 8 bars, shimmering octave arpeggio over a deep pad, kick and bass enter on bar five, a rising synth sweep, instrumental only]
+
+[Verse 1 | warm male tenor, intimate and clear, bass and drums tight, arpeggio quiet, one breath per line, slightly behind the beat]
+Poincare returns in cosmic waves,
+Through stars and dust our love behaves.
+Eternal circle skies unfold,
+Molecular secrets left untold.
+
+[Verse 2 | same voice, a little brighter, clean guitar enters, hi-hat opens up, building toward the chorus]
+Rebirth dances in the night,
+Atoms sparkle in the light.
+Life's a cycle round we spin,
+To find each other once again.
+
+[Chorus | open-chested and soaring, long held vowels at line ends, big reverb snare and supersaw pads, group harmonies stack behind the lead]
+Every turn we're born anew,
+Through time and space my love for you.
+Infinite stages we perform,
+In the dark we find our form.
+
+[Bridge | half-time feel, drums drop to kick only, whispered lead over arpeggio and pad, then a snare roll lifting back up]
+Galaxies whisper our names,
+In celestial endless games.
+Fate reweaves our bonded souls,
+In this cosmos we console.
+
+[Verse 3 | lead returns tender, bass groove alone under it, the last two short lines are spaced with a held beat of silence between them]
+Astral tides keep hearts aligned,
+Reincarnation in our mind.
+Stars reshuffle,
+Breaths restart,
+Timeless passion in our heart.
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Final Chorus | strongest version, lead belts the high notes over stacked harmonies, full band at full power, same melody as the first chorus]
+Every turn we're born anew,
+Through time and space my love for you.
+Infinite stages we perform,
+In the dark we find our form.
+
+[Outro | 8 bars, drums stop first, arpeggio and pad ring out and fade into a long shimmering tone, instrumental only]
+[End]

@@ -1,0 +1,74 @@
+#id: 010
+#slug: my-angel
+#title: my angel
+#album: 《第二封情书》
+#lang: English
+#orig: f1:577-623
+#dropped: (Soft, haunting piano with gentle strings)|(Bass drops with a deep, emotional synth)
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 70
+#length: about 3:40
+#note: 原稿 [Instrumental Intro] 和 [Drop] 后面的括号是制作说明（"Soft, haunting piano…" / "Bass drops…"），括号会被 Suno 当成歌词唱出来，已移进方括号并扩写；这两段文字不再出现在歌词里。
+#note: 原稿 [Drop] 下面其实带有 4 行唱词，不是纯器乐，所以改标为 Bridge，并写明"低音合成器落下、人声保持脆弱"。
+--- STYLE
+Haunting dark synth-pop ballad at 70 BPM in F-sharp minor. A female voice sings in English, soft and fragile in the verses, then aching and full in the chorus with long sustained line endings and a breath of vibrato at the ends. A soft piano with gentle strings opens the song, a deep warm synth bass and a slow muted kick carry the verses, and the chorus adds big reverb drums, wide strings and a glowing pad. Cold, tender and longing mood of someone waiting forever in a frozen land for an angel who left. Ends on the piano with one fading string note. Vocal-forward, spacious mix.
+--- EXCLUDE
+male lead vocal, rap, EDM drop, screaming, country, fast tempo, trap hi-hats, comedy, autotune
+--- LYRICS
+[Intro | 8 bars, soft haunting piano with gentle strings, a distant synth pad breathes underneath, slow and cold, instrumental only]
+
+[Verse 1 | soft fragile female voice, close-mic, piano and strings only, one breath per line, slightly behind the beat]
+My angel, have you forgotten the day we met?
+My angel, do you remember the first gaze we set?
+My angel, perhaps you don’t wish to recall,
+The moment we spoke, before the world could fall.
+
+Youth and passion, they’ve all drifted far away,
+But here I stand, with thoughts I cannot sway.
+I wait, though time may steal my heart's sweet song,
+I still hold on, though the night feels so long.
+
+[Chorus | voice aching and full, long held line endings, big reverb drums and wide strings enter, pad glows behind, harmonies in the last two lines]
+Like a blade in the cold, you tore me apart,
+Leaving me with pieces of a shattered heart.
+But if you’d want me, I’d give my blood to the sky,
+Writing a letter, with no tears, just a sigh.
+
+If I could, I’d trade my soul with the devil’s hand,
+Just to guard you, in this frozen land.
+Willingly, forever I’ll stay,
+Loving you, come what may.
+
+[Verse 2 | back to the soft fragile voice, piano and a muted kick, cold and intimate]
+The days of youth are gone, so far they’ve flown,
+But the memories linger, though we’re both alone.
+Your cold touch, it cuts, but I still feel the burn,
+For your love, I wait, hoping you'll return.
+
+I’d trade the stars, just to hear your voice,
+And with every breath, I would still rejoice.
+
+[Bridge | the bass drops in with a deep emotional synth swell, drums pause, voice stays close and trembling, the last two lines rise slowly]
+If you’d come back, I’d wait a lifetime more,
+For you to walk through that open door.
+Through the storms, through the endless night,
+I’ll stand alone, but I’ll be alright.
+
+[Final Chorus | strongest version, voice wide and bright, drums, strings and pad at full power, same melody as the first chorus]
+Like a blade in the cold, you tore me apart,
+Leaving me with pieces of a shattered heart.
+But if you’d want me, I’d give my blood to the sky,
+Writing a letter, with no tears, just a sigh.
+
+If I could, I’d trade my soul with the devil’s hand,
+Just to guard you, in this frozen land.
+Willingly, forever I’ll stay,
+Loving you, come what may.
+
+[Outro | 8 bars, strings and drums fall away, piano plays the intro motif alone, one last fading string note, then silence, instrumental only]
+[End]

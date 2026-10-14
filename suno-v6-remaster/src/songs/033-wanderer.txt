@@ -1,0 +1,64 @@
+#id: 033
+#slug: wanderer
+#title: Wanderer
+#album: 《新世纪人类》
+#lang: English
+#orig: f1:2174-2215
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 92
+#length: about 3:40
+#note: 歌词里 "her" 指一艘老飞船，副歌是宏大空间摇滚，因此 Style 用 space rock + 弦乐，并在 Verse 标签里写明 "memory-like"。
+--- STYLE
+Epic space rock ballad at 92 BPM in A minor, sung in English. A male baritone-tenor sings warm, weary and heartfelt, intimate and a little hoarse in the verses, then wide, aching and sustained in the chorus with layered harmonies. A clean chorus-drenched electric guitar, a soft piano and a deep melodic bass carry the verses, a slow engine-like rumble rolls underneath, and the chorus adds a wall of reverb guitars, big cinematic drums, a string orchestra and a soaring lead guitar. Nostalgic, bittersweet mood of an old spaceship and her wanderers adrift in the cosmic sea, hope and despair waltzing toward a distant shore. Ends on the guitar echo fading into an engine hum. Wide, cinematic, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, rap, EDM drop, trap hi-hats, country, screaming, comedy, upbeat pop, lo-fi
+--- LYRICS
+[Intro | 8 bars, a clean chorus-drenched guitar echoing like a signal in space, a slow engine-like rumble, a soft piano joins on bar five, instrumental only]
+
+[Verse 1 | warm weary male voice, close-mic, guitar and piano only, one breath per line, slightly behind the beat, memory-like and tender]
+See, her armor aged and worn with pride,
+Hear, her engines roar, a thunderous tide.
+Each start, a challenge to the stars above,
+Each stop, a push toward the hope we love.
+
+I still remember the tears she shed,
+I’ve seen her face when dreams were bred.
+Maybe all of this will one day fade,
+Let me, in this moment, have it all engraved.
+
+[Chorus | wide aching voice, long held line endings, wall of reverb guitars and big cinematic drums enter, strings swell, harmonies stack behind]
+Wanderers adrift in the endless cosmic sea,
+Struggling in waves of ancient history.
+The stars have fallen, dark matter devours,
+Hope and despair dance in endless hours.
+Together they waltz to a distant, unknown shore,
+Where new dreams lie, and legends soar.
+
+[Verse 2 | back to the warm weary voice, guitar and piano, bass and soft drums added, a little more fragile]
+See, her memories wilt and fade away,
+Hear, her whispers in the shadows sway.
+Each start, a step toward the final leap,
+Each stop, time falls back, memories we keep.
+
+I still remember the smile she wore,
+I’ve seen her dreams in the days of yore.
+Maybe all this will be remembered true,
+Let me, in this moment, fade out with you.
+
+[Drop | 2 bars, strings swell and cut to one beat of full silence, then the full band and orchestra land together, vocals rest]
+
+[Final Chorus | strongest version, voice wide and broken open on the high notes, lead guitar soars, orchestra and drums at full, same melody as the first chorus]
+Wanderers adrift in the endless cosmic sea,
+Struggling in waves of ancient history.
+The stars have fallen, dark matter devours,
+Hope and despair dance in endless hours.
+Together they waltz to a distant, unknown shore,
+Where new dreams lie, and legends soar.
+
+[Outro | 8 bars, drums and orchestra fall away, the guitar echo fades into the engine hum, last piano note, then silence, instrumental only]
+[End]

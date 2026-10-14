@@ -1,0 +1,61 @@
+#id: 012
+#slug: sunset
+#title: Sunset
+#album: 《第二封情书》
+#lang: English
+#orig: f1:678-716
+#vocal: Male
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: Off
+#bpm: 76
+#length: about 3:20
+#note: 原稿 [Drop] 为空，且这首是温柔的民谣，不适合 EDM 式 drop，所以写成"全员轻轻停一拍再进入"的温柔版本。
+#note: 副歌只有 4 行，重复两遍，文字完全相同；情绪柔和，Max Mode 可关以省积分。
+--- STYLE
+Warm indie-folk love song at 76 BPM in G major. A male tenor sings in English, gentle and close to the microphone in the verses, then open and glowing in the chorus with a soft female harmony floating above him. A fingerpicked acoustic guitar and a warm upright bass carry the verses, a soft brushed snare and a light piano enter in the chorus, and a lap steel plays long glowing notes between phrases. Tender, golden-hour mood of two people leaning on each other at sunset, time standing still. Ends on the guitar alone with a long ringing chord. Natural warm mix, vocal-forward.
+--- EXCLUDE
+rap, screaming, distortion, EDM drop, trap hi-hats, metal, heavy synths, autotune, spoken word
+--- LYRICS
+[Intro | 8 bars, fingerpicked acoustic guitar alone, a lap steel glows in on bar five, soft evening room tone, instrumental only]
+
+[Verse 1 | gentle male tenor, close-mic, guitar and upright bass only, one breath per line, slightly behind the beat]
+The sun sets low, the light ascends,
+You lean on me, your heart my friend.
+I kiss your brow, so soft, so sweet,
+The world is still, time’s gentle beat.
+
+Stars fall quietly from the skies,
+The evening’s glow, a soft surprise.
+The sunset, endless in its grace,
+Love, the source of life’s embrace.
+
+[Chorus | open glowing voice, soft female harmony above, brushed snare and light piano enter, lap steel answers each pair of lines]
+In this moment as the sun will go,
+Let me take your hand once more and hold.
+The cycle of the universe will break,
+All things will bow to hearts awake.
+
+[Verse 2 | back to the gentle voice, guitar and bass, a little closer and warmer]
+The twilight fades, the night arrives,
+I taste your breath, the way it thrives.
+You linger near my warming skin,
+Time rewinds, where we begin.
+
+The seasons turn back to our spring,
+The galaxy witnesses our wedding ring.
+The earth holds every word I say,
+As love’s embrace guides our way.
+
+[Drop | 2 bars, everyone plays softly and stops together, one beat of silence, then the full band returns gently, vocals rest]
+
+[Final Chorus | strongest version, voice open and warm, both harmonies together, full band, same melody as the first chorus]
+In this moment as the sun will go,
+Let me take your hand once more and hold.
+The cycle of the universe will break,
+All things will bow to hearts awake.
+
+[Outro | 8 bars, band falls away, guitar alone, lap steel holds one glowing note, last chord rings out, instrumental only]
+[End]

@@ -1,0 +1,100 @@
+#id: 071
+#slug: kaminare
+#title: カミナレ
+#album: 歌词2
+#lang: Japanese
+#orig: f2:2643-2717
+#vocal: Female
+#model: v6
+#weirdness: 50
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 168
+#length: about 4:10
+#note: 原稿的内部提示词本来就很详细（键盘+人群+锣、掌音吉他、双踩、女团叠和声、转调），保留并改为「段落 | 指示」；原稿已有 [This is a Japanese song]（保留）。
+#note: Post-Chorus 的「(さあ さあ)」是叠加的女团齐唱，保持独立成行；原稿最后两行 Outro 歌词「最後の音符が落ちて / 鐘の余韻だけが残る」放在 Outro 小节里，作为渐弱的低语。
+#note: 168 BPM 但歌词每行 7-12 字，没有赶拍风险；「ヤイバ」「カミナレ」是片假名，读音稳定。
+--- STYLE
+Explosive Japanese girl-band hard rock with a church-and-shrine theme at 168 BPM in E minor, sung in Japanese. A female lead vocalist belts with a powerful, bright, slightly raw voice, steady in the verses, then soaring in the chorus over layered girl-group harmonies that shout the chorus words together. A palm-muted rhythm guitar, a heavy locked-in bass and double-bass drumming carry the verses, a keyboard plays a holy melody, and the chorus adds a twin guitar wall, crowd claps, church bell hits and a gong. Fierce, joyful, sacred-rebellious mood of five names becoming one sound, where the chorus erases every sect and a girl's voice becomes a blade. Ends with the last drum hit and a bell ringing out. Loud, wide, vocal-forward live-band mix.
+--- EXCLUDE
+male lead vocal, English vocals, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, orchestral strings
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | a lone keyboard melody over crowd noise, then a single gong hit, instrumental only]
+
+[Verse 1 | sparse arrangement, palm-muted rhythm guitar, a breathing drum groove, a steady bright female voice, a breath after every line, slightly behind the beat]
+ロザリオ、巻きつけたネック、
+聖歌がゆがんで始まる、
+ひょうたんに月をひとつ、
+彼女は笑って歌い出す。
+
+[Pre-Chorus | building, the bass groove comes forward, drums push, the voice lifts]
+ベースが下を這うように、
+祈りの言葉のように、
+揺れる玉響、高鳴る鼓動、
+五つの名前が、ひとつの音になる。
+
+[Chorus | full band, a twin guitar wall, double-bass drumming, powerful belting, church bell hits on the downbeats, long held line endings]
+さあ、カミナレ、
+空までゆがませて、
+誰の神だって構わない、
+サビでは宗派も要らない、
+さあ、カミナレ、
+少女の声がヤイバになって、
+沈黙を切り裂いて、
+私たちが私たちの神。
+
+[Post-Chorus | layered girl-group harmonies, the parenthesized words are chanted together by the group, crowd claps on every beat]
+（さあ、さあ）
+四拍子の中、誰もが平等。
+
+[Verse 2 | a driving groove, the bass and drums locked in, the voice stronger and brighter]
+スティックは八芒星、
+ツーバスで夜を砕いて、
+リードは白い鳩になって、
+祭壇から音の壁へ、
+お経と弦を鳴らして、
+同じ振動を信じてる。
+
+[Pre-Chorus | building, crowd claps on the beat, the voice lifts with each line]
+違う名前、違う祈り、
+同じサビで出会う、
+誰も頭を下げなくていい、
+弦はすべての信心を知ってる。
+
+[Chorus | full band, powerful belting, layered harmonies, same melody as the first chorus]
+さあ、カミナレ、
+空までゆがませて、
+誰の神だって構わない、
+サビでは宗派も要らない、
+さあ、カミナレ、
+少女の声がヤイバになって、
+沈黙を切り裂いて、
+私たちが私たちの神。
+
+[Interlude | 8 bars, a bass and keyboard duet over a heavy groove, instrumental only]
+
+[Guitar Solo | 8 bars, a soaring lead guitar over the full band, instrumental only]
+
+[Bridge | stripped down, a clean keyboard and whispered vocals, a pause after each line, the last line grows to a firm sung tone]
+もし明日、声を殺せと言われても、
+笑い声も、音量も、
+教会ごと、神殿ごと、
+丸ごとステージに乗せてやる。
+
+[Final Chorus | full band, explosive, layered girl-group harmonies, key change up one step, the last line is shouted together]
+さあ、カミナレ、
+空までゆがませて、
+誰の神だって構わない、
+この拍の上、誰もが平等、
+さあ、カミナレ、
+少女の声がヤイバになって、
+沈黙を切り裂いて、
+私たちが私たちの神。
+
+[Outro | fading keyboard notes, the last drum hit, a bell ringing out, the voice speaks the last two lines softly with a pause between them]
+最後の音符が落ちて、
+鐘の余韻だけが残る。
+[End]

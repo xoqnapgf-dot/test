@@ -1,0 +1,70 @@
+#id: 039
+#slug: xiashan
+#title: 下山
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:73-105
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 108
+#length: about 3:40
+#note: bridge 的「（人法地，地法天，天法道，道法自然，師... 師父什麼叫自然？）」是整句念白（老者背诵 + 弟子发问），括号会让它变成叠唱，已去掉括号并放进 [Spoken Word] 小节，写明"老者沉稳念诵，小孩声迟疑发问"；文字（含繁体）一字未改。
+#note: 「（嘿 哈哈）」「（嘿 嗨嗨）」「（来）」是叠加在行尾的叫喊，保持行内括号。
+#note: 副歌 4 行每行两半，原稿中间是空格，改成逗号做呼吸点。
+--- STYLE
+Chinese-style (guofeng) rock with a rapped-sung swagger at 108 BPM in D minor, sung in Mandarin Chinese. A male vocalist sings with a free, carefree, slightly husky voice, relaxed and half-spoken in the verses, then wide, bold and sustained in the chorus with gang shouts behind him. A bamboo flute and a plucked pipa carry the verses over a deep bass and a steady live kick, the chorus adds crunchy electric guitars, taiko-style big drums, an erhu line and a crowd of shouting voices. Lonely, unbound swordsman mood of a god descending a mountain, wine in hand, moonlight and snow, laughing at the courts below. Ends on one pipa strum and a flute note fading out. Punchy, wide, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, EDM drop, trap hi-hats, comedy, autotune, country
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a bamboo flute alone over a cold wind, a plucked pipa joins on bar five, taiko-style drums enter on the last bar, instrumental only]
+
+[Verse 1 | relaxed half-spoken male voice, flute and pipa with a deep bass, steady kick, a breath after every line, slightly behind the beat, bracketed words are shouted ad-libs on the same line]
+回头不见来时的路，
+冷风凛冽仿佛在对我哭诉，
+不经意想起的一幕一幕，
+早已被写进了书（嘿 哈哈）
+谁见我踏空破迷雾，
+随意一指一点皆力压万古，
+最后斩尽心魔，无奈轻笑，曾经心酸处。
+
+[Chorus | wide bold sustained voice, crunchy guitars and big taiko drums enter, erhu line answers, gang vocals shout the second half of each line]
+我一人一剑天下浪，一招一式逍遥荡，
+无影残刃雪茫茫，浊酒纳悲凉，
+望天边故友旧日乡，一轮明月伴身旁，
+俯看高台空朝堂，听人间喧嚷。
+
+[Verse 2 | back to the relaxed half-spoken voice, flute and pipa, bass and kick, bracketed words are shouted ad-libs on the same line]
+不管体术或是神通，
+只要我出手便是贯穿长虹，
+轮回万世不过眨眼成风，
+一醒诸世都消融（嘿 嗨嗨）
+过往的光辉与伤痛，
+命数归于终焉而物我两空，
+但是需要记住，下山的神，切莫要嘲弄（来）
+
+[Chorus | same as the first chorus, a little louder, same melody]
+我一人一剑天下浪，一招一式逍遥荡，
+无影残刃雪茫茫，浊酒纳悲凉，
+望天边故友旧日乡，一轮明月伴身旁，
+俯看高台空朝堂，听人间喧嚷。
+
+[Spoken Word | drums stop, only flute and a cold wind, a calm old master recites the first line slowly and a young hesitant voice stumbles on the second and asks the question at the end]
+人法地，地法天，天法道，道法自然，
+師……師父什麼叫自然？
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then guitars, bass and taiko slam back in together, vocals rest]
+
+[Final Chorus | strongest version, voice bold and wide, gang vocals at full volume, same melody as the first chorus]
+我一人一剑天下浪，一招一式逍遥荡，
+无影残刃雪茫茫，浊酒纳悲凉，
+望天边故友旧日乡，一轮明月伴身旁，
+俯看高台空朝堂，听人间喧嚷。
+
+[Outro | 8 bars, drums and guitars fall away, the pipa strums once, the flute holds one note and fades with the wind, instrumental only]
+[End]

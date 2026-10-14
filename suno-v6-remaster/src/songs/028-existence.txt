@@ -1,0 +1,99 @@
+#id: 028
+#slug: existence
+#title: Existence
+#album: 《星陨田野》
+#lang: English
+#orig: f1:1692-1748
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 100
+#length: about 4:30
+#note: 原稿几乎没有句尾标点且 verse 2 有一行把两句连在一起（「…for me It takes me back…」），已拆行并补逗号，文字未变；两个长 verse 分别拆为 3 个小节。
+#note: [Drop] [Chorus] 写在同一行的原稿，已拆成静默一拍的 Drop 和最终副歌两个独立标签行。
+--- STYLE
+Cosmic indie-electronic rock with glitchy textures at 100 BPM in D minor, sung in English. A male tenor sings thoughtful and slightly haunted, close to the microphone and half-spoken in the verses, then open, aching and sustained in the chorus with layered harmonies. A pulsing analog bass, a tight programmed kick, a clean chorus-drenched guitar and tiny glitch fragments carry the verses, and the chorus adds big reverb drums, a wide synth pad, a bright lead guitar and a rising choir of voices. Philosophical, vast mood of a being born from the void, flipping a coin with fate and asking who he is in the universe. Ends on a single coin-toss sound and the pad fading. Polished, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, rap, country, acoustic folk, screaming, EDM drop, trap hi-hats, comedy, heavy metal
+--- LYRICS
+[Intro | 8 bars, glitchy pulses over a deep pad, a clean chorus-drenched guitar line, the bass and kick enter on bar five, instrumental only]
+
+[Verse 1 | part 1 of 3, thoughtful half-spoken male voice, bass and kick only, one breath per line, slightly behind the beat]
+From the void, I am born,
+From annihilation, I am drawn,
+Time reverses in my trail,
+Wormholes bloom and never fail.
+
+[Verse 1 | part 2 of 3, same voice, guitar line enters, glitch fragments sparkle]
+Gamma rays with my heartbeat start to fade,
+By the tide, the black hole's frayed,
+Who pressed mute from a higher plane?
+Who gazes back at the galaxy's old lane?
+
+[Verse 1 | part 3 of 3, voice softer, almost a whisper, the last line is sung slowly with a pause before it]
+Riding on a meteor's flight,
+Landed on a ring in misty light,
+Deep blue and pale red fill my sight,
+A single teardrop lands where soil is tight.
+
+[Chorus | part 1 of 2, voice opens wide and aching, big reverb drums and wide pad enter, line endings held long]
+Let all things in silence descend,
+Let the end bring me to the abyss's end,
+I exist in the non-existent scene,
+From the non-existent, I exist again.
+
+[Chorus | part 2 of 2, bright lead guitar answers, choir rises behind the lead]
+In the quiet, probability's song is rife,
+Creation's first light gathers in my inner life,
+I'm the shortest frame, infinitely taken apart,
+I'm the endless loop that never will depart.
+
+[Verse 2 | part 1 of 3, back to the half-spoken voice, bass and kick, ruins and yellow dust, bleak]
+Everywhere I see, everywhere I go,
+Only ruins and yellow dust blow,
+The structure of the brain decays,
+Neurons shatter in a haze.
+
+[Verse 2 | part 2 of 3, voice detached, a coin-flip sound effect before the third line, glitch fragments increase]
+Consciousness is peeling from my frame,
+Casually, I flip a coin for the game,
+Guess which side will show its face this time,
+I watch myself close up, a process so sublime.
+
+[Verse 2 | part 3 of 3, voice rising, drums fuller, building toward the bridge, the last lines are sung with more air]
+Blood flows back to the womb, to my first home,
+Was it chance or was my fate set in the gloam?
+What on earth am I to believe in, or to roam?
+So Let the shooting star reply for me,
+It takes me back to my childhood memory,
+Back to that innocent and bewildered age, you see.
+
+[Bridge | stripped down to bass, kick and the whispered voice, each question hangs in the air for a beat, then pad swells]
+To be or not to be,
+To listen or to flee,
+Deep in memory's art,
+Who is waiting from the start?
+
+Hear my final words professed,
+Forget the first smile I expressed,
+Obsession has now dispersed,
+Who am I, in this universe?
+
+[Drop | 2 bars, everything is filtered then cuts to one beat of full silence, then the full band and pad slam in together, vocals rest]
+
+[Final Chorus | strongest version, voice broken open on the high notes, choir at full, drums and lead guitar at full power, same melody as the first chorus]
+Let all things in silence descend,
+Let the end bring me to the abyss's end,
+I exist in the non-existent scene,
+From the non-existent, I exist again.
+
+In the quiet, probability's song is rife,
+Creation's first light gathers in my inner life,
+I'm the shortest frame, infinitely taken apart,
+I'm the endless loop that never will depart.
+
+[Outro | 8 bars, drums and guitar fall away, the pad holds one chord, a single coin-toss sound, the pad fades to silence, instrumental only]
+[End]

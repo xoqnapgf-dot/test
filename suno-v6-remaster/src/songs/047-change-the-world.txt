@@ -1,0 +1,120 @@
+#id: 047
+#slug: change-the-world
+#title: 改变世界
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:628-720
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 112
+#length: about 4:10
+#note: 原稿的内部提示词很有想法（沙哑愤怒 rap / 激动咆哮 / 幽默又自大的 rap / 低频高频爆裂间奏），已保留意图，改成「段落 | 指示」。原稿 [Drop][instrument][drop-…] 三个叠在一起，合并为一个具体的 4 小节低音爆裂间奏，之后接的「（哇啊啊）比起成功的一生…」是有唱词的段落，标为 Bridge。
+#note: 副歌「我（要）改（变）这（个）世（界）！」是领唱与人群逐字交错，括号字保持原样，标签里写明 "bracketed syllables are shouted by the crowd between the lead syllables"。
+#note: 「！！！！！」连续感叹号和「motherfucker！」「我草！」按原稿保留。
+--- STYLE
+Angry Chinese rap-rock with nu-metal weight at 112 BPM in G minor, rapped and shouted in Mandarin Chinese. A male vocalist raps in a hoarse, furious, ragged voice in the first verse, switches to a humorous, cocky and inspiring flow in the second verse, and roars the chorus in an exciting shouted chant with a crowd answering. Down-tuned chugging guitars, a pounding bass and heavy drums carry the verses, a bursting bass drop with sharp high-frequency noise hits in the break, and the chorus adds wide distorted chords, crash cymbals and a huge crowd of gang vocals. Rebellious, theatrical mood of a boy raised on cartoon heroes who decides to change the world, with a warrior's roar and a joke. Ends on a final power chord and crowd cheer. Punchy, aggressive, vocal-forward mix.
+--- EXCLUDE
+Cantonese, female lead vocal, ballad, acoustic folk, country, lo-fi, smooth jazz, autotune, orchestral strings
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a down-tuned guitar riff builds over a crowd murmur, a pounding bass joins, heavy drums crash in on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 3, hoarse angry rapped voice, guitar chug and bass, drums tight, a clear breath after every line, slightly behind the beat]
+我还是个小屁孩时，
+喜欢看奥特曼和喜洋洋，
+我天马行空的想象力是一把利器，
+任凭现实摧残混淆，
+我的心如琉璃般清澈，
+我是正义的，我唾弃邪恶，
+我是光明，我憎恨黑暗，
+可是似乎世界和我想象中的不太一样，
+太多矛盾和奇怪的地方，
+我以为自己疯了，
+
+[Verse 1 | part 2 of 3, the voice breaks into shouting, each swear and each short line is hit hard on the beat, drums double-time]
+我草！
+他妈的！
+为什么！折磨我！
+我胡言乱语，我慷慨激昂，
+我指鹿为马，我浑浑噩噩，
+我纸上谈兵，我盲人摸象，
+
+[Verse 1 | part 3 of 3, the rage explodes into a warrior's battle cry, then the voice drops low and furious for the last lines]
+哇呀呀！！！！！！！！！
+燕人张飞在此！！！！！！！！！！！
+吃我一脚！！！！！！
+怒火中烧，要把你们打入地狱！
+尔等不配为人！
+都是错的！改变！
+改变！改变一切！
+
+[Chorus | exciting roar and talk, shouted chant, wide distorted chords, crash cymbals, in the lines with brackets the bracketed syllables are shouted by the crowd between the lead syllables]
+改变世界！
+（改变世界）
+我（要）改（变）这（个）世（界）！
+我（要）改（变）这（个）世（界）！
+我深知我明晓我领悟我了解我预知我看到我感到这是必须要做的事情！
+不，这是必须发生的事情，
+我要改变世界！
+我们都要！
+改变！
+我也改变，你也改变！
+我（要）改（变）这（个）世（界）！
+我（要）改（变）这（个）世（界）！
+会到来！会到来！
+
+[Verse 2 | part 1 of 2, humorous but inspiring and arrogant rap, a cocky smirking flow, guitars palm-muted, a breath after every line]
+后来我偶尔在那块墙壁的灰色里看见那四个字，
+“改变世界！”！
+啊啊啊啊！
+那似乎是对我的某种暗示，
+我接受了它，之后海底捞门口，
+那玻璃上倒映的众生相似乎也在提醒我，
+哎哟我超，
+我嘞个豆，
+你知道吗，
+
+[Verse 2 | part 2 of 2, the flow gets faster and prouder, the English words are spat clearly, the last lines are shouted]
+那上面写着众生的愿望和牵挂，
+人类VS老天爷！（你们知道吗？！）
+我的笔是枪，文字是子弹，
+笔记本电脑每一面都是我的战场，
+motherfucker！
+欢迎来到我的地狱！
+但是！
+这座天堂将升起！
+世界经由我手！
+改变！
+change！
+
+[Instrumental Break | 4 bars, instrumental only, a bass drop with sharp high-frequency noise bursting over the beat, a sudden stop on the last beat]
+
+[Bridge | the chant of a crowd with a single voice rising out of it, drums pause, bass pulses, the parenthesized words are long crowd wails after each phrase]
+（哇啊啊）
+比起成功的一生（啊啊啊）
+抗争的一生（啊啊啊啊啊）
+更伟大，
+（啊啊啊啊啊啊啊啊啊啊啊啊）
+
+[Final Chorus | strongest version, exciting roar and talk at full power, the whole crowd answering, same melody as the first chorus, bracketed syllables are shouted by the crowd between the lead syllables]
+改变世界！
+（改变世界）
+我（要）改（变）这（个）世（界）！
+我（要）改（变）这（个）世（界）！
+我深知我明晓我领悟我了解我预知我看到我感到这是必须要做的事情！
+不，这是必须发生的事情，
+我要改变世界！
+我们都要！
+改变！
+我也改变，你也改变！
+我（要）改（变）这（个）世（界）！
+我（要）改（变）这（个）世（界）！
+会到来！会到来！
+
+[Outro | 4 bars, drums and guitars end on a final power chord, a crowd cheer rises and fades, instrumental only]
+[End]

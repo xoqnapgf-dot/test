@@ -1,0 +1,76 @@
+#id: 070
+#slug: kirenaide
+#title: 切れないで
+#title-note: 原稿无标题，取自副歌首句，暂定此名，可自行改。
+#album: 歌词2
+#lang: Japanese
+#orig: f2:2590-2639
+#vocal: Female
+#model: v6
+#weirdness: 40
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 104
+#length: about 3:50
+#note: 原稿的内部提示词写得很清楚（贝斯在前、克制的人声叠录、故障点缀、Bridge 近耳语），已保留意图并细化；最后一遍副歌末句与前两遍不同（「私はいる」），在标签里写明。
+#note: 歌词是 4 行短句 + 全角空格断句，全角空格已改成「、」。
+--- STYLE
+Bass-forward minimal dark pop at 104 BPM in D minor, sung in Japanese. A low female vocalist sings intimate and detached, close to the microphone with a slight tremble, restrained in the verses and chorus with a quiet double on the key line, and near a whisper in the bridge. A dry punchy bass riff leads the song, tight dry drums stay minimal, sparse glitch accents flicker in the instrumental break, and a faint synth pad hangs in the chorus. Quiet, lonely mood of a woman coming home after the last train, listening to an answering machine that cuts off at a name, waiting for a reply that stays silent. Ends on the bass riff alone as the vocal fades. Dry, close, vocal-forward mix with a strong low end.
+--- EXCLUDE
+male lead vocal, English vocals, ballad with piano, acoustic folk, country, EDM drop, trap hi-hats, heavy distortion, orchestral strings
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, instrumental, a bass riff and dry drums, a faint room tone, instrumental only]
+
+[Verse 1 | low female voice, intimate and detached, bass and dry drums, a breath after every line, slightly behind the beat]
+終電のあと、鍵を回す、
+濡れた上着を、床に落とす、
+留守電だけが、まだやさしい、
+名前のところで、音が切れる。
+
+[Pre-Chorus | voice a little firmer, the bass climbs, drums tighten]
+壁の向こうで、水が流れる、
+返事の代わりに、胸が鳴る。
+
+[Chorus | the bass upfront, a restrained vocal doubling, long held line endings, a faint pad]
+切れないで、切れないで、
+返事のない夜を、つないで、
+冷たいままで、そばにいて、
+声が消えても、胸は鳴る。
+
+[Instrumental Break | 8 bars, bass-led, sparse glitch accents, drums minimal, instrumental only]
+
+[Verse 2 | the same bass and drums, the voice a little closer and more tired]
+午前四時半、シャツが乾く、
+冷蔵庫だけが、低くうなる、
+書きかけの文字、ひとつ消して、
+何も送らず、朝を待つ。
+
+[Pre-Chorus | voice a little firmer, the bass climbs]
+壁の向こうは、もう静かで、
+私の中だけ、鳴りやまない。
+
+[Chorus | same as the first chorus, a little fuller, same melody]
+切れないで、切れないで、
+返事のない夜を、つないで、
+冷たいままで、そばにいて、
+声が消えても、胸は鳴る。
+
+[Bridge | near-whisper, a bass pulse only, the drums pull back, a pause after each line]
+壊れたのは、電話じゃない、
+わかってるから、言わないで、
+あなたの声を、止めたあとも、
+床の震えは、消えなかった。
+
+[Final Chorus | full rhythm section, the same bass hook, the voice a little stronger, the last line changes and is sung slowly]
+切れないで、切れないで、
+返事のない夜を、つないで、
+冷たいままで、そばにいて、
+声が消えても、私はいる。
+
+[Outro | the bass riff alone, the vocal fades, the two lines are spoken softly with a pause between them]
+応答はない、
+それでも、ここにいる。
+[End]

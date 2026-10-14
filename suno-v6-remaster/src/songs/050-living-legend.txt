@@ -1,0 +1,135 @@
+#id: 050
+#slug: living-legend
+#title: 活着的传奇
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:936-1056
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 94
+#length: about 5:00
+#note: 全集里最长最密的 rap。原稿的多个标签叠在一起且内容为空（[verse][fast rap chop][bridge][drop][Chorus]），已合并为 "具体的 chop 间奏 + 有词的 Chorus"；[instrument music][dj trap speedcore] 写成具体的 8 小节 speedcore 间奏。
+#note: 抢拍处理：每行 14-17 字的长句按 7+7 加逗号换气；在回文/对仗最密的 verse 里，用行内 [Silence] 代替每隔一行的逗号（行内 [Silence] 前不放标点）；每 2 行空一行。
+#note: 女声段落（Hook / Chorus / Bridge）用 Style 里的 "a female singer takes the hooks" 来锁，歌词里用 [Female Vocal] 提示；原稿标签里的 [female voice] 保留意图。
+#note: Vocal Gender 选 Male 是为了锁定主 rap；女声 hook 靠 Style 里的 female singer 和歌词标签 [Female Vocal] 实现。若整首被唱成同一个声音，就把 Vocal Gender 留空再试。
+#note: 末尾那两大段无标签的 rap 草稿（文件2 第 1635-1736 行）是同一首的素材，未纳入，见 skipped 说明。
+--- STYLE
+Chinese rap showcase with trap, speedcore and melodic hooks at 94 BPM in F minor, rapped in Mandarin Chinese. A male rapper delivers a sharp, confident, rhythmically intricate flow with clear breaths between phrases and tight internal rhymes, while a female singer takes the hooks, clear and cool with a slight vibrato, doubling the last words of each line. A heavy 808 bass, crisp hi-hat rolls and a dark piano loop carry the verses, the hooks add a wide pad and a melodic lead, and the instrumental sections break into a fast speedcore DJ trap beat with chopped vocal samples. Arrogant, brilliant mood of a rap machine crushing rivals with wordplay, palindromes and flawless rhyme. Ends on a chopped sample and a final 808 hit. Punchy, clear, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, ballad, acoustic folk, orchestral strings, country, comedy, autotune, heavy metal
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a dark piano loop, a hi-hat roll starts, a heavy 808 enters on bar five, a chopped vocal sample on the last bar, instrumental only]
+
+[Spoken Word | cocky confident spoken-rap, piano and 808, a clear breath after every line, slightly behind the beat]
+不瞒你说，
+跟这些人，那是话不投机半句多，
+肾虚的小子，身单力薄又不甘寂寞，
+意淫拉满，实战熄火的居多，
+
+唯有我，看万余座青山，又晨观碧波，
+把hater们打到身残体弱，迷糊到不分敌我，
+他们自食其果，难自圆其说，
+他们后院起火，死得其所，
+
+我富可敌国，verse干净利落，
+每个词精雕细琢，把对手逐个击破，
+按理说，我这段押韵不算利索，
+但为何他们依然东闪西躲。
+
+[Hook | Female Vocal, clear cool melodic voice, doubling the line endings, wide pad and a melodic lead enter, the 808 steady]
+灵感像舔狗缠着我，黏住我怎么都不松口，
+我的歌吸住全球人眼球，他们都争相研究，
+押韵像电流，而那箭头从你肩头流到咽喉，
+闻道有先后，我一个念头你们联手来献丑，
+我获取作弊秘籍，自动把汉字编码，
+无数认输的废逼们，被我再次践踏，
+或许你说这才两句，也配算是连押，
+我厚米相继列队，让你被干死全家。
+
+[Verse 1 | male rapper, sharp and fast but with clear breaths, 808 and hi-hat rolls, every second line ends with a short silence]
+这是特质的隔世的歌词 [Silence]
+可是惹事实在不合适，
+自以为是的小丑，不过是可笑的乐子 [Silence]
+让我立即起立，将他们一击击毙，
+我是说唱的机器，押韵的技艺太过离奇 [Silence]
+昔日的荣耀，深思到通宵，
+开天辟地，破碎失败者的童谣。
+
+[Chorus | Female Vocal, cool anthemic melody, wide pad, 808 and kick steady, each long line is sung in two halves with a breath in the middle]
+陪你整夜看街头的，霓虹闪烁不定，
+为你哽咽叹邂逅的，迷宫探索不停，
+回忆冷冽盼携手的，悸动散落无形，
+醉意生灭伴解愁的，迷踪穿梭孤影，
+退避更迭寒街头的，时空穿梭无境，
+褪去冷冽换协奏的，虚空闪躲不行，
+碎语风冽叹别后的，悸动斑驳孤零，
+坠地风冽斩孽咒的，凄恐闪过无形，
+随笔誊写残页轴的，虚荣勘破孤星，
+对弈正邪盼解救的，遗踪看破无名，
+废弃冷铁翻窃走的，机控探索不明，
+会议整夜翻写愁的，疲痛看破无情。
+
+[Verse 2 | male rapper, wordplay and palindromes, tighter and faster, a short silence after every second line, pairs of lines separated by air]
+回文和我偶遇殊途同路后人归文回 [Silence]
+对称的结构黑特们看了也真会称对，
+倍增的节奏和词句要继续成倍增倍 [Silence]
+对准开炮谁跳脚谁知我的针对准对，
+
+背身太多名利我停下因为准备身背 [Silence]
+水温得烫不能加冰否则会混为温水，
+水浑太久没法回头清流也沦为浑水 [Silence]
+睡昏的人叫不醒因为他们沉醉昏睡，
+
+美人尊贵珍贵的原因纯粹仍为人美 [Silence]
+北门砸场来的挑战者趁早滚回门北，
+类人动物被我粉碎还想要成为人类 [Silence]
+鬼神受赂却不投入就不配尊为神鬼。
+
+[Drop | 4 bars, instrumental only, a fast rap chop beat with chopped vocal samples, hi-hats rolling, sub bass pulsing, a short riser into the chorus]
+
+[Chorus | shouted hook, a fast chopped delivery, the beat slams in on every downbeat, the last two lines are sung long by the female voice]
+chop永不会stop，
+drop从不会pop，
+跟着困难和痴呆的未来，这恋爱里已经陷入了爱河的奔窜迷茫者，
+趁着混乱的时代和悲哀的现在，你历经艰苦的改革可仍然迷航着，
+欺骗了世界里一生孤独的诗人，
+纪念着事业里牺牲无数的痴人。
+
+[Verse 3 | male rapper, fast rap with a trap melody, a gritty story told in a plain flat voice, 808 and sparse hi-hats, a breath after every line]
+何某走出看守所，逗留在贺州偏僻恶臭的街口，
+可手勾住裤兜搜索只凑够建议自己喝粥的借口，
+热流透入他收缩的喉头，他旋即去低着头咳嗽，
+呃，右手扶住肉粥的碗，得，念起这首歌，又，
+和后头出售牛肉的老刘头点起烟喝酒，来抽口，
+
+可求人这么久，渴求成了奢求。
+
+[Bridge | Female Vocal, defiant and clear, building intensity, the beat pauses between each line for half a beat]
+我把思想化作武器，打出独立战术击打细节，
+剥开荒谬怪诞外衣，展现无敌幻术启发异界，
+绝不屈服任何权威，不向奴役叛徒抵达地界，
+重塑这片精神废墟，我要处理乱木激发气节，
+颠覆那些刻板印象，打破物理算术劈叉历劫，
+拆穿虚假和平假象，直面故意犯怵击杀异业，
+斩断那些利益链条，拒绝宿敌赞助批发闭结，
+用这文字燃起大火，照亮骨气散布洗刷历届。
+
+[Instrumental Break | 8 bars, a DJ trap speedcore section, blast-beat hi-hats, distorted 808 slides and chopped voice samples, instrumental only]
+
+[Verse 4 | male rapper, fast chop rap, the beat is stripped to 808 and a snare, a short silence after every second line, the last line is spat slowly]
+再次开始跟着这拍子，
+白痴成了不吭声的摆设 [Silence]
+坏事的孩子迟早被自己害死，
+还不趁早拜师对我感恩怀德 [Silence]
+踩死了矮子摆直了呆子，崽子得拜赐。
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then 808 and the full beat slam in, vocals rest]
+
+[Outro | 8 bars, instrumental only, the fast beat falls away, the dark piano loop plays alone, a chopped sample, a final 808 hit]
+[End]

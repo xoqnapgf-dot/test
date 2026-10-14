@@ -1,0 +1,89 @@
+#id: 040
+#slug: qiansixi
+#title: 牵丝戏
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:113-163
+#vocal: Female
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 72
+#length: about 4:40
+#note: 原稿没有任何结构标签，只有按空行分的 8 个小段；我按歌词内容推断为：Verse 1（1-2 段）→ Pre-Chorus（3 段）→ Chorus（4 段，高潮句「终得你允诺」）→ Verse 2（5-6 段）→ Chorus（7 段）→ Final Chorus（8 段，与第 7 段完全相同）。不对就改标签，文字不用动。
+#note: 行中的空格（如「可其实 皆不过虚妄」）改成逗号做呼吸点；这是慢歌，BPM 72，不需要 [Silence]。
+--- STYLE
+Elegant Chinese-style (guofeng) pop ballad at 72 BPM in A minor, sung in Mandarin Chinese. A female voice sings delicate, silvery and emotional, with a slow shimmer of vibrato at the ends of phrases, soft and breathy in the verses and opening into a luminous, sustained chorus with layered harmonies. A plucked guzheng and a soft pipa carry the verses over a warm pad, an erhu line sings between phrases, a gentle kick and a deep bass enter in the chorus, and a string section and a distant choir swell around the vocal. Wistful, romantic and cosmic mood of stealing fire from the afterlife, starlight, falling galaxies and a love song that echoes forever. Ends on the guzheng alone with a long shimmering note. Spacious, polished, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, male lead vocal, screaming, comedy
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a plucked guzheng alone, a soft pipa answers on bar three, a warm pad breathes in on bar five, instrumental only]
+
+[Verse 1 | part 1 of 2, delicate breathy female voice, guzheng and pad only, one breath per line, slightly behind the beat]
+散光的眼看向你，
+光团就这样凝聚，
+若星云倾覆，
+银河落下一场雨，
+已不知思念向哪去。
+
+[Verse 1 | part 2 of 2, same voice, pipa joins, erhu answers after every second line]
+星辰在拙劣模仿，
+你那闪动的眸光，
+大海同样卑劣，
+借鉴它们的浩荡，
+可其实，皆不过虚妄。
+
+[Pre-Chorus | voice lifts and glows, erhu holds a long note, a soft kick begins, one breath between lines]
+圣洁绽放的光，
+洗涤尘世污会，
+抚慰我心驱散了伤悲，
+炽热充盈人间，
+我紧随足迹独追，
+无所谓身后谁与谁。
+
+[Chorus | luminous sustained voice, strings and a distant choir swell, deep bass and gentle kick steady, line endings held long]
+窃一束轮回后的火，
+终焉相逢，话语半柔懦，
+天地借由你的瞳色，
+染漫天暗淡星座，
+刹那与永恒，终得你允诺。
+
+[Verse 2 | part 1 of 2, back to the delicate voice, guzheng and pad, a little more tender, slow and still]
+你心火温热流淌，
+润泽干涸与荒芜，
+融化了冰山，
+众神心伤再哭诉，
+待回首，不见来时路。
+
+[Verse 2 | part 2 of 2, same voice, pipa and erhu, the last line fades to a whisper]
+无穷概率之间，
+不可达的领域，
+唱一首独自啜泣的曲，
+枯萎的夕阳在，
+望霞光追你而去，
+无需诺言亦不语。
+
+[Chorus | the new words, voice wide and bright, strings and choir at full, deep bass steady, line endings held long]
+若是思念存在能量，
+创世之声，将不息回荡，
+再多说一句情话吧，
+是否会凋零成殇，
+任星海坠落，
+再伴你身旁。
+
+[Drop | 2 bars, strings and choir swell and cut to one beat of full silence, then the full ensemble lands together, vocals rest]
+
+[Final Chorus | strongest version, voice luminous and aching, stacked harmonies, full ensemble, same melody as the previous chorus]
+若是思念存在能量，
+创世之声，将不息回荡，
+再多说一句情话吧，
+是否会凋零成殇，
+任星海坠落，
+再伴你身旁。
+
+[Outro | 8 bars, strings and choir fall away, guzheng plays the intro motif alone, one long shimmering note, then silence, instrumental only]
+[End]

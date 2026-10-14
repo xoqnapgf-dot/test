@@ -1,0 +1,109 @@
+#id: 043
+#slug: me
+#title: ME
+#album: 歌词2
+#lang: English
+#orig: f2:284-360
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 132
+#length: about 4:00
+#note: Verse 1 有 16 行、副歌有 16 行（四组 Look at me / Ask me / Hear me / Face me），都已拆成小节；「(No!)」「(Aaaahhhh!)」「(Waoo!! Aaahhh!!)」「(It's me, it's me)」是句间的喊叫与应答，保持独立成行。
+#note: 含粗口（fucking），按原稿保留；若平台拒收，可在歌词精修里只换这一个词，其余不动。
+#note: 每个副歌小组的第一句是单词喊叫（Look at me! 等），在标签里要求"先喊，半拍后再进入主句"，防止四组黏在一起。
+--- STYLE
+Furious alt-metal with hardcore shouts and a rapped-shouted verse delivery at 132 BPM in C minor, sung in English. A male vocalist spits the verses in a hoarse, gritty, half-spoken rage, then screams and sings the chorus with a ragged, sustained, tormented voice and gang vocals shouting the command words. Down-tuned chugging guitars, a pounding bass and heavy live drums carry the verses, a screaming lead guitar flares between lines, and the chorus adds wide distorted chords, crash cymbals and a wall of crowd shouts. Raw, unhinged mood of someone tearing open his own cold core and declaring himself the ruler of his own world. Ends on a final guitar chord with feedback. Punchy, aggressive, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, acoustic folk, country, EDM drop, trap hi-hats, lo-fi, smooth jazz, comedy, autotune
+--- LYRICS
+[Intro | 8 bars, a down-tuned guitar riff builds over feedback, a pounding bass joins, heavy drums crash in on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 2, hoarse gritty half-spoken male rage, guitar chug and bass, drums tight, a clear breath after every line, slightly behind the beat]
+Who am I, where do I stand?
+This is the core question, the answer I demand,
+What am I saying, what am I doing?
+I don't know, I want to find out, pursuing,
+Look deep within my heart, tear open the cold core.
+(No!)
+Why does lava pour?
+Who locked my soul in a cage?
+Who sealed my wounds on this stage?
+
+[Verse 1 | part 2 of 2, same voice but louder and angrier, drums double-time, every shout lands on the beat with half a beat of air after it]
+Never lose my freedom, never compromise!
+Go mad! Make the world fear! Make towers rise in fire!
+Destroy all prosperity, seize your flowers and trees!
+I declare myself the ruler! Drop your ignorance, your fixed beliefs,
+I will behead you!
+Do you hear?
+(Aaaahhhh!)
+
+[Chorus | part 1 of 2, screamed and sustained ragged voice, wide distorted chords, gang vocals shout the first word of each group, a half beat of silence after each shout]
+Look at me!
+Is my face twisted like a ghoul?
+Are my eyes evil like Satan's cruel?
+I howl at the sunset, ending old world's hope, so cool!
+
+Ask me!
+How much more blood can I still spill?
+How many more tears can I instill?
+Rain veils the pain, I taste death's bitter thrill!
+
+[Chorus | part 2 of 2, same intensity, crash cymbals on every shout word, the voice cracks upward on the last lines]
+Hear me!
+My hoarse voice spews blood, a vivid scene!
+Crying in agony or laughing keen?!
+Piercing your eardrums, then reaching your brain's core, unseen!
+
+Face me!
+My bones protrude, sharp and spiky, oh so grim!
+Bursting and exploding down to every cell's whim!
+Invading your dreams, becoming your nightmare, grim!
+
+[Verse 2 | rapped-shouted again, guitar chug and bass, drums double-time, the bracketed words are crowd answers shouted just after the line]
+Take off the guitar strings, to strangle you tight,
+My guitar's my sword, rebels all die in this fight!
+The stars will shine for me, the gods will yield to my might!
+Time reverses, I detonate the universe, burning bright!
+Turn seas upside down, the Earth trembles in fright!
+(Waoo!! Aaahhh!!)
+This is me, this is me,
+(It's me, it's me)
+Don't you fucking advance!
+Waaah, wayaya,
+And don't you surrender!
+Ow!
+You know me!
+Ah!
+You know... me!
+
+[Drop | 2 bars, everything cuts to one beat of full silence with only feedback, then the full band slams in together, vocals rest]
+
+[Final Chorus | part 1 of 2, strongest version, screamed at full power, gang vocals at full volume, same melody as the first chorus]
+Look at me!
+Is my face twisted like a ghoul?
+Are my eyes evil like Satan's cruel?
+I howl at the sunset, ending old world's hope, so cool!
+
+Ask me!
+How much more blood can I still spill?
+How many more tears can I instill?
+Rain veils the pain, I taste death's bitter thrill!
+
+[Final Chorus | part 2 of 2, same full power, the final lines are screamed and held]
+Hear me!
+My hoarse voice spews blood, a vivid scene!
+Crying in agony or laughing keen?!
+Piercing your eardrums, then reaching your brain's core, unseen!
+
+Face me!
+My bones protrude, sharp and spiky, oh so grim!
+Bursting and exploding down to every cell's whim!
+Invading your dreams, becoming your nightmare, grim!
+
+[Outro | 8 bars, drums stop, one huge guitar chord rings out with feedback and fades, instrumental only]
+[End]

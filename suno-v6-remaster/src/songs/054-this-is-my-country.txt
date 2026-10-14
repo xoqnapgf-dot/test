@@ -1,0 +1,62 @@
+#id: 054
+#slug: this-is-my-country
+#title: This Is My Country
+#title-note: 原稿无标题，取自副歌末句「This is my country, yeah, this is my nation.」，暂定此名。
+#album: 歌词2
+#lang: English
+#orig: f2:1217-1254
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 90
+#length: about 3:20
+#note: 原稿 8 行 verse 全以 "This nation / land / country…" 排比开头，容易被唱成机械的同一腔调；标签里分别要求"每行首词重音、行尾下沉"，并在行间留气口。
+#note: 副歌第四行与 verse 末行相同，保持原文，不做合并。
+--- STYLE
+Gritty protest hip-hop with a soulful hook at 90 BPM in C minor, rapped and sung in English. A male rapper delivers a stern, weary, clear flow in the verses with weight on the first word of each line, then sings the chorus in a rough, aching, sustained voice with a few gang voices behind. A dusty boom-bap kick and snare, a slow soul guitar line and a deep warm bass carry the verses, a lonely trumpet plays long notes between phrases, and the chorus adds a gospel-like organ, a wide pad and stacked harmonies. Bitter, serious mood of a nation of gunshots, medical bills, money in the halls and empty slogans. Ends on the lonely trumpet fading. Raw, warm, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad only piano, EDM drop, trap hi-hats, country, heavy metal, comedy, autotune, upbeat pop
+--- LYRICS
+[Intro | 8 bars, a slow soul guitar line, a lonely trumpet plays a long phrase, a dusty kick and snare enter on bar five, instrumental only]
+
+[Verse 1 | stern weary rapped voice, weight on the first word of each line and a falling tone at the end, guitar, bass and drums, a breath after every line, slightly behind the beat]
+This nation, where gunshots blast, a deadly narration,
+This land, where healthcare bills are walls, causing deep lamentation.
+This country, where cash rules the halls, shaping all legislation,
+This realm, where freedom's a claim, a faded illusion.
+
+This state, where empty words are praised, concealing desperation,
+This ground, where the poor are shamed, a bitter conclusion.
+This age, where old dreams are tamed, lost in ruination.
+This is my country, yeah, this is my nation.
+
+[Chorus | rough aching sustained sung voice, organ and wide pad enter, stacked harmonies, gang voices on the last line, long held line endings]
+This nation, where promises are lies, and power's a wild prize,
+This land, where façades hide despair, beneath deceptive skies.
+This country, shouting "Liberty!", but never hearing cries,
+This is my country, yeah, this is my nation.
+
+[Verse 2 | back to the stern weary rap, guitar, bass and drums, a little more angry, a breath after every line]
+Yo, this state, where two parties clash, in endless frustration,
+This realm, where racial lines are drawn, causing degradation.
+This land, where the homeless sleep rough, beneath towers of elevation,
+This country, waving big sticks abroad, internal devastation.
+
+This nation, where news is spun, a filtered explanation,
+This ground, where heroes bleed out, for corporate accumulation.
+This age, where grand slogans stun, masking deep lamentation.
+This is my country, yeah, this is my nation.
+
+[Drop | 2 bars, everything cuts to one beat of full silence with only the trumpet, then drums, organ and bass come back together, vocals rest]
+
+[Final Chorus | strongest version, voice rough and wide, gang voices louder, same melody as the first chorus]
+This nation, where promises are lies, and power's a wild prize,
+This land, where façades hide despair, beneath deceptive skies.
+This country, shouting "Liberty!", but never hearing cries,
+This is my country, yeah, this is my nation.
+
+[Outro | 8 bars, drums and organ fall away, the soul guitar plays alone, the lonely trumpet holds a long note and fades, instrumental only]
+[End]

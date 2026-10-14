@@ -1,0 +1,68 @@
+#id: 001
+#slug: ryu-no-uta
+#title: 龍の歌
+#album: 《梦》
+#lang: Japanese
+#orig: f1:5-39
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 132
+#length: about 3:30
+#note: 原稿没有 intro/outro 标签，已补；第二段 [Verse] 改为 Verse 2/3 编号，两遍副歌文字完全一致以鼓励旋律重复。
+#note: 刃 可能被读成 は 或 やいば；若读错，用 v6 歌词精修只替换那一个词，不要整首重抽。
+#note: 每个主歌 4 行、副歌 4 行，音节数在 7-11 之间，132 BPM 下不会挤；副歌前加了 [Break] 给歌手换气。
+--- STYLE
+Epic Japanese symphonic power metal with folk touches at 132 BPM in D minor. A powerful male tenor sings in Japanese, low and restrained in the verses, then heroic and open-throated in the chorus, holding the last note of every line. Palm-muted rhythm guitars and double-kick drums drive the verses, taiko drums and a low shakuhachi answer the vocal phrases, and in the chorus a male choir, twin lead guitars and a string orchestra open wide. Dark mythic mood of a dragon crying over night mountains, bittersweet yet triumphant. The song ends on a held vocal note and one final taiko hit. Polished wide stereo mix, vocal-forward balance.
+--- EXCLUDE
+English vocals, female lead vocal, rap, autotune, EDM drop, trap hi-hats, acoustic ballad, lo-fi, children choir, spoken intro, reggae
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, low taiko heartbeat and a distant shakuhachi over a cold wind drone, then strings swell upward, instrumental only]
+
+[Verse 1 | male lead, low and restrained, slightly behind the beat, one breath per line, palm-muted guitars and taiko only]
+龍が叫ぶ夜の空、
+古き闇に夢が溶ける、
+刃の響き時を裂いて、
+魂叫ぶ白い月。
+
+[Verse 2 | same voice a little brighter, snare and bass enter, shakuhachi answers after every second line]
+山河の音風が運ぶ、
+戦士たちの悲しい歌、
+昨日の影背負いながら、
+未来に進む赤い目。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | full heroic voice, open vowels held at line ends, male choir doubles the lead, twin guitars and strings soar, taiko on every downbeat]
+龍の翼広げ、
+星屑舞い上がる、
+不滅の魂よ、
+永遠に響け。
+
+[Verse 3 | back to the restrained lead, double-kick drums enter, tension climbing, strings in long notes]
+川の流れ永遠に続く、
+命の歌草を揺らす、
+金属の響き夜を照らし、
+心震える古き夢。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | even bigger than before, lead belts the high notes, choir and guitars in harmony, same melody as the first chorus]
+龍の翼広げ、
+星屑舞い上がる、
+不滅の魂よ、
+永遠に響け。
+
+[Bridge | half-time feel, drums drop out, lead almost spoken then rising, blades of guitar tremolo, one long crescendo]
+刃の光影を裂く、
+鼓動響く地平の先、
+夢と現実交わる時、
+龍の歌が未来を描く。
+
+[Outro | 8 bars, full band and choir ring out, guitars fade first, strings hold a chord, last taiko hit, then silence]
+[End]

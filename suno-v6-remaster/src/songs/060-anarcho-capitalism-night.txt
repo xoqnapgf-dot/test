@@ -1,0 +1,105 @@
+#id: 060
+#slug: anarcho-capitalism-night
+#title: アナーコ・キャピタリズムの夜
+#album: 歌词2
+#lang: Japanese
+#orig: f2:1544-1630
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 130
+#length: about 4:30
+#note: 原稿的内部提示词（旋律贝斯起、冷鼓、回授吉他、flange 贝斯独奏、失谐吉他、高音 delay 吉他独奏、脉动贝斯淡出）已很完整，保留并改写为「段落 | 指示」格式；其中夹在 Bridge 里的 [Bass solo][Guitar becomes more dissonant] 拆成独立的间奏小节。
+#note: 日文歌词的行尾加了「、」「。」，没有改任何假名或汉字；难读词：自己所有(じこしょゆう)、非侵害(ひしんがい)、不換紙幣(ふかんしへい)。读错用歌词精修只替换这一个词。
+--- STYLE
+Cold driving post-punk at 130 BPM in E minor, sung in Japanese. A male vocalist sings deadpan and detached in the verses, almost spoken, then in the chorus rises to a clear, defiant, sustained voice with a distant layered double. A driving melodic bass guitar with a chorus effect carries the whole song, a cold repetitive drum beat keeps a steady motorik pulse, an echoing guitar with feedback and sharp angular stabs rides on top, and the chorus adds wider guitars, a bright cold synth line and a heavier kick. Rational, rebellious, nocturnal mood of a free individual who owns his own body and signs contracts at the bottom of the night. Ends with the pulsating bass fading out alone. Cold, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, English vocals, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, orchestral strings
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, a driving melodic bass guitar starts, a cold repetitive drum beat joins on bar three, echoing guitar feedback rises on bar five, instrumental only]
+
+[Verse 1 | deadpan detached male voice, almost spoken, bass and cold drums, a breath after every line, slightly behind the beat]
+静まり返った都市の境界、
+引かれた線は誰の所有か、
+許可証など破り捨てて、
+夜の底で契約を結ぶ、
+錆びついた公権力の残像、
+霧の中に消えていく亡霊、
+私たちが選ぶのは、
+見知らぬ誰かの命令ではない。
+
+[Pre-Chorus | voice a little firmer, the bass climbs, drums tighten, guitar stabs sharper]
+奪われた価値を取り戻す、
+不可侵の領域を定義する、
+自己所有の絶対的な法、
+静かに脈打つ市場の鼓動。
+
+[Chorus | clear defiant sustained voice, a distant layered double, wider guitars and a bright cold synth, heavier kick, long held line endings]
+アナーコ・キャピタリズムの夜、
+非侵害原則が導く道標、
+国家という名の鎖を断ち、
+自発的秩序の中に踊る、
+価格は自由の呼吸、
+契約は魂の証、
+境界を越えて響く、
+私という名の唯一の王国。
+
+[Verse 2 | back to the deadpan voice, bass and cold drums, guitar feedback quieter, colder]
+独占された暴力の終焉、
+私設の警備が街を守る、
+道路も空も海もすべて、
+個人の意志で繋がり合う、
+不換紙幣はただの紙屑、
+黄金と暗号が価値を刻む、
+寄生する者たちの叫びは、
+冷たい風に掻き消された。
+
+[Pre-Chorus | same as before, voice firmer, the bass climbs]
+奪われた価値を取り戻す、
+不可侵の領域を定義する、
+自己所有の絶対的な法、
+静かに脈打つ市場の鼓動。
+
+[Chorus | stronger and wider than the first, same melody as the first chorus]
+アナーコ・キャピタリズムの夜、
+非侵害原則が導く道標、
+国家という名の鎖を断ち、
+自発的秩序の中に踊る、
+価格は自由の呼吸、
+契約は魂の証、
+境界を越えて響く、
+私という名の唯一の王国。
+
+[Instrumental Break | 8 bars, a bass solo with a heavy flange effect over minimal drums, then the guitar becomes more dissonant and bends against the bass, vocals rest]
+
+[Bridge | stripped down, bass and drums only, the voice firm and spoken-sung, a pause after each pair of lines]
+誰にも支配させない、
+私の体は私の資本、
+誰にも強制させない、
+私の労働は私の果実、
+自律した個人の集合体、
+美しき無秩序の秩序。
+
+[Guitar Solo | 8 bars, high-pitched sharp melodic guitar lines with heavy delay over the driving bass and drums, vocals rest]
+
+[Final Chorus | strongest version, voice wide and defiant, distant double louder, full band, same melody as the first chorus]
+アナーコ・キャピタリズムの夜、
+非侵害原則が導く道標、
+国家という名の鎖を断ち、
+自発的秩序の中に踊る、
+価格は自由の呼吸、
+契約は魂の証、
+境界を越えて響く、
+私という名の唯一の王国。
+
+[Outro | the voice slows and cools, each line spoken with a long pause between them, the drums fall away and the pulsating bass plays on alone and fades out]
+自由への不可逆な選択、
+税という名の収奪を拒み、
+私たちは夜を買い取る、
+朝が来るまで取引は続く。
+[End]

@@ -1,0 +1,97 @@
+#id: 005
+#slug: huakuang
+#title: 画框
+#album: 《书中书》
+#lang: Mandarin
+#orig: f1:203-271
+#vocal: Female
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 76
+#length: about 3:40
+#note: 「（嗯……）」是接在主唱后面的顺序应答，保持独立成行；bridge 的「画框/（禁锢了我）」同理是一问一答，没有合并成一行。
+#note: 原稿 [drop] 改成明确的静默一拍 + 全乐队进入；最后一遍 Chorus 标为 Final Chorus。
+#note: 可能读错：着(zhe)、还(hái)、落(luò)；读错就用歌词精修只换那个字的同音字。
+--- STYLE
+Dark chamber art-pop with a slow trip-hop beat at 76 BPM in C minor, sung in Mandarin Chinese. A female alto sings low and dreamy, close to the microphone, half-whispered in the verses and opening into a fuller, slightly bitter voice in the chorus, with a hummed second voice answering her phrases. A prepared piano and a low cello carry the verses, a dusty brushed kick and snare fade in under the bridge, and the chorus adds warm sub bass, a wide string pad and a sharp cymbal swell. Eerie, elegant and claustrophobic mood of a world locked inside a picture frame, wet paint and an endless night. Ends on the piano with one last cello note. Vocal-forward mix with deep reverb.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, heavy distortion, upbeat dance beat, autotune, children choir, male lead vocal
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, prepared piano and a low cello, a soft paintbrush-scratch texture, brushed trip-hop beat fades in on bar five, instrumental only]
+
+[Verse 1 | female alto, low and dreamy, close-mic, piano and cello only, one breath per line, slightly behind the beat, parenthesized lines are quiet hummed answers]
+画框禁锢着一个世界，
+一个虚幻而不可触及的世界，
+桌上的颜料是鲜红的血，
+画布的恶臭盖过世间的一切。
+（嗯……）
+
+画框拥抱着一个世界，
+一个梦幻而又温暖的世界，
+它不会在末日里毁灭，
+也不会在现实里破裂。
+（嗯……）
+
+[Bridge | stripped down, a call and answer: the lead sings the single word and a soft layered voice answers in the parenthesized line, brushed beat only]
+画框，
+（禁锢了我）
+画笔，
+（涂抹着我）
+请你，
+（擦去了我）
+还要，
+（着色了我）
+
+[Chorus | fuller bitter voice, warm sub bass and string pad enter, kick and snare steady, cello answers after each pair of lines, line endings held]
+画中的人儿想出来，
+画外的人儿门不开，
+你在画中耍无赖，
+我在画外称精彩。
+
+画中的你们恩恩爱爱，
+画外的我们相互加害，
+他在画中认了栽，
+她在画外落了败。
+
+[Verse 2 | back to the hushed voice, piano and cello, a little more tense, parenthesized lines are quiet hummed answers]
+画框品尝着一个世界，
+世界懦弱地磕头拜谢，
+蓝色的幻景在眼前重叠，
+精灵问我他们是否体贴。
+（嗯……）
+
+画框勒索了一个世界，
+还有一个不会黯淡的夜，
+人们哭泣狂欢着道别，
+用笔画下自己的罪孽。
+
+[Bridge | stripped down, same call and answer as before, brushed beat only, slightly louder]
+画框，
+（禁锢了我）
+画笔，
+（涂抹着我）
+请你，
+（擦去了我）
+还要，
+（着色了我）
+
+[Drop | 2 bars, cymbal swell and filtered strings, one beat of full silence, then the whole band and strings land together, vocals rest]
+
+[Final Chorus | strongest version, voice wide and bitter, doubled by a whispered layer, strings and sub bass at full power, same melody as the first chorus]
+画中的人儿想出来，
+画外的人儿门不开，
+你在画中耍无赖，
+我在画外称精彩。
+
+画中的你们恩恩爱爱，
+画外的我们相互加害，
+他在画中认了栽，
+她在画外落了败。
+
+[Outro | 8 bars, strings fall away, piano repeats the intro motif alone, one last low cello note, then silence, instrumental only]
+[End]

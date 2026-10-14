@@ -1,0 +1,92 @@
+#id: 035
+#slug: look-out-the-window
+#title: look out the window
+#album: 《新世纪人类》
+#lang: English
+#orig: f1:2346-2408
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 120
+#length: about 4:10
+#note: 原稿 verse 里的 [instrument] [guitar solo] [instrument beating] 是插在主歌中间的器乐，已拆成"主歌上半 → 具体间奏 → 吉他独奏 → 主歌下半"，并写明每段内容和长度，避免被缩成两拍。
+#note: 「(Ah!)」「(No!)」「(Won't move!)」是句间的顺序喊叫，保持独立成行。含暴力意象，按原稿保留。
+--- STYLE
+Aggressive industrial alt-rock with nu-metal weight at 120 BPM in E minor, sung in English. A male vocalist sings with a cold, sneering, half-spoken voice in the verses, then roars and shouts the chorus with raw, sustained high notes and layered gang vocals. Down-tuned chugging guitars, a heavy bass, tight punchy drums and mechanical industrial percussion carry the verses, a screaming lead guitar plays solos between sections, a dark glitching synth drone hangs underneath, and the chorus adds wide distorted chords and crash cymbals. Furious, dystopian mood of factory smoke, a sleeping world behind a window and a stuck clock frozen in place. Ends on a broken clock tick and feedback. Punchy, dark, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, jazz, autotune
+--- LYRICS
+[Intro | 8 bars, a factory machine rumble, mechanical industrial percussion starts, a down-tuned guitar riff builds, full drums crash in on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 3, cold sneering half-spoken male voice, guitar chug and bass, mechanical percussion, a short breath after every line, slightly behind the beat]
+Look outside, the factory's thick smoke spreads wide,
+Hear the giant machines, their deafening cry,
+The Earth trembles in the roar, passing by,
+But inside the window, we still sleep, just doze by,
+Breathing black smog, tasting nuclear waste we defy,
+Your lungs, your heart, all stained by the dark dye,
+I'll tear your liver, your eyes, for the doomsday to nigh.
+
+[Instrumental Break | 4 bars, drums and bass hammer a heavy mechanical groove, the guitar chug drops out, a dark glitching synth rises, vocals rest]
+
+[Guitar Solo | 8 bars, a screaming lead guitar with heavy bends over the full band, ends on a held note that drops into the verse, vocals rest]
+
+[Verse 1 | part 2 of 3, back to the cold sneering voice, the band tight, more desperate]
+Listen now, children's screams fill the air,
+Their brains smeared on rainbows, beyond repair,
+Rubbles submerge the milk, a mother's despair,
+But I can't hear, don't understand, don't even care,
+I am inside the window, I'm not out there!
+(Ah!)
+
+[Chorus | roaring sustained voice, wide distorted chords, gang vocals shout the second half of each line, crash cymbals, the parenthesized shout is a single shouted answer]
+Look outside the window, what do you truly see?
+Look inside the window, what's left for me?
+Outside, a today that's fake, a false reality,
+Inside, a tomorrow twisted, struggling to be free,
+How much more blood can I still bleed?
+How many more tears can I retrieve?
+Reach out your hand, close the window, indeed,
+(No!)
+Pull back your hand, open the window, accede.
+
+[Verse 2 | part 1 of 3, back to the cold half-spoken voice, drums tight, a living-dead street crawling, darker]
+Look now, the streets filled with living dead,
+They have no thoughts inside their head,
+Devouring everything you once had, it is said,
+But I can't eat, can't lick, oh how I crave instead!
+Open your skull, let your mind be fed,
+Suck on the internet's tumor, widely spread!
+Sleep within a quantum computer's bed!
+
+[Guitar Solo | 8 bars, a second lead guitar solo, faster and more frantic than the first, over a heavy groove, vocals rest]
+
+[Instrumental Break | 4 bars, drums beat a heavy mechanical pattern, a clock ticking sound layered on top, bass drone, vocals rest]
+
+[Verse 2 | part 2 of 3, voice colder and more bitter, the clock tick stays in the background]
+Listen now, the clock goes tick-tock-tock,
+Haha, actually it's broken, what a shock,
+Why do you still trust the hourglass's lock?
+But I shake it, invert it, clean it, on the block,
+It just won't move!
+(Won't move!)
+Ah!
+
+[Drop | 2 bars, everything cuts to one beat of full silence with only the broken clock tick, then the full band slams in, vocals rest]
+
+[Final Chorus | strongest version, voice roaring at full power, gang vocals loud, same melody as the first chorus, the parenthesized shout is a single shouted answer]
+Look outside the window, what do you truly see?
+Look inside the window, what's left for me?
+Outside, a today that's fake, a false reality,
+Inside, a tomorrow twisted, struggling to be free,
+How much more blood can I still bleed?
+How many more tears can I retrieve?
+Reach out your hand, close the window, indeed,
+(No!)
+Pull back your hand, open the window, accede.
+
+[Outro | 8 bars, drums and guitars end on a final chord, feedback rings, a broken clock ticks and stops, instrumental only]
+[End]

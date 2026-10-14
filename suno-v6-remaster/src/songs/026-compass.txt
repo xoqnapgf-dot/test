@@ -1,0 +1,85 @@
+#id: 026
+#slug: compass
+#title: Compass
+#album: 《龙之说》
+#lang: English
+#orig: f1:1551-1608
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 104
+#length: about 4:00
+#note: 原稿末尾有两个 [Drop]：第一个后面带副歌，第二个是空的；现在合并成"副歌前重击"和"最终重击 + 尾奏"，副歌文字三遍完全一致。
+#note: 「(Ha ha...)」是句间的顺序笑声，保持独立成行，标签里注明是低沉的笑。
+--- STYLE
+Dark ritual rock with cinematic Eastern flavor at 104 BPM in A minor, sung in English. A male baritone sings low, solemn and prophetic in the verses, almost chanted, then wide, ancient and fierce in the chorus with a deep choir doubling the key lines. Deep ritual toms, a growling bass and a bowed erhu-like string carry the verses, crunchy detuned guitars and big reverb drums join in the chorus, and low brass swells and distant temple bells hang in the air. Solemn, dangerous mood of a dragon's compass leading souls through five elements toward an immortal curse. Ends on a single temple bell and a fading drone. Dark, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, upbeat pop, EDM drop, trap hi-hats, acoustic folk, country, comedy, rap verses, autotune
+--- LYRICS
+[Intro | 8 bars, a distant temple bell, deep ritual toms start slowly, a bowed erhu-like string wails, a low drone swells, instrumental only]
+
+[Verse 1 | part 1 of 2, low solemn baritone, almost chanted, toms and bowed string only, one breath per line, slightly behind the beat]
+The compass guides the way,
+Stars fall from skies today.
+This is the dragon's will,
+A prayer that's ancient, deep, and still.
+
+The needle leads us on,
+Light will chase away the dawn.
+A massive skeleton reborn,
+Flesh and bone will be restored.
+
+[Verse 1 | part 2 of 2, same voice, growling bass enters, tension climbing, low brass swells]
+Flying through the universe,
+Falling in the ocean's curse,
+All is silent, still below,
+All life bows down, in shadow's glow.
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | wide ancient fierce voice, detuned guitars and big reverb drums enter, deep choir doubles the first line of each pair, the parenthesized laugh is a low dark chuckle]
+Gold blocks divine thought,
+Wood locks the spirit, tightly caught.
+Water buries the soul,
+Fire burns the body whole.
+Earth hides the bones below,
+(Ha ha...)
+The curse of immortality echoes,
+The eternal flame forever grows.
+This is your end, your fate,
+This is where you meet your gate.
+
+[Verse 2 | back to the low chanting voice, toms and string, bass underneath, darker and more intimate]
+The compass is the hope to live,
+It steals each soul, it will give.
+The unknown legacy calls,
+But with a price, it’s not small.
+
+Circles sharp with edges wide,
+Piercing clouds, piercing pride.
+Endless rivers twist and wind,
+Sands and stones in depths combined.
+Pray, rest, let go,
+The whirlpool takes all, you know.
+
+[Drop | 2 bars, the bell rings once and everything cuts to one beat of full silence, then full band and choir slam in together, vocals rest]
+
+[Chorus | strongest version, voice wide and fierce, choir at full, drums and guitars at full power, same melody as the first chorus, the parenthesized laugh is a low dark chuckle]
+Gold blocks divine thought,
+Wood locks the spirit, tightly caught.
+Water buries the soul,
+Fire burns the body whole.
+Earth hides the bones below,
+(Ha ha...)
+The curse of immortality echoes,
+The eternal flame forever grows.
+This is your end, your fate,
+This is where you meet your gate.
+
+[Drop | 2 bars, one final huge hit with a long reverb tail, everything stops except the drone, vocals rest]
+
+[Outro | 8 bars, toms and guitars gone, bowed string and low drone only, one temple bell, then silence, instrumental only]
+[End]

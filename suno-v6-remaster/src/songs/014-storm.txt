@@ -1,0 +1,107 @@
+#id: 014
+#slug: storm
+#title: Storm
+#album: 《罪恶世界》
+#lang: English
+#orig: f1:812-889
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 150
+#length: about 3:20
+#note: 「Ah! / Wow! / Ha!」是夹在句子之间的顺序呐喊，保持独立成行；「I (Ah!)」这种行内括号保持原样。
+#note: Verse 2 后半是连续短喊叫，已拆成 part 1 / part 2 两个小节，part 2 标明"每个喊叫之间留半拍"，减少黏成一团。
+#note: 原稿 [Drop] 描述为空，现写成"风暴声急停一拍，再全员重击"。
+--- STYLE
+Stadium hard rock with power-metal energy at 150 BPM in E minor, sung in English. A male vocalist sings with a raspy, powerful tenor, gritty and spoken-shouted in the verses, then wide, fierce and sustained in the chorus with raw high screams between lines. Palm-muted chugging rhythm guitars, a galloping bass and double-kick drums drive the verses, the chorus opens with big open chords, a soaring lead guitar, gang vocals and crashing cymbals, and a howling wind and thunder texture runs underneath. Furious, godlike mood of a storm that tears through the sky and sweeps the world away. Ends with a crashing power chord and wind fading out. Punchy, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, acoustic folk, lo-fi, EDM drop, trap hi-hats, rap verses, spoken word, children choir, reggae
+--- LYRICS
+[Intro | 8 bars, howling wind and distant thunder, a lone palm-muted guitar riff builds, drums enter with a fill on the last bar, instrumental only]
+
+[Verse 1 | gritty spoken-shouted male voice, palm-muted guitars and kick, each shouted word lands on the beat, a short breath after every line, slightly behind the beat]
+Sand! So much sand!
+It spreads through Heaven’s land.
+I walk from Hell, to Eden I go,
+With flames of hell still in tow.
+
+Tornadoes tear through the air,
+I’ll destroy all that’s there.
+I rage and I roar,
+I’ll crush your pride, down to the core.
+
+Nothing can stop me now,
+Ah!
+I’m going insane!
+Wow!
+I'm off the chain!
+Ha!
+I hold it all in my hand,
+And I'll bury this land!
+
+[Chorus | wide fierce voice, big open chords, gang vocals double the shouted lines, lead guitar soars, high screams land in the gaps between lines, parenthesized lines are shouted by the gang]
+Let the storm take the world by storm!
+Let me own it, let it transform!
+I’m the furious god of war,
+On Olympus, I soar!
+(Woah!)
+Look into my eyes!
+Hear my mighty cries!
+(Ahhhhh! Ahhh! Wah wah wah!)
+Storm! (Storm!)
+Wow!
+The storm’s about to swarm!
+(Storm!!)
+
+[Verse 2 | part 1 of 2, back to the gritty shouted voice, guitars palm-muted, drums half-time, menacing]
+Great winds! Such great winds!
+Tornadoes sweep through the sins.
+I fall from Heaven, into Hell’s flame,
+God's power leaks from His name.
+
+The hand of God saves us all,
+I (Ah!)
+I (Wow!)
+I (Howl!)
+I’ll destroy your cities tall,
+I’ll crush your pride, break the wall.
+
+[Verse 2 | part 2 of 2, the shouts get faster and wilder, drums double-time, leave half a beat of air between every shouted line]
+Nothing can stop me now,
+Ah!
+Kill me now!
+I’m insane!
+Kill you all!
+Save me now!
+Wow!
+That’s how!
+Oh!
+I’m off the chain!
+Ha!
+Nothing else remains!
+It’s all mine!
+I hold it all in my hand,
+Look at me!
+I’ll bury this land!
+
+[Drop | 2 bars, wind and thunder stop on one beat of full silence, then the whole band slams back in with a crashing power chord, vocals rest]
+
+[Final Chorus | strongest version, lead screams the high notes, gang vocals at full volume, double-kick at full speed, same melody as the first chorus, parenthesized lines are shouted by the gang]
+Let the storm take the world by storm!
+Let me own it, let it transform!
+I’m the furious god of war,
+On Olympus, I soar!
+(Woah!)
+Look into my eyes!
+Hear my mighty cries!
+(Ahhhhh! Ahhh! Wah wah wah!)
+Storm! (Storm!)
+Wow!
+The storm’s about to swarm!
+(Storm!!)
+
+[Outro | 8 bars, drums and guitars end on a crashing power chord, wind and thunder carry on alone and fade out, instrumental only]
+[End]

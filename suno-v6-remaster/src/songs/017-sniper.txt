@@ -1,0 +1,68 @@
+#id: 017
+#slug: sniper
+#title: Sniper
+#album: 《甩狙战神》
+#lang: English
+#orig: f1:1021-1065
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 140
+#length: about 3:10
+#note: 原稿 intro 下面有个空的 [] 标签，会让 Suno 误读，已删除；「(Oh!)」「(Ha ha!)」是句间的顺序笑喊，保持独立成行。
+#note: 140 BPM 但写了 half-time feel，实际人声走 70 BPM 的律动，避免英文 rap 行尾赶拍。
+--- STYLE
+Dark cinematic trap-rock at 140 BPM with a half-time feel, rapped and sung in English. A male vocalist raps with a confident, cold, menacing flow in the verses, almost whispered and precise like a sniper's breath, then sings and shouts the chorus with a gritty, sustained voice and gang vocals behind. Booming 808 bass, a slow heavy snare, sparse hi-hat rolls and a gritty detuned guitar loop carry the verses, a distant gunshot echo and a cold synth pad hang in the air, and the chorus adds distorted power chords and crowd shouts. Cold, lethal, legendary mood of a ghost hidden in forest leaves and desert sand. Ends with one gunshot echo and silence. Punchy, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, acoustic folk, country, EDM drop, lo-fi hiss, children choir, comedy, jazz
+--- LYRICS
+[Intro | 8 bars, cold synth pad and a distant wind, a detuned guitar loop starts, a slow 808 enters on bar five, one distant gunshot echo on the last bar, instrumental only]
+
+[Verse 1 | cold precise rapped voice, almost whispered, 808 and a sparse snare only, a short breath after every line, slightly behind the beat, parenthesized words are low spoken ad-libs]
+Hidden in the forest leaves, so deep,
+Buried under desert sands, they creep.
+(Oh!)
+You'll never pin my location down,
+My clues, unseen, will make you frown.
+A flick of wrist, the bullet bends,
+As I leap, the silence descends.
+
+[Break | beat stops, one beat of silence, rapper breathes in]
+
+[Chorus | sung and shouted, gritty and sustained, distorted power chords enter, gang vocals double the title lines, drums hit hard on every downbeat]
+Look into my eyes,
+Hear my gunfire cries.
+I'm the ace sniper, ghost unseen,
+Each bullet hits where your forehead's been.
+Every breath I take's a reaper's sign,
+I taste your blood, your dignity's mine.
+Yes,
+I'm the only legend here, divine.
+
+[Verse 2 | back to the cold precise rap, 808 and snare with a rolling hi-hat added, slightly more aggressive, parenthesized words are low laughed ad-libs]
+Swallowing schools in the ocean's heart,
+Spewing endless flames, tearing apart.
+(Ha ha!)
+My moves, elusive, can't be tracked,
+My aim's precise, it's a proven fact.
+I throw my knife, it shatters your guard,
+Towards my target, I tread hard,
+Everything crushed under my feet.
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then 808 and guitars slam in together, vocals rest]
+
+[Final Chorus | strongest version, shouted at full power, gang vocals louder, same melody as the first chorus]
+Look into my eyes,
+Hear my gunfire cries.
+I'm the ace sniper, ghost unseen,
+Each bullet hits where your forehead's been.
+Every breath I take's a reaper's sign,
+I taste your blood, your dignity's mine.
+Yes,
+I'm the only legend here, divine.
+
+[Outro | 8 bars, drums stop, the guitar loop plays alone for four bars, one distant gunshot echo, then silence, instrumental only]
+[End]

@@ -1,0 +1,94 @@
+#id: 041
+#slug: xiwu
+#title: 习武
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:167-232
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 98
+#length: about 3:50
+#note: 这首最容易抢拍的是 verse 的 16 字长句，已按语义加逗号并成对分行；「（突突突）大荒囚天指！」是"音效在前、招式喊在后"的顺序结构，保持独立成行。
+#note: 副歌里「（啊！）」是叠加的怒吼，已并入上一行行尾。
+#note: 「降龙十八式」「黄泉引渡」等词读音稳定；若「降」读成 jiàng，用歌词精修只换那一个字。
+--- STYLE
+Aggressive kung-fu cinematic Chinese hip-hop with rock edges at 98 BPM in E minor, rapped and shouted in Mandarin Chinese. A male rapper delivers a cocky, rhythmic, controlled flow in the verses with sharp breaths between phrases, then shouts the chorus with raw, sustained fighting spirit and gang vocals behind him. Booming 808 bass, punchy live drums, taiko hits, a sharp erhu stab and a plucked guzheng riff carry the verses, with martial-arts mouth sounds between the move names, and the chorus adds crunchy guitars, deep war drums and crowd shouts. Arrogant, fierce prodigy mood of a boy who mastered martial arts at three and now commands the heavens. Ends on a gong hit and silence. Punchy, wide, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, lo-fi, comedy, smooth jazz, autotune, country
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a gong hit, deep taiko hits, a plucked guzheng riff, an 808 enters on bar five, a drum fill on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 2, cocky rhythmic rapped voice, 808 and kick with a guzheng riff, a clear breath after every line, slightly behind the beat]
+我三岁习武，
+五岁天下无敌，惹得世人嫉妒，
+他们说我实在实在离谱，
+不停嘀咕的闲言碎语密布，
+
+看我一个凌空飞步，把你打吐，
+再接上孤雁穿云渡，让你知道我的路数，
+我的思路是你达不到的高度，
+堵住你的全部招数，让你陷入迷途。
+
+[Verse 1 | part 2 of 2, the move names are shouted on the beat, the parenthesized lines are sharp martial-arts mouth sounds that come just before each shout]
+（突突突）
+大荒囚天指！
+（噗噗噗）
+抬手灭天日！
+（嘟嘟嘟）
+降龙十八式！
+（窣窣窣）
+悔恨已迟迟！
+
+[Chorus | shouted raw sustained voice, crunchy guitars and deep war drums enter, gang vocals double every line, the bracketed shout is a crowd roar on the same line]
+习武之人！血性如怒！
+拳风过境！万敌臣服！
+猛虎出山！天地为鼓！
+一招定局！败者埋土！（啊！）
+
+筋骨为刃！傲气为炉！
+生死看淡！狂名刻骨！
+若你不服！黄泉引渡！
+命数我主！以杀证武！
+
+[Verse 2 | part 1 of 2, back to the cocky controlled rap, 808 and kick, guzheng riff, a clear breath after every line]
+天才就该自负，
+走我自己的路，
+凡夫俗子过于糊涂，
+能力不足却从不肯服输，
+
+我擒龙伏虎妖魔成奴，
+无敌之心苍天眷顾，
+看不得世间疾苦，
+于是长啸一声诸天震怒。
+
+[Verse 2 | part 2 of 2, the move names are shouted on the beat, the parenthesized lines are sharp martial-arts mouth sounds that come just before each shout]
+（突突突）
+太阳玄气掌！
+（噗噗噗）
+一剑镇八荒！
+（嘟嘟嘟）
+擎天定汪洋！
+（窣窣窣）
+万古夜茫茫！
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then 808, taiko and guitars slam in together, vocals rest]
+
+[Final Chorus | strongest version, voice shouted at full power, gang vocals at full volume, same melody as the first chorus, the bracketed shout is a crowd roar on the same line]
+习武之人！血性如怒！
+拳风过境！万敌臣服！
+猛虎出山！天地为鼓！
+一招定局！败者埋土！（啊！）
+
+筋骨为刃！傲气为炉！
+生死看淡！狂名刻骨！
+若你不服！黄泉引渡！
+命数我主！以杀证武！
+
+[Outro | 8 bars, drums and guitars stop, the guzheng riff plays alone for two bars, a final gong hit, then silence, instrumental only]
+[End]

@@ -1,0 +1,73 @@
+#id: 022
+#slug: dark
+#title: dark
+#album: 《尽头》
+#lang: English
+#orig: f1:1310-1358
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 74
+#length: about 3:50
+#note: 原稿 verse 1 中间有个空行把「A black hole spinning, pulling all inside, / The world breaks down, nowhere to hide.」这一对押韵句拆开了，已合并成一组，文字不变。
+#note: 原稿的 [instrument] 是第二遍副歌前的间奏，现在写成 8 小节具体内容；末尾的 [drop] 是尾奏前的重击，已写明。
+--- STYLE
+Gothic darkwave and post-punk at 74 BPM in C-sharp minor, sung in English. A deep male baritone sings in a cold, hollow, half-spoken voice in the verses, then rises to a wide, haunted and sustained chorus with a ghostly layered double behind him. A chorus-drenched clean guitar, a throbbing melodic bass and a slow mechanical drum machine carry the verses, a cold synth drone swells like a black hole, and the chorus adds huge reverb drums, a wall of tremolo guitars and a cathedral-like pad. Bleak, hopeless mood of an endless void swallowing the light, still longing for one flare of flame. Ends on the drone alone fading into silence. Spacious, dark, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, upbeat pop, major-key brightness, rap, country, EDM drop, trap hi-hats, comedy, acoustic folk
+--- LYRICS
+[Intro | 8 bars, a cold synth drone swells slowly, a chorus-drenched clean guitar plays a lone line, a throbbing bass enters on bar five, instrumental only]
+
+[Verse 1 | cold hollow baritone, half-spoken, bass and drum machine only, one breath per line, slightly behind the beat]
+I see the end ahead,
+A place of darkness, cold and dead.
+An endless void that swallows me whole,
+Falling deeper, losing control.
+
+I see the shadows reign,
+A world where light has no domain.
+A black hole spinning, pulling all inside,
+The world breaks down, nowhere to hide.
+
+[Chorus | voice rises wide and haunted, long held line endings, huge reverb drums, tremolo guitars and a cathedral pad, a ghostly double sings behind the lead]
+The darkness devours me,
+It consumes and towers me.
+The shadows tear me apart,
+They grip and shatter my heart.
+
+When will I see the light shine high?
+When will it burn through the darkened sky?
+Forever waiting in despair,
+Forever longing for the flare.
+
+[Verse 2 | back to the cold baritone, drum machine stripped to kick and clap, a single guitar line, bleaker and quieter]
+I've forgotten the light of dawn,
+The stars beyond feel lost and gone.
+A realm of void and emptiness wide,
+A place where dreams and hope have died.
+
+I yearn to see the light again,
+The flame that burns beyond the pain.
+In dreams it blazes, fierce and bright,
+In longing thoughts, it takes its flight.
+
+[Interlude | 8 bars, instrumental only, tremolo guitars swell over the throbbing bass, the drum machine builds with a rising snare roll, the drone climbs and then drops out on the last beat]
+
+[Chorus | strongest version, voice broken open on the high notes, the ghostly double doubles the lead, full wall of guitars, same melody as the first chorus]
+The darkness devours me,
+It consumes and towers me.
+The shadows tear me apart,
+They grip and shatter my heart.
+
+When will I see the light shine high?
+When will it burn through the darkened sky?
+Forever waiting in despair,
+Forever longing for the flare.
+
+[Drop | 2 bars, one huge reverb drum hit and a sub bass boom, then everything stops on one beat of full silence, vocals rest]
+
+[Outro | 8 bars, only the cold synth drone remains, a distant guitar harmonic once, the drone fades into silence, instrumental only]
+[End]

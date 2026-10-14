@@ -1,0 +1,102 @@
+#id: 062
+#slug: my-body-is-mine
+#title: 私の身体は誰のものでもない
+#title-note: 原稿无标题，取自副歌首句，暂定此名，可自行改。
+#album: 歌词2
+#lang: Japanese
+#orig: f2:1824-1903
+#dropped: (cold synth pad, motorik bass groove slowly building, no vocals)|(post-punk driving bassline, cold and minimal, drum machine only, no vocals)|(angular chorus-pedal guitar, post-punk, cold reverb, no vocals)|(atmospheric post-rock crescendo, layered female vocals entering softly then intensifying)|(bass and guitar interplay fading out, motorik pulse slowing, cold fade to silence)
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 132
+#length: about 4:30
+#note: 原稿有 5 处括号制作说明（冷合成垫底 / 贝斯 solo / 吉他 solo / 后摇渐强 / 尾奏淡出），括号会被当歌词唱出来，已全部改写成方括号里的英文演出指示，并且把 "no vocals" 这类否定改成 "instrumental only"。
+#note: 全角空格「　」都改成「、」做呼吸点；Bridge 共 10 行，写成"后摇渐强 + 女声层层加入"的递进。
+#note: 难读词：生体(せいたい)、配給(はいきゅう)、台帳(だいちょう)。读错用歌词精修替换那个词。
+--- STYLE
+Cold driving post-punk meeting atmospheric post-rock at 132 BPM in A minor, sung in Japanese. A female vocalist sings icy and clear, detached in the verses, then wide, defiant and sustained in the chorus, with layered female voices entering softly in the bridge and growing to a full cry. A motorik drum machine and a cold, minimal, melodic post-punk bassline drive the song, an angular chorus-pedal guitar plays sharp lines with cold reverb, a synth pad hangs underneath, and the bridge builds into a wall of shimmering post-rock guitars. Rational, rebellious mood of a person walking out of a managed city of ration cards and cameras, owning her own body and name. Ends with the bass and guitar interplay slowing to silence. Cold, wide, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, English vocals, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, orchestral strings
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, a cold synth pad, a motorik bass groove slowly building, a drum machine joins on bar five, instrumental only]
+
+[Verse 1 | icy detached female voice, bass and drum machine, pad quiet, a breath after every line, slightly behind the beat]
+灰色の摩天楼に管理都市のロゴが灯る、
+生体データは国家の資産だと看板が言う、
+配給カードの番号が私の名前の代わりになる、
+「安全のため」という檻の中で息をしている、
+誰かが決めたレールの上を歩くだけの夜、
+でも配線の奥で私の意志はまだ死なない、
+壁の向こうの誰かも同じ星を見ている、
+出口はきっと地図にない場所にある。
+
+[Pre-Chorus | voice lifts, drums tighten, bass climbs]
+契約書のインクが乾く前に、
+私はこの手で扉を選ぶ。
+
+[Chorus | wide defiant sustained voice, guitar lines open up, heavier kick, long held line endings]
+私の身体は誰のものでもない、
+国家じゃない、神様でもない、
+出口はここに、鍵は掌の中、
+名前も国境も脱ぎ捨てて自由になる、
+交換だけが正義、暴力はいらない、
+誰も王様じゃない、誰も奴隷じゃない。
+
+[Bass Solo | 8 bars, a post-punk driving bassline, cold and minimal, over the drum machine only, instrumental only]
+
+[Verse 2 | back to the icy detached voice, bass and drum machine, an angular guitar line added, a little more urgent]
+闇市場のネオンは誰の許可もいらない、
+ピア・トゥ・ピアの声が壁の中を溶かす、
+台帳は嘘をつかない、権力より正直、
+匿名のまま握手する、それだけで十分、
+値段は私が決める、命令じゃなく合意で、
+監視カメラの赤い目は届かない場所へ、
+国家という名の独占に、さよならを言う日、
+自由は誰かがくれるものじゃなく取り戻すもの。
+
+[Pre-Chorus | voice lifts, drums tighten, bass climbs]
+契約書のインクが乾く前に、
+私はこの手で扉を選ぶ。
+
+[Chorus | stronger than the first, same melody as the first chorus]
+私の身体は誰のものでもない、
+国家じゃない、神様でもない、
+出口はここに、鍵は掌の中、
+名前も国境も脱ぎ捨てて自由になる、
+交換だけが正義、暴力はいらない、
+誰も王様じゃない、誰も奴隷じゃない。
+
+[Guitar Solo | 8 bars, an angular chorus-pedal guitar, post-punk lead lines with cold reverb over the bass and drum machine, instrumental only]
+
+[Bridge | atmospheric post-rock crescendo, layered female voices entering softly and then intensifying, the guitars swell into a shimmering wall, drums return on the sixth line]
+誰かが「秩序」と呼ぶものは誰かの檻だった、
+誰かが「保護」と呼ぶものは誰かの鎖だった、
+私は信じない、中央に灯る一つの太陽を、
+私は信じる、無数の小さな灯りの方を、
+国家のいない場所にも道徳は生まれる、
+暴力のない場所にこそ本当の秩序が育つ、
+誰も支配しない、誰にも支配されない、
+それだけが唯一の、譲れない契約、
+灰色の摩天楼が遠くで揺らいで見える、
+今、私は自分の名前を初めて名乗る。
+
+[Final Chorus | strongest version, voice wide and defiant, layered female voices at full, full band, the last two lines are sung slowly and held]
+私の身体は誰のものでもない、
+国家じゃない、神様でもない、
+出口はここに、鍵は掌の中、
+名前も国境も脱ぎ捨てて自由になる、
+交換だけが正義、暴力はいらない、
+誰も王様じゃない、誰も奴隷じゃない、
+私の身体は誰のものでもない、
+それだけが、私の、自由。
+
+[Outro | bass and guitar interplay fading out, the motorik pulse slowing, a cold fade to silence, the voice whispers the last two lines with a long pause between them]
+誰のものでもない…
+誰のものでもない…
+[End]

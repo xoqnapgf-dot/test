@@ -1,0 +1,159 @@
+#id: 049
+#slug: talk-to-god
+#title: Talk to God
+#album: 歌词2
+#lang: English
+#orig: f2:798-930
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 108
+#length: about 6:00
+#note: 这是最长的一首（原稿 4200+ 字符，加上标签必须压在 5000 以内），所以这里的演出指示刻意写得最短；三遍副歌文字完全一致，第二、三遍的标签写成 "same as before"，省下字符。
+#note: 副歌里「Talk to God / (Listen to me)」一问一答的括号行是顺序应答，保持独立成行；歌曲预计 6 分钟，生成前把 Duration 设为 Auto 或 6:00 以上，否则可能被截断。
+#note: 若仍觉得 verse 1 太长被赶拍，可以用 v6 分段编辑把 Verse 1 拆成两段单独重做。含粗口（F***!），按原稿保留。
+--- STYLE
+Cosmic conversational rap-rock with a cinematic arena build at 108 BPM in A minor, sung and rapped in English. A male vocalist tells the story in a wry, wide-eyed, half-spoken voice in the verses, speeding into sarcastic rap in the second verse, then shouts the chorus with a questioning crowd of gang vocals answering every line. A glowing synth pad, a sparse piano and a deep bass carry the verses, tight drums and a bright clean guitar join in the second half, and the chorus adds wide distorted chords, a huge choir and crash cymbals. Surreal, funny and furious mood of a man who climbs an endless staircase, meets a bald old God with a halo, argues about the answer to every answer and falls into hell. Ends on the choir fading over the pad. Wide, cinematic, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, country, acoustic folk, smooth jazz, lo-fi, autotune, orchestral brass, trap hi-hats
+--- LYRICS
+[Intro | 8 bars, a rising synth staircase, soft choir pad, instrumental only]
+
+[Verse 1 | calm half-spoken male voice, pad and sparse piano, a breath after every line]
+The world falls silent, a radiant light appears before me,
+An endless staircase, rising boundlessly, is what I see,
+I know this must be some kind of divine decree,
+My bare bones climb the steps, rushing towards eternity.
+
+My flesh and blood behind me, melting, fading into air,
+My very soul, I wonder where it's drifted, I don't care,
+Humanity's shifting scenes, on the left they flicker and gleam,
+Fleeting dream-like bubbles, on the right, a shimmering dream.
+
+I feel myself suspended, weightless, just floating free,
+As if the stairs beneath my feet were never meant for me,
+Or perhaps I've turned into a beam of light, pure and bright,
+Dancing silently on a tranquil path, in the fading night.
+
+I cannot turn around, nor find a way back home, no guide,
+This is my future, my destined end, where I'm meant to ride,
+This is my tomorrow, the awakening that soon will be,
+Suddenly a figure at the end, I'm lost in stardust, mystically.
+
+I feel a comfort, a peace profound, no anger, no sorrow, no trace,
+Time stops still, no matter if there's being or just empty space,
+That figure suddenly speaks, its voice cuts through the silent air,
+"You are my child, you've finally returned, you're finally here."
+
+I said: "Hey, old guy, tell me, who the hell are you?"
+And then this old guy, he says he's God.
+Well...
+Haha...
+
+[Chorus | shouted hook, wide chords, gang voices, bracketed lines are crowd answers]
+Talk to God,
+(Listen to me)
+Let's really talk about what you did to me, and I did to you, you see,
+(Huh?)
+Listening to God speak,
+(Why?)
+Devils are breaking free in my ears, they want to crawl from the abyss,
+(Oh?)
+Drawing for God,
+(Where?)
+Angels' eyes are blinded, Satan's mouth is sealed with a kiss,
+(Ha?)
+Praying to God,
+(What?)
+The Tower of Babel crumbled, Eden burned down, pure misery,
+(Heh...?)
+
+[Verse 2 | fast sarcastic rap, bass, tight drums]
+"Hey, tell me, why does this world hold so much war?
+Why do I hurt? Why am I sad to my core?
+Why don't they love me?
+Why do I hate myself more and more?"
+Then this old guy, he frowned, a clear sign of his disdain,
+"Why do you have so many questions? You ask them all in vain.
+Oh, but you're not seeking solace, or asking for my grace,
+I can see right through you; you're a hypocrite in this place.
+Your questions are hollow, your thoughts absurd and truly wild,
+You should ask yourself these things, then answers might be reconciled."
+I scratch my head,
+Staring at that halo floating on his crown, I quipped,
+"Yo, are you bald, or what?
+If you're really that smart, that truly bright,
+One puff from me could blow your toupee right out of sight!"
+
+[Chorus | same as before, louder]
+Talk to God,
+(Listen to me)
+Let's really talk about what you did to me, and I did to you, you see,
+(Huh?)
+Listening to God speak,
+(Why?)
+Devils are breaking free in my ears, they want to crawl from the abyss,
+(Oh?)
+Drawing for God,
+(Where?)
+Angels' eyes are blinded, Satan's mouth is sealed with a kiss,
+(Ha?)
+Praying to God,
+(What?)
+The Tower of Babel crumbled, Eden burned down, pure misery,
+(Heh...?)
+
+[Drop | 2 bars, one beat of silence, then a huge sub bass hit]
+
+[Verse 3 | angry rapid rap, double-time drums]
+Then, this old guy, he finally lost his cool,
+He didn't seem to like me, what a total fool,
+But he was the one who brought me to this cosmic space,
+I swear, if I had a basketball here, in this cosmic space,
+His halo's light would surely be the hoop!
+"I have too many questions, but you won't reveal the truth!"
+The old guy shoves me away, through empty air, I fall.
+"Some answers to answers are destined to have no answers at all."
+So then I said,
+"Then is that very statement an answer, from you instead?
+If it's an answer, why does this no-answer-answer suddenly arise?
+If it's not an answer, then why does an answer that implies,
+It has an answer, still remain a no-answer-answer in your eyes?"
+And then, I felt myself falling,
+F***!
+Beneath me...
+How did it become hell?
+
+[Bridge | whispered, cold pad, slow kick]
+I witnessed the cycles of rebirth,
+I smelled the essence of new birth,
+I heard the echoes of annihilation's call,
+I tasted death, consuming all,
+Colorless, formless, beyond all sight,
+The id, the superego, in endless night.
+
+[Drop | one beat of silence, then the band slams in]
+
+[Chorus | strongest, same melody, choir at full]
+Talk to God,
+(Listen to me)
+Let's really talk about what you did to me, and I did to you, you see,
+(Huh?)
+Listening to God speak,
+(Why?)
+Devils are breaking free in my ears, they want to crawl from the abyss,
+(Oh?)
+Drawing for God,
+(Where?)
+Angels' eyes are blinded, Satan's mouth is sealed with a kiss,
+(Ha?)
+Praying to God,
+(What?)
+The Tower of Babel crumbled, Eden burned down, pure misery,
+(Heh...?)
+
+[Outro | choir fades over pad, instrumental only]
+[End]

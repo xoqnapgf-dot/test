@@ -1,0 +1,71 @@
+#id: 011
+#slug: inji
+#title: 印记
+#album: 《第二封情书》
+#lang: Mandarin
+#orig: f1:628-675
+#vocal: Male
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 72
+#length: about 3:30
+#note: 副歌「在我的 人生中」「转眼间 就成空」中间的空格改成逗号做呼吸点；两遍 verse 文字完全一致，便于旋律复用。
+#note: 原稿的 [drop] 描述为空，现写成"一拍静默 + 弦乐与鼓同时进入"。副歌行数少（6 行），不会赶拍。
+--- STYLE
+Warm Mandopop acoustic ballad at 72 BPM in G major, sung in Mandarin Chinese. A male tenor sings soft and sincere, close to the microphone in the verses, then opening into a clear, bittersweet and sustained chorus with a touch of breath at the ends of phrases. A fingerpicked nylon guitar and a soft felt piano carry the verses, a muted kick and warm upright bass enter in the bridge, and the chorus adds strings, brushed drums and a gentle electric guitar echo. Nostalgic, tender mood of a glance that left a mark on a whole life, longing like a rainbow after rain scattering in the wind. Ends on the guitar alone with a long reverb tail. Vocal-forward, natural warm mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, female lead vocal, screaming, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, fingerpicked nylon guitar alone, a soft felt piano answers on bar five, gentle room tone, instrumental only]
+
+[Verse 1 | soft sincere male tenor, close-mic, guitar only, one breath per line, slightly behind the beat]
+只是不经意间的一瞥，
+余光中的身影就被记忆刻写，
+一天天又一年年，
+挥之不去的容颜，
+总是伴我每个深夜。
+
+[Bridge | piano joins the guitar, upright bass enters softly, voice a little warmer and lifting at the end of each pair of lines]
+你走过的道路，
+枯萎花木为你复苏，
+你看过的风景，
+黑暗时刻仍然光明。
+
+[Chorus | clear bittersweet voice, long held line endings, strings and brushed drums enter, electric guitar echoes the vocal phrase]
+在我的，人生中，
+你留下不可磨灭的印记，
+无法避免在你目光中沉溺，
+转眼间，就成空，
+如那雨后的长虹，
+所有思念散在了风中。
+
+[Verse 2 | back to the soft voice, guitar and a light piano, a little more yearning]
+只是不经意间的一瞥，
+余光中的身影就被记忆刻写，
+一天天又一年年，
+挥之不去的容颜，
+总是伴我每个深夜。
+
+[Bridge | piano and bass, voice warm and lifting, strings begin to swell]
+你说过的话语，
+是那最动人的歌曲，
+你每一次微笑，
+写尽了青春的美好。
+
+[Drop | 2 bars, strings swell and cut to one beat of full silence, then drums, bass and strings land together, vocals rest]
+
+[Final Chorus | strongest version, voice wide and bright, full strings and drums, same melody as the first chorus]
+在我的，人生中，
+你留下不可磨灭的印记，
+无法避免在你目光中沉溺，
+转眼间，就成空，
+如那雨后的长虹，
+所有思念散在了风中。
+
+[Outro | 8 bars, drums and strings fall away, nylon guitar plays the intro motif alone, long reverb tail, then silence, instrumental only]
+[End]

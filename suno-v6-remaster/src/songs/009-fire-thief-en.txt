@@ -1,0 +1,101 @@
+#id: 009
+#slug: fire-thief-en
+#title: Fire Thief (English Ver.)
+#title-note: 原稿无标题，是《窃火者》的英文版，暂定此名，可自行改。
+#album: 《第二封情书》
+#lang: English
+#orig: f1:502-570
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 72
+#length: about 4:00
+#note: 原稿最后一个 [Chorus] 文字与前三遍不同（是「I am the one most faithful」），已改标为 Final Chorus 并拆成 2 个小节，前三遍副歌文字保持完全一致。
+#note: 原稿 [drop] 描述为空，现写成明确的静默一拍 + 弦乐与鼓一起进入。
+--- STYLE
+Ethereal cinematic dream-pop ballad at 72 BPM in D minor. A female alto sings in English, hushed and intimate in the verses, then wide, aching and sustained in the chorus with long held line endings and layered harmonies. A soft felt piano and a shimmering reverb guitar carry the verses, a slow brushed kick and warm bass enter in the second half, and the chorus opens into strings, big reverb drums and a distant choir. Reverent and romantic mood of someone kneeling before a lover's eyes, brighter than stars, with a lighthouse glowing over a sea of ash. Ends on the piano alone with one long string note. Vocal-forward, wide cinematic mix.
+--- EXCLUDE
+male lead vocal, rap, EDM drop, trap hi-hats, screaming, country, autotune, spoken word, fast tempo
+--- LYRICS
+[Intro | 8 bars, felt piano alone, a shimmering guitar harmonic joins on bar five, distant wind texture, instrumental only]
+
+[Verse 1 | female alto, hushed and close-mic, piano and soft guitar only, one breath per line, slightly behind the beat]
+If not for meeting your two pupils deep,
+I might forget the secrets my own eyes keep.
+The way night traffic's bright and blinding stream,
+Becomes a scattered, astrological dream.
+
+A thousand headlights blur into a haze,
+A galaxy that shines in my flawed gaze.
+It’s like the Milky Way has fallen near,
+But pales the moment that your eyes appear.
+
+[Chorus | voice opens wide and aching, line endings held long, strings and a warm pad enter, brushed drums steady, harmonies stack in the last two lines]
+Your eyes, where all the stars forget to shine,
+They hide their face before a light so divine.
+The endless ocean just reflects their grace,
+The sky just steals the clearness from that space.
+And even the universe, in silent awe,
+Surrenders to their depth, their perfect law.
+
+[Verse 2 | back to the hushed voice, piano and cello, brushed kick added, tender and slow]
+When all of creation meets its final days,
+The world will tint itself in your eyes’ haze.
+When glaciers flow back up the mountain high,
+All life reborn will feel your warmth nearby.
+
+Your heart-fire, both so tender and so bright,
+It overflows your soul with gentle light.
+It blooms upon the world's most lonely peak,
+A god once glanced, and made Prometheus weak.
+
+[Drop | 2 bars, strings swell and cut to one beat of full silence, then drums, bass and strings land together, vocals rest]
+
+[Chorus | stronger and wider than the first, big reverb drums, choir behind, same melody as the first chorus]
+Your eyes, where all the stars forget to shine,
+They hide their face before a light so divine.
+The endless ocean just reflects their grace,
+The sky just steals the clearness from that space.
+And even the universe, in silent awe,
+Surrenders to their depth, their perfect law.
+
+[Bridge | stripped down to piano and whispered voice, a fragile spoken-sung line, then strings rise slowly]
+And you know, when I watch the sunset burn,
+It's not for fading, golden light I yearn.
+I use those ghosts of color in the blue,
+To build a fragile bridge that leads to you.
+
+And you know, when you occupy my mind,
+It's more than just a memory I find.
+It’s proof that you exist, against the void,
+A single truth in worlds that were destroyed.
+
+[Chorus | full power, voice wide and bright, drums and choir at full, same melody as the first chorus]
+Your eyes, where all the stars forget to shine,
+They hide their face before a light so divine.
+The endless ocean just reflects their grace,
+The sky just steals the clearness from that space.
+And even the universe, in silent awe,
+Surrenders to their depth, their perfect law.
+
+[Final Chorus | part 1 of 2, the new words, devoted and trembling, piano and strings only, voice soft but full of emotion]
+I am the one most faithful, your believer,
+In this loud world, a reverent receiver.
+Before the only miracle, I kneel,
+And beg for mercy from what feels so real.
+If life has meaning, it's by your decree,
+If time has marks, those marks were made by thee.
+
+[Final Chorus | part 2 of 2, drums and choir return, voice swells to full power and holds the last line long]
+When I escape the endless, swirling grey,
+And from the final darkness break away,
+Above the sea of ash, you are the one,
+A lighthouse shining when the day is done.
+Like gravity, your truth will see me through,
+And in the end, will guide me home to you.
+
+[Outro | 8 bars, orchestra and drums fall away, piano plays the intro motif alone, one long string note holds, then silence, instrumental only]
+[End]

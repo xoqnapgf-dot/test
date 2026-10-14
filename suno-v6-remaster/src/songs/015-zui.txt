@@ -1,0 +1,73 @@
+#id: 015
+#slug: zui
+#title: 罪
+#album: 《罪恶世界》
+#lang: Mandarin
+#orig: f1:892-946
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 124
+#length: about 3:30
+#note: 副歌里的「（罪！）」「（有罪！）」「（最最罪的罪！）」是同时叠加的呐喊回声，已并入上一行行尾（v6 括号=叠唱），不再单独成行；文字顺序未变。
+#note: verse 2 的连珠句「贪嗔痴爱恨生死情仇不分」按语义加逗号做换气点；「是神？是人！还是我们（你们！）（他们！）」行内括号保持原样。
+#note: 可能读错：偷窃(qiè)、贼、假寐(mèi)、坑(kēng)、落叶归根。
+--- STYLE
+Heavy Chinese alt-metal with rapped verses at 124 BPM in D minor, sung in Mandarin Chinese. A male vocalist raps in a low, gritty, spoken-shouted voice in the verses, then roars and sings with raw sustained high notes in the chorus while a gang of voices shouts echoes behind him. Down-tuned chugging guitars, a heavy bass and tight punchy drums drive the verses, a dark synth drone hangs underneath, and the chorus adds wide distorted power chords, crash cymbals and layered shouted crowd vocals. Guilty, weary and furious mood about inherited original sin and a city drunk on desire. Ends on a final heavy chord with feedback. Punchy, dark, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, acoustic folk, EDM drop, trap hi-hats, lo-fi, comedy, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, dark synth drone and slow tom hits, a down-tuned guitar riff builds, full drums enter on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 2, low gritty rapped voice, guitar chug and kick only, each line lands on the beat with a short breath after it, slightly behind the beat]
+是谁说的，
+我们生来便有罪，
+有着与生俱来的原罪，
+沉醉在这欲望的都市烂醉，
+疲惫的身躯，劳累了身心，不得安慰。
+
+[Verse 1 | part 2 of 2, same voice, bass and drums thicker, tension building]
+一而再再而三向后退，退到深夜里的黑，
+最终又是谁，当了偷窃时光的贼，
+岁月把恶毒藏进我的心内，
+或许我不配，于是我在沉睡中假寐。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | roaring sustained voice, wide distorted power chords, gang vocals are layered into the same line as the bracketed echoes, crash cymbals on every downbeat]
+罪（罪）（罪！）
+与生俱来的原罪，（罪！）
+带不走甩不掉的罪，（罪！）
+我们每个人都有罪，
+每个人都有罪，（有罪！）
+最罪的罪坠醉追不回！（最最罪的罪！）
+
+[Verse 2 | part 1 of 2, back to the low gritty rap, breath after each comma, drums half-time, menacing]
+贪嗔痴爱恨，生死情仇不分，
+一次次相互间封印了心门，
+圆滑的灵魂长出的尖棱，
+真叫他人难以触碰，
+
+[Verse 2 | part 2 of 2, faster and angrier, drums double-time, shouts land on the downbeat with half a beat of air between them]
+是神？是人！还是我们（你们！）（他们！）
+太狠，太恨！太深！爱的太深！罪更深！
+等得到等不到还是在等，
+肯不肯坑不坑又如何不过是落叶归根！
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then a heavy guitar and bass hit with full drums, vocals rest]
+
+[Final Chorus | strongest version, roaring high notes, gang vocals at full volume, same melody as the first chorus, bracketed echoes are shouted by the crowd]
+罪（罪）（罪！）
+与生俱来的原罪，（罪！）
+带不走甩不掉的罪，（罪！）
+我们每个人都有罪，
+每个人都有罪，（有罪！）
+最罪的罪坠醉追不回！（最最罪的罪！）
+
+[Outro | 8 bars, drums stop, guitar holds one heavy chord with feedback, synth drone fades last, instrumental only]
+[End]

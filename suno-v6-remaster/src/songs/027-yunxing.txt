@@ -1,0 +1,93 @@
+#id: 027
+#slug: yunxing
+#title: 陨星
+#album: 《星陨田野》
+#lang: Mandarin
+#orig: f1:1617-1687
+#vocal: Female
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 68
+#length: about 4:10
+#note: 「星——」「心——」「情——」「命——」的破折号是长音符，保留在行尾，并在副歌标签里写明 "hold the dash words long"，这是文字层面最可靠的延长音方式。
+#note: 最后一遍副歌的歌词与前两遍不同（情/命版本），已标为 Final Chorus。
+--- STYLE
+Ethereal cosmic post-rock and dream pop at 68 BPM in F-sharp minor, sung in Mandarin Chinese. A female voice sings airy, weightless and tender, close to the microphone and almost whispered in the verses, then rising into a vast, glowing and sustained chorus where the single dash words are held long. A clean guitar with long shimmering delay and a soft felt piano carry the verses, a deep warm pad and slow brushed drums enter in the bridge, and the chorus adds a swelling string section, tremolo guitars, big reverb drums and layered ghostly harmonies. Lonely, awed mood of a star falling like a single tear through the sky and a feather freed from reality. Ends on the guitar delay fading into stars. Spacious, vocal-forward mix with deep reverb.
+--- EXCLUDE
+male lead vocal, rap, EDM drop, trap hi-hats, heavy distortion, screaming, comedy, upbeat pop, Cantonese
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, clean guitar with long shimmering delay, a soft felt piano joins on bar five, a deep pad breathes underneath, instrumental only]
+
+[Verse 1 | airy weightless female voice, almost whispered, guitar delay and piano only, one breath per line, slightly behind the beat]
+星，
+是流浪在天际的一滴海，
+尘埃与它相融，虚无荡漾着无形的风，
+它看不见浊世的阴霾，
+亦不知凡尘的苦痛，
+推着不可见的幽灵，裹挟几朵衰变的花，
+拨动高维的琴音，捧起旋转流动的沙。
+
+[Bridge | voice a little stronger, slow brushed drums and a deep pad enter, each line floats and drifts, a long breath between lines]
+从眼中至心内，
+自天南去地北，
+划过天幕，漠看人间是与非，
+它不知自己是谁，
+不知众生意欲何为，
+永远飘流，像一滴热泪。
+
+[Chorus | vast glowing voice, the single dash words are held long and then dropped into silence for a beat, strings swell, tremolo guitars and big reverb drums enter, ghostly harmonies]
+星——
+接着陨落，
+心——
+燃烧着烈火，
+漩涡中融为一体，
+将思绪推演至极，
+终焉后静待天启，
+那道门不再关闭。
+
+[Verse 2 | back to the airy whispered voice, guitar delay and piano, a little more fragile, a feather drifting]
+我，
+是挣脱真实的一片羽毛，
+记忆不曾留下痕迹，时光未曾将我揭秘，
+脚下的海在心底波澜涛涛，
+弥补遗憾与纯真的裂隙，
+渐行渐远的魅影，再无法重现的回音，
+迷雾笼罩至天明，或许得到一丝安宁。
+
+[Bridge | voice a little stronger, brushed drums and deep pad, drifting, slightly darker than before]
+从眼中至心内，
+自天南去地北，
+路过炼狱，漠看红尘是与非，
+我不知自己是谁，
+不知诸神意欲何为，
+永远坠落，是天生原罪。
+
+[Chorus | same as the first chorus, a little brighter, strings thicker, the dash words held long]
+星——
+接着陨落，
+心——
+燃烧着烈火，
+漩涡中融为一体，
+将思绪推演至极，
+终焉后静待天启，
+那道门不再关闭。
+
+[Drop | 2 bars, strings and drums swell and cut to one beat of full silence, then the whole band and strings land together, vocals rest]
+
+[Final Chorus | the new words, strongest version, voice wide and glowing, held dash words, full band and strings at the peak]
+情——
+无意酝酿，
+命——
+辉煌后悲凉，
+既定的运数破碎，
+烟火让世间沉醉，
+智者又自觉假寐，
+万般存在将成灰。
+
+[Outro | 8 bars, drums and strings fall away, guitar delay plays the intro motif alone and fades into the stars, instrumental only]
+[End]

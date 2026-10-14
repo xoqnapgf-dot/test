@@ -1,0 +1,62 @@
+#id: 034
+#slug: no-regrets
+#title: No regrets
+#album: 《新世纪人类》
+#lang: English
+#orig: f1:2218-2259
+#vocal: Male
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 88
+#length: about 3:40
+#note: Verse 里 "In my life" 四连句是排比，节奏容易被压成一口气，已在每个分句后留逗号并要求 "a breath between each In my life"。
+--- STYLE
+Heartland arena rock ballad at 88 BPM in D major, sung in English. A male vocalist sings with a rough, honest, resilient tenor, steady and proud in the verses, then wide, defiant and sustained in the chorus with a crowd of backing voices. A fingerpicked acoustic guitar and a warm piano carry the verses, a steady bass and live drums join in the second half, and the chorus adds big open electric guitars, a Hammond organ, a string layer and gang vocals. Proud, unbowed, clear-eyed mood of a man looking back on a rugged life, free of regret and shame. Ends on a final ringing chord and the crowd fading. Warm, wide, vocal-forward live-band mix.
+--- EXCLUDE
+female lead vocal, rap, EDM drop, trap hi-hats, screaming, comedy, lo-fi, synth pop, autotune
+--- LYRICS
+[Intro | 8 bars, fingerpicked acoustic guitar alone, a warm piano answers on bar five, soft room tone, instrumental only]
+
+[Verse 1 | rough honest male tenor, close-mic, guitar and piano only, a breath between each line, slightly behind the beat, proud and steady]
+In my life, no regrets, no shame,
+In my life, none can judge or name,
+In my life, rugged paths and strife,
+In my life, twisted, strong in life.
+Never bowed or gave in to plea,
+Struggle’s my creed, my decree.
+Through storms and trials, my heart stays pure,
+Heaven and earth, my reign’s secure.
+
+[Chorus | wide defiant sustained voice, big open guitars and Hammond organ enter, strings swell, a crowd of backing voices joins on the last two lines]
+My life’s without regret or blame,
+Before heavens and gods, I remain the same.
+My heart’s as clear as a crystal mirror,
+My will is strong, nothing can deter.
+When I look back, all I see is light,
+No shadows linger, just pure sight.
+
+[Verse 2 | back to the rough honest voice, guitar and piano, steady bass and soft drums added, a little more reflective]
+In my life, a mix of shame and glory,
+In my life, I wake from the blurry story,
+In my life, in death’s grip, I roar and wail,
+In my life, hope and despair set sail.
+A heart forever burning bright,
+A belief that marches through the night.
+So many memories, so many gone,
+My heart stays calm, my reign goes on.
+
+[Drop | 2 bars, the band swells and cuts to one beat of full silence, then everything lands together with the crowd voices, vocals rest]
+
+[Final Chorus | strongest version, voice wide and defiant, crowd voices loud, organ and guitars at full, same melody as the first chorus]
+My life’s without regret or blame,
+Before heavens and gods, I remain the same.
+My heart’s as clear as a crystal mirror,
+My will is strong, nothing can deter.
+When I look back, all I see is light,
+No shadows linger, just pure sight.
+
+[Outro | 8 bars, drums and organ fall away, acoustic guitar plays the intro motif alone, one last ringing chord, crowd fades, instrumental only]
+[End]
