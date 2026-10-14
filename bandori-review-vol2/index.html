@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>邦多利角色个人向点评 · 下</title>
+<meta name="description" content="竖屏实时渲染的邦多利角色个人向点评（下）：美咲、蝶团与 RAS、千早爱音、长崎爽世与椎名立希、三角初华。">
+<meta name="theme-color" content="#120d1f">
+<style>
+  :root { --bg: #120d1f; --ink: #fff7ef; --dim: rgba(255,247,239,.6); --acc: #ff3b6b; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); overflow: hidden; }
+  body { display: grid; place-items: center; font-family: NSC7, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  #stage { position: relative; height: min(100vh, calc(100vw * 16 / 9)); width: min(100vw, calc(100vh * 9 / 16)); container-type: inline-size; }
+  #cv { display: block; width: 100%; height: 100%; background: #000; cursor: pointer; }
+  #boot { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4cqw; padding-bottom: 22cqw;
+          background: linear-gradient(transparent 35%, rgba(18,13,31,.85)); transition: opacity .6s, visibility .6s; }
+  #boot.gone { opacity: 0; visibility: hidden; }
+  #play { appearance: none; border: 0; border-radius: 99px; padding: 3.2cqw 9cqw; font: inherit; font-size: 5cqw; letter-spacing: .2em;
+          background: var(--acc); color: #fff; cursor: pointer; box-shadow: 0 1.2cqw 0 #a3123d; transition: transform .15s; }
+  #play:hover:not(:disabled) { transform: translateY(-.4cqw); }
+  #play:disabled { opacity: .5; cursor: progress; }
+  .load { width: 40cqw; height: 1cqw; border-radius: 1cqw; background: rgba(255,255,255,.2); overflow: hidden; }
+  .load i { display: block; height: 100%; width: 0; background: #fff; transition: width .2s; }
+  .hint { font-size: 2.8cqw; color: var(--dim); letter-spacing: .1em; }
+  #ctrl { position: absolute; left: 0; right: 0; bottom: 0; padding: 2cqw 4cqw 2.4cqw; opacity: 0; transition: opacity .3s;
+          background: linear-gradient(transparent, rgba(0,0,0,.55)); }
+  #stage:hover #ctrl { opacity: 1; }
+  #bar { height: 3cqw; position: relative; cursor: pointer; }
+  #bar::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: .5cqw; margin-top: -.25cqw; background: rgba(255,255,255,.3); border-radius: 1cqw; }
+  #bar .fill { position: absolute; left: 0; top: 50%; height: .5cqw; margin-top: -.25cqw; background: #fff; border-radius: 1cqw; width: 0; }
+  #time { font-size: 2.6cqw; color: var(--dim); letter-spacing: .08em; }
+  body.capture #stage { width: 1080px; height: 1920px; }
+  body.capture { display: block; overflow: hidden; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv" width="1080" height="1920" aria-label="视频画面"></canvas>
+  <div id="boot">
+    <button id="play" disabled>加载中…</button>
+    <div class="load"><i></i></div>
+    <div class="hint">点击画面暂停 · 空格 播放/暂停 · ←/→ 快退/快进 5 秒</div>
+  </div>
+  <div id="ctrl"><div id="bar"><div class="fill"></div></div><div id="time">0:00</div></div>
+</div>
+<audio id="au" src="assets/audio.mp3" preload="auto"></audio>
+<script src="assets/fonts.js"></script>
+<script src="assets/timeline.js"></script>
+<script src="assets/viz.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
