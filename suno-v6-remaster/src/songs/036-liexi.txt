@@ -1,0 +1,79 @@
+#id: 036
+#slug: liexi
+#title: 裂隙
+#title-note: 原稿无标题（只有一条分隔线），取自首段歌词「万物之间都有裂隙」，暂定此名，可自行改。
+#album: （无专辑 / 第一份歌词末尾）
+#lang: Mandarin
+#orig: f1:2412-2456
+#vocal: Female
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 64
+#length: about 3:50
+#note: 原稿 intro 和 Drop 的提示词里写了 "no drum beats / there is no drum beat"，否定词在 v6 容易被反向理解成"要鼓"，已全部改成正向描述（只有钢琴与小提琴、人声轻柔、小提琴上扬）。
+#note: 行尾「（如此耀眼）（一戳就破）（永不闪躲）」是叠加在上一句尾的轻声回声，保持行内括号不变。
+#note: 这首歌有明确的钢琴/小提琴器乐配置，没有鼓；Exclude 里放了 drums, drum machine, percussion 来锁定。
+--- STYLE
+Gentle cinematic chamber pop with a luminous folk warmth at 64 BPM in D major, sung in Mandarin Chinese. A female voice sings soft and clear, intimate and airy in the verses, then open, tender and sustained in the chorus with a faint warm harmony floating above. A gentle felt piano and a slow expressive violin carry the whole song, the violin rises into a bright singing line in the drop section, a soft cello pad adds warmth underneath, and the arrangement floats in a soothing, unhurried pulse. Hopeful, spiritual mood of light entering through every crack, a heart that is fire, a long road ending in quiet autumn. Ends on the violin fading over a single piano note. Warm, spacious, vocal-forward mix with natural reverb.
+--- EXCLUDE
+drums, drum machine, percussion, kick, snare, hi-hats, electric guitar, distortion, rap, EDM drop, Cantonese, English vocals, male lead vocal
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a gentle felt piano alone, a slow expressive violin joins on bar five, soothing floating rhythm from the piano only, instrumental only]
+
+[Verse 1 | part 1 of 2, soft clear female voice, close-mic, piano and violin only, one breath per line, slightly behind the beat, bracketed words are faint whispered echoes]
+很久很久以前，他们告诉我，
+万物之间都有裂隙，
+那是光照进来的地方。（如此耀眼）
+
+很久很久之后，我在未来回首，
+却发现这是一道低语，
+如城堡堆在沙滩上。（一戳就破）
+
+[Verse 1 | part 2 of 2, same voice, warmer, cello pad enters softly]
+或许会有一天，有人对我说，
+你的心就是火，
+让寂静不再沉默。（永不闪躲）
+
+[Chorus | open tender sustained voice, line endings held, violin sings above, piano chords wider, a faint warm harmony floats on the last two lines]
+忘掉所有悲剧，
+我眼中只剩奇迹。
+世间万物与我共聚，
+伴我铭刻诗句。
+记起所有震撼，
+天地不再昏暗。
+远处灯火阑珊，
+只待一缕清风吹散。
+
+[Verse 2 | piano and cello with the violin answering, voice soft and wistful, a gentle seasonal turn from autumn rain to spring]
+在花开花落之后，
+长路终会到达尽头，
+再抬眸，不过一场离别秋。
+
+少年不复少年日，
+正是萧瑟夜雨时，
+难言重逢有否，流年不止。
+
+雪落雪融雪伴春，
+梅开枝头绿叶生。
+又是一年雷作鼓，
+莫道寻常莫要嗔。
+
+[Drop | 4 bars, the violin rises into a bright singing line, the female voice stays soft and luminous in the space, spiritual resonance, piano only underneath]
+
+[Final Chorus | the most open and luminous version, voice soft yet full, violin soaring, piano and cello pad wide, same melody as the first chorus]
+忘掉所有悲剧，
+我眼中只剩奇迹。
+世间万物与我共聚，
+伴我铭刻诗句。
+记起所有震撼，
+天地不再昏暗。
+远处灯火阑珊，
+只待一缕清风吹散。
+
+[Outro | 8 bars, cello pad fades, violin plays the intro line once more, fades over a single piano note, then silence, instrumental only]
+[End]

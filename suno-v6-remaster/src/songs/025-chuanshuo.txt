@@ -1,0 +1,98 @@
+#id: 025
+#slug: chuanshuo
+#title: 传说
+#album: 《龙之说》
+#lang: Mandarin
+#orig: f1:1472-1546
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 96
+#length: about 4:10
+#note: 原稿 [verse2,rap] 的"，rap"写法不规范，改成 Verse 2 + 段内演出指示（rapped, breath after every line）；五行句「金断神 木锁灵 水葬魂 火焚身 土埋骨」每句 3 字，节拍落在重音上。
+#note: 第一段 12 行拆成 3 个小节；「亦」「纵然」等书面语读音容易偏，必要时用歌词精修。
+--- STYLE
+Epic Chinese-style rock with electronic edges at 96 BPM in D minor, sung and rapped in Mandarin Chinese. A male vocalist sings with a warm, clear, slightly husky tenor in the verses and chorus, holding long notes at line ends, and rhythmically raps the middle verse in a low, steady, confident flow. A guzheng arpeggio, a soft erhu line and a deep sub bass carry the verses, punchy live drums and crunchy electric guitars join in the chorus, and the chorus opens with strings, a distant choir and a bright dizi flute. Mythic, adventurous mood of chasing an old legend through golden light, deserts and rivers, loneliness turning into an inexhaustible song. Ends on the guzheng alone with a long ringing note. Polished, wide, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, piano ballad, EDM drop, trap hi-hats, comedy, autotune, country
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a guzheng arpeggio alone, a soft erhu line joins on bar five, a deep sub bass swells, golden wind texture, instrumental only]
+
+[Verse 1 | part 1 of 3, warm husky male tenor, close-mic, guzheng and sub bass only, one breath per line, slightly behind the beat]
+一点金色光，
+耀灰暗梦境一角，
+它来自何方，
+为何万般玄妙，
+万年传说轮回流转，
+于黯淡中映照波澜。
+
+[Verse 1 | part 2 of 3, same voice, erhu answers after each line, soft kick enters]
+古老岩洞中，
+吹来亘古的风，
+看旧日幻影匆匆，
+记挫折峥嵘无穷，
+走一段新程，
+推开一扇新门。
+
+[Bridge | voice lifts, drums enter with a steady beat, dizi flute holds a long note, a breath at every line end]
+淘尽沙土，
+于焦灼烈焰上漫步，
+挽一捧沙砾，
+双眼迷离中见亲故，
+血泪延伸千万里，
+纵然迷途，
+亦有明路。
+
+[Chorus | wide clear voice, long held line endings, crunchy guitars and strings enter, choir behind, dizi flute soars above]
+追一场梦境，
+寻一段传说，
+揽无尽银河入心，
+缤纷光华伴我，
+跨越黄土与江河，
+踏遍原野或荒漠，
+思绪是心内不竭的歌。
+
+[Verse 2 | rapped in a low steady confident flow, kick and snare with a sparse guzheng pluck, a short breath after every line, five-element words land hard on the beat]
+金断神，
+木锁灵，
+水葬魂，
+火焚身，
+土埋骨，
+五行聚合，
+通向起源或终焉，
+阴阳阻隔，
+看我抬手遮苍天，
+渡过千万年，
+无数夜未眠，
+梦中见群仙，
+寻觅的路上太多无言，
+只身向前，
+如光如电，
+终是通向这终章的诗篇。
+
+[Bridge | back to singing, voice calm and lonely, drums thin out, erhu and guzheng only, a breath at every line end]
+一路上总有孤独，
+这是一本古书，
+与激情纵情共舞，
+写一首悠扬的乐谱，
+岁月即便会干枯，
+却永恒留心深处。
+
+[Drop | 2 bars, strings and drums swell and cut to one beat of full silence, then the full band lands together, vocals rest]
+
+[Final Chorus | strongest version, voice wide and bright, choir and strings at full, dizi flute soaring, same melody as the first chorus]
+追一场梦境，
+寻一段传说，
+揽无尽银河入心，
+缤纷光华伴我，
+跨越黄土与江河，
+踏遍原野或荒漠，
+思绪是心内不竭的歌。
+
+[Outro | 8 bars, drums and strings fall away, guzheng plays the intro arpeggio alone, one long ringing note, then silence, instrumental only]
+[End]

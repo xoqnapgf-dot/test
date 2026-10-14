@@ -1,0 +1,86 @@
+#id: 016
+#slug: dushi
+#title: 都市
+#album: 《罪恶世界》
+#lang: Mandarin
+#orig: f1:949-1016
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 92
+#length: about 3:40
+#note: bridge 的「猎人（猎人！）」等是同时叠加的呐喊回声，已并入同一行（v6 括号=叠唱）。
+#note: 副歌里连续的"了…了…"排比很密，已在每个半句后面留逗号并在标签里要求 "half a beat of air"。
+#note: 含粗口「他妈」，按原稿保留。
+--- STYLE
+Dark cinematic Chinese hip-hop with industrial rock edges at 92 BPM in F minor, rapped in Mandarin Chinese. A male rapper delivers a low, gritty, controlled flow in the verses, almost spoken and menacing, then shouts the hook in the chorus with gang vocals behind him. A distorted sub-bass 808, a slow heavy kick and snare, a gritty industrial guitar loop and a cold string drone carry the verses, and the chorus adds wide distorted guitars, crowd shouts and crashing cymbals. Lonely and vengeful mood of a hunter walking a sleepless neon city at night, scarred and unbroken. Ends with the guitar loop alone and one last 808 hit. Dark, punchy, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, acoustic folk, EDM drop, lo-fi, comedy, autotune, smooth jazz
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, cold string drone and a distant siren, an industrial guitar loop starts, 808 and a slow kick enter on bar five, instrumental only]
+
+[Verse 1 | low gritty rapped voice, controlled and menacing, 808 and kick only, a short breath after every line, slightly behind the beat]
+我是个行走于暗夜的猎人，
+穷凶极恶之徒务必锁好房门，
+我将竖立一座座方石做的坟，
+你们的尸骨将留下受害者的刻痕。
+
+我是个闪烁在影子中的猎人，
+我的心是扎进地底的树根，
+我在工作时从来感受不到疼，
+除非乌鸦愿意给我一个吻。
+
+[Bridge | chant section, the lead barks each word and the crowd echo is layered inside the same line, hard snare on every word]
+猎人（猎人！）
+伤痕（伤痕！）
+报恩（报恩！）
+灭门（灭门！）
+
+[Chorus | shouted hook, wide distorted guitars, gang vocals double the lead, crash cymbals, half a beat of air between each pair of lines]
+走过了路翻过了山，
+踏遍每一个不眠的夜晚，
+蹚过了河游过了海，
+为什么还是这样不自由也不自在，
+
+刺穿了天跺碎了地，
+恶魔被迫交出自己的秘密，
+盗窃了神也抢劫了人，
+我无依无靠还他妈一事无成。
+
+[Verse 2 | back to the low controlled flow, strings added to the drone, darker and more intimate]
+我是个飞翔在星河的猎人，
+沉默的月亮见证了我的隐忍，
+它不会委屈也不会发声，
+只有坑洞诉说着深仇大恨。
+
+我是个厮杀于角落的猎人，
+把刀枪送给这炽热的不夜城，
+所有的老鼠都能听见我的歌声，
+路边的石子全都能感受到我的奔腾。
+
+[Bridge | chant section again, same bark and layered echo, louder, snare harder]
+猎人（猎人！）
+伤痕（伤痕！）
+报恩（报恩！）
+灭门（灭门！）
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then 808, guitars and full drums slam in together, vocals rest]
+
+[Final Chorus | strongest version, shouted hook at full power, gang vocals louder, same melody as the first chorus]
+走过了路翻过了山，
+踏遍每一个不眠的夜晚，
+蹚过了河游过了海，
+为什么还是这样不自由也不自在，
+
+刺穿了天跺碎了地，
+恶魔被迫交出自己的秘密，
+盗窃了神也抢劫了人，
+我无依无靠还他妈一事无成。
+
+[Outro | 8 bars, drums and 808 stop, the guitar loop plays alone for four bars, one last 808 hit, then silence, instrumental only]
+[End]

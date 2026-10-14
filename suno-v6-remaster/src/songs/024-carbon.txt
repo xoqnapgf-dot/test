@@ -1,0 +1,66 @@
+#id: 024
+#slug: carbon
+#title: 碳元素
+#album: 《尽头》
+#lang: English
+#orig: f1:1423-1466
+#dropped: (White noise builds in the lab, crisp sounds of test tubes clinking)|(Gradually fading keyboard clicks)
+#vocal: Female
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 112
+#length: about 3:30
+#note: 原稿 Intro 和 Outro 括号里的两句是制作说明（实验室白噪声/键盘点击），括号会被唱出来，已改成方括号里的英文演出指示，文字不再出现在歌词里。
+#note: 「(Whooo—) (Inhales—) (C-O-H-N) (Burn—) (Sink—) (4.6 billion years)」是句间的顺序应答，保持独立成行；其中 (Inhales—) 会被唱成 "inhales"，若不想要，用歌词精修删掉。
+--- STYLE
+Clean electro-pop with laboratory textures at 112 BPM in E minor, sung in English. A female vocalist sings cool, crisp and precise in the verses, almost spoken like a scientist reading data, then bright, wide and sustained in the chorus with airy breathy ad-libs between the lines. A pulsing analog bass, a tight electronic kick, crisp glass-like hi-hats and a bright arpeggio carry the verses, tiny test-tube clink samples sparkle between phrases, and the chorus adds a wide supersaw pad, a punchy clap and layered vocal harmonies. Curious, awed mood about carbon, the element in every leaf, every diamond and every breath. Ends on keyboard clicks fading out one by one. Polished, clear, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, heavy distortion, metal, country, acoustic folk, screaming, rap verses, comedy, orchestral strings
+--- LYRICS
+[Intro | 8 bars, white noise builds in a laboratory, crisp test tube clinks, a bright arpeggio and a pulsing bass enter on bar five, instrumental only]
+
+[Verse 1 | cool crisp female voice, almost spoken, bass and kick only, a short breath after every line, slightly behind the beat]
+Under the microscope, hexagonal arrays,
+Diamonds and graphite share the same DNA,
+Deep sea vents erupt with blackened blood,
+Diatoms weave the nets of photosynthesis, they flood.
+
+[Pre-Chorus | voice softens and lifts, hi-hats open, a synth riser builds for two bars, a small breath at the end]
+You hide in every leaf's vein,
+In the moment methane bubbles rise again.
+
+[Chorus | bright wide sustained voice, supersaw pad and clap enter, the parenthesized words are airy breathy ad-libs sung just after each line]
+Carbon, breath of the tropical trees,
+(Whooo—)
+Sighs escaping from industrial chimneys,
+(Inhales—)
+You form the equations of everything we see,
+(C-O-H-N)
+The sum and difference of life's chemistry.
+
+[Verse 2 | back to the cool crisp voice, bass and kick, glass hi-hats, a little warmer]
+Oil pipes flow with the liquid dusk,
+Coal stacks rise as ancient tombstones' trust,
+Nanotube mazes consume electric flow,
+Graphene flickers like stars in screens that glow.
+
+[Bridge | stripped down, a fragile close voice over pad only, drums pause, a small riser at the end]
+When glaciers melt, releasing you from time,
+The atmosphere reorders fate's design.
+
+[Drop | 2 bars, the mix is filtered and swells, one beat of full silence, then the full beat and pad slam back in, vocals rest]
+
+[Final Chorus | strongest version, voice wide and bright, stacked harmonies, full beat, the parenthesized words are breathy ad-libs sung just after each line, same melody as the first chorus]
+Carbon, the wager of oxygen and flame,
+(Burn—)
+Time capsules locked in the ocean's name,
+(Sink—)
+You write civilization’s carbonless diary,
+(4.6 billion years)
+The green Earth’s chemical codex we carry.
+
+[Outro | 8 bars, beat and pad fall away, the bright arpeggio plays alone, gradually fading keyboard clicks one by one, then silence, instrumental only]
+[End]

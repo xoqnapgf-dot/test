@@ -1,0 +1,101 @@
+#id: 068
+#slug: denno-ame
+#title: 電脳雨
+#album: 歌词2
+#lang: Japanese
+#orig: f2:2337-2461
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 102
+#length: about 4:40
+#note: 原稿每一行之间都隔了空行，会让 Suno 每行都停顿、整首变得拖沓，已按语义每 2-4 行一组；原稿内部提示词（贝斯主导、冷酷合成、双贝斯咬合等）已保留，改成「段落 | 指示」并补足小节数。
+#note: 原稿已有 [This is a Japanese song]（保留）。英文夹杂的「it's fine、」按原稿保留。
+#note: 最后一遍副歌写了 key change，对应原稿 [Final Chorus: … key change]。
+--- STYLE
+Cold bass-led Japanese cyberpunk synth-pop at 102 BPM in C minor, sung in Japanese. A female vocalist sings languid, breathy and detached in the verses with minimal backing, then fuller and cold in the chorus where her restraint breaks, with a wailing edge on the final chorus. A solo melodic bass with a chorus effect leads the song, a hypnotic synth bass enters in the second verse, tight drums and a glitchy hi-hat build in the pre-chorus, and the chorus adds a prominent driving bass, cold anthemic synth pads and wide guitars. Lonely, rainy mood of a girl with a prosthetic hand walking a neon city at three a.m. asking whether she is alive or just data. Ends on the bass line repeating alone while glitch noise and rain fade. Dark, wide, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, English vocals, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, orchestral strings
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, a solo melodic bass line with a chorus effect, cold and sparse, rain ambience, instrumental only]
+
+[Verse 1 | languid breathy female voice, detached, minimal backing, bass only with faint rain, a breath after every line, slightly behind the beat]
+午前三時、電脳の雨。
+ネオンが滲む、水たまりの底。
+義体の指で、触れた世界は、
+冷たいノイズ、ただそれだけ。
+
+改札を抜ける、亡霊の列。
+みんな俯いて、画面の中。
+あたしも同じ、顔のない一人。
+心拍数だけが、本物みたい。
+
+[Verse 2 | a synth bass enters, the groove builds hypnotically, the voice stays flat and close]
+広告の空に、偽物の月。
+誰かの夢を、ダウンロードして。
+あたしの心、どこに売ったの。
+検索しても、見つからない。
+
+高層ビルの、隙間の闇で、
+野良の電波が、迷子になってる。
+充電切れの、感情のまま、
+今日も歩く、コードの上を。
+
+[Pre-Chorus | tension rising, drums heavier, the voice slightly desperate]
+接続して、切断して、
+繰り返す、灰色のループ。
+ねえ、神様、いるなら、
+このコードを、書き換えて。
+
+[Chorus | full arrangement, the driving bass prominent, cold anthemic pads, the emotional restraint breaking, long held line endings]
+電脳雨、降り止まない。
+亡霊たちが、踊る街で、
+あたしはまだ、生きているの?
+それとも、ただのデータなの?
+
+錆びたネオン、溶けていく夜。
+誰の記憶も、上書きされて。
+答えのない、問いを抱いて、
+ラララ、雨に沈む。
+ラララ、雨に沈む。
+
+[Interlude | 8 bars, a bass solo in a high melodic register, glitch noise, the other instruments minimal, instrumental only]
+
+[Verse 3 | half-whispered, intimate, almost spoken, bass and a faint pad, the lines are said softly with a pause after each]
+プラグを抜いて、眠りたい夜。
+でも夢の中も、広告だらけ。
+あんたの声も、合成音声。
+本物なんて、もういらない。
+
+薬みたいに、光を浴びて、
+明日の予報は、また電子の雨。
+it's fine、って呟いた声も、
+ノイズに紛れて、消えていった。
+
+[Bridge | building intensity, two basses interlock, drums driving, the voice defiant, the last line is sung loud and held]
+壊れてもいい、偽物でもいい。
+この痛みだけ、あたしのもの。
+五秒だけでも、感じていたい。
+電源が落ちる、その前に。
+叫んでみたい、この喉で。
+錆びた声でも、あたしの声。
+
+[Final Chorus | climactic, full power, a wailing edge on the vocal, key change up one step, the bass driving, guitars wide]
+電脳雨、降り止まない。
+亡霊たちが、踊る街で、
+あたしはまだ、生きているよ。
+データじゃない、叫んでいる。
+
+錆びたネオン、燃えていく夜。
+誰の記憶も、消させはしない。
+答えのない、問いのままで、
+ラララ、雨を裂いて。
+ラララ、雨を裂いて。
+
+[Outro | 12 bars, the bass line repeating alone, glitch noise and rain fading out, instrumental only]
+[End]

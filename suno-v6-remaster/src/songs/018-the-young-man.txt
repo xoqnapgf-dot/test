@@ -1,0 +1,64 @@
+#id: 018
+#slug: the-young-man
+#title: The young man
+#album: 《甩狙战神》
+#lang: English
+#orig: f1:1068-1103
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: Off
+#bpm: 138
+#length: about 3:00
+#note: 「(A legend!)」是叠加在同一句上的回声，已并入「He is a legend!」同一行。
+#note: 原稿 [Drop] 下面带 4 行唱词，不是纯器乐，所以改标为 Bridge（"雷鸣"段），并写明鼓暂停、吉他铺开。
+#note: 歌词短，结构紧凑，Max Mode 可关。
+--- STYLE
+Anthemic arena rock with a pop-punk drive at 138 BPM in A major, sung in English. A male tenor sings bright, fearless and slightly raspy, confident and punchy in the verses, then wide and shouted in the chorus with a crowd of gang vocals chanting the title line. Crunchy rhythm guitars, a melodic driving bass and big live drums carry the verses, the chorus adds soaring lead guitar, handclaps and stadium reverb, and a rolling thunder texture opens the bridge. Heroic, youthful mood of a young legend walking alone under the stars with a smile that cuts and a will of steel. Ends on a big sustained power chord. Bright, wide, punchy mix, vocal-forward.
+--- EXCLUDE
+female lead vocal, ballad, acoustic folk, rap verses, EDM drop, lo-fi, country, spoken word, jazz
+--- LYRICS
+[Intro | 8 bars, a rolling thunder texture and a single clean guitar line, drums crash in on the last bar, instrumental only]
+
+[Verse 1 | bright confident male tenor, crunchy guitars and driving bass, punchy drums, a short breath after every line, on the beat]
+Through storms he strides without a fear,
+His steps break dawn, the dark draws near.
+In every fight, he stands supreme,
+With fate and power as his theme.
+
+[Chorus | wide shouted voice, open chords, soaring lead guitar, gang vocals chant the title line, handclaps on the backbeat, crowd echo layered into the last line]
+He’s a fierce and fearless young man,
+With eyes that pierce the sky’s wide span.
+Each second stronger than the last,
+He moves ahead, leaving the past.
+
+He’s a wild and daring young man,
+All foes will bow to his command.
+He is a legend! (A legend!)
+
+[Verse 2 | back to the bright punchy voice, bass and drums tight, guitars palm-muted, a little more determined]
+Under stars, he walks alone,
+With glory and might that he has grown.
+A smile that cuts, a will of steel,
+No force can bend what he makes real.
+
+[Bridge | drums pause, rolling thunder and a single tremolo guitar, voice rises from steady to shouted over four lines, snare roll into the last chorus]
+Thunder echoes where he walks,
+The world awakens as he talks.
+His path ignites with light and flame,
+A legend rises, none the same.
+
+[Final Chorus | strongest version, voice shouted at full power, gang vocals louder, same melody as the first chorus, crowd echo layered into the last line]
+He’s a fierce and fearless young man,
+With eyes that pierce the sky’s wide span.
+Each second stronger than the last,
+He moves ahead, leaving the past.
+
+He’s a wild and daring young man,
+All foes will bow to his command.
+He is a legend! (A legend!)
+
+[Outro | 4 bars, band lands on a big sustained power chord, thunder rolls away, instrumental only]
+[End]

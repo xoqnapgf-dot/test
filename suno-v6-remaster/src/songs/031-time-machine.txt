@@ -1,0 +1,62 @@
+#id: 031
+#slug: time-machine
+#title: time machine
+#album: 《档案》
+#lang: English
+#orig: f1:2071-2115
+#vocal: Female
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 100
+#length: about 3:50
+#note: 原稿结构里有 [Deep Instrument]、[Drop]、[Drop Chorus] 三个标签，其中两个是空的；现合并为：Deep Instrument → 明确 8 小节间奏；Drop → 一拍静默重击；Drop Chorus 与最后新词的 Chorus 合并为 Final Chorus（文字是 "The horn of doom…" 那一版）。
+--- STYLE
+Soaring sci-fi synth-rock at 100 BPM in G minor, sung in English. A female vocalist sings with a clear, powerful alto, restrained and slightly detached in the verses, then wide, urgent and sustained in the chorus with layered harmonies. A pulsing arpeggiated synth, a deep melodic bass and a crisp electronic and live drum mix carry the verses, a dark pulsing bass synth drives the middle instrumental, and the chorus adds crunchy electric guitars, a wide pad, big reverb drums and a rising choir. Awed and fateful mood of quantum bubbles, engines of fire, a tower of Babel and a final performance of fate. Ends on a long synth pad fading out. Polished, wide, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, rap, country, acoustic folk, screaming, ballad, lo-fi, comedy, trap hi-hats
+--- LYRICS
+[Intro | 8 bars, a pulsing arpeggiated synth over a deep bass, a crisp electronic kick enters on bar five, a rising riser on the last bar, instrumental only]
+
+[Verse 1 | restrained slightly detached female voice, arpeggio and bass only, one breath per line, slightly behind the beat]
+Quantum entanglement in bubbles of chance,
+Endless oceans rise and fall, in a trance.
+Colors of light shimmer behind the door,
+Time reverses, we’re bound to explore.
+Machines ignite, taking us back again,
+Engines of fire will burn the decay, then.
+
+[Chorus | wide urgent sustained voice, crunchy guitars and big reverb drums enter, layered harmonies in the last two lines, line endings held]
+In the eternal, unchanged, we sigh,
+Singing through fleeting days that fly.
+The cosmos falls silent in a blink,
+I believe this is our final link.
+
+[Interlude | 8 bars, instrumental only, a dark pulsing bass synth leads over tight drums, guitars add sharp stabs, the arpeggio returns and a snare roll rises into the verse]
+
+[Verse 2 | back to the restrained voice, arpeggio and bass, drums tighter, more urgent]
+Smooth planes bend and distort in the dark,
+Curved engines sail through the cosmic arc.
+Newton’s faith and Hawking’s dream,
+Drift in the void, lost in the stream.
+Wings of mutation lift us from hell,
+Babel’s tower shines, heaven’s swell.
+
+[Chorus | same as the first chorus, a little brighter, harmonies thicker, same melody]
+In the eternal, unchanged, we sigh,
+Singing through fleeting days that fly.
+The cosmos falls silent in a blink,
+I believe this is our final link.
+
+[Drop | 2 bars, the whole mix is filtered and swells, one beat of full silence, then a huge synth and guitar hit with full drums, vocals rest]
+
+[Final Chorus | the new words, strongest version, voice wide and fateful, choir and guitars at full power, same melody as the first chorus]
+The horn of doom is finally blown,
+Endless illusions fade, all alone.
+Overlapping waves, separating clear,
+This is fate’s final performance here.
+
+[Outro | 8 bars, drums and guitars fall away, the arpeggio plays alone, a long synth pad holds and fades out, instrumental only]
+[End]

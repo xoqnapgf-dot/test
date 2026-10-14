@@ -1,0 +1,79 @@
+#id: 075
+#slug: ich-zaehle-risse
+#title: Ich zähle Risse
+#title-note: 原稿无标题，取自第一句，暂定此名，可自行改。
+#album: 歌词2
+#lang: German
+#orig: f2:2919-2972
+#vocal: Male
+#model: v6
+#weirdness: 35
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 70
+#length: about 3:50
+#note: 原稿只有裸标签（[Intro][Verse 1]…），v6 会浪费这些位置；已为每段补上具体演出指示。最后一遍副歌末句与前两遍不同（「Jetzt bin ich endlich genug für mich」），标签里写明转折。
+#note: 原稿没有句尾标点，已补；[Instrumental] 写成 8 小节具体内容。
+--- STYLE
+Intimate German indie ballad at 70 BPM in F minor, sung in German. A soft male baritone sings low, tired and honest, close to the microphone and nearly spoken in the verses, then opening into a quiet, aching and sustained chorus with a faint harmony. A felt piano and a low cello carry the whole song, a soft brushed kick and a warm bass enter in the second verse, and the final chorus adds strings and a gentle swell of drums. Quiet, bittersweet mood of counting cracks in a wall, a coat still hanging beside him, a cold coffee, and finally letting go and becoming enough for himself. Ends on the piano alone with a long cello note. Warm, close, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, screaming, comedy, upbeat pop
+--- LYRICS
+[This is a German song]
+
+[Intro | 8 bars, a felt piano alone, a low cello joins on bar five, a quiet room tone, instrumental only]
+
+[Verse 1 | soft tired male baritone, close-mic, nearly spoken, piano and cello only, a breath after every line, slightly behind the beat]
+Ich zähle Risse in der Wand,
+Ein Atemzug, dann wird es still,
+Dein Mantel hängt noch neben mir,
+Als ob er bleiben will.
+
+[Pre-Chorus | very quiet, each line is its own breath, only the piano, long pauses between lines]
+Ich sage nichts,
+Du sagst nichts,
+Der Raum hält uns zurück.
+
+[Chorus | quiet aching sustained voice, cello sings under the voice, a faint harmony on the last two lines, long held line endings]
+Nimm deine Hände aus meinem Blick,
+Lass diese Tür für immer zu,
+Wir waren Feuer ohne Licht,
+Und ich war nie genug für dich.
+
+[Verse 2 | back to the nearly spoken voice, a soft brushed kick and warm bass enter, a little more distant]
+Die Tasse steht am Fensterrand,
+Der Kaffee längst schon kalt,
+Ich höre Schritte im Flur,
+Doch niemand kommt herein.
+
+[Pre-Chorus | very quiet, only the piano, long pauses between lines]
+Ein kurzer Ton,
+Ein langer Schnitt,
+Dann fällt die Zeit zurück.
+
+[Chorus | same as the first chorus, a little fuller, same melody]
+Nimm deine Hände aus meinem Blick,
+Lass diese Tür für immer zu,
+Wir waren Feuer ohne Licht,
+Und ich war nie genug für dich.
+
+[Bridge | stripped down to piano and the voice, tender and urgent, a pause after each line, the last word is spoken very softly]
+Wenn der Boden unter uns nachgibt,
+Bleib nicht stehen, sieh nicht zurück,
+Ein letzter Atemzug,
+Dann geh.
+
+[Instrumental Break | 8 bars, the piano plays the chorus melody, the cello answers, strings enter slowly, drums swell softly, instrumental only]
+
+[Final Chorus | the last line changes and turns warm, voice stronger and clear, strings and drums swell gently, the last line is sung slowly and held]
+Nimm deine Hände aus meinem Blick,
+Lass diese Tür für immer zu,
+Wir waren Feuer ohne Licht,
+Jetzt bin ich endlich genug für mich.
+
+[Outro | the band falls away, the piano alone, the voice speaks the three lines softly with long pauses, a long cello note fades]
+Kein Wort,
+Kein Schritt,
+Nur Luft zwischen den Wänden.
+[End]

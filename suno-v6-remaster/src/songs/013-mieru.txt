@@ -1,0 +1,109 @@
+#id: 013
+#slug: mieru
+#title: 看得见
+#album: （看得见）
+#lang: Mandarin
+#orig: f1:721-808
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 80
+#length: about 4:00
+#note: 这首最容易抢拍：verse 的 14 字长句和「做过错过走过路过…」连珠句，已按 4-4-6 字词组加逗号作为换气点，BPM 放到 80，并在 Style 写了 unhurried / relaxed phrasing。
+#note: 副歌的「（我看得见）」「（在我耳边）」是接在主句后面的顺序应答，保持独立成行，并在标签里写明是柔声应答。
+#note: 若 verse 2 的连珠句仍然挤，用 v6 分段编辑只重做那一段，并把 Variety 保持 Off。
+--- STYLE
+Dreamy Mandopop R&B with a hazy electronic pulse at 80 BPM in A minor, sung in Mandarin Chinese. A female vocalist sings airy and tender, close to the microphone, with unhurried relaxed phrasing and a slight breath at the ends of lines, floating into soft layered harmonies in the chorus. A warm Rhodes piano, a rounded sub bass and a slow soft snare carry the verses, a glassy synth pad and a faint guitar echo open up the bridge, and the chorus adds a gentle four-on-the-floor kick and shimmering vocal doubles. Wistful, intimate mood of someone remembering a smile in a foggy rainbow-colored memory. Ends on the Rhodes alone with the pad fading. Vocal-forward, soft spacious mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, screaming, heavy distortion, metal, fast tempo, trap hi-hats, male lead vocal, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, warm Rhodes piano alone, a soft synth pad breathes in on bar five, light rain texture, instrumental only]
+
+[Verse 1 | airy female voice, close-mic, relaxed phrasing, Rhodes and sub bass only, a breath at every comma, slightly behind the beat]
+淡薄云雾，朦胧沙尘，迷离晴天白云，
+漫步小桥流水，回荡遥望，都市人群，
+暖意不觉散开，溢向四方，难以追寻，
+心结难解，心火难熄，唯有空留残韵，
+于幻境中，孤影独行，
+听回音中的低吟，
+（愿安宁）
+
+[Bridge | very soft and slow, voice almost whispered, one note of pad per line, drums pause, space after every line]
+岁月匆匆，
+谁与共，
+旧日彩虹，
+已然冰封，
+暗淡的缤纷，
+在消融，
+情愫暗涌，
+回忆无穷。
+
+[Chorus | voice floats up with layered harmonies, gentle kick enters, parenthesized lines are soft close answers sung just after the lead line]
+你的每一次微笑，
+（我看得见）
+你的每一句情话，
+（在我耳边）
+你的每一次心跳，
+（如此亲切）
+你的每一缕秀发，
+（再靠近些）
+
+[Verse 2 | tender spoken-sung voice, the chain of short words is sung in small groups with a breath after each comma, Rhodes and bass, slow]
+做过错过，走过路过，记过忘过爱过，
+看我听我，吻我拥我，念我知我伴我，
+困惑迷惑，跌落坠落，落寞懦弱闪烁，
+诺言不多，心绪衰弱，漠看渐散轮廓，
+大多往昔对我来说，
+如斑驳墙边花开花落，
+打一束灯火，
+华光自天际陨落，
+（丢魂魄）
+
+[Bridge | very soft and slow again, near-whispered voice, pad only, a pause after every line]
+盼望归来，
+无论何种姿态，
+自清自在，
+九重天之外，
+地底深埋，
+她亲手挖开，
+芬芳仍在，
+只需一丝忍耐。
+
+[Chorus | same as the first chorus, a little brighter, parenthesized lines are soft close answers sung just after the lead line]
+你的每一次微笑，
+（我看得见）
+你的每一句情话，
+（在我耳边）
+你的每一次心跳，
+（如此亲切）
+你的每一缕秀发，
+（再靠近些）
+
+[Drop | 2 bars, pad and Rhodes swell, one beat of full silence, then the full band returns together, vocals rest]
+
+[Final Chorus | strongest version, voice wide and tender, stacked doubles, kick and bass full, parenthesized lines are soft close answers sung just after the lead line]
+你的每一次微笑，
+（我看得见）
+你的每一句情话，
+（在我耳边）
+你的每一次心跳，
+（如此亲切）
+你的每一缕秀发，
+（再靠近些）
+hoo~
+我始终，
+（在你的身边）
+我永远，
+（伴随你每一天）
+我不会，
+（许下任何诺言）
+因为我的存在，
+（基于你的容颜）
+
+[Outro | 8 bars, drums and pad fall away, Rhodes plays the intro motif alone, last note rings, then silence, instrumental only]
+[End]

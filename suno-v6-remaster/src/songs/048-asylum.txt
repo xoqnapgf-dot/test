@@ -1,0 +1,94 @@
+#id: 048
+#slug: asylum
+#title: asylum
+#album: 歌词2
+#lang: English
+#orig: f2:731-791
+#vocal: Male
+#model: v6
+#weirdness: 70
+#influence: 60
+#variety: Off
+#max: On
+#bpm: 96
+#length: about 3:50
+#note: 原稿的内部提示词（Twisted whispers / Broken Flow, Half-whispered / Frenzied melody and screams + psychiatric episode）已保留意图并扩写；原稿里 [Instrumental] 和 [Guitar Solo] 后面紧跟的「(Oh...)」「(Hehehe Oh oh oh)」是器乐段里的耳语/笑声，已作为带说明的小节保留，括号照原样。
+#note: 这首是故意怪的，Weirdness 70 / Style Influence 60；若崩坏过度，先把 Weirdness 降到 55。含粗鄙词，按原稿保留。
+--- STYLE
+Experimental avant-garde alt-rock with dark trip-hop pulses at 96 BPM in B minor, half-whispered and half-sung in English. A male vocalist delivers a broken, twitchy, half-whispered flow in the verses like a patient confiding in a corridor, then erupts into a frenzied melodic hook with screams and giggles in the chorus. A twisted, warped, bent-string distorted guitar, a rubbery sub bass and a stuttering broken drum loop carry the verses, creepy music-box and radio-static textures flicker in the gaps, and the chorus adds wide fuzz guitars, panicked shouts and echoing voices. Surreal, claustrophobic, darkly funny mood inside a white-tiled asylum, a dog-faced doctor and a blue door that cannot be touched. Ends on the music box slowing to a stop. Raw, eerie, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, orchestral strings, country, smooth jazz, polished pop, acoustic folk, comedy rap, autotune
+--- LYRICS
+[Intro | 8 bars, twisted whispers, a bizarre bent and distorted guitar accompaniment, a creepy music box, radio static, instrumental only]
+
+[Verse 1 | part 1 of 2, broken flow, half-whispered and twitchy, warped guitar and rubbery bass, stuttering drums, a breath after every line, slightly behind the beat]
+Cold porcelain tiles,
+A gleaming white floor.
+The bathtub's ablaze,
+Soap swallowed to the core.
+The doctor's a bull's head –
+My apologies, I misread.
+Actually, the doctor's a dog-faced man instead.
+
+[Verse 1 | part 2 of 2, same twitchy half-whisper, the parenthesized snore is a long slow whispered Z sound, the last line fades like waking up]
+The angels spin and spin,
+Do their eyes need glasses to see within?
+The ribbons twist and twine,
+Afterimages morph into a boat of design.
+Skull spider,
+Come take my picture, stride.
+Draw the curtains, I need to sleep now inside.
+(Zzzzzzz...)
+The phone rings,
+From dreams I return, like a bird with wings.
+Hell behind me, it fades and dies.
+
+[Chorus | frenzied melodic hook, fuzz guitars wide, panicked shouts and giggles between the lines, the voice goes from calm to unhinged, the parenthesized word is a sudden shout]
+I'm in the asylum, I'm not in the asylum.
+I'm outside the world,
+Or maybe on its apex?
+Reality's a page,
+I pee on it, full of rage.
+The Earth is a pond, I poop in it every day, beyond.
+The universe, a cake,
+Into the microwave,
+I partake.
+I am a madman,
+I'm asking you, my friend. (Ah)
+Ask me!
+
+[Interlude | 4 bars, eerie bent guitar and music box, a lone ghostly voice sings the bracketed ad-lib in the middle]
+(Oh...)
+
+[Guitar Solo | 8 bars, a warped distorted guitar solo with wild bends over the broken drum loop, a giggling voice laughs the bracketed ad-lib at the end]
+(Hehehe Oh oh oh)
+
+[Verse 2 | part 1 of 2, back to the twitchy half-whisper, bass and broken drums, the picture turns surreal and violent, the quoted words are spat out]
+Every face's skin is torn,
+I see demons, from flesh and blood reborn.
+They smile at me, a chilling sight,
+"Screw you!"
+I grab the steel pipe, swing with all my might!
+The dark clouds in the sky, my pet dogs they remain,
+Coins in the bowl are eating bread, again and again.
+
+[Verse 2 | part 2 of 2, the voice drifts and slurs like falling asleep, the music box returns, the final line is sung very slowly]
+I want to sleep, but the moon keeps me in endless loop,
+The blue door, untouchable, in endless droop.
+Cats walk on the roof tiles, light and free,
+The moon overlaps, then scatters, for all to see.
+I am a blind man, who's lost his way.
+
+[Drop | 4 bars, instrumental only, a post-chorus burst, the stuttering drums slam in with fuzz guitars and a distorted music box]
+
+[Hook | frenzied melody and screams with a psychiatric episode, voice cracks and shouts, echoes and panicked breaths between lines]
+I'm in the asylum, I'm inside the world. You're not beside me,
+Where are you, unfurled?
+I'm in the crevice, deep inside the other side of the Earth's crust, in dust.
+Awaiting my arrival,
+Fearing my future's revival.
+Disaster will descend,
+My eyes blink, and the story will re-begin.
+
+[Outro | 8 bars, instrumental only, the guitar fades into static, the music box slows down and stops]
+[End]

@@ -1,0 +1,89 @@
+#id: 065
+#slug: no-owner-night
+#title: 無主の夜
+#album: 歌词2
+#lang: Japanese
+#orig: f2:2093-2155
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 118
+#length: about 4:00
+#note: 原稿的内部提示词已经写得很清晰（贝斯 solo 为主、冷淡女声、sub-bass），保留并细化；原稿 Bass Solo 的 "reprising the intro motif" 保留。
+#note: 这首和《私の身体は…》主题相近但编曲不同：这首是 bass-led darkwave（重低频贝斯领奏、鼓极少），那首是 motorik post-punk + 后摇渐强。
+#note: 全角空格都改成「、」；Outro 的两句「誰のものでもない…」「無主の夜」保留省略号。
+--- STYLE
+Bass-led dark post-punk and darkwave at 118 BPM in F-sharp minor, sung in Japanese. A female vocalist sings icy and flat in the verses, deadpan and close to the microphone, then fuller and colder in the chorus with a faint double behind her, half-whispering in the bridge and gaining power in the final build. A heavy sub-bass plays the lead melody throughout, a motorik drum machine stays minimal, a cold synth pulse and a muted guitar stab give texture, an angular chorus-pedal clean guitar adds one solo, and the full band enters in the chorus. Cold, defiant mood of a number in a wired city choosing a frozen ownerless night over kneeling to anyone. Ends on the bass pulse and whispered vocals fading. Dark, wide, vocal-forward mix with a strong low end.
+--- EXCLUDE
+male lead vocal, English vocals, ballad, acoustic folk, country, EDM drop, trap hi-hats, comedy, orchestral strings
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, a cold synth pulse, the sub-bass enters alone, sparse and tense, instrumental only]
+
+[Verse 1 | motorik drums, muted guitar stabs, deadpan icy female voice, a breath after every line, slightly behind the beat]
+配線の街、目を覚ます、
+影に貼られた、番号だけ、
+瞬きしない眼が、数えてる、
+私はいつも、誰かの記録、
+灰色の朝、列に並ぶ、
+声を出さずに、順番を待つ。
+
+[Chorus | full band, the driving bassline pushed forward, icy female voice, a faint double behind her, drums steady]
+この声も、この鼓動も、
+誰のものでもない、
+王はいらない、檻もいらない、
+鎖を焼いて、夜を歩く、
+誰のものでもない。
+
+[Bass Solo | 8 bars, a heavy sub-bass lead with minimal drums, dark and melodic, instrumental only]
+
+[Verse 2 | same instrumentation as the first verse, slightly more urgent, the voice a little closer]
+裏通りに、あかりが揺れる、
+許可を持たない、声が笑う、
+値札のない、手と手が触れる、
+名前も知らずに、何かが動く、
+誰の許しもなく、選んでいく、
+隙間の中で、息をしている。
+
+[Chorus | full band, the driving bassline pushed forward, icy female voice, same melody as the first chorus]
+この声も、この鼓動も、
+誰のものでもない、
+王はいらない、檻もいらない、
+鎖を焼いて、夜を歩く、
+誰のものでもない。
+
+[Bass Solo | 4 bars, a heavy sub-bass lead with minimal drums, instrumental only]
+
+[Guitar Solo | 4 bars, an angular chorus-pedal clean guitar, a post-punk lead line with atmospheric reverb over the bass, instrumental only]
+
+[Bridge | stripped down, cold and sparse, half-whispered vocals, bass pulse only, a pause after each line]
+誰も来ない、
+それでいい、
+助けなんて、最初から嘘、
+凍える指で、自由を掴んだ、
+代わりに残るのは、孤独だけ。
+
+[Build | rising intensity, drums re-entering, layered synths, the voice gaining power with each line]
+それでも、誰かにひざまずくより、
+凍った夜を、選び続ける、
+鎖はもう、灰になった、
+灰になった。
+
+[Final Chorus | peak energy, full band, icy female voice at full, the new last line is sung slowly and held]
+この声も、この鼓動も、
+誰のものでもない、
+王はいらない、檻もいらない、
+鎖を焼いて、夜を歩く、
+誰のものでもない、
+無主の夜を、生きるだけ。
+
+[Bass Solo | 8 bars, a heavy sub-bass lead, reprising the intro motif, instrumental only]
+
+[Outro | fade out, the voice whispers over the bass pulse, a long pause between the two lines]
+誰のものでもない…
+無主の夜。
+[End]

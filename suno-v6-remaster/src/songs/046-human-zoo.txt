@@ -1,0 +1,117 @@
+#id: 046
+#slug: human-zoo
+#title: Human Zoo
+#album: 歌词2
+#lang: English
+#orig: f2:534-623
+#vocal: Male
+#model: v6
+#weirdness: 65
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 126
+#length: about 4:10
+#note: 原稿 [Instrument - Drop] [Drop] [DJ] 三个标签叠在一起，且其中两个是空的，已合并成一个具体的"DJ 搓碟 + 重鼓点"的 4 小节间奏。
+#note: 开头的「(Ah!) (Zoo!) (Human zoo!) (Welcome! Motherfker!)」是人群顺序应答，保持独立成行；「But (hahahahaha)」行内括号保持。含粗口，按原稿一字未改。
+#note: 结尾的 [Break] 是整首最疯的一段全员喊话，现在写成"鼓停、只留念白+人群回应"，再接尾奏。
+--- STYLE
+Dark carnival industrial rap-metal at 126 BPM in D minor, shouted and rapped in English. A male vocalist barks the verses in a hoarse, theatrical, sneering ringmaster voice, then shouts the chorus with a chanting crowd of gang vocals, spitting the final break like a speech. Heavy distorted guitar riffs, a thick bass, punchy live drums and a mechanical circus calliope loop carry the verses, DJ scratches and sirens cut between phrases, and the chorus adds wide distorted chords, crash cymbals and shouted crowd responses. Grotesque, satirical mood of a zoo where the humans are the beasts, with monkeys, a bald hippo and a squirrel in a cage. Ends on a giant door slam and a laugh. Punchy, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, acoustic folk, country, smooth jazz, lo-fi, comedy pop, autotune, orchestral strings
+--- LYRICS
+[Intro | 8 bars, a creepy circus calliope loop, a siren, a distorted riff builds, heavy drums crash in on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 3, theatrical sneering ringmaster bark, riff and drums tight, a clear breath after every line, the parenthesized lines are crowd answers shouted after the previous line]
+The monkey at the mirror, it starts to grimace and gnaw,
+Madly smashing the glass, defying every law.
+Behind it, more monkeys appear, a roaring, frenzied crew,
+They scream and shout aloud, in this chaotic view.
+
+Their furry bodies, teeth stained with fresh blood, bright,
+They're butchering themselves, in this gruesome, horrid sight.
+Sharp claws dig into wounds, a grotesque, morbid art,
+Pulling out entire skeletons, to observe each bone and part!
+(Ah!)
+(Zoo!)
+(Human zoo!)
+(Welcome! Motherfker!)
+
+[Verse 1 | part 2 of 3, same bark, a deep guttural roar for the hippo, calliope louder, the parenthesized lines are crowd answers]
+The hippo opens wide its mouth, a massive, guttural roar,
+Giant teeth corroded by its own drool, forevermore.
+Ugly songs fill the pool, a disgusting, slimy brew,
+Round, plump balls of feces float, a truly sickening view.
+
+[Verse 1 | part 3 of 3, the voice breaks into a manic laugh, then the shouted joke lines land on the beat with the crowd answering]
+But (hahahahaha)
+Hippo!
+(It's bald!)
+It's bald! It has no hair to show!
+It's a baldy!
+(Woohoo!)
+(Human zoo!)
+(Motherfker!)
+(Welcome! F**k!)
+
+[Chorus | shouted chanting hook, wide distorted chords, gang vocals double the title line, crash cymbals, the parenthesized shout is a single crowd yell]
+This is the human zoo, human zoo, human zoo,
+Grab your ticket tight, watch your comrades too.
+Never, ever dare to open up the cage,
+Don't stick your head towards the beasts, in this dark age.
+Or else you'll turn into their form, a dreadful, savage hue,
+(Guess who!)
+This is the human zoo, human zoo, human zoo,
+Don't eat raw meat, eat more of the feed for you.
+Oh, sorry, that wasn't meant for you to hear,
+But...
+(Haha!)
+Let me give you a smack, then put a collar on your neck, my dear!
+
+[Verse 2 | part 1 of 2, back to the sneering ringmaster bark, riff and drums tight, a squirrel jumping, a little faster]
+The squirrel leaps up and down, a frenetic, tiny sprite,
+Clutching a pinecone, but it won't take a bite.
+It rather fights the kangaroo for apples, green and red,
+It jumps from table down to hell, then back to earth instead.
+It's a clever little trickster, a mastermind so small,
+The leaves are falling, rustling, answering nature's call.
+So I pick up one leaf to taste, a curious, strange delight,
+(Waaaaoh!)
+
+[Verse 2 | part 2 of 2, the voice turns accusing, the parenthesized words are crowd answers, getting more furious toward the end]
+(Human zoo!)
+What kind of animals are we now, in this absurd display?
+No, not me, it is you! You're the beast, I say!
+(Human zoo!)
+Peel back your skin, your hidden truth to find,
+Segment your bones, leave nothing left behind.
+I've found the evidence, the beast within your soul!
+No, no, no!
+You are not welcome here, motherf**kers, you whole!
+
+[Drop | 4 bars, instrumental only, a DJ scratching over a heavy beat drop, sirens and the calliope loop, the guitar riff slams in on the last bar]
+
+[Chorus | strongest version, shouted at full power, gang vocals at full volume, same melody as the first chorus, the parenthesized shout is a single crowd yell]
+This is the human zoo, human zoo, human zoo,
+Grab your ticket tight, watch your comrades too.
+Never, ever dare to open up the cage,
+Don't stick your head towards the beasts, in this dark age.
+Or else you'll turn into their form, a dreadful, savage hue,
+(Guess who!)
+This is the human zoo, human zoo, human zoo,
+Don't eat raw meat, eat more of the feed for you.
+Oh, sorry, that wasn't meant for you to hear,
+But...
+(Haha!)
+Let me give you a smack, then put a collar on your neck, my dear!
+
+[Break | the drums stop, only a siren and the calliope, the voice speaks the lines like a ringmaster's speech, each shouted line followed by a crowd yell]
+Human Zoo!
+Motherf**ker!! Welcome to the zoo!
+This is your home!
+You're our partner too!
+Come and slaughter with us!
+This is the human zoo!
+
+[Outro | 8 bars, the full band crashes on a last chord, the calliope loop plays alone and slows down, a giant door slam and a laugh, instrumental only]
+[End]

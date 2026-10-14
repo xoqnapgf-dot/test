@@ -1,0 +1,106 @@
+#id: 067
+#slug: kataku
+#title: 火宅
+#title-note: 原稿无标题，取自副歌首句「火宅之中谁作主」，暂定此名，可自行改。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:2250-2331
+#dropped: (guzheng slow pluck, distant erhu, sparse low drums, cold atmosphere)|（戏曲散板，慢转急）|(guzheng and erhu fade, soft atmospheric pad, solemn ending)
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 78
+#length: about 4:30
+#note: 原稿已有 [This is a Mandarin song]（保留）；括号里的三处制作说明（古筝+二胡+低鼓 / 戏曲散板，慢转急 / 古筝二胡淡出）会被唱出来，已改成方括号里的英文演出指示，不再出现在歌词里。
+#note: Bridge 是"戏曲散板，慢转急"：标签里写 opera-style free-tempo recitation, slow then accelerating，歌词是 8 行念白感的句子，最后一句慢收。
+#note: 副歌八行是五位圣者/哲人的名字串（约瑟、穆圣、悉达、影典、德米特里），读音容易偏：悉(xī)达、德米特里。
+--- STYLE
+Solemn cinematic Chinese-style (guofeng) post-rock at 78 BPM in B minor, sung in Mandarin Chinese. A female alto sings grave, clear and restrained in the verses, then wide, aching and sustained in the chorus with a faint choir behind her, and recites the bridge in an opera-style free tempo that starts slow and tightens. A plucked guzheng, a distant erhu and sparse low drums with a cold atmosphere open the song, a deep bass and a dark pad carry the verses, and the chorus adds tremolo guitars, big reverb drums, strings and a choir. Heavy, mournful and awestruck mood of a burning house of the world where five saints stand side by side asking who is in charge, and humanity chooses to be a witness. Ends on guzheng and erhu fading into a soft pad. Wide, cinematic, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, Cantonese, English vocals, rap, EDM drop, trap hi-hats, comedy, upbeat pop, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a slow guzheng pluck, a distant erhu, sparse low drums, a cold atmosphere, instrumental only]
+
+[Verse 1 | grave restrained female alto, guzheng and a deep bass with a dark pad, sparse drums, a breath after every line, slightly behind the beat]
+灰烬漫天覆旧京，
+标语如刀割人心，
+胡同深处闻呼喊，
+红袖青衣追亡魂，
+吾辈来自无尽处，
+踏碎时空入红尘，
+第一性原理已碎，
+唯余生存这一身。
+
+[Pre-Chorus | voice lifts, erhu answers after each pair of lines, drums slowly tighten]
+宽门大道人如蚁，
+窄门幽径无人行，
+爱无需计算得失，
+理性亦难量苍生。
+
+[Chorus | wide aching sustained voice, tremolo guitars and big reverb drums enter, strings swell, a faint choir sings the names, long held line endings]
+火宅之中谁作主，
+五圣并立问真如，
+约瑟背负十字架，
+穆圣宣示公正律，
+悉达静坐空诸有，
+影典解构万般虚，
+德米特里算尽数，
+终见凡人献祭途。
+
+[Verse 2 | back to the grave voice, guzheng and bass, the drums pared back, a little colder and more bitter]
+雷冲灵魂被切开，
+林枭棋局暗中布，
+熔炉过滤旧人类，
+圣徒亦成观察物，
+老君堂内慈悲涌，
+新天堂外血如雨，
+方舟载得几多人，
+余者举火赴死路。
+
+[Pre-Chorus | voice lifts, erhu answers after each pair of lines, drums slowly tighten]
+宽门大道人如蚁，
+窄门幽径无人行，
+爱无需计算得失，
+理性亦难量苍生。
+
+[Chorus | stronger than the first, voice breaking open on the high notes, same melody as the first chorus]
+火宅之中谁作主，
+五圣并立问真如，
+约瑟背负十字架，
+穆圣宣示公正律，
+悉达静坐空诸有，
+影典解构万般虚，
+德米特里算尽数，
+终见凡人献祭途。
+
+[Bridge | opera-style free-tempo recitation, slow then accelerating, drums stop, only guzheng and erhu, each line spoken with weight, the last three lines are slow and clear]
+神之全知与人无知，
+存在应当与空无，
+理论尽皆成灰烬，
+唯余见证这一途，
+我们没有输，
+只是重新定义了规则，
+以最愚蠢也最伟大的方式，
+照亮这片无边的黑暗。
+
+[Final Chorus | strongest version, voice wide and aching, choir and strings at full, tremolo guitars and big drums, same melody as the first chorus]
+火宅之中谁作主，
+五圣并立问真如，
+约瑟背负十字架，
+穆圣宣示公正律，
+悉达静坐空诸有，
+影典解构万般虚，
+德米特里算尽数，
+终见凡人献祭途。
+
+[Outro | the guzheng and erhu fade, a soft atmospheric pad remains, the voice speaks the last four lines slowly and solemnly with long pauses, a solemn ending]
+我们没有输，
+只是见证了，
+人性在最深的黑暗中，
+能绽放出怎样的光。
+[End]

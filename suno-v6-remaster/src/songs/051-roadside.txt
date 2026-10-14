@@ -1,0 +1,69 @@
+#id: 051
+#slug: roadside
+#title: 路边
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1062-1109
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 92
+#length: about 3:20
+#note: verse 1 的第一行「哎」、verse 2 的第一行「哟哟哟」都是起手的叫喊，保持独立成行并在标签里写明。
+#note: verse 1 里「押韵押到睁不开眼，面前的电脑都是片片的email我眼眼厌倦」音节很密，已在分句处加逗号并在标签要求半拍留白。
+--- STYLE
+Swaggering Chinese boom-bap with trap bounce at 92 BPM in D minor, rapped in Mandarin Chinese. A male rapper delivers a cocky, playful, clear flow with sharp breaths between phrases, then chants the chorus with a mocking, shouted hook and a few gang vocals. A dusty sampled piano loop, a punchy kick and snare with crisp hi-hats and a deep 808 bass carry the verses, a brassy horn stab accents the end of each bar, and the chorus adds a bigger drum break and crowd shouts. Arrogant, humorous mood of a rapper mocking roadside amateurs while speeding down the highway, playing CSGO and picking a flower-pot egg. Ends on one horn stab and silence. Punchy, bright, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, orchestral strings, acoustic folk, country, autotune, heavy metal
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a dusty piano loop, a punchy kick and snare enter on bar three, a brassy horn stab on the last bar, instrumental only]
+
+[Verse 1 | cocky playful rapped voice, piano loop and kick, hi-hats crisp, a clear breath after every line, the first single word is a short shout, slightly behind the beat]
+哎，
+你的flow太过路边，韵脚不够显眼，
+我们的鼓点粘合信念，全部来自上天，
+无论是古典还是新鲜，走在前面又或并肩，
+纪念了几年，回到了起点，边缘的深渊，
+一刻不停地循环变迁，
+押韵押到睁不开眼，
+面前的电脑都是片片的email，我眼眼厌倦，
+别不要脸逼我践踏你的尊严，终结你的明天，
+年年都是如此，我闻名世间与今天！
+
+[Chorus | mocking shouted hook, bigger drum break, crowd shouts double the first line of each pair, horn stab on the downbeat]
+太过路边的垃圾，不要摆上台面，
+来自土瘪的杀机，我就要去打脸，
+再说你古街的大义，不配被改变，
+来做起粗劣马杀鸡，怎能去开店，
+菜单上的彩蛋是个菜蛋，
+而我玩csgo喜欢拆弹发射彩弹，
+灾难到了该看，改航海南不用管排班。
+
+[Verse 2 | cocky playful rapped voice again, piano loop and 808, the first words are a triple shout, faster, a breath after every line]
+哟哟哟，
+想达到我的高度，这是你学不会的招数，
+我在高速公路超速，顺路碾死几只老鼠，
+它们嗷嗷叫着噢噢输了，就像找出了闹事的孬猪，
+告诉，这高树，在学着高数，
+要输，一个个报数，然后我们来抱树，这保熟，
+我套住，你们跑路，我不需饶恕，热水对你们浇筑，
+耶，我的兄弟gangsta，干死他，can stop！
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then the full drum break and 808 slam in, vocals rest]
+
+[Final Chorus | strongest version, shouted at full power, crowd shouts louder, same melody as the first chorus]
+太过路边的垃圾，不要摆上台面，
+来自土瘪的杀机，我就要去打脸，
+再说你古街的大义，不配被改变，
+来做起粗劣马杀鸡，怎能去开店，
+菜单上的彩蛋是个菜蛋，
+而我玩csgo喜欢拆弹发射彩弹，
+灾难到了该看，改航海南不用管排班。
+
+[Outro | 4 bars, drums and 808 stop, the piano loop plays alone, one horn stab, then silence, instrumental only]
+[End]

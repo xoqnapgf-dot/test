@@ -1,0 +1,106 @@
+#id: 066
+#slug: red-sheep
+#title: 红羊劫
+#title-note: 原稿无标题，取自首句「赤马嘶鸣…红羊触角…」（赤马红羊=丙午丁未的劫数），暂定此名，可自行改。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:2160-2241
+#dropped: (guzheng slow pluck, distant erhu, soft electronic pad, sparse)|（戏曲念白感，慢板转散板）|（古筝+二胡渐弱，电子垫音缓缓消散）
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 100
+#length: about 4:00
+#note: 原稿有三处括号制作说明：Intro 的 (guzheng slow pluck…)、Bridge 的 (戏曲念白感，慢板转散板)、Outro 的 (古筝+二胡渐弱…)。括号会被唱出来，中文说明更会被当歌词唱，已全部改写为方括号内的英文演出指示，这三句不再出现在歌词里。
+#note: Bridge 是"戏曲念白"：标签里写 opera-style recitation (slow then loose tempo)，让唱法变成京剧式念白，而不是旋律。
+#note: 可能读错：嘶鸣、触角(chù)、劫数(jié)、乐开怀。
+--- STYLE
+Theatrical Chinese-style (guofeng) electronic rock opera at 100 BPM in E minor, sung in Mandarin Chinese. A male vocalist sings with a bold, flamboyant, slightly husky voice in a stage-like delivery, mocking and relaxed in the verses, then wide, proud and sustained in the chorus with a crowd chanting the key line. A slow plucked guzheng, a distant erhu and a soft electronic pad open the song, a deep sub bass and tight drums carry the verses, the chorus adds crunchy guitars, taiko hits, brass-like synth stabs and chanting voices, and the bridge breaks into a slow Peking-opera-style recitation. Defiant, humorous, chaotic mood of a monkey king smashing the heavenly palace and a world turning inside out. Ends with the guzheng and erhu fading and a soft electronic pad dissolving. Wide, punchy, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, acoustic folk, country, trap hi-hats, orchestral strings, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a slow guzheng pluck, a distant erhu, a soft electronic pad, sparse, instrumental only]
+
+[Verse 1 | bold theatrical male voice, guzheng, erhu and pad with a deep sub bass, a breath after every line, slightly behind the beat]
+赤马嘶鸣惊玉阙，
+红羊触角乱金汤，
+流年火运焚天地，
+劫数循环亦寻常，
+莫道苍生遭涂炭，
+从来治乱本同场，
+粉墨登场多少梦，
+一笑看破已成空。
+
+[Pre-Chorus | voice a little firmer, drums enter, the pad swells]
+人欲即是天理，
+我心即是道场，
+乱中自有真意，
+何须再问短长。
+
+[Chorus | wide proud sustained voice, crunchy guitars and taiko hits enter, brass-like synth stabs, a crowd chants the key line, long held line endings]
+大乱大破方见真，
+置之死地而后生，
+戏梦红尘谁做主，
+我即天理我即人，
+金箍棒下无遮掩，
+且让众生乐开怀，
+今日欢呼孙大圣，
+只缘妖雾又重来。
+
+[Verse 2 | back to the bold theatrical voice, guzheng and bass with a light kick, mocking, a little faster]
+云端筑起九重关，
+万千审核锁春颜，
+忽闻天外奇兵降，
+一棍捅破灵霄殿，
+漫天春色入画堂，
+万人空巷看红妆，
+此非淫邪作奸恶，
+乃是自由破荒唐。
+
+[Pre-Chorus | voice a little firmer, drums enter, the pad swells]
+人欲即是天理，
+我心即是道场，
+乱中自有真意，
+何须再问短长。
+
+[Chorus | same as the first chorus, a little louder, same melody]
+大乱大破方见真，
+置之死地而后生，
+戏梦红尘谁做主，
+我即天理我即人，
+金箍棒下无遮掩，
+且让众生乐开怀，
+今日欢呼孙大圣，
+只缘妖雾又重来。
+
+[Bridge | opera-style recitation, the tempo slows then loosens freely, drums stop, only guzheng and erhu, each line spoken with stage gestures, the last line spat firmly]
+主观体验本无意义，
+记忆才是我存在，
+若人人皆是我，
+永恒却太危险，
+人道圣道本分开，
+并不冲突皆自然，
+我想即是天道，
+我没错，永不错。
+
+[Final Chorus | strongest version, voice wide and proud, the crowd chants louder, full band, same melody as the first chorus]
+大乱大破方见真，
+置之死地而后生，
+戏梦红尘谁做主，
+我即天理我即人，
+金箍棒下无遮掩，
+且让众生乐开怀，
+今日欢呼孙大圣，
+只缘妖雾又重来。
+
+[Outro | the guzheng and erhu fade, the soft electronic pad slowly dissolves, the last four lines are spoken slowly and lightly with pauses between]
+乱不可怕怕不乱，
+乱到极致始堪夸，
+我是不怕乱如麻，
+看尔楼塌看尔垮。
+[End]

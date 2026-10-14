@@ -1,0 +1,120 @@
+#id: 044
+#slug: guitar-sword
+#title: 我的吉他是把剑
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:365-450
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 88
+#length: about 5:00
+#note: 这是全集里最密的一首（每行 14-20 字的押韵连珠句）。处理：① Verse 1 拆成 4 个小节；② 每个半句后加逗号；③ 在最长的几行末尾用行内 [Silence] 代替逗号（行内 [Silence] 前不放标点，避免"双重停顿反而加速"）；④ BPM 压到 88，Style 写了 unhurried。
+#note: 「（于是）（然后）（可是）（只好）」是衔接词的顺序轻声应答，保持独立成行；行内「这（炽烈的心）」这类括号是叠唱，保持原样。
+#note: 「何时侯」疑似「何时候」的笔误，按原稿一字未改；若被读成 hóu，请用歌词精修处理。
+#note: 原稿的 [drop] 为空，在这里写成"吉他主奏的 8 小节间奏"，与整首「吉他是剑」的主题一致。
+--- STYLE
+Chinese rap-rock with an acoustic-to-electric guitar duel at 88 BPM in E minor, rapped and sung in Mandarin Chinese. A male vocalist raps in an earnest, hoarse, flowing voice with unhurried phrasing and a clear breath between phrases, then sings the chorus open and sustained with long held line endings. A fingerpicked acoustic guitar and a deep bass carry the first verse, a steady live kick and snare join, and the chorus adds a bright lead electric guitar that cuts like a sword, strummed power chords, strings and layered backing harmonies. Lonely, passionate mood of a musician whose guitar is a holy sword, homesick for faraway towns, a band that fell apart, and tears on an empty shore. Ends on the acoustic guitar alone with one ringing note. Vocal-forward, natural live-band mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, EDM drop, trap hi-hats, comedy, autotune, orchestral brass, country
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a fingerpicked acoustic guitar alone, a deep bass enters on bar five, a distant electric guitar harmonic rings once, instrumental only]
+
+[Verse 1 | part 1 of 4, earnest hoarse rapped voice, unhurried phrasing, acoustic guitar and bass only, a clear breath after every line, slightly behind the beat]
+我已经忘记，
+第一次看见吉他是何时侯，
+激情悄然荡起，
+疑似有难言启发撕扯心口，
+频频看向电视或书本上的海市蜃楼 [Silence]
+冥冥的指引领我独身入门开始承受 [Silence]
+
+[Verse 1 | part 2 of 4, same voice, soft kick and snare enter, the bracketed words are backing voices singing them together with the lead]
+这（炽烈的心）背对故乡长歌吟游，
+那（日夜在冥）思苦想的心愁，
+想治（世界的病）但无量的哀伤刻心头，
+渡了（死劫的命）不想又酿了新仇，
+是我天真的病，又或天生的命，
+不想此生如此落寞在人前人后 [Silence]
+只得大展身手琢磨再泛起轻舟 [Silence]
+
+[Verse 1 | part 3 of 4, voice a little stronger, the parenthesized single words are soft linking whispers sung after the previous line]
+（于是）
+乘着激流顶着长空一路向前漂流 [Silence]
+（然后）
+深刻祈求平和伤痛密布强掩萧愁 [Silence]
+
+[Verse 1 | part 4 of 4, voice rising, drums fuller, building toward the chorus]
+（可是）
+冷涩依旧印刻长虹几乎将天凋朽 [Silence]
+（只好）
+捧着期求尽可葬送疾苦江面遨游 [Silence]
+
+[Chorus | open sustained voice, lead electric guitar cuts in like a sword, power chords and strings, long held line endings, backing harmonies on the last two lines]
+它是一把圣剑，
+在湖边林间的坚石间浮现，
+挣脱了时间，刺穿梦魇，天赐在心间，
+致自己的誓言会实现，看挚友在身边，
+源自现实的视线显示世间的执念，
+直面起源失陷时限，
+饰演诗仙指天自勉，
+只见诗篇之巅唯我执剑自怜。
+
+[Verse 2 | part 1 of 2, back to the earnest rapped voice, acoustic guitar and bass with a light kick, thinking of two singers, a little more weary]
+从beyond到朴树，
+或激昂或孤独，
+掌下琴弦承载太多情愫，
+仍在回想歌中对理想的追逐，
+寒夜飘雪的意象，处处诉出苦楚，
+那些离乡后的祝福，成了枯树旁的遗响，
+想家时心痕被琴声轻点，挣开败落的异象，
+
+[Verse 2 | part 2 of 2, same voice, drums a little busier, the closing line is sung slowly with a held beat before it]
+清楚这音符凝固在异乡，可金钱埋没了夕阳，
+我那遗忘的篇章轻抚复苏的信念，
+从呆坐中引出在禁锢里迷茫的心弦，
+唱他来过的路途，唱他爱过的故土，
+拜托天一亮就带我于晴天等待伤疤不复。
+
+[Chorus | stronger and wider than the first, lead guitar higher, same melody as the first chorus]
+它是一把战剑，
+无边记忆无限回忆又从我眼前出现，
+吉他鸣起鼓点突现一起构出古典兵器，
+不顾及其他部件即便仅余琴弦，
+亦足以击垮狐奸提炼音律断片，
+看见笔下逐渐流动的词语和诗句，
+一把乐器幻显出连绵凌厉的荆棘，
+又不顾束缚地极限投入，湮灭叛变后迎敌。
+
+[Instrumental Break | 8 bars, instrumental only, the lead electric guitar plays a singing sword-like melody over the full band, the acoustic guitar answers, ends with a drum fill]
+
+[Verse 3 | earnest hoarse rapped voice again, band tight, a clear breath after every line, a little more bitter]
+同友组了乐队，开始练习技艺，
+以为铸就绝配，再次勉励自己，
+拥有出色列队，改词全力仔细，
+举杯不可夜归，还是愿意继续，
+
+歌曲每首力撼天际，自诩绝非来自奇迹，
+何以追求彼岸联系，此去借回来时士气，
+可惜没有不散宴席，此句绝对乃是至理，
+这里唯有孤单延续，只余血泪在此淤积。
+
+[Final Chorus | part 1 of 2, the broken sword, voice wide and aching, full band, lead guitar screaming, long held line endings]
+重铸这把断剑，
+我看见它如晚间闪电展现蔓延，
+如战舰盘旋蜿蜒山原我难掩心中安全，
+南面半边蓝天完全被引动转眼我心动万千，
+
+[Final Chorus | part 2 of 2, voice breaks open, the band at full power, the last line is sung slowly and held]
+与痛楚共舞着那荣辱叛变转变，关键是恶化在所难免，
+控诉自我重复的差错和那从不断连的贪念，
+难眠的夜又重抚着它吟诵万言，
+甘愿无尽数不清的残念重演闪现到眼前，
+可岸边空如山巅痛苦难辨唯有我泪流满面。
+
+[Outro | 8 bars, drums and bass fall away, the acoustic guitar plays the intro motif alone, one ringing note, then silence, instrumental only]
+[End]

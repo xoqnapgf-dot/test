@@ -1,0 +1,115 @@
+#id: 008
+#slug: toukasha
+#title: 窃火者
+#album: 《第二封情书》
+#lang: Mandarin
+#orig: f1:369-446
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 68
+#length: about 4:40
+#note: 第一段共 26 行，原文不能删，所以拆成 4 个小节（Verse 1 part 1-4），每节一个独立演出指示+空行，防止后半段被赶拍。
+#note: 原稿 [Chorus] 前没有空行、第二遍 Chorus 前的 [drop] 描述为空，现已补成明确的"静默一拍 + 全乐队进入"。
+#note: 可能读错：觐(jìn)见、归墟(xū)、啜(chuò)泣、冉(rǎn)冉、应允；读错用歌词精修换同音字，不要整首重抽。
+#note: 文件1后半段那份无标签的纯文本重复稿（448-500 行）是同一首的整理版，已核对文字一致，未单独处理。
+--- STYLE
+Cinematic Mandopop rock ballad at 68 BPM in B minor, sung in Mandarin Chinese. A male tenor sings with a tender, devout, slightly husky tone, intimate and nearly spoken in the verses, then rising to a wide, aching and sustained chorus where he holds the end of each line. A felt piano and a low cello carry the verses, soft brushed drums and a warm bass enter in the second half, and the chorus opens into a string orchestra, big reverb drums, a distant choir and a slow soaring electric guitar. Reverent, romantic and vast mood, a lover as a sacred light above an endless sea of ash, like a lighthouse in the dark. Ends on the piano alone with one long string note. Vocal-forward, wide cinematic mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, comedy, autotune, female lead vocal, fast tempo, shouting
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, felt piano alone with long reverb, a low cello joins on bar five, a distant wind texture, instrumental only]
+
+[Verse 1 | part 1 of 4, male tenor, intimate and nearly spoken, piano only, one breath per line, behind the beat]
+若非直面你的瞳孔，
+我几乎忘却自己双眼的散光，
+夜晚的车灯汇聚，
+光团在身前发散，
+若星海闪耀，
+有如银河坠陨人间，
+可它们却不及与你对视之刹那的万分之一。
+
+[Verse 1 | part 2 of 4, same hushed voice, cello holds long notes under the piano]
+星辰是拙劣的模仿者，
+于你睁眼时自惭形秽，
+大海借鉴了它们的浩瀚，
+天空模仿着它们的清澈，
+就连宇宙本身，
+也在臣服中效仿它们的深邃，
+圣洁光芒充盈尘世、洗涤污秽、抚慰我心。
+
+[Verse 1 | part 3 of 4, voice slightly warmer, soft brushed drums and a warm bass enter, slow and steady]
+当万物终焉，
+天地将借由你的瞳色浸染自身，
+待冰河逆流，
+众生将裹挟你的温度冉冉重生，
+你的心火炽热而温柔。
+
+[Verse 1 | part 4 of 4, voice lifting, strings swell slowly, the last line is sung with awe and a held final word]
+溢出灵魂，
+流向每一条干涸的水道，
+又悄然绽放在世界之巅，
+众神中的一员匆匆一瞥，
+于是高加索山有了一位窃火者。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | wide, aching and sustained voice, full string orchestra and big reverb drums enter, distant choir behind, electric guitar soars slowly, line endings held long]
+我是最忠实的信徒，
+在光阴破碎、神启喧扰的人间，
+觐见永恒中唯一的奇迹，
+跪求虚无中缥缈的怜悯，
+若生命有意义，
+那它应受你应允，
+若岁月有痕迹，
+则你为其流动之痕迹，
+当我挣脱归墟的漩涡，
+脱离终焉的寂灭，
+你是无尽灰烬海之上唯一的亮光，
+似灯塔指引迷茫的船只，
+如引力叙说既定的方向。
+
+[Verse 2 | part 1 of 2, back to the hushed tender voice, piano and cello only, drums gone, intimate and slow]
+你知道，
+当我看向晚霞，
+并不只是在看晚霞，
+而是借由这些天穹在宇宙的幽灵，
+搭建一条与你相见的桥梁，
+你也知道，
+当我想你，
+也不仅仅是在是思念你，
+而是同样屈服于无穷概率与不可达之领域间，
+你存在于此刻的证明。
+
+[Verse 2 | part 2 of 2, strings rise and the voice swells with each line, brushed drums return, building toward the climax]
+当群星啜泣，
+当夕阳凝望，
+当天幕披上名为“黄昏”的薄纱，
+霞光会如血海激荡在穹顶，
+而那粉色的，
+会化作心底最轻柔的内衬。
+
+[Drop | 2 bars, strings and choir swell and cut to one beat of full silence, then the whole orchestra and drums land together, vocals rest]
+
+[Final Chorus | strongest and most devoted version, lead sings at full power with aching sustained notes, orchestra, choir and guitar at the peak, same melody as the first chorus]
+我是最忠实的信徒，
+在光阴破碎、神启喧扰的人间，
+觐见永恒中唯一的奇迹，
+跪求虚无中缥缈的怜悯，
+若生命有意义，
+那它应受你应允，
+若岁月有痕迹，
+则你为其流动之痕迹，
+当我挣脱归墟的漩涡，
+脱离终焉的寂灭，
+你是无尽灰烬海之上唯一的亮光，
+似灯塔指引迷茫的船只，
+如引力叙说既定的方向。
+
+[Outro | 8 bars, orchestra and drums fall away, piano plays the intro motif alone, one long string note holds, then silence, instrumental only]
+[End]

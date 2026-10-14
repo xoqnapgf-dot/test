@@ -1,0 +1,78 @@
+#id: 002
+#slug: awa-awa
+#title: 沫沫沫沫沫
+#album: （沫沫沫沫沫）
+#lang: Japanese
+#orig: f1:42-90
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 94
+#length: about 3:30
+#note: 原文全角空格已改成「、」做呼吸点（全角空格会让 Suno 跳行）；[drop] 改成明确的"2 小节静默+全员进入"描述。
+#note: 夢幻/無限 都读 むげん，是双关，若读成 ゆめまぼろし 用歌词精修改读音即可。
+#note: 副歌「泡よ、泡よ」重复结构较密，已在每个重复词后加逗号，Style 里写了 unhurried，避免抢拍。
+--- STYLE
+Melancholic Japanese dream pop at 94 BPM with glassy bubble-like synth plucks and shimmering reverb guitar. A breathy female vocalist sings in Japanese close to the microphone, almost whispered in the verses and opening into layered harmonies in the chorus, unhurried and slightly behind the beat. A soft sub bass and a light sidechained pad breathe underneath, a dry kick and rim click enter in the chorus, and a music-box melody twinkles between phrases. Nostalgic and bittersweet, like watching soap bubbles drift away in morning light. Ends on a fading synth bubble. Vocal-forward, airy, spacious mix.
+--- EXCLUDE
+male vocals, rap, screaming, heavy distortion, metal, trap hi-hats, orchestral brass, English vocals, autotune
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, glassy synth pluck motif over a soft pad, a music box answers, room for breathing, instrumental only]
+
+[Verse 1 | breathy close-mic female voice, sparse arrangement, only pad and pluck, one breath at every comma, unhurried]
+目を開けると、太陽が部屋に差し込む、
+新しい一日に、君が浮かぶ、
+ぼんやりとした笑顔が、心に響き、
+僕の人生に、希望が宿る。
+
+外に出て、そよ風と踊る、
+けれど突然、割れた鏡が傷をつける、
+見つけたのは僕自身、
+壊れた僕の姿、
+泡のように砕け散り、
+虹のように瞬く。
+
+[Chorus | voice opens up with layered harmonies, kick and bass enter, bubbles of synth bounce on each repeated word, wide and warm]
+泡よ、泡よ、数えきれぬ泡よ、
+見えない数の泡よ、
+離れて、離れて、何度も離れて、
+君は何度も去っていく。
+
+夢幻、夢幻、無限の夢幻、
+その夢に僕は浸る、
+愛してる、愛してる、愛してる、
+もう一度君に言いたいよ。
+
+[Verse 2 | back to whispered close-mic voice, soft kick stays, sparse guitar harmonics, fragile and tender]
+もう一度、過去で君に会った、
+変わらない美しさ、その声は変わらず、
+君の手を握りたい、笑顔を忘れないように、
+でもできない、届かない。
+
+君の香りが、僕を包む、
+僕の忠誠は君のために、
+僕の愛は泡のように、
+美しい光を放つ、
+僕の愛は泡のように、
+儚くも淡い色彩。
+
+[Drop | 2 bars, the whole mix is filtered and swells, one beat of full silence, then the full band and bubbles burst back in, vocals rest]
+
+[Final Chorus | strongest and brightest version, lead belts softly over stacked harmonies, glassy arpeggios, same melody as the first chorus]
+泡よ、泡よ、数えきれぬ泡よ、
+見えない数の泡よ、
+離れて、離れて、何度も離れて、
+君は何度も去っていく。
+
+夢幻、夢幻、無限の夢幻、
+その夢に僕は浸る、
+愛してる、愛してる、愛してる、
+もう一度君に言いたいよ。
+
+[Outro | 8 bars, bubbles pop one by one, pad fades, music box plays the intro motif once, then silence, instrumental only]
+[End]

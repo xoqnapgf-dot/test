@@ -1,0 +1,91 @@
+#id: 037
+#slug: this-man
+#title: this man
+#album: （无专辑 / 第一份歌词末尾）
+#lang: English
+#orig: f1:2460-2537
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 128
+#length: about 5:00
+#note: 这首原稿的内部提示词已经很细（冷合成器垫底 → 旋律贝斯 → 机械鼓 → 80s 合成器 → 新浪潮高潮），保留思路，改成标准的「段落 | 指示」，并把嵌在歌词中间的 [Steady rhythm]、[Building tension]、[Synth swells] 拆成独立小节，避免被唱出来。
+#note: 副歌「Hey~ that man！」里的 ~ 和 ！保持原样；这是长歌，约 5 分钟，Max Mode 建议开。
+--- STYLE
+Cold new-wave and post-punk with a driving 1980s synth sheen at 128 BPM in A minor, sung in English. A deep baritone male voice sings detached and deadpan in the verses, like a distant narrator, then switches to shouting, questioning, wide and anthemic in the chorus. A driving melodic bassline carries the song, a mechanical drum machine beat and cold atmospheric synth pads sit underneath, layered 80s analog synthesizers undulate in the chorus, and a sharp chorus-pedal guitar adds angular stabs. Lonely, prophetic mood of a man on a mountain peak holding the sun's light for a blind valley that cannot see it. Ends with a synth solo, then the bassline slowly fading out alone. Punchy, cold, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, acoustic folk, country, ballad, orchestral strings, rap, opera, comedy, trap hi-hats
+--- LYRICS
+[Intro | 16 bars, long instrumental, cold atmospheric synth pads fade in, a driving melodic bassline enters on bar five, a mechanical drum beat joins on bar nine, instrumental only]
+
+[Verse 1 | part 1 of 2, deep baritone, detached and deadpan, bass and drum machine, pads underneath, a short breath after every line, slightly behind the beat]
+You stand upon the towering mountain's peak,
+Feeling the sun's radiant light you seek.
+You wish to shine it down the valley's night,
+But they are blind and hide from the light.
+
+[Verse 1 | part 2 of 2, steady rhythm, same detached voice, a little more urgent, one breath after each pair of lines]
+You cry out loud,
+Fearing they step into the deep abyss,
+But they remain deaf in their ignorant bliss.
+From the eternal plateau you gaze and stare,
+You dance and sing in frantic despair,
+But under the clouds, only silence keeps.
+This is an era of the blind and dark,
+The lightning particles have yet to spark,
+But how much longer can you wait and weep?
+
+[Chorus | layered 80s synthesizers with a moving undulating melody, the voice shifts to shouting and questioning, wide and anthemic, gang shouts on the word man]
+Hey, this man, do you know what you're striving for?
+Hey, this man, do you know where you stand anymore?
+This man, what is it you intend to try?
+Hey~ that man！stands above the clouds so high,
+Yet to the world, he's just dust in the sky.
+Hey~ that man！holds wisdom to save the night,
+Wishing to bathe the whole world in his light.
+
+[Instrumental Break | 8 bars, a prominent bass riff and synths take over, drums driving, the guitar plays sharp stabs, vocals rest]
+
+[Verse 2 | part 1 of 2, return to the detached deadpan baritone, bass and drum machine, pads quiet]
+You stumble and fall, time and again,
+Your light staggers through the darkened domain.
+The fireflies look like a ghostly flame,
+Or maybe the opposite, it's all the same.
+When will all of this finally end?
+Will a final verdict ever descend?
+Will we finally come to see and know?
+You have no answer to the answer to show.
+
+[Verse 2 | part 2 of 2, building tension, synths climbing, snare tighter, the voice grows a little louder]
+Intertwined thoughts are easily let loose,
+The empty hall holds only history's truth.
+In your ignorance, the greatest wisdom is shown,
+In your wisdom, ignorance is overthrown.
+
+[Bridge | part 1 of 2, stripped down to bass and drums only, voice close and urgent, a pause after the question mark]
+Still in doubt, still hesitate?
+You urgently seek the answer, though you hold its weight.
+
+[Bridge | part 2 of 2, the synths swell, voice rising, drums driving, the last line is sung slowly and loud]
+Your greed brings destruction to the land,
+The cycle of day and night rests in your hand.
+The story of time shatters and fades away,
+Kings and God have died today,
+Whose final masterpiece is on display?
+
+[Final Chorus | maximum new-wave energy, driving beat, layered 80s synthesizers at full, voice shouting and questioning at full power, same melody as the first chorus]
+Hey, this man, do you know what you're striving for?
+Hey, this man, do you know where you stand anymore?
+This man, what is it you intend to try?
+Hey~ that man ！stands above the clouds so high,
+Yet to the world, he's just dust in the sky.
+Hey~ that man ！holds wisdom to save the night,
+Wishing to bathe the whole world in his light.
+
+[Solo | 8 bars, a synth solo with a bright sharp lead over the full band, vocals rest]
+
+[Outro | 12 bars, a post-punk instrumental ending, the synths and drums fall away, the bassline slowly fades out alone, instrumental only]
+[End]

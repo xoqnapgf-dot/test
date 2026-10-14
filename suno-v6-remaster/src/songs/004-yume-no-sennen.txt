@@ -1,0 +1,65 @@
+#id: 004
+#slug: yume-no-sennen
+#title: 夢の千年
+#album: （夢の千年）
+#lang: Japanese
+#orig: f1:163-197
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 86
+#length: about 3:30
+#note: 原稿没有 intro/outro，补了慢热型结构：clean 吉他分解 → 弦乐 → 全乐队；第二个 Chorus 前用 Bridge 的渐强过渡。
+#note: 句子都很短（4-9 字），所以 BPM 放低到 86 并用 [Break] 留白，不必靠 [Silence] 标签。
+--- STYLE
+Atmospheric cinematic Japanese alternative rock at 86 BPM that builds slowly from a quiet verse to an anthem. A female alto sings in Japanese, hushed and airy in the verses, then clear, wide and soaring in the chorus with sustained line endings. A clean arpeggiated electric guitar and a low cello carry the verses, a brushed kick and soft toms enter in the pre-climb, and the chorus opens with layered harmonies, driving drums, distorted guitars and a string section. Mystical mood of an ancient wind, a dragon's shadow and a thousand-year night under the stars, lonely yet determined. Ends with the guitar arpeggio alone and one long reverb tail. Spacious, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, rap, EDM drop, trap hi-hats, metal screaming, English vocals, autotune, comedy, spoken word
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, clean arpeggiated guitar alone with long reverb, a low cello joins on bar five, distant wind texture, instrumental only]
+
+[Verse 1 | hushed female voice, airy and close, guitar arpeggio only, one breath per line, slightly behind the beat]
+僕の心は暗闇、
+夢見るは千年夜、
+星空の下で霧、
+静けさの中叫ぶ。
+
+[Verse 2 | same voice a little stronger, cello enters, brushed kick starts, an old voice echoing from below the earth]
+大地の底から響く、
+古き声が呼ぶ、
+奇怪な力感じる、
+運命の鎖裂く。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | voice opens wide and soars, line endings held long, layered harmonies, full drums and distorted guitars enter, strings swell]
+自由を求めて、
+古代の風に乗る、
+この運命を超えて、
+夜空へと飛び立つ。
+
+[Verse 3 | drops back to hushed voice, guitar and sparse toms only, the dragon's shining scales in shadow]
+龍の影が踊る、
+光る鱗が輝く、
+鷹の目を持つ、
+僕らの魂震える。
+
+[Bridge | building, voice rising from whisper to full tone, drums return with a snare roll, strings climb, one long crescendo]
+時を超えて巡る、
+勇気の火を灯す、
+痛みと共に生きる、
+永遠の道を進む。
+
+[Final Chorus | strongest and brightest version, lead belts the high notes over stacked harmonies, drums and guitars at full power, same melody as the first chorus]
+自由を求めて、
+古代の風に乗る、
+この運命を超えて、
+夜空へと飛び立つ。
+
+[Outro | 8 bars, full band falls away, guitar arpeggio alone, last chord rings with long reverb, then silence, instrumental only]
+[End]

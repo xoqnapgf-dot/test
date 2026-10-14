@@ -1,0 +1,54 @@
+#id: 032
+#slug: new-century
+#title: New Century
+#album: 《新世纪人类》
+#lang: English
+#orig: f1:2137-2170
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: Off
+#bpm: 116
+#length: about 3:10
+#note: 歌词短（两段 6 行、副歌 4 行），Max Mode 可关；副歌文字三次一致。
+--- STYLE
+Futuristic cinematic pop-rock anthem at 116 BPM in B-flat major, sung in English. A male tenor sings bright, hopeful and clear, steady and measured in the verses, then soaring and open-chested in the chorus with a choir of voices lifting the last line. A shimmering arpeggiated synth, a punchy bass and tight drums carry the verses, the chorus adds bright electric guitars, a wide orchestral string layer, big reverb drums and a soaring choir. Optimistic, awe-struck mood of white giant ships crossing the void, plasma beams, new materials and humanity's light reaching the stars. Ends on a rising synth and strings resolving to a bright major chord. Polished, wide, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, rap, dark doom, screaming, country, acoustic folk, lo-fi, trap hi-hats, comedy
+--- LYRICS
+[Intro | 8 bars, a shimmering arpeggiated synth, deep space pad, a punchy bass and kick enter on bar five, a rising sweep on the last bar, instrumental only]
+
+[Verse 1 | bright steady male tenor, arpeggio and bass, tight drums, one breath per line, on the beat]
+Plasma beams and AI's keen mind,
+Space-folding tech, life's elixir to find.
+White giant ships, soaring in the void,
+Unknown materials, steps deployed.
+On distant planets, saviors arise,
+Lost travelers, guided by skies.
+
+[Chorus | soaring open-chested voice, bright guitars and wide strings enter, a choir lifts the last line, line endings held]
+Let light lead our way,
+From dawn's birth to twilight's sway.
+One day, free will shall ignite the stars,
+Humanity's brilliance, shining afar.
+
+[Verse 2 | back to the bright steady voice, bass and drums tight, strings begin to swell]
+Ice beams and wands of magic might,
+Contain angels, creatures from the night.
+High beings converse, doomsday's call,
+Mercy's gaze melts in fiery thrall.
+Restless dreams shake the core,
+Questions asked, answered once more.
+
+[Drop | 2 bars, strings and synth swell and cut to one beat of full silence, then the whole band and choir land together, vocals rest]
+
+[Final Chorus | strongest version, voice soaring on the high notes, choir and strings at full, same melody as the first chorus]
+Let light lead our way,
+From dawn's birth to twilight's sway.
+One day, free will shall ignite the stars,
+Humanity's brilliance, shining afar.
+
+[Outro | 8 bars, drums fall away, strings and synth rise and resolve to a bright major chord that rings out, instrumental only]
+[End]

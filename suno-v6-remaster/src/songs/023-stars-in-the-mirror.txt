@@ -1,0 +1,85 @@
+#id: 023
+#slug: stars-in-the-mirror
+#title: Stars in the mirror
+#album: 《尽头》
+#lang: English
+#orig: f1:1362-1420
+#vocal: Female
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 90
+#length: about 4:00
+#note: 原稿的 [Drop] 为空、紧跟一个 Chorus；现写成"镜面碎裂的玻璃音 + 一拍静默"，最后一遍副歌标为 Final Chorus。
+#note: 副歌四行叠句（Flicker, spin, they shimmer）句子短，靠逗号和空行换气，不必加 [Silence]。
+--- STYLE
+Cosmic dream-pop with glitchy electronica at 90 BPM in B-flat minor, sung in English. A female vocalist sings airy and floating, close to the microphone, soft and spoken-like in the verses, then bright, wide and shimmering in the chorus with layered harmonies that echo like reflections. Glassy bell-like synth plucks, a warm sub bass and a soft rolling kick carry the verses, tiny glitch fragments sparkle like falling shards, and the chorus adds a wide supersaw pad, a shimmering arpeggio and crisp hi-hats. Mystical, bittersweet mood of an eternal mirror at the edge of the cosmos cracking into endless stars. Ends on a single bell tone fading into reverb. Vocal-forward, spacious, glittering mix.
+--- EXCLUDE
+male lead vocal, rap, heavy distortion, metal, country, acoustic folk, screaming, trap hi-hats, comedy
+--- LYRICS
+[Intro | 8 bars, glassy bell-like synth pluck over a deep pad, tiny glitch shards sparkle between notes, a soft sub bass enters on bar five, instrumental only]
+
+[Verse 1 | airy floating female voice, close-mic, bell plucks and sub bass only, one breath per line, slightly behind the beat]
+At the edge of the cosmic deep,
+An eternal mirror begins to weep.
+Clear and transparent, it reflects all light,
+I see myself, and I see your sight.
+
+Inside my soul, the mirror cracks,
+Shattering into endless quarks that lack.
+It will never reunite,
+I forget it all, I cease to fight.
+
+[Chorus | bright wide shimmering voice, harmonies echo like reflections, supersaw pad and arpeggio enter, crisp hi-hats, line endings held]
+Stars in the mirror,
+Flicker, spin, they shimmer.
+They circle round and round,
+In loops, they travel, unbound.
+
+Stars in the mirror,
+With time and the universe,
+In cycles they return,
+Here and there, they still burn.
+
+[Verse 2 | back to the soft spoken-like voice, pad and bass, glitch shards more frequent, a little more tense]
+At time’s beginning,
+I see a mirror, decaying, spinning.
+All things sway, about to fall,
+You and I, caught in it all.
+
+At the speed of light’s end,
+I see a mirror, with nothing to mend.
+Quanta rise and fall within,
+Dark matter fades, and time grows thin.
+
+This is the final farewell,
+Our ending’s toll, the last knell.
+
+[Chorus | same as the first chorus, a little brighter, harmonies thicker, same melody]
+Stars in the mirror,
+Flicker, spin, they shimmer.
+They circle round and round,
+In loops, they travel, unbound.
+
+Stars in the mirror,
+With time and the universe,
+In cycles they return,
+Here and there, they still burn.
+
+[Drop | 2 bars, a sound of glass shattering, the whole mix is filtered then drops to one beat of full silence, then the full beat and pad slam back in, vocals rest]
+
+[Final Chorus | strongest version, voice wide and glowing, stacked harmonies, glitch shards everywhere, same melody as the first chorus]
+Stars in the mirror,
+Flicker, spin, they shimmer.
+They circle round and round,
+In loops, they travel, unbound.
+
+Stars in the mirror,
+With time and the universe,
+In cycles they return,
+Here and there, they still burn.
+
+[Outro | 8 bars, beat and pad fall away, bell pluck plays the intro motif alone, one last bell tone fades into reverb, instrumental only]
+[End]

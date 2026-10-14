@@ -1,0 +1,115 @@
+#id: 061
+#slug: the-only-one
+#title: 唯一者
+#title-note: 原稿只有一个残缺的"："当标题，是七段七言古风诗；取自最后一句「唯一者立浩瀚处」，暂定此名，可自行改。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1742-1818
+#vocal: Male
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 84
+#length: about 5:30
+#note: 原稿没有结构标签，是七段七言诗（每段 8-12 行、每行 14 字）。我把每一段当作一个 Verse，用演出指示做"少年懵懂 → 觉醒 → 愤怒 → 戏谑 → 自由 → 复仇 → 孤高"的情绪递进；没有副歌，歌词一字未改。
+#note: 这是"吟诵式说唱"，不是旋律歌；Style 写了 chanted recitation。每行 14 字，按七言的 4+3 / 2+2+3 节奏，BPM 84，段间有 [Break] 留白。
+#note: 若 Suno 把它唱成旋律，用歌词精修无法改变唱法，请在 Style 里把 "rhythmic chanted recitation" 放到最前，再多生成几次。
+--- STYLE
+Epic Chinese-style (guofeng) spoken-word rap at 84 BPM in D minor, chanted in Mandarin Chinese. A male voice recites seven stanzas of classical seven-character poetry in a deep, resonant, measured chant with natural pauses at the middle and end of every line, growing from youthful and uncertain to defiant, fierce and solitary. A plucked guqin and a low war-drum pulse carry the early stanzas, an erhu wails between lines, taiko hits and a deep bass enter in the middle stanzas, and the final stanzas add strings, a distant choir and crashing gongs. Lonely, rebellious, mythic mood of a swordsman rejecting gods, kings and heaven itself, standing alone with the stars hanging upside down. Ends on a single gong and a long erhu note. Wide, cinematic, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, pop melody, EDM drop, trap hi-hats, comedy, autotune, country
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a plucked guqin alone, a low war-drum pulse enters on bar five, a long erhu note on the last bar, instrumental only]
+
+[Verse 1 | youthful and uncertain, a deep calm chant, guqin only, a pause at the middle and end of every line, slightly behind the beat]
+少时懵懂缚红缨，低眉长拜九重城。
+不知灵台本无物，错把樊笼作太清。
+学唱长歌歌盛世，笑指沧海作泥坑。
+满堂紫衣宣铁律，万众叩首敬神明。
+忽有异域长风至，吹彻十二白玉京。
+裂帛一声惊大梦，方知天地有悲声。
+原是同源同归客，何须画地造刀兵？
+泥龛泥像泥胎骨，风雨一过即浮萍。
+
+[Break | the guqin rings out, one beat of silence, the voice breathes in]
+
+[Verse 2 | awakening, the chant firmer and colder, guqin and war drum, erhu answers after every second line]
+曾倚寒窗读玉简，笃信高悬明镜台。
+以为三尺青锋剑，能斩人间覆尘埃。
+怎奈执剑为私欲，尺衡倾覆任剪裁。
+庙堂高坐贪天功，堂下饥骨委苍苔。
+所谓森严凌云律，不过王侯手中牌。
+且看青天多黯淡，乌云蔽日掩长街。
+我不信神不信鬼，独信此心作度尺。
+既然苍穹无明理，何妨抽刃向阴霾？
+以眼还眼酬天地，血溅黄沙骨未埋。
+
+[Verse 3 | night and fear turning into mockery, the chant low and amused, taiko hits begin softly, deep bass underneath]
+漏夜寒鸦啼枯树，柴扉忽破起惊雷。
+玄衣鹰犬衔铜令，气焰滔天挟夜归。
+所为只因只字戏，欲以此身赴劫灰。
+我笑强梁颜若铁，原是朽骨覆锦衣。
+高冠博带何足惧，探手空空似盲龟。
+蛛网虽密多破绽，堂皇大阵尽荒颓。
+本以为是摩天柱，细看蝼蚁蛀神碑。
+如此残躯称太岁，岂敢妄断是非非？
+且把金尊长卧笑，笑看大厦欲倾危！
+
+[Verse 4 | resolve and vision, the voice rises, drums steady, strings enter softly, two paths opening, generous then proud]
+世人皆苦争朝夕，蝇营狗苟困泥涂。
+我欲挥手裂天幕，重开双轨渡迷途。
+左引春风生百谷，弱骨贫黎有暖炉。
+不求锦衣居玉殿，但留微喘立平芜。
+右开天海任翻覆，千金散尽复归乌。
+纵横捭阖凭肝胆，不设藩篱不问途。
+生死枯荣皆自愿，成王败寇笑狂徒。
+若厌红尘多喧网，拂衣断契入太虚。
+大荒十万八千里，寸土无主即吾庐。
+不向君王求立锥，且摘星辰作明珠！
+
+[Verse 5 | vengeance, the chant hard and relentless, war drums and bass at full, gongs on the last line of each pair, snow and blood]
+长安纵有千重雪，洗不净这血斑斓。
+九幽若有轮回笔，判不尽这作恶官。
+我辈岂是逢迎客，誓举业火燎九天！
+凿破旧朝藏金窟，散与苍生作笑谈。
+莫言时过境已迁，陈年旧案铁如山。
+任你遁走天涯角，拘魂夺命过鬼关。
+老病黄发非免死，竖子稚童亦当斩。
+种下恶因结业果，何须律法饰颟顸！
+纵是千秋身后事，也有白刃夜光寒。
+杀尽不平酬天地，大雪茫茫祭荒坛。
+
+[Break | everything stops, one beat of silence, only the wind]
+
+[Verse 6 | defiance against birth and gods, the chant cold, defiant and intimate, guqin and erhu return, the drums hold back]
+肉身本是星辰变，聚散浮沉一缕烟。
+休言父母恩如海，我本无心降人间。
+雷霆强掷胎中骨，何曾问我愿不愿？
+既无契约定生死，安敢挟恩索百年！
+割肉剔骨还旧脉，斩断尘缘不问天。
+我不认神高在上，不信君臣纲常悬。
+万物生发皆过客，谁有资格立神坛？
+漫天神佛皆泥鬼，一捧黄土掩荒泉。
+我立天地最高处，俯瞰群山笑颟顸。
+此心即是无量海，不染尘泥不挂帆。
+
+[Verse 7 | the final stanza, solitary and grand, the voice at full power, strings and a distant choir, taiko and gongs crashing, the last two lines are chanted slowly and held]
+世人贪享桃源梦，不知幽暗长深埋。
+即便金城皆推倒，亦有群魔心中来。
+权欲如藤生毒瘴，总有贪徒筑高台。
+休道太平无兵甲，警钟常鸣血不衰。
+防天防地防人祸，斩碎虚无拔阴霾。
+我本旷野一孤星，不与蜉蝣同盛衰。
+自由不绝即成伪，半点妥协是尸骸！
+不求千秋留青史，不与群氓共悲哀。
+身披风雪长执刃，踏破万古旧楼台。
+苍天若敢拘吾意，我便挥刀碎苍苔！
+且由世人笑我痴，我自独行歌慷慨。
+唯一者立浩瀚处，星汉倒悬入襟怀！
+
+[Outro | 8 bars, drums and choir fall away, the guqin plays alone, one gong, a long erhu note fades, then silence, instrumental only]
+[End]
