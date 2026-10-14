@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10131e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="无限猴子实验室">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="320×180、256 色的纯随机像素实验。每张图由可复现的伪随机数种子生成，不使用图像生成模型或 AI 推理。">
+  <title>无限猴子 · 纯随机像素实验</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div id="standaloneHint" class="notice standalone-notice" role="status" hidden>
+      <p>请先添加到主屏幕，再从主屏幕图标打开使用。在浏览器里产生的记录，不会出现在主屏幕应用里。</p>
+      <button id="closeStandaloneHint" class="icon-button notice-close" type="button" aria-label="关闭提示">×</button>
+    </div>
+
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><span>∞</span><i></i></div>
+        <div>
+          <p class="brand-kicker">纯随机像素实验</p>
+          <h1>无限猴子</h1>
+        </div>
+      </div>
+      <span id="versionBadge" class="version-badge" aria-label="当前版本">版本读取中</span>
+    </header>
+
+    <div id="storageNotice" class="notice storage-notice" role="alert" hidden>
+      <span class="notice-symbol" aria-hidden="true">!</span>
+      <p><strong>记录无法保存。</strong>本页仍可继续使用，但关闭页面后，本次新增记录可能丢失。请导出备份。</p>
+    </div>
+    <div id="startupNotice" class="notice startup-notice" role="status" hidden></div>
+
+    <main>
+      <section id="experimentPage" class="page-view" aria-labelledby="pageTitle">
+        <div class="intro-row">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot"></span> 随机像素实验 / 01</p>
+            <h2 id="pageTitle">看看纯随机会给出什么。</h2>
+            <p class="intro-copy">每个像素都由伪随机数直接填色。没有图像模型，没有 AI 推理；种子只负责复现。</p>
+          </div>
+          <div class="pixel-stamp" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <section class="seed-card card" aria-label="当前主种子">
+          <div class="seed-card-top">
+            <div>
+              <p class="mini-label">当前主种子 · 128 位</p>
+              <div class="seed-value-row">
+                <code id="currentSeedValue" class="seed-value">正在初始化…</code>
+                <button id="copySeedButton" class="icon-button copy-button" type="button" aria-label="复制主种子" title="复制主种子">复制</button>
+              </div>
+            </div>
+            <button id="openSeedChooserButton" class="quiet-button" type="button">切换</button>
+          </div>
+          <div class="seed-card-bottom">
+            <div class="next-k-label"><span class="status-dot" aria-hidden="true"></span><span>下一张序号 <code>k</code></span></div>
+            <strong id="nextKValue" class="next-k-value">0</strong>
+            <button id="newSeedButton" class="new-seed-button" type="button">＋ 新建主种子</button>
+          </div>
+        </section>
+
+        <section class="lab-card card" aria-labelledby="sampleHeading">
+          <div class="section-heading canvas-heading">
+            <div>
+              <p class="mini-label">单张抽样 · 320 × 180</p>
+              <h3 id="sampleHeading">随机样本</h3>
+            </div>
+            <div class="canvas-heading-tools">
+              <button id="verifyButton" class="verify-button" type="button" title="同一主种子和序号生成两次并逐字节比较">校验</button>
+              <span id="sampleStateTag" class="state-tag">待抽取</span>
+            </div>
+          </div>
+
+          <div class="canvas-frame">
+            <canvas id="mainCanvas" width="320" height="180" role="img" aria-label="随机像素样本画布"></canvas>
+            <div id="canvasPlaceholder" class="canvas-placeholder">
+              <div class="placeholder-grid" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <strong>等待第一张随机图</strong>
+              <span>每次点击只生成一张</span>
+            </div>
+          </div>
+
+          <div class="sample-meta">
+            <div>
+              <p id="sampleLabel" class="sample-title">还没有抽取样本</p>
+              <p id="sampleSeedLine" class="sample-seed-line">点击下方按钮开始一次手动抽样</p>
+            </div>
+            <span id="sampleModePill" class="mode-pill" hidden></span>
+          </div>
+
+          <div class="metrics-grid" aria-label="样本统计指标">
+            <div class="metric-cell">
+              <span class="metric-label">Deflate 压缩比</span>
+              <strong id="compressionValue" class="metric-value">—</strong>
+              <small>压缩字节数 ÷ 57,600</small>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-label">横向相邻同色</span>
+              <strong id="adjacencyValue" class="metric-value">—</strong>
+              <small>期望值约 0.39%</small>
+            </div>
+          </div>
+          <p id="metricNotice" class="metric-notice" role="status" hidden></p>
+          <p id="sampleStatus" class="sample-status" role="status" aria-live="polite">准备就绪：等待手动抽样。</p>
+
+          <button id="drawButton" class="primary-button draw-button" type="button">
+            <span class="button-glyph" aria-hidden="true">✳</span>
+            <span>抽一张</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+
+          <div id="decisionActions" class="decision-actions" aria-label="样本选择">
+            <button id="ignoreButton" class="secondary-button ignore-button" type="button" disabled>忽略</button>
+            <button id="saveButton" class="secondary-button save-button" type="button" disabled>保存</button>
+          </div>
+          <p id="decisionCountdown" class="decision-countdown" aria-live="polite" hidden></p>
+
+          <div id="saveConfirm" class="inline-confirm" hidden>
+            <div class="confirm-heading">
+              <span class="confirm-icon" aria-hidden="true">✧</span>
+              <div>
+                <strong>确定保存这张？</strong>
+                <span>样本会记入保存列表，可稍后重新生成。</span>
+              </div>
+            </div>
+            <label class="field-label" for="saveNoteInput">备注 <span>选填</span></label>
+            <input id="saveNoteInput" class="text-input" type="text" maxlength="240" placeholder="例如：像一只戴帽子的猫" autocomplete="off">
+            <div class="confirm-actions">
+              <button id="cancelSaveButton" class="secondary-button" type="button">取消</button>
+              <button id="confirmSaveButton" class="primary-button compact-primary" type="button">确定保存</button>
+            </div>
+          </div>
+
+          <div id="undoBox" class="undo-box" hidden>
+            <span>刚才忽略了一张。</span>
+            <button id="undoButton" class="text-button" type="button">撤销忽略</button>
+            <span id="undoCountdown" class="undo-countdown"></span>
+          </div>
+
+          <div id="downloadActions" class="download-actions" hidden>
+            <div class="download-heading">
+              <strong id="downloadHeading">样本已保存</strong>
+              <span>PNG 可单独下载；放大版使用最近邻插值。</span>
+            </div>
+            <button id="downloadOriginalButton" class="download-button" type="button">保存为 PNG <small>320 × 180</small></button>
+            <button id="download4xButton" class="download-button" type="button">保存为 PNG <small>1280 × 720 · 4×</small></button>
+          </div>
+        </section>
+
+        <section class="replay-card card" aria-labelledby="replayHeading">
+          <div class="section-heading">
+            <div>
+              <p class="mini-label">确定性复现</p>
+              <h3 id="replayHeading">重现任意一张</h3>
+            </div>
+            <span class="replay-symbol" aria-hidden="true">↺</span>
+          </div>
+          <p class="section-copy">输入 32 位主种子和序号 <code>k</code>，原样查看那张图。复现仅供查看，不会增加抽取数。</p>
+          <form id="replayForm" class="replay-form" novalidate>
+            <label class="field-label" for="replaySeedInput">主种子 <span>32 位十六进制</span></label>
+            <input id="replaySeedInput" class="text-input mono-input" type="text" maxlength="32" placeholder="例如 0123456789abcdef0123456789abcdef" spellcheck="false" autocapitalize="off" autocomplete="off">
+            <label class="field-label" for="replayKInput">图像序号 <code>k</code></label>
+            <input id="replayKInput" class="text-input mono-input" type="number" min="0" step="1" inputmode="numeric" placeholder="0">
+            <button id="replayButton" class="outline-button" type="submit">重现该图</button>
+          </form>
+        </section>
+
+        <section class="stats-section" aria-labelledby="statsHeading">
+          <div class="section-heading stats-heading">
+            <div>
+              <p class="mini-label">本机记录</p>
+              <h3 id="statsHeading">实验统计</h3>
+            </div>
+            <span id="storageStatusPill" class="storage-pill">本地记录</span>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><span>已抽总数</span><strong id="totalDrawnValue">0</strong><small>所有主种子的 nextK 之和</small></div>
+            <div class="stat-card"><span>已保存</span><strong id="totalSavedValue">0</strong><small>保存列表中的样本</small></div>
+            <div class="stat-card"><span>历史最小压缩比</span><strong id="minCompressionValue">—</strong><small>仅统计实际抽取的样本</small></div>
+            <div class="stat-card"><span>上次导出</span><strong id="lastExportValue">从未导出</strong><small>备份仅包含记录，不含图像</small></div>
+          </div>
+          <div id="backupReminder" class="backup-reminder" hidden>
+            <span class="reminder-mark" aria-hidden="true">↗</span>
+            <div><strong>记得导出备份</strong><span id="backupReminderText">记录仅保存在本机。</span></div>
+          </div>
+          <p class="storage-explainer">图片本身不会写入本地存储；保存项会通过主种子和序号重新生成。主屏幕应用与浏览器中的本地记录可能彼此独立。</p>
+        </section>
+
+        <details class="backup-card card">
+          <summary>
+            <span><span class="summary-kicker">JSON 备份</span><strong>数据与备份</strong></span>
+            <span class="summary-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="backup-content">
+            <p class="section-copy">导出的 JSON 包含各主种子的进度、保存列表和历史最小压缩比，不包含图像像素。</p>
+            <div class="backup-actions">
+              <button id="exportButton" class="outline-button" type="button">导出 JSON</button>
+              <button id="importButton" class="outline-button" type="button">导入并合并</button>
+              <input id="importFileInput" type="file" accept=".json,application/json" hidden>
+            </div>
+            <p id="backupStatus" class="backup-status" role="status" aria-live="polite"></p>
+            <div class="danger-zone">
+              <div><strong>清空本机记录</strong><span>删除所有主种子进度、保存项与统计。</span></div>
+              <button id="openClearModalButton" class="danger-button" type="button">清空记录</button>
+            </div>
+          </div>
+        </details>
+
+        <footer class="app-footer">
+          <p>320×180、256 色的图共有 2^460800 种（约 10^138715），随机抽到有意义的图概率极低，本程序仅供实验娱乐。</p>
+          <span>不是图像生成模型 · 不是 AI 推理 · 纯伪随机像素</span>
+        </footer>
+      </section>
+
+      <section id="savedPage" class="page-view saved-page" aria-labelledby="savedPageHeading" hidden>
+        <div class="saved-page-intro">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> 保存样本 / 样本库</p>
+          <div class="saved-title-row">
+            <div>
+              <h2 id="savedPageHeading">保存列表</h2>
+              <p class="intro-copy">仅保存种子、序号、时间和备注；缩略图在本机重新生成。</p>
+            </div>
+            <span id="savedCountBadge" class="saved-count-badge">0 张</span>
+          </div>
+        </div>
+        <div id="savedList" class="saved-list"></div>
+        <div id="savedEmpty" class="empty-state" hidden>
+          <div class="empty-pixels" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <strong>这里还没有保存的样本</strong>
+          <p>回到实验页，抽到喜欢的随机图后点「保存」。</p>
+          <button id="goToExperimentButton" class="outline-button" type="button">回到实验</button>
+        </div>
+        <div class="saved-footer-note"><span class="status-dot" aria-hidden="true"></span> 每张缩略图都由对应的主种子与 <code>k</code> 重新生成。</div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主导航">
+      <button class="nav-button is-active" type="button" data-page="experimentPage" aria-current="page">
+        <span class="nav-icon nav-lab-icon" aria-hidden="true">✳</span><span>实验</span>
+      </button>
+      <button class="nav-button" type="button" data-page="savedPage">
+        <span class="nav-icon nav-archive-icon" aria-hidden="true">▦</span><span>保存列表</span><span id="savedNavCount" class="nav-count">0</span>
+      </button>
+    </nav>
+  </div>
+
+  <div id="seedChooserModal" class="modal-backdrop" hidden>
+    <section class="modal-sheet compact-sheet" role="dialog" aria-modal="true" aria-labelledby="seedChooserTitle">
+      <div class="modal-handle" aria-hidden="true"></div>
+      <div class="modal-title-row"><div><p class="mini-label">MASTER SEED</p><h2 id="seedChooserTitle">选择继续使用的主种子</h2></div><button class="icon-button close-modal-button" type="button" data-close-modal="seedChooserModal" aria-label="关闭">×</button></div>
+      <p class="section-copy">默认选中已抽数量最多的种子；每个种子各自从自己的 nextK 继续。</p>
+      <label class="field-label" for="seedChoiceSelect">主种子</label>
+      <select id="seedChoiceSelect" class="text-input seed-select"></select>
+      <div class="confirm-actions modal-actions">
+        <button class="secondary-button" type="button" data-close-modal="seedChooserModal">取消</button>
+        <button id="confirmSeedChoiceButton" class="primary-button compact-primary" type="button">继续使用</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="detailModal" class="modal-backdrop" hidden>
+    <section class="modal-sheet detail-sheet" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modal-handle" aria-hidden="true"></div>
+      <div class="modal-title-row"><div><p class="mini-label">保存的样本</p><h2 id="detailTitle">样本详情</h2></div><button id="closeDetailButton" class="icon-button" type="button" aria-label="关闭详情">×</button></div>
+      <div class="detail-canvas-frame"><canvas id="detailCanvas" width="320" height="180" role="img" aria-label="保存的随机像素样本"></canvas></div>
+      <p id="detailMeta" class="detail-meta"></p>
+      <label class="field-label" for="detailNoteInput">备注 <span>最多 240 字</span></label>
+      <input id="detailNoteInput" class="text-input" type="text" maxlength="240" placeholder="给这张图留一句备注" autocomplete="off">
+      <button id="saveDetailNoteButton" class="outline-button full-button" type="button">保存备注</button>
+      <p id="detailStatus" class="backup-status" role="status" aria-live="polite"></p>
+      <div class="detail-downloads">
+        <button id="detailDownloadOriginalButton" class="download-button" type="button">保存为 PNG <small>320 × 180</small></button>
+        <button id="detailDownload4xButton" class="download-button" type="button">保存为 PNG <small>1280 × 720 · 4×</small></button>
+      </div>
+      <div id="deleteConfirmPanel" class="delete-confirm-panel" hidden>
+        <strong>确定删除这条保存记录？</strong>
+        <span>图像不会存于本机，删除后也会从列表中移除。</span>
+        <div class="confirm-actions">
+          <button id="cancelDeleteSavedButton" class="secondary-button" type="button">取消</button>
+          <button id="confirmDeleteSavedButton" class="danger-button" type="button">确定删除</button>
+        </div>
+      </div>
+      <button id="requestDeleteSavedButton" class="danger-text-button" type="button">删除这条记录</button>
+    </section>
+  </div>
+
+  <div id="clearRecordsModal" class="modal-backdrop" hidden>
+    <section class="modal-sheet compact-sheet" role="dialog" aria-modal="true" aria-labelledby="clearModalTitle">
+      <div class="modal-handle" aria-hidden="true"></div>
+      <div class="modal-title-row"><div><p class="mini-label danger-kicker">不可撤销</p><h2 id="clearModalTitle">清空本机记录</h2></div><button class="icon-button close-modal-button" type="button" data-close-modal="clearRecordsModal" aria-label="关闭">×</button></div>
+      <div id="clearStepOne">
+        <p class="section-copy">这会删除所有主种子的 nextK、保存列表、备注、历史最小压缩比和导出时间。图片不会受影响，因为图片文件本来就没有保存在本机。</p>
+        <div class="confirm-actions modal-actions"><button class="secondary-button" type="button" data-close-modal="clearRecordsModal">取消</button><button id="continueClearButton" class="danger-button" type="button">继续</button></div>
+      </div>
+      <div id="clearStepTwo" hidden>
+        <p class="final-warning">第二次确认：真的要删除全部本机记录吗？此操作不能撤销。</p>
+        <div class="confirm-actions modal-actions"><button id="backFromClearButton" class="secondary-button" type="button">返回</button><button id="confirmClearButton" class="danger-button" type="button">清空所有记录</button></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./core.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
