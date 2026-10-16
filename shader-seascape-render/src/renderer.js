@@ -28,7 +28,13 @@
     quality: 0.75,
     renderScale: 1.0,
     adaptive: true,
-    targetMs: 16.7
+    targetMs: 16.7,
+    // where the adaptive controller starts, and the floor it may fall to. A device that can
+    // only afford a low internal resolution should start there: the controller's cooldown used
+    // to be counted in frames, so on a slow renderer it never reached its floor - it sat at
+    // full resolution paying minutes per frame while it waited for its 25-frame cooldown.
+    startScale: 1.0,
+    minScale: 0.45
   };
 
   SS.Renderer = function (canvas, opts) {
@@ -45,7 +51,8 @@
     var R = {
       api: api, params: P, canvas: canvas,
       ready: false, error: null,
-      stats: { ms: 0, fps: 0, scale: P.adaptive ? 1 : Math.max(0.08, P.renderScale),
+      stats: { ms: 0, fps: 0,
+        scale: P.adaptive ? Math.max(0.05, P.startScale) : Math.max(0.08, P.renderScale),
         quality: P.quality, passes: 0 },
       gen: null, programs: {}, targets: {},
       lastSun: { elev: -99, azi: -99 },
@@ -388,15 +395,33 @@
     };
 
     // ---------------------------------------------------------------- adaptive resolution
+    /* Adaptive internal resolution.
+       The cooldown is counted in milliseconds, not frames: a frame-count cooldown is a
+       function of how slow the machine is, so the slower the device the longer it stays wrong.
+       A large miss (more than 3x the target frame time) takes a proportionally larger step,
+       which is what gets a software rasteriser from its start scale to something it can
+       actually draw in a handful of frames rather than a few hundred. */
     R.adapt = function (ms) {
       if (!P.adaptive) return;
       var st = R.stats;
-      st.msAvg = st.msAvg === undefined ? ms : st.msAvg * 0.9 + ms * 0.1;
-      st.cool = (st.cool || 0) - 1;
-      if (st.cool > 0) return;
+      var now = performance.now();
+      st.msAvg = st.msAvg === undefined ? ms : st.msAvg * 0.75 + ms * 0.25;
+      if (st.nextAdj === undefined) st.nextAdj = 0;
+      if (now < st.nextAdj) return;
       var want = P.targetMs;
-      if (st.msAvg > want * 1.35 && st.scale > 0.45) { st.scale = Math.max(0.45, st.scale - 0.05); st.cool = 25; R.resize(); }
-      else if (st.msAvg < want * 0.72 && st.scale < P.renderScale) { st.scale = Math.min(P.renderScale, st.scale + 0.05); st.cool = 40; R.resize(); }
+      var lo = P.minScale, hi = Math.max(P.minScale, P.renderScale);
+      if (st.msAvg > want * 1.35 && st.scale > lo) {
+        // proportional step: how far off are we? (a frame time scales with pixels)
+        var ratio = Math.min(0.75, want / Math.max(st.msAvg, 0.001));
+        var step = Math.max(0.05, st.scale * (1 - Math.max(0.35, ratio)) * 0.75);
+        st.scale = Math.max(lo, Math.round((st.scale - step) * 100) / 100);
+        st.nextAdj = now + 220; R.resize();
+      } else if (st.msAvg < want * 0.72 && st.scale < hi) {
+        st.scale = Math.min(hi, Math.round((st.scale + 0.05) * 100) / 100);
+        st.nextAdj = now + 600; R.resize();
+      } else {
+        st.nextAdj = now + 250;
+      }
     };
 
     // ---------------------------------------------------------------- capture

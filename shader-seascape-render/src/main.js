@@ -18,8 +18,33 @@
 
   var probeMode = qs('probe', '0') === '1';
   var loopMode = qs('loop', '1') === '1';   // probe runs render on demand only
-  var quality = num('quality', probeMode ? 0.35 : (window.devicePixelRatio > 1.5 ? 0.7 : 0.85));
-  var terrainRes = num('terrainRes', probeMode ? 768 : 2048);
+
+  /* What kind of renderer is this? The terrain bake is the page's one heavy startup cost -
+     2048^2 with eight erosion passes - and it happens before the first frame, so on a
+     software rasteriser (SwiftShader, llvmpipe, a VM with no GPU) the visitor would sit on
+     the boot screen for minutes. Ask the driver once, before the renderer is built, and pick
+     a bake the device can afford: a GPU gets the full 2048, software gets 768 and a smaller
+     internal scale. Both can be overridden from the query string (?terrainRes=…), which is
+     how the capture tools pin their resolution. */
+  function deviceTier() {
+    try {
+      var c = document.createElement('canvas');
+      var g = c.getContext('webgl2') || c.getContext('webgl');
+      if (!g) return 'none';
+      var ext = g.getExtension('WEBGL_debug_renderer_info');
+      var name = ext ? String(g.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : String(g.getParameter(g.RENDERER));
+      var lose = g.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+      if (/swiftshader|llvmpipe|softwarerasterizer|software rasterizer|mesa offscreen|basic render/i.test(name)) {
+        return 'software';
+      }
+      return 'gpu';
+    } catch (e) { return 'unknown'; }
+  }
+  var tier = deviceTier();
+  window.__tier = tier;   // so a verification run can see which branch the page took
+  var quality = num('quality', probeMode ? 0.35 : (tier === 'software' ? 0.5 : (window.devicePixelRatio > 1.5 ? 0.7 : 0.85)));
+  var terrainRes = num('terrainRes', probeMode ? 768 : (tier === 'software' ? 768 : 2048));
   var renderScale = num('scale', probeMode ? 1.0 : 1.0);
 
   var opts = {
@@ -28,7 +53,13 @@
     renderScale: renderScale,
     // the adaptive controller only runs in the live page; a capture run pins the scale so
     // two runs of the same tool cost the same and look the same
-    adaptive: num('adaptive', probeMode ? 0 : 1) === 1
+    adaptive: num('adaptive', probeMode ? 0 : 1) === 1,
+    /* A software rasteriser (SwiftShader, llvmpipe, a VM without a GPU) pays tens of seconds
+       for one full-resolution frame of this shader, so it starts low and is allowed to go
+       lower. Everything about this is visible in the panel's ms readout and the boot note. */
+    startScale: num('startScale', tier === 'software' ? 0.3 : 1.0),
+    minScale: num('minScale', tier === 'software' ? 0.18 : 0.45),
+    targetMs: num('targetMs', tier === 'software' ? 140 : 16.7)
   };
   // Erosion passes. The relaxation is written per-pass in slope space, so the same count
   // gives the same landform at every tile resolution; scaling the count with the
@@ -92,12 +123,29 @@
 
   // ---------------------------------------------------------------- loop
   var last = 0, fpsAcc = 0, fpsN = 0, fpsShown = 0;
+  var lastWall = 0;
   function frame(now) {
     if (!last) last = now;
-    var dt = Math.min(0.05, (now - last) / 1000);
+    /* Elapsed real time, measured off the monotonic clock rather than the requestAnimationFrame
+       timestamp: a frame timestamp reports when the frame was scheduled, not when the previous
+       one finished, so on a renderer that blocks for seconds the rAF deltas say "16 ms" and the
+       film creeps. Capped at 2 s so a tab that was in the background does not land the viewer in
+       a random chapter on the way back. */
+    var wallNow = performance.now();
+    if (!lastWall) lastWall = wallNow;
+    var wall = (wallNow - lastWall) / 1000;
+    lastWall = wallNow;
+    var dt = Math.min(0.05, wall);           // keeps a shader step from lurching
     last = now;
     var t0 = performance.now();
-    if (app.playing && SS.timeline) SS.timeline.update(dt, R, app);
+    /* The film's clock is wall time. Driving it with the clamped render dt meant a device that
+       draws one frame every several seconds advanced the film a few hundredths of a second per
+       frame: the picture sat there looking frozen while the soundtrack (which runs on the audio
+       clock) ran away from it. Now a slow device drops frames the way a video player does and
+       keeps the clock - and keeps sound and picture together. The render itself still gets the
+       clamped dt, so the wave motion stays stable. */
+    var filmDt = Math.min(2.0, wall);
+    if (app.playing && SS.timeline) SS.timeline.update(filmDt, R, app);
     else R.s.time += dt * (app.playing ? 1 : 0);
     R.render(dt);
     var ms = performance.now() - t0;
@@ -107,7 +155,11 @@
     if (fpsAcc > 0.5) { fpsShown = fpsN / fpsAcc; fpsAcc = 0; fpsN = 0; R.stats.fps = fpsShown; }
     if (SS.ui) SS.ui.tick(R, app);
     if (SS.timeline && SS.timeline.tickDom) SS.timeline.tickDom(R, app);
-    if (SS.audio) SS.audio.tick(dt, R, app);
+    /* The soundtrack is a continuous bed whose mix follows the chapter and the renderer's own
+       numbers, so it cannot drift out of sync; the one thing it times off a delta is its swell
+       rate, and that gets the film's own advance so a device rendering slowly hears the swells
+       at the pace it is watching at, not at a different one. */
+    if (SS.audio) SS.audio.tick(filmDt, R, app);
     requestAnimationFrame(frame);
   }
 
@@ -124,7 +176,8 @@
   // ---------------------------------------------------------------- boot
   if (window.console && console.log) console.log('[boot] gen done in ' + R.buildInfo.genMs + ' ms');
   bootFill.style.width = '45%';
-  bootMsg.textContent = '地形高度场与噪声图集已生成（' + R.buildInfo.genMs + ' ms）';
+  bootMsg.textContent = '地形高度场与噪声图集已生成（' + R.buildInfo.genMs + ' ms）' +
+    (tier === 'software' ? ' · 检测到软件渲染器，已用 ' + R.buildInfo.terrainRes + '² 高度场' : '');
   setTimeout(function () {
     bootFill.style.width = '80%';
     bootMsg.textContent = '烘焙大气查找表…';

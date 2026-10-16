@@ -35,7 +35,7 @@ shader-seascape-render/
 │   ├── mg.js           the motion-graphics layer: one canvas, nine per-chapter graphics
 │   ├── audio.js        the soundtrack, synthesised with Web Audio from the renderer's state
 │   ├── ui.js           transport, keyboard, panel, free-flight camera
-│   └── main.js         boot, quality handling, probe hooks, URL overrides
+│   └── main.js         boot, the device tier, quality handling, probe hooks, URL overrides
 ├── assets/
 │   ├── style.css       layout, HUD, cards, panel, z-order
 │   └── fonts/          four subset woff2 faces (OFL) + fonts.css
@@ -91,7 +91,11 @@ tonemap is the Narkowicz ACES fit with the Hill matrix pair.
 * A 128³ cloud volume plus a 160 km weather map; up to 88 march steps with 6 sun-occlusion
   steps each; clouds 1900–3300 m.
 * Auto-exposure from an 8×8 luminance readback, using a **trimmed mean** (25–88 % band) so a
-  specular sun path cannot drag the frame to black; adaptive internal resolution 0.55–1.00.
+  specular sun path cannot drag the frame to black.
+* Adaptive internal resolution, decided from a *monotonic-clock* frame time: a GPU starts at
+  1.00× and may fall to 0.45×, a device with no GPU starts at 0.30× and may fall to 0.18×. The
+  controller's cooldown is time-based, not frame-based, so the slower the device the faster it
+  stops being wrong.
 * The soundtrack is synthesised in-page with Web Audio; its layers follow the renderer's own
   numbers (wind speed, wave amplitude, cloud cover, exposure, frame time).
 
@@ -108,7 +112,9 @@ points at one):
 | `mgtext.mjs [stamps] [W] [H]` | the motion-graphics canvas labels, measured, plus collisions |
 | `domdump.mjs 5,16,…` | dump the live DOM geometry of cards and panels |
 | `terrainmap.mjs 512` | the baked height field: table, statistics, and the flight's ground clearance |
-| `filmaudit.mjs 2 1280 720` | caption timing audit across the whole film |
+| `filmaudit.mjs 2 1280 720` | caption timing, card/panel/leader visibility, and panel ink at every stamp |
+| `defaultrun.mjs <url> 20,40,60` | the *visitor's* path: no query parameters, boot screen, adaptive resolution, wall-clock film; screenshots each stamp |
+| `httpcheck.mjs <port> 5,26,…` | the same page over HTTP: status, MIME, fonts, and frames matched against the `file://` ones |
 | `capdbg.mjs`, `entercheck.mjs`, `check.mjs`, `diag.mjs` | captions, boot order, uniform/GL sanity |
 | `sheet.mjs`, `texpng.mjs`, `targetpng.mjs` | contact sheets and texture dumps for reading bakes by eye |
 | `subset_fonts.py` | rebuilds the four subset woff2 faces from the full OFL fonts |
@@ -129,6 +135,14 @@ Space Grotesk (Latin), JetBrains Mono (numerals, telemetry), Noto Sans SC and No
   motion-graphics labels at 1280×720.
 * The **soundtrack was checked as data** (levels, peaks, layer gains), not by ear — no audio
   output was available while building it.
-* Performance depends on the machine: the film targets 60 fps at 1280×720 on a discrete GPU
-  and scales its internal resolution to hold it; on software rendering (SwiftShader) it runs
-  slowly by design rather than dropping the picture.
+* Performance depends on the machine. Before the renderer is built the page asks the driver
+  what it is: a GPU gets the full 2048² terrain bake, a software rasteriser (SwiftShader,
+  llvmpipe, a VM with no GPU) gets 768² and a low starting internal resolution, and the boot
+  screen says so. Measured in this repository's own harness, where the only renderer is
+  SwiftShader: 14 s for the first frame at 0.30× and about 8 s per frame after it — the film
+  then plays slowly rather than freezing, which is the honest behaviour for a CPU rasteriser
+  running a per-pixel ray marcher.
+* The film's clock is wall time, so sound and picture stay together whatever the device does:
+  the picture drops frames the way a video player does instead of crawling through the
+  schedule, and the soundtrack's own swell rate is driven by the film's advance rather than by
+  the render frame time.
