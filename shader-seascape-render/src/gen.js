@@ -109,14 +109,20 @@
       prog.use();
       prog.set('uRes', [target ? target.w : 1, target ? target.h : 1]);
       for (var k in uniforms) {
-        if (located.indexOf(k) < 0 && !warned[k]) {
-          warned[k] = 1;
-          if (window.console && console.warn) console.warn('gen: ' + label + ' sets ' + k + ' but it is not in the locate list');
-        }
         var v = uniforms[k];
         if (typeof v === 'number') prog.set(k, v);
         else if (v && v.length) prog.set(k, v);
         else if (v && v.tex) prog.setTex(k, v.tex, v.unit || 0);
+        // prog.set resolves the location on demand, so a name the curated list above does
+        // not mention is still uploaded: what matters is whether the *shader* uses it. A
+        // null location means it does not - a real no-op, and the only thing worth warning
+        // about. (The previous check warned on anything outside the list, which is noise:
+        // four atmosphere uniforms this pass sets for the scene's benefit are not read by
+        // the bake shaders, and the warning buried the ones that matter.)
+        if (prog.u[k] === null && !warned[k]) {
+          warned[k] = 1;
+          if (window.console && console.warn) console.warn('gen: ' + label + ' sets ' + k + ' but this shader does not use it');
+        }
       }
       api.drawQuad(label);
     };
@@ -222,18 +228,30 @@
 
     // ---------------- public
     gen.atmo = null;
+    /* The two bakes want different things: the sky table is the full scattering integral
+       (it needs the sun's irradiance, the disk, the sky scale and the second-order term),
+       while the transmittance table is the extinction along one slant path per texel and
+       uses only the coefficients and the two scale heights. Handing both the same dict made
+       the transmittance pass set ten uniforms its shader never reads. */
     gen.updateSky = function (atmo, cameraHeight) {
-      var u = {
-        uSunElev: atmo.sunElev, uSunAzi: atmo.sunAzi,
-        uBetaR: atmo.betaR, uBetaM: atmo.betaM, uMieG: atmo.mieG, uMieTint: atmo.mieTint === undefined ? 1.0 : atmo.mieTint,
+      var multi = atmo.multiScatter === undefined ? 1.0 : atmo.multiScatter;
+      /* What each table actually reads, checked against the compiled shader (the wrapper
+         warns when a name is not a live uniform):
+           sky    the scattering integral. The table lives in the sun's own frame, so it
+                  takes the sun *direction*, not its elevation, and it is baked at unit sky
+                  scale and unit disk strength - those two are applied where the table is
+                  sampled (scene.js), so a change of exposure never needs a re-bake.
+           sunTrans  extinction along one slant path per texel. The table is indexed by view
+                  elevation and height, so the sun's position does not enter at all. */
+      skyPass({
+        uSunAzi: atmo.sunAzi, uBetaR: atmo.betaR, uBetaM: atmo.betaM, uMieG: atmo.mieG,
         uHr: atmo.hr, uHm: atmo.hm, uOzone: atmo.ozone,
-        uSunDir: atmo.sunDir, uSunIrradiance: atmo.sunIrradiance,
-        uSunDiskIntensity: atmo.sunDiskIntensity, uSkyScale: atmo.skyScale,
-        uMultiScatter: atmo.multiScatter === undefined ? 1.0 : atmo.multiScatter,
+        uSunDir: atmo.sunDir, uSunIrradiance: atmo.sunIrradiance, uMultiScatter: multi,
         uSkyQuality: atmo.quality, uCameraHeight: cameraHeight
-      };
-      skyPass(u, 'skyLUT');
-      sunPass(u, 'sunTrans');
+      }, 'skyLUT');
+      sunPass({
+        uBetaR: atmo.betaR, uBetaM: atmo.betaM, uHr: atmo.hr, uHm: atmo.hm, uOzone: atmo.ozone
+      }, 'sunTrans');
     };
     gen.renderInstrument = function (kind, target, uniforms) {
       // used by the UI panels: re-draw a small view of a generated texture
