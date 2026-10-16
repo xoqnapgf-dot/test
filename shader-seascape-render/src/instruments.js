@@ -31,14 +31,14 @@
     instLUT: { cap: '大气查找表 · 256×128', note: '烘焙一次，之后每帧只采样' },
     instMap: { cap: '天气图 · 160 km', note: '云在哪里，由它决定' },
     instHist: { cap: '亮度直方图', note: '曝光之后的分布' },
-    instBloom: { cap: '泛光', note: '' }
+    instBloom: { cap: '泛光', note: '金字塔最粗一级 · 48×27' }
   };
   var SIZE = {
     instAtlas: [256, 160],
     instLUT: [256, 128],
     instMap: [176, 110],
     instHist: [240, 74],
-    instBloom: [96, 54]
+    instBloom: [124, 70]
   };
   var GRID_N = 64, GRID_M = 40;            // samples of the height field for the map
 
@@ -238,7 +238,8 @@
     var g2d = cv.getContext('2d');
     var w = cv.width, h = cv.height;
     var bins = 48, hist = null;
-    try { hist = R.histogram(bins); } catch (e) { hist = null; }
+    try { hist = R.histogram(bins, 'display'); } catch (e) { hist = null; }
+    if (hist && hist.hist) hist = hist.hist;
     g2d.clearRect(0, 0, w, h);
     g2d.fillStyle = 'rgba(255,255,255,0.03)';
     g2d.fillRect(0, 0, w, h);
@@ -256,19 +257,38 @@
     }
     g2d.strokeStyle = 'rgba(243,238,229,0.22)';
     g2d.beginPath(); g2d.moveTo(0, h - 12.5); g2d.lineTo(w, h - 12.5); g2d.stroke();
-    g2d.font = '9px "JetBrains Mono", monospace';
+    // the CJK in this label needs the CJK family in the font stack (a 2D canvas draws tofu
+    // for a glyph the listed families do not have)
+    g2d.font = '9px "JetBrains Mono", "Noto Sans SC", monospace';
+    // the axis: display luminance, so the labels say what the bins mean
     g2d.fillStyle = 'rgba(243,238,229,0.5)';
-    g2d.fillText('0', 2, h - 2);
-    var ex = R.lastExposure || 0;
-    g2d.fillText('曝光 ' + ex.toFixed(2) + '×', w - 62, h - 2);
+    g2d.textAlign = 'left'; g2d.fillText('0', 2, h - 2);
+    g2d.textAlign = 'center'; g2d.fillText('中灰', w * 0.5, h - 2);
+    g2d.textAlign = 'right'; g2d.fillText('白', w - 2, h - 2);
+    g2d.textAlign = 'left';
   }
 
+  var bloomScratch = null;
   function paintBloom(R) {
     var cv = canvases.instBloom; if (!cv) return;
     var T = R.targets && R.targets.bloomUp;
     if (!T || !T.length) return;
-    var small = T[T.length - 1];
-    try { R.textureToCanvas(small, cv, 0, 1.0, function (r, g, b) { return duotone(r, g, b, 3.6); }); } catch (e) { }
+    /* Show the coarsest level that still has a few pixels across, scaled up to fill the
+       panel. Copying the smallest level (16x9) straight into a 120x68 canvas put a chip in
+       the corner and left the rest of the panel empty - the copy writes one canvas pixel per
+       texel and does not scale. */
+    var pick = T[0];
+    for (var i = 0; i < T.length; i++) { if ((T[i].w || 0) >= 48) pick = T[i]; }
+    if (!bloomScratch) bloomScratch = document.createElement('canvas');
+    if (bloomScratch.width !== pick.w || bloomScratch.height !== pick.h) {
+      bloomScratch.width = pick.w; bloomScratch.height = pick.h;
+    }
+    try { R.textureToCanvas(pick, bloomScratch, 0, 1.0, function (r, g, b) { return duotone(r, g, b, 3.6); }); } catch (e) { return; }
+    var g2d = cv.getContext('2d');
+    g2d.imageSmoothingEnabled = true;
+    g2d.clearRect(0, 0, cv.width, cv.height);
+    g2d.drawImage(bloomScratch, 0, 0, pick.w, pick.h, 0, 0, cv.width, cv.height);
+    g2d.textAlign = 'left';
   }
 
   function setCaps(R) {
@@ -276,7 +296,8 @@
     if (caps.instLUT) caps.instLUT.textContent = R.s.sunElev.toFixed(1) + '°';
     if (caps.instMap) caps.instMap.textContent = R.s.cloudCover.toFixed(2);
     if (caps.instHist) caps.instHist.textContent = (R.lastExposure || 0).toFixed(2) + '×';
-    if (caps.instBloom) caps.instBloom.textContent = (R.stats.ms || 0).toFixed(1) + ' ms';
+    // the bloom panel is a picture of the bloom strength, so the readout is that strength
+    if (caps.instBloom) caps.instBloom.textContent = (R.s.bloom || 0).toFixed(3);
   }
 
   SS.instruments = {

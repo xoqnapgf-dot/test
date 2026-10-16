@@ -194,8 +194,17 @@ void main(){
 }
 `;
 
-  // A tiny pass that writes a horizontal luminance strip used by the histogram
-  // instrument; the JS side reads it back once in a while.
+  /* A tiny pass that writes a horizontal strip the histogram instruments read back.
+     Two channels, because the two instruments want different things and both are already
+     computed here:
+       R  the *display* luminance - the same ACES fit and sRGB encode the screen shows, so the
+          panel's bins sit where the eye sees the frame. (Binning the linear radiance straight
+          out of the scene target was the bug: a sunset frame's linear luma is around 1e-3, and
+          a mapping that assumes 0..1 put every pixel in the first bin. The panel looked
+          empty while it was faithfully reporting a single spike.)
+       G  log2 of the linear luminance after exposure, mapped over LUM_LO..LUM_HI stops - what
+          the tonemap chapter's curve wants, since that chapter is about what happens across
+          the exposure range. */
   GLSL.stripShader = GLSL.common + `
 uniform sampler2D uScene;
 uniform vec2 uRes;
@@ -204,7 +213,9 @@ out vec4 outColor;
 void main(){
   vec2 uv = gl_FragCoord.xy / uRes;
   vec3 c = max(texture(uScene, uv).rgb, vec3(0.0)) * uExposure;
-  outColor = vec4(c, 1.0);
+  vec3 disp = linearToSRGB(saturate(acesFitted(c)));
+  float lg = (log2(max(luma(c), 1e-6)) + 14.0) / 24.0;
+  outColor = vec4(luma(disp), saturate(lg), 0.0, 1.0);
 }
 `;
 })();

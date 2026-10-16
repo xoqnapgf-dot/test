@@ -1074,7 +1074,8 @@
   // ---------------------------------------------------------------- chapter 08 · grade
   function h08(R, t, u, a, c) {
     var x0 = S.x0 + 2, x1 = S.x1 - 2, y0 = S.y0 + 66, y1 = S.y1 - 46;
-    var s0 = -5, s1 = 8;                       // log2 of the luminance after exposure
+    var s0 = -14, s1 = 10;                     // log2 of the luminance after exposure: the
+                                               // range the strip's second channel covers
     scrim(x0 - 6, y0 - 20, x1 + 6, y1 + 32, 0.34);
     var xOfS = function (s) { return x0 + (s - s0) / (s1 - s0) * (x1 - x0); };
     var yOfO = function (o) { return y1 - sat(o) * (y1 - y0); };
@@ -1089,16 +1090,18 @@
       var bins = h.hist.length, maxv = 1;
       for (var i = 0; i < bins; i++) maxv = Math.max(maxv, h.hist[i]);
       var bw = (x1 - x0) / bins;
+      // bin b covers s0 + b*step .. s0 + (b+1)*step stops, so its centre is at (b + 0.5)
+      var step = (s1 - s0) / bins;
       for (i = 0; i < bins; i++) {
         var bb = Math.pow(h.hist[i] / maxv, 0.42);
         var hh = bb * (y1 - y0) * 0.62;
-        var sBin = (i - 16) / 4;
+        var sBin = s0 + (i + 0.5) * step;
         box(xOfS(sBin) + 0.4, y1 - hh, Math.max(1, bw - 1), hh, 'rgba(127,216,232,0.30)');
       }
       // the median, from the same bins
       var tot = 0, med = 0, csum = 0;
       for (i = 0; i < bins; i++) tot += h.hist[i];
-      for (i = 0; i < bins; i++) { csum += h.hist[i]; if (csum >= tot * 0.5) { med = (i - 16) / 4; break; } }
+      for (i = 0; i < bins; i++) { csum += h.hist[i]; if (csum >= tot * 0.5) { med = s0 + (i + 0.5) * step; break; } }
       line(xOfS(med), y0, xOfS(med), y1, ink(0.4), 1, [2, 3]);
       text('中位 2^' + med.toFixed(1), xOfS(med) + 4, y0 + 10, { col: ink(0.6), size: 9 });
       // how much of the frame is at the floor and at the ceiling
@@ -1132,7 +1135,7 @@
     var hc = cache.hist;
     if (hc.h && Math.abs(t - hc.t) < 0.25) return hc.h;
     var h = null;
-    try { h = R.histogram(48); } catch (e) { h = null; }
+    try { h = R.histogram(48, 'log2'); } catch (e) { h = null; }
     if (h && h.hist) { cache.hist = { t: t, h: h }; return h; }
     return hc.h || null;
   }

@@ -600,29 +600,34 @@
     };
 
     /** Read the scene target at low resolution and return a luminance histogram. */
-    R.histogram = function (bins) {
+    /* Luminance histogram of the frame after exposure.
+       mode 'display' (default): bin the on-screen luminance, 0..1 - what the histogram panel
+       shows. mode 'log2': bin log2 of the linear luminance over -14..+10 stops - what the
+       tonemap chapter's curve is drawn against. The strip shader computes both; see post.js. */
+    R.histogram = function (bins, mode) {
       var T = R.targets, st = T.strip;
       api.bind(st);
       R.programs.strip.use().locate(['uExposure']).setTex('uScene', T.scene.tex, 0).set('uRes', [st.w, st.h]).set('uExposure', R.lastExposure !== undefined ? R.lastExposure : R.s.exposure);
       api.drawQuad();
       var w = st.w, h = st.h;
+      var log2mode = (mode === 'log2');
+      var chan = log2mode ? 1 : 0;
       var px = new Float32Array(w * h * 4);
       var hist = new Float32Array(bins);
       if (R.hdrType === gl.HALF_FLOAT || R.hdrType === gl.FLOAT) {
         api.readFloats(0, 0, w, h, px);
         for (var i = 0; i < w * h; i++) {
-          var lum = 0.2126 * px[i * 4] + 0.7152 * px[i * 4 + 1] + 0.0722 * px[i * 4 + 2];
-          if (!isFinite(lum) || lum < 0) lum = 0;
-          var b = Math.min(bins - 1, Math.max(0, Math.floor(Math.log2(lum + 1e-5) * 4 + 16)));
-          hist[b]++;
+          var l = px[i * 4 + chan];
+          if (!isFinite(l) || l < 0) l = 0;
+          hist[Math.min(bins - 1, Math.max(0, Math.floor(l * bins)))]++;
         }
         return { hist: hist, total: w * h };
       }
       var px8 = new Uint8Array(w * h * 4);
       gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px8);
       for (var j = 0; j < w * h; j++) {
-        var l = Math.max(0, 0.2126 * px8[j * 4] + 0.7152 * px8[j * 4 + 1] + 0.0722 * px8[j * 4 + 2]) / 255;
-        hist[Math.min(bins - 1, Math.max(0, Math.floor(l * bins)))]++;
+        var l8 = Math.max(0, px8[j * 4 + chan]) / 255;
+        hist[Math.min(bins - 1, Math.max(0, Math.floor(l8 * bins)))]++;
       }
       return { hist: hist, total: w * h };
     };

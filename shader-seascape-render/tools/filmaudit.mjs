@@ -100,7 +100,14 @@ const report = await page.evaluate(async (o) => {
     if (cap.r.w > 0 && hit(cap.r, tlR)) problems.push('caption-over-timeline');
     const st = window.SS.captions.state();
     if (cap.text && lit === 0 && st.tOn >= 0 && tt > st.tOn + 0.4) problems.push('nothing-lit');
-    if (!cap.text && tt > 1 && tt < 95) problems.push('gap-in-captions');
+    /* A gap between cues is only a defect if it is longer than the film's own breathing room
+       between chapters (1.2 s, the same threshold the cue-gap report below uses). The short
+       silences before a chapter's first line are written into the script. */
+    if (!cap.text && tt > 1 && tt < 95) {
+      const nx = CUES.find((c) => c.t0 > tt), pv = CUES.filter((c) => c.t1 < tt).pop();
+      const gap = (nx ? nx.t0 : 96) - (pv ? pv.t1 : 0);
+      if (gap > 1.2) problems.push('gap-in-captions:' + gap.toFixed(1));
+    }
 
     // the panel set the film asks for, versus what is on screen and where
     const want = Object.keys(SHOW).filter((id) => SHOW[id].indexOf(pr.index) >= 0);
