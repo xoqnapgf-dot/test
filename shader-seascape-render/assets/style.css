@@ -1,0 +1,419 @@
+/* ============================================================================
+   从一条射线到一片海 — interface
+   Type: a Song/Serif Chinese for reading, a grotesk for labels, a mono for numbers.
+   Layout: nothing sits on top of the picture that the picture does not need.
+   ========================================================================== */
+@import url("fonts/fonts.css");
+
+:root {
+  --ink: #f3eee5;
+  --ink-dim: rgba(243, 238, 229, 0.62);
+  --ink-faint: rgba(243, 238, 229, 0.34);
+  --line: rgba(243, 238, 229, 0.16);
+  --line-strong: rgba(243, 238, 229, 0.30);
+  --warm: #ffc078;
+  --cool: #7fd8e8;
+  --coral: #ff7a63;
+  --glass: rgba(10, 12, 16, 0.58);
+  --glass-strong: rgba(8, 10, 14, 0.86);
+  /* Latin from the grotesk, Chinese from the sans subset: both are inside the
+     project, so the page cannot fall back to a missing system font. */
+  --sans: "Space Grotesk", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --serif: "Noto Serif SC", "Songti SC", "Source Han Serif SC", "Noto Sans SC", serif;
+  --mono: "JetBrains Mono", "Noto Sans SC", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --pad: clamp(14px, 2.2vw, 34px);
+  /* the instrument column sits above the caption block, which is anchored to the
+     bottom with a clamp() of its own - keep the two from ever meeting */
+  --inst-bottom: clamp(226px, 33vh, 302px);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  height: 100%;
+  background: #04060a;
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+}
+
+#stage {
+  position: fixed; inset: 0;
+  width: 100vw; height: 100vh;
+  display: block;
+  background: #04060a;
+  cursor: grab;
+  touch-action: none;
+}
+#stage.dragging { cursor: grabbing; }
+body.uiHidden #stage { cursor: default; }
+
+.layer { position: fixed; inset: 0; pointer-events: none; }
+#hud, #cards { z-index: 20; }
+/* the motion graphics and the annotation lines live under the panels: a full-bleed
+   graphic is then occluded by the boxes instead of drawing over them */
+#mg, #annot { z-index: 0; }
+#mg { width: 100%; height: 100%; display: block; transition: opacity .5s ease; }
+#captionWrap { z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+#timeline { z-index: 40; }
+
+body.uiHidden #hud,
+body.uiHidden #captionWrap,
+body.uiHidden #timeline,
+body.uiHidden #cards,
+body.uiHidden #mg { opacity: 0; transition: opacity .5s ease; }
+
+/* ---------------------------------------------------------------- header */
+#titleBlock {
+  position: absolute;
+  top: var(--pad); left: var(--pad);
+  max-width: min(46ch, 46vw);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.kicker {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: .22em;
+  color: var(--ink-dim);
+  display: flex; gap: .5em; align-items: baseline;
+}
+.kicker .sep { color: var(--ink-faint); }
+#chapterNum { color: var(--warm); }
+#chapterTitle {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(19px, 2.4vw, 31px);
+  letter-spacing: .04em;
+  margin: .35em 0 .18em;
+  line-height: 1.28;
+  text-shadow: 0 2px 24px rgba(0,0,0,.55);
+}
+#chapterSub {
+  font-size: clamp(11px, 1.05vw, 13px);
+  color: var(--ink-dim);
+  letter-spacing: .1em;
+}
+.titleFade { opacity: 0; transform: translateY(-6px); }
+
+/* ---------------------------------------------------------------- readouts */
+#readouts {
+  position: absolute;
+  top: var(--pad); right: var(--pad);
+  display: grid; gap: 6px;
+  text-align: right;
+  font-size: 11px;
+}
+.ro { display: flex; gap: 10px; justify-content: flex-end; align-items: baseline; }
+.ro .k { color: var(--ink-faint); letter-spacing: .12em; }
+.ro .v { font-family: var(--mono); color: var(--ink); min-width: 7ch; }
+.ro .v.hot { color: var(--coral); }
+
+/* ---------------------------------------------------------------- captions */
+#caption {
+  max-width: min(30em, 82vw);
+  margin-bottom: clamp(96px, 15vh, 168px);
+  padding: 0;
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.72vw, 25px);
+  line-height: 1.75;
+  letter-spacing: .03em;
+  text-align: center;
+  color: #fbf7f0;
+  text-shadow: 0 2px 18px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.9);
+  transition: opacity .35s ease;
+}
+#caption .em { color: var(--warm); }
+#caption .num { font-family: var(--mono); font-size: .92em; color: var(--warm); letter-spacing: 0; }
+#caption .caveat { color: var(--coral); }
+#caption .unit { color: var(--ink-dim); font-size: .86em; }
+#caption:empty { opacity: 0; }
+/* a cue is read word by word: each token starts dim and lights as its slice of the
+   sentence's time arrives */
+#caption .w { opacity: .18; transition: opacity .55s ease; }
+#caption .w.on { opacity: 1; }
+#captionSub {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--warm);
+  text-align: center;
+  opacity: 0;
+  transition: opacity .5s ease;
+  text-shadow: 0 2px 12px rgba(0,0,0,.9);
+}
+
+/* ---------------------------------------------------------------- cards (annotation) */
+#cards .card {
+  position: absolute;
+  max-width: 30ch;
+  padding: 9px 12px 10px;
+  background: var(--glass);
+  backdrop-filter: blur(9px) saturate(1.1);
+  -webkit-backdrop-filter: blur(9px) saturate(1.1);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: clamp(11px, 1.02vw, 13px);
+  line-height: 1.42;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .5s ease, transform .5s ease;
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
+}
+#cards .card.on { opacity: 1; transform: none; }
+#cards .card .b { font-size: .96em; color: var(--ink); }
+#cards .card .h {
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: .16em;
+  color: var(--warm); text-transform: uppercase;
+  margin-bottom: .5em;
+}
+#cards .card .formula {
+  font-family: var(--mono);
+  font-size: .86em;
+  color: var(--cool);
+  letter-spacing: 0;
+  padding: .38em 0 .3em;
+  border-top: 1px solid var(--line);
+  margin-top: .42em;
+}
+#cards .card .src {
+  margin-top: .45em; padding-top: .38em;
+  border-top: 1px solid var(--line);
+  font-size: 9.5px; color: var(--ink-faint);
+  letter-spacing: .02em;
+}
+#cards .card.caveat { border-color: rgba(255,122,99,.42); }
+#cards .card.caveat .h { color: var(--coral); }
+
+/* leader lines */
+#annot path.leader { fill: none; stroke: rgba(255, 214, 165, 0.55); stroke-width: 1; }
+#annot path.leader.cool { stroke: rgba(127, 216, 232, 0.6); }
+#annot circle.anchor { fill: rgba(255, 214, 165, 0.9); }
+#annot circle.anchor.cool { fill: rgba(127, 216, 232, 0.95); }
+#annot .tl { opacity: 0; transition: opacity .5s ease; }
+#annot .tl.on { opacity: 1; }
+#annot text { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; fill: rgba(243,238,229,.72); }
+#annot .hint { fill: rgba(255,192,120,.8); }
+#annot line.tick { stroke: rgba(243,238,229,.3); stroke-width: 1; }
+#annot .lead { transition: opacity .5s ease; }
+#annot .mg text { font-size: 10.5px; letter-spacing: .06em; fill: rgba(243,238,229,.62); }
+#annot .mg line { stroke: rgba(243,238,229,.5); }
+#annot .mg line.horizon { stroke: rgba(255,192,120,.55); }
+#annot .mg text.hint { fill: rgba(255,192,120,.85); }
+#annot .meter circle { fill: rgba(243,238,229,.22); }
+#annot .meter circle.done { fill: rgba(243,238,229,.5); }
+#annot .meter circle.now { fill: var(--warm); }
+
+/* ---------------------------------------------------------------- instruments */
+.instrument {
+  position: absolute;
+  background: var(--glass-strong);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px 11px 12px;
+  box-shadow: 0 16px 50px rgba(0,0,0,.5);
+  opacity: 0;
+  transform: translateY(8px) scale(.99);
+  transition: opacity .6s ease, transform .6s ease;
+  pointer-events: auto;
+}
+.instrument.on { opacity: 1; transform: none; }
+.instrument .cap {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .18em;
+  color: var(--ink-dim); text-transform: uppercase;
+  display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px;
+}
+.instrument canvas { display: block; width: 100%; height: auto; image-rendering: auto; border-radius: 2px; }
+.instrument .note { margin-top: 7px; font-size: 10.5px; color: var(--ink-faint); line-height: 1.45; }
+/* the panels are appended by src/instruments.js; these give each of them a home */
+#instMap { left: var(--pad); bottom: var(--inst-bottom); width: clamp(150px, 15vw, 210px); }
+#instAtlas { left: var(--pad); bottom: var(--inst-bottom); width: clamp(190px, 20vw, 268px); }
+#instLUT { left: var(--pad); bottom: var(--inst-bottom); width: clamp(210px, 22vw, 300px); }
+#instHist { right: var(--pad); bottom: var(--inst-bottom); width: clamp(230px, 24vw, 320px); }
+#instBloom { right: var(--pad); top: calc(var(--pad) + 128px); width: clamp(92px, 8.2vw, 118px); }
+
+/* ---------------------------------------------------------------- timeline */
+#timeline {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  padding: 0 var(--pad) max(12px, env(safe-area-inset-bottom));
+  transition: opacity .5s ease;
+  /* this layer covers the whole window so the scrubber can be grabbed anywhere along it;
+     the track and the buttons themselves live at the bottom edge */
+  display: flex; flex-direction: column; justify-content: flex-end;
+  pointer-events: none;
+}
+#track {
+  position: relative; height: 22px;
+  margin-bottom: 6px;
+  cursor: pointer; pointer-events: auto;
+}
+#track::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 1px;
+  background: var(--line-strong);
+}
+#played {
+  position: absolute; left: 0; top: 10px; height: 1px;
+  background: linear-gradient(90deg, rgba(255,192,120,.35), var(--warm));
+  width: 0%;
+}
+#playhead {
+  position: absolute; top: 4px; width: 1px; height: 13px;
+  background: var(--ink); left: 0%;
+  box-shadow: 0 0 12px rgba(255,255,255,.5);
+}
+#chapterMarks { position: absolute; inset: 0; }
+#chapterMarks .mark {
+  position: absolute; top: 7px; width: 1px; height: 7px;
+  background: var(--line-strong);
+}
+#chapterMarks .mark.done { background: rgba(255,192,120,.6); }
+#chapterMarks .mark span {
+  position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
+  color: var(--ink-faint); white-space: nowrap; opacity: 0; transition: opacity .3s;
+}
+#chapterMarks .mark.near span, #chapterMarks .mark:hover span { opacity: 1; }
+#chapterMarks .mark.near span { color: var(--warm); }
+
+#controls {
+  display: flex; align-items: center; gap: 10px;
+  pointer-events: auto;
+  font-size: 12px;
+}
+.btn {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+  color: var(--ink); background: rgba(255,255,255,.045);
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 6px 10px; cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+  backdrop-filter: blur(6px);
+}
+.btn:hover { background: rgba(255,255,255,.1); border-color: var(--line-strong); }
+.btn.active { color: #100c06; background: var(--warm); border-color: var(--warm); }
+.btn.small { padding: 3px 7px; font-size: 10px; }
+/* icons are inline SVG: no font, no dependency, crisp at any size */
+.btn .glyph { display: inline-flex; align-items: center; justify-content: center; }
+.btn .glyph svg { display: block; }
+#btnPlay { width: 38px; text-align: center; }
+#chapterList { display: flex; gap: 2px; overflow: hidden; }
+#chapterList button {
+  font-family: var(--mono); font-size: 10.5px;
+  color: var(--ink-faint); background: none; border: 1px solid transparent;
+  border-radius: 2px; padding: 5px 6px; cursor: pointer; white-space: nowrap;
+}
+#chapterList button:hover { color: var(--ink); border-color: var(--line); }
+#chapterList button.now { color: var(--warm); border-color: rgba(255,192,120,.35); }
+.spacer { flex: 1; }
+
+/* ---------------------------------------------------------------- panel */
+#panel {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(392px, 92vw);
+  background: rgba(7, 9, 13, 0.93);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-left: 1px solid var(--line);
+  transform: translateX(102%);
+  transition: transform .45s cubic-bezier(.22,.7,.2,1);
+  z-index: 60; display: flex; flex-direction: column;
+  pointer-events: auto;
+}
+#panel.open { transform: none; }
+.panelHead {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px; border-bottom: 1px solid var(--line);
+  font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+#panelBody { overflow-y: auto; padding: 14px 16px 40px; }
+.group { margin-bottom: 22px; }
+.group > h3 {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+  color: var(--warm); text-transform: uppercase; margin: 0 0 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+.row { display: flex; align-items: center; gap: 10px; margin: 7px 0; font-size: 12px; }
+.row label { flex: 1; color: var(--ink-dim); }
+.row .val { font-family: var(--mono); font-size: 11px; color: var(--ink); min-width: 6.6em; text-align: right; }
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 128px; height: 18px; background: none; cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track { height: 1px; background: var(--line-strong); }
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 9px; height: 9px; margin-top: -4px;
+  background: var(--warm); border-radius: 50%; border: none;
+}
+input[type=range]::-moz-range-track { height: 1px; background: var(--line-strong); }
+input[type=range]::-moz-range-thumb { width: 9px; height: 9px; background: var(--warm); border: none; border-radius: 50%; }
+.toggle {
+  display: flex; align-items: center; gap: 9px;
+  padding: 6px 8px; border: 1px solid var(--line); border-radius: 3px;
+  margin: 5px 0; cursor: pointer; font-size: 12px;
+  transition: background .2s, border-color .2s;
+}
+.toggle:hover { background: rgba(255,255,255,.04); }
+.toggle .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,.18); flex: none;
+  transition: background .2s, box-shadow .2s;
+}
+.toggle.on { border-color: rgba(255,192,120,.4); }
+.toggle.on .dot { background: var(--warm); box-shadow: 0 0 9px rgba(255,192,120,.8); }
+.toggle .num { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); }
+.toggle .desc { color: var(--ink-faint); font-size: 10.5px; margin-left: auto; }
+.panelNote { font-size: 11px; color: var(--ink-faint); line-height: 1.6; }
+.presetRow { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------- boot & fail */
+body.booting #hud, body.booting #annot, body.booting #cards,
+body.booting #captionWrap, body.booting #timeline, body.booting .instrument { visibility: hidden; }
+#boot {
+  position: fixed; inset: 0; z-index: 90;
+  background: radial-gradient(120% 90% at 30% 20%, #0b1017 0%, #04060a 65%);
+  display: grid; place-items: center;
+  transition: opacity .8s ease;
+}
+#boot.done { opacity: 0; pointer-events: none; }
+.bootInner { text-align: center; width: min(420px, 84vw); }
+.bootKicker { font-family: var(--mono); font-size: 10.5px; letter-spacing: .3em; color: var(--warm); text-transform: uppercase; }
+.bootTitle {
+  font-family: var(--serif); font-size: clamp(20px, 3.4vw, 30px);
+  margin: 14px 0 22px; letter-spacing: .06em;
+}
+.bootBar { height: 1px; background: rgba(255,255,255,.12); overflow: hidden; }
+#bootFill { height: 100%; width: 0%; background: var(--warm); transition: width .4s ease; }
+.bootMsg { margin-top: 12px; font-size: 11.5px; color: var(--ink-faint); font-family: var(--mono); letter-spacing: .06em; }
+#fail { position: fixed; inset: 0; z-index: 95; background: #04060a; display: grid; place-items: center; padding: 24px; }
+/* the hidden attribute is a UA style and loses to an id selector: without this the
+   fail panel is painted over the whole film even while it is hidden */
+#fail[hidden] { display: none; }
+.failInner { max-width: 46ch; }
+.failInner h2 { font-family: var(--serif); font-weight: 500; }
+.failInner p { color: var(--ink-dim); line-height: 1.8; font-size: 14px; }
+
+/* ---------------------------------------------------------------- responsive */
+/* the panels need room: on a short or narrow window the film plays without them */
+@media (max-width: 900px), (max-height: 620px) {
+  #instMap, #instLUT, #instAtlas, #instHist, #instBloom { display: none; }
+}
+@media (max-width: 900px) {
+  #readouts { display: none; }
+  #titleBlock { max-width: 72vw; }
+  #caption { margin-bottom: clamp(104px, 20vh, 200px); max-width: 88vw; }
+  #chapterList { display: none; }
+  #timeline { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+}
+@media (max-width: 560px) {
+  #chapterTitle { font-size: 18px; }
+  #caption { font-size: 15.5px; line-height: 1.7; }
+  #cards .card { max-width: 42vw; font-size: 11px; padding: 8px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cards .card, .instrument, #caption { transition-duration: .01ms; }
+}
