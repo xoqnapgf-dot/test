@@ -30,9 +30,10 @@ await page.goto('file://' + root + '/index.html?probe=1&loop=0&quality=0.2&terra
   { waitUntil: 'domcontentloaded' });
 await page.waitForFunction('window.__probe && window.__probe.booted === true', { timeout: 300000 });
 
-const report = await page.evaluate((o) => {
+const report = await page.evaluate(async (o) => {
   const p = window.__probe, app = p.app, R = p.renderer;
   app.playing = false;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const T = window.SS.timeline;
   const SHOW = (window.SS.instruments && window.SS.instruments.SHOW) || {};
   const out = [];
@@ -62,8 +63,17 @@ const report = await page.evaluate((o) => {
   for (let t = 0; t <= 96.001; t += o.step) {
     const tt = Math.min(95.999, t % 96);
     T.seekTo(tt, R, app);
+    /* Let the page run one frame after the seek. Everything on screen that is not the DOM
+       (the instrument canvases, the motion-graphics layer) is painted by the animation loop,
+       and this whole audit is one synchronous evaluate: without this yield the canvases are
+       still showing the previous stamp's chapter, which is exactly the sort of artifact that
+       looks like a bug in the film. Two frames, because a painter may be inside its throttle
+       window on the first. */
+    await sleep(60);
+    if (T.tickDom) T.tickDom(R, app);
+    await sleep(60);
     const pr = T.progress(tt);
-    if (pr.u < 0.16 && window.SS.instruments) window.SS.instruments.tick(R, app);
+    if (window.SS.instruments) window.SS.instruments.tick(R, app);
     const cards = [...document.querySelectorAll('#cards .card.on')].map((c) => ({ h: c.querySelector('.h').textContent, r: rect(c) }));
     const capEl = document.getElementById('caption');
     const cap = { text: capEl.textContent, r: rect(capEl) };
@@ -98,6 +108,7 @@ const report = await page.evaluate((o) => {
     const extra = inst.filter((id) => want.indexOf(id) < 0);
     if (missing.length && pr.u > 0.12) problems.push('inst-missing:' + missing.join('+'));
     if (extra.length) problems.push('inst-extra:' + extra.join('+'));
+    const panelInks = [];
     for (let i = 0; i < instEls.length; i++) {
       const r = rect(instEls[i]);
       if (r.x < 0 || r.y < 0 || r.x + r.w > o.W || r.y + r.h > o.H) problems.push('inst-off-frame:' + inst[i]);
@@ -107,15 +118,22 @@ const report = await page.evaluate((o) => {
       for (let j = i + 1; j < instEls.length; j++) if (hit(r, rect(instEls[j]))) problems.push('inst-overlap:' + inst[i] + '+' + inst[j]);
       for (const c of cards) if (hit(r, c.r)) problems.push('inst-over-card:' + inst[i]);
       const cvs = instEls[i].querySelector('canvas');
+      let panelInk = -1;
       if (cvs && cvs.getContext('2d')) {
-        // a panel that never painted is a panel that is lying about being live
+        // a panel that never painted is a panel that is lying about being live. The first
+        // version of this sampled the canvas's top-left 8x8 corner and called a panel blank
+        // whenever that corner happened to be background - the histogram's frame starts a
+        // few pixels in, so it was reported blank while it was painting. Measure the whole
+        // surface instead.
         const g = cvs.getContext('2d');
-        let nonEmpty = false;
         try {
-          const d = g.getImageData(0, 0, Math.min(8, cvs.width), Math.min(8, cvs.height)).data;
-          for (let k = 3; k < d.length; k += 4) if (d[k] > 0) { nonEmpty = true; break; }
-        } catch (e) { nonEmpty = true; }
-        if (!nonEmpty && pr.u > 0.12) problems.push('inst-blank:' + inst[i]);
+          const d = g.getImageData(0, 0, cvs.width, cvs.height).data;
+          let n = 0, k = 0;
+          for (let q = 3; q < d.length; q += 4 * 13) { k++; if (d[q] > 6) n++; }
+          panelInk = k ? +(n / k).toFixed(3) : -1;
+        } catch (e) { panelInk = -1; }
+        panelInks.push(panelInk);
+        if (panelInk >= 0 && panelInk < 0.004 && pr.u > 0.12) problems.push('inst-blank:' + inst[i]);
       }
     }
     const mgAll = ink(0, 0, 1, 1), mgRail = ink(0, 0.58, 1, 0.74);
@@ -127,7 +145,9 @@ const report = await page.evaluate((o) => {
       view: R.s.view, u: +pr.u.toFixed(2), capY: cap.r.y,
       card: cards.map((c) => c.h + '@' + [c.r.x, c.r.y, c.r.w, c.r.h].join(',')).join('|'),
       lit: lit + '/' + total, cap: cap.text.slice(0, 26),
-      inst: inst.join('|'), leads, mgInk: mgAll, mgRail, playhead, problems: problems.join(',')
+      inst: inst.join('|'), leads, mgInk: mgAll, mgRail, playhead,
+      panelInk: panelInks.length ? Math.min.apply(null, panelInks) : -1,
+      problems: problems.join(',')
     });
   }
   return { rows: out, cues: CUES.map((c) => [c.t0, c.t1]), n: CUES.length };
@@ -148,6 +168,7 @@ for (const r of report.rows) {
   console.log([String(r.t).padStart(5), r.ch.padEnd(11), ('v' + r.view).padEnd(3),
     'u' + String(r.u).padEnd(4), r.card.padEnd(30),
     ('lit ' + r.lit).padEnd(9), ('cap ' + r.cap).padEnd(30), ('inst ' + r.inst).padEnd(11),
+    ('ink ' + (r.panelInk === undefined ? '-' : r.panelInk)).padEnd(9),
     'lead ' + r.leads, 'ink ' + r.mgInk + '/' + r.mgRail,
     r.problems ? ('<< ' + r.problems) : ''].join(' '));
 }

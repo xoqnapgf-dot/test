@@ -90,6 +90,7 @@ uniform float uSplit;
 uniform float uTime;
 uniform float uStage8;
 uniform float uPostMix;
+uniform float uView;
 out vec4 outColor;
 
 vec3 sampleScene(vec2 uv){ return max(texture(uScene, uv).rgb, vec3(0.0)); }
@@ -108,6 +109,16 @@ void main(){
     col = sampleScene(uv);
   }
   vec3 hdr = col;
+
+  /* A diagnostic view is a picture *of* a term, not a photograph: it has to show the number
+     the shader computed, so the film must not tonemap it, bloom it, vignette it or grade it.
+     With the grade on, every one of these views arrived as a washed-out pastel version of
+     itself (ACES on a normal-colour image is a colour cast, not a display of the normal). */
+  if (uView > 0.5){
+    outColor = vec4(linearToSRGB(saturate(col * uExposure)), 1.0);
+    return;
+  }
+
   vec3 bloom = max(texture(uBloom, uv).rgb, vec3(0.0));
   col += bloom * uBloomStrength;
   col *= uExposure;

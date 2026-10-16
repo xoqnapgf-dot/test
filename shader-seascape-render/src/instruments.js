@@ -169,9 +169,23 @@
   }
 
   // ---------------------------------------------------------------- others
+  /* The weather map and the bloom level are debug textures: one is a dense noise field on a
+     green-yellow ramp, the other a bright pyramid level. Shown raw they break the film's
+     palette open. Both are mapped through this: a cool-to-warm duotone in the film's own
+     colours, with the brightest values going to warm white. */
+  function duotone(r, g, b, gain) {
+    var l = Math.max(r, Math.max(g, b)) * (gain || 1);
+    l = Math.pow(Math.max(0, Math.min(1, l)), 0.85);
+    var lo = [0.05, 0.09, 0.15], mid = [0.42, 0.40, 0.40], hi = [0.99, 0.87, 0.66];
+    var c = l < 0.55
+      ? [lo[0] + (mid[0] - lo[0]) * (l / 0.55), lo[1] + (mid[1] - lo[1]) * (l / 0.55), lo[2] + (mid[2] - lo[2]) * (l / 0.55)]
+      : [mid[0] + (hi[0] - mid[0]) * ((l - 0.55) / 0.45), mid[1] + (hi[1] - mid[1]) * ((l - 0.55) / 0.45),
+         mid[2] + (hi[2] - mid[2]) * ((l - 0.55) / 0.45)];
+    return c;
+  }
   function paintMap(R) {
     var cv = canvases.instMap; if (!cv || !R.gen.weather) return;
-    try { R.textureToCanvas(R.gen.weather, cv, 0, 1.4); } catch (e) { return; }
+    try { R.textureToCanvas(R.gen.weather, cv, 0, 1.0, function (r, g, b) { return duotone(r, g, b, 1.55); }); } catch (e) { return; }
     var g2d = cv.getContext('2d');
     var w = cv.width, h = cv.height;
     var tile = R.s.weatherTile || 160000;
@@ -254,7 +268,7 @@
     var T = R.targets && R.targets.bloomUp;
     if (!T || !T.length) return;
     var small = T[T.length - 1];
-    try { R.textureToCanvas(small, cv, 0, 3.0); } catch (e) { }
+    try { R.textureToCanvas(small, cv, 0, 1.0, function (r, g, b) { return duotone(r, g, b, 3.6); }); } catch (e) { }
   }
 
   function setCaps(R) {
@@ -271,8 +285,18 @@
       build();
       return true;
     },
-    setChapter: function (ch) {
+    setChapter: function (ch, u, R, app) {
+      var changed = this._ch !== ch;
+      this._ch = ch;
       for (var id in panels) panels[id].classList.toggle('on', (SHOW[id] || []).indexOf(ch) >= 0);
+      /* The painters are throttled (the atlas rebuilds its grid, the LUT and the map read
+         textures back), which is right while the film plays - but a seek is a hard cut, and
+         without this the panel a chapter opens with stays empty for up to 0.7 s after a jump
+         or a scrub. Forget the throttle on a chapter change so the panel is there at once. */
+      if (changed) {
+        lastPaint = {};
+        if (R && app && SS.instruments) this.tick(R, app);
+      }
       return true;
     },
     tick: function (R, app) {

@@ -92,6 +92,17 @@ const state = await page.evaluate((o) => {
 }, { t: stamp, settle: SETTLE, frames: FRAMES, dt: DT, set: args.set || '' });
 const ms = Date.now() - t0;
 
+/* Wait out the DOM transitions before the screenshot. The card, the caption and the chapter
+   title fade over ~0.4 s, and a capture taken during a swap shows the *previous* chapter's
+   card and caption over the new chapter's picture - which reads as a desynchronised film and
+   is not one. The picture itself is already settled by converge(); this only unpauses the
+   page's own loop so the transitions run. */
+await page.evaluate(() => { const p = window.__probe; if (p && p.app) p.app.playing = true; });
+await new Promise((r) => setTimeout(r, 900));
+await page.evaluate(() => { const p = window.__probe; if (p && p.app) p.app.playing = false; });
+// one more frame with the clock frozen, so the picture and the DOM are the same instant
+await page.evaluate(() => { const p = window.__probe; if (p && p.settle) p.settle(1, 0); });
+
 const outFile = outFor(stamp);
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
 await page.screenshot({ path: outFile, captureBeyondViewport: false });

@@ -368,7 +368,7 @@
       // ---- composite
       api.bind(null);
       R.programs.composite.use()
-        .locate(['uExposure', 'uBloomStrength', 'uVignette', 'uGrain', 'uChroma', 'uSplit', 'uTime', 'uStage8', 'uPostMix', 'uRes'])
+        .locate(['uExposure', 'uBloomStrength', 'uVignette', 'uGrain', 'uChroma', 'uSplit', 'uTime', 'uStage8', 'uPostMix', 'uRes', 'uView'])
         .setTex('uScene', T.scene.tex, 0)
         .setTex('uBloom', up[0].tex, 1)
         .setTex('uNoise', R.gen.blueNoise, 2)
@@ -381,6 +381,7 @@
         .set('uSplit', s.split)
         .set('uTime', s.time)
         .set('uStage8', s.stages[8])
+        .set('uView', s.view | 0)
         .set('uPostMix', s.postMix);
       api.drawQuad('composite');
       R.stats.passes++;
@@ -436,7 +437,11 @@
     // Accepts either a render target or a bare texture (the browser only lets us read
     // pixels from a framebuffer, so a texture is copied through a temporary target).
     var texCopyTarget = null;
-    R.textureToCanvas = function (target, c2, mode, gamma) {
+    /* Copy a render target into a 2D canvas. `tint`, when given, is called with each
+       pixel's (r, g, b) in 0..1 and returns the colour to write - which is how an
+       instrument panel is put into the film's palette instead of showing the raw debug
+       texture (a weather map in yellow-green does not belong in a sunset). */
+    R.textureToCanvas = function (target, c2, mode, gamma, tint) {
       // Always copy through a separate RGBA8 target. Copying a render target into
       // itself is a framebuffer feedback loop: the read comes back as zeros, which is
       // how the histogram strip and the HDR dumps silently turned out black.
@@ -459,7 +464,18 @@
       var img = ctx.createImageData(w, h);
       for (var y = 0; y < h; y++) {
         var src = (h - 1 - y) * w * 4, dst = y * w * 4;
-        for (var x = 0; x < w * 4; x++) img.data[dst + x] = px[src + x];
+        if (!tint) {
+          for (var x = 0; x < w * 4; x++) img.data[dst + x] = px[src + x];
+        } else {
+          for (var x2 = 0; x2 < w; x2++) {
+            var o = src + x2 * 4, d = dst + x2 * 4;
+            var c3 = tint(px[o] / 255, px[o + 1] / 255, px[o + 2] / 255);
+            img.data[d] = Math.max(0, Math.min(255, Math.round(c3[0] * 255)));
+            img.data[d + 1] = Math.max(0, Math.min(255, Math.round(c3[1] * 255)));
+            img.data[d + 2] = Math.max(0, Math.min(255, Math.round(c3[2] * 255)));
+            img.data[d + 3] = px[o + 3];
+          }
+        }
       }
       ctx.putImageData(img, 0, 0);
       return c2;

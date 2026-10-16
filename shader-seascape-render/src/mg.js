@@ -324,6 +324,36 @@
       line(0, hr, W, hr, warm(0.10), 1);
     }
   }
+  /* A chapter's opening beat shows one layer *alone*: the height field, the normals, the
+     cloud volume, the shadow term. Those frames are diagnostics, and unlabelled they read as
+     a glitch - the picture is suddenly a flat map. This names the layer, in the film's own
+     voice, and marks the frame as deliberate. (These views bypass the grade in post.js, so
+     what is named here is exactly what is on screen.) */
+  var VIEW_NAME = {
+    1: '光线方向', 2: '命中距离', 3: '法线', 4: '坡度 · 高程 · 材质', 5: '阴影', 6: '大气厚度',
+    7: '水深', 9: '云密度', 11: '图层栈', 12: '天空查找表', 13: '云的厚度', 14: '云的水平切片',
+    15: '云的剖面', 16: '高度场（俯视）', 17: '材质反射率', 18: '坡度', 19: '阴影项',
+    20: '天空辐照度与 N·L', 21: '环境光采样', 22: '步进误差', 23: '阴影首采样',
+    24: '天空（无云无雾）', 25: '云层单独显示', 26: '多次散射', 27: '命中与视线',
+    28: '反射项', 29: '波法线', 30: '160 km 天气图', 31: '云体素', 32: '环境光分解'
+  };
+  function drawViewBadge(R) {
+    var v = (R.s.view || 0) | 0;
+    if (!v) return;
+    var label = '单独图层 · ' + (VIEW_NAME[v] || ('视图 ' + v));
+    g.save();
+    g.font = '10.5px ' + F_SANS;
+    var tw = g.measureText(label).width;
+    g.restore();
+    /* A solid plate: this lands over whatever the layer happens to be, and the height-field
+       view is snow-white in the north, where a feathered scrim left the label unreadable.
+       Light type on a hard dark plate reads on any of them. */
+    var cx = W * 0.5, y = 24;
+    scrim(cx - tw * 0.5 - 24, y - 15, cx + tw * 0.5 + 24, y + 9, 0.68, true);
+    dot(cx - tw * 0.5 - 11, y - 3.6, 2.4, cool(0.95));
+    text(label, cx - tw * 0.5 - 1, y, { col: ink(0.94), size: 10.5, mono: false });
+  }
+
   // the distance rail - chapter 01 only, because that is the chapter about this intersection
   function drawRail(R, u, alpha) {
     var c = cam(R), sea = R.s.seaLevel || 0;
@@ -871,13 +901,14 @@
       var hb = hMin + (i + 0.5) / nb * (hMax - hMin);
       if (hb <= sea) flooded += bins[i];
     }
-    // the area under the curve is the seabed part of the field
+    // the area under the curve is the seabed part of the field: the same cumulative the
+    // curve itself is drawn from, carried forward instead of re-summed for every bin
     var fill = [[px0, py1]];
+    var c2 = 0;
     for (i = 0; i < nb; i++) {
       var hf = hMin + (i + 0.5) / nb * (hMax - hMin);
       if (hf > sea) break;
-      var c2 = 0;
-      for (var j = 0; j <= i; j++) c2 += bins[j];
+      c2 += bins[i];
       fill.push([xOfH(hf), yOfF(c2 / (n2 * n2))]);
     }
     fill.push([xOfH(Math.min(sea, hMax)), yOfF(flooded / (n2 * n2))], [px0, yOfF(flooded / (n2 * n2))]);
@@ -976,9 +1007,21 @@
     text('云底 ' + Math.round(cb) + ' m', x1, yOfH(cb) - 4, { col: warm(0.6), size: 8.5, align: 'right' });
     text('云顶 ' + Math.round(ct) + ' m', x1, yOfH(ct) - 4, { col: warm(0.6), size: 8.5, align: 'right' });
     text('地面', x0, y1 - 5, { col: ink(0.4), size: 8.5 });
-    // the ray's own entry and exit of the slab, from the camera's height and pitch
+    // The ray's own entry and exit of the slab, from the camera's height and the ray's
+    // vertical slope. Cases: below the slab looking up (enters at the base), inside it
+    // (enters here), above it looking down (enters at the top - the case the first version
+    // got wrong, reporting "the view is below the cloud layer" over a cloud-filled frame),
+    // and a ray that never reaches the slab at all.
     var hCam = c.pos[1], sy = c.fwd[1] / Math.max(1e-4, Math.hypot(c.fwd[0], c.fwd[2]));
-    var tA = sy > 0 ? (cb - hCam) / sy : 0, tB = sy > 0 ? (ct - hCam) / sy : 0;
+    var tA = 0, tB = 0;
+    if (Math.abs(sy) < 1e-4) {
+      if (hCam >= cb && hCam <= ct) tB = 1;                 // horizontal, inside the slab
+    } else {
+      var t1 = (cb - hCam) / sy, t2 = (ct - hCam) / sy;
+      tA = Math.max(0, Math.min(t1, t2));
+      tB = Math.max(t1, t2);
+      if (tB <= 0) { tA = 0; tB = 0; }                      // the slab is behind the camera
+    }
     var span = Math.max(0, tB - tA);
     var rx = mix(x0 + 10, x1 - 34, 0.5);
     if (span > 0) {
@@ -989,7 +1032,7 @@
       text('射线穿过 ' + Math.round(span / 1000) + ' km', x0 + 4, yA - 6, { col: cool(0.74), size: 8.5 });
     } else {
       line(rx - 30, yOfH(hCam), rx + 30, yOfH(hCam) - 22, cool(0.5), 1, [3, 3]);
-      text('视线在云层之下', rx + 34, yOfH(hCam) - 22, { col: cool(0.6), size: 8.5 });
+      text(hCam > ct ? '视线朝向云层之上' : '视线在云层之下', rx + 34, yOfH(hCam) - 22, { col: cool(0.6), size: 8.5 });
     }
     dot(rx - 30, yOfH(hCam), 2.4, ink(0.85));
     text('相机 ' + Math.round(hCam) + ' m', x0, yOfH(hCam) + 12, { col: ink(0.55), size: 8.5 });
@@ -1194,6 +1237,10 @@
     if (ch === 0) drawRail(R, u, sat((u - 0.02) / 0.2));
     HEROES[ch](R, t, u, env, cam_);
     g.restore();
+    /* Outside the layer's own fade envelope: the badge names what the frame *is*, so it has
+       to be readable at the moment the layer appears - inside the envelope it inherited the
+       fade and came up at a tenth of its weight. */
+    drawViewBadge(R);
     drawReadouts(R, ch, u, env * 0.95);
     cur = ch;
   }

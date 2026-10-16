@@ -28,15 +28,19 @@ const out = await page.evaluate(async (o) => {
   const rows = [];
   for (const t of o.stamps) {
     p.frameAt(t);
-    if (window.SS.mg.invalidate) window.SS.mg.invalidate();
-    await sleep(70);                       // the layer redraws on a 45 ms throttle
+    // Clear the log *before* forcing the redraw: the layer only paints when the timeline
+    // ticks it and its 45 ms throttle has expired, so the sequence has to be
+    // clear -> invalidate -> tick -> wait. (Clearing after the wait threw away exactly the
+    // labels this tool exists to measure.)
     window.__mglog = [];
+    if (window.SS.mg.invalidate) window.SS.mg.invalidate();
     if (window.SS.timeline && window.SS.timeline.tickDom) window.SS.timeline.tickDom(R, app);
-    await sleep(20);
-    if (!(window.__mglog || []).length) {  // a throttle that missed: force one more tick
+    await sleep(80);
+    if (!(window.__mglog || []).length) {  // a throttle that still missed: one more try
+      window.__mglog = [];
       if (window.SS.mg.invalidate) window.SS.mg.invalidate();
       if (window.SS.timeline && window.SS.timeline.tickDom) window.SS.timeline.tickDom(R, app);
-      await sleep(20);
+      await sleep(80);
     }
     const st = window.SS.mg.state();
     const pr = window.SS.timeline.progress(t);

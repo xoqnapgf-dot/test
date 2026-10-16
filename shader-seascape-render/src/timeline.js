@@ -263,14 +263,14 @@
       s[1] = 1; s[2] = 1;
       s[3] = mix(0.10, 0.45, smoothstep(0.0, 1.0, u));
       s[4] = mix(0.0, 0.35, smoothstep(0.2, 1.0, u));
-      if (u < 0.20) view = 16;
+      if (u < 0.13) view = 16;                    // a shorter beat: the field, alone
       else if (u > 0.55 && u < 0.78) view = 27;
     } else if (ch === 2) {
       s[1] = 1;
       s[2] = mix(0.35, 1.0, smoothstep(0.02, 0.30, u));
       s[3] = mix(0.45, 1.0, smoothstep(0.30, 0.95, u));
       s[4] = mix(0.35, 1.0, smoothstep(0.0, 0.6, u));
-      if (u < 0.16) view = 3;
+      if (u < 0.11) view = 3;                     // the normals, before the light lands
       else if (u > 0.50 && u < 0.62) view = 20;
     } else if (ch === 3) {
       s[1] = 1; s[2] = 1; s[3] = 1;
@@ -290,8 +290,10 @@
       s[7] = smoothstep(0.05, 0.55, u);
       if (u > 0.62 && u < 0.72) view = 25;
     } else if (ch === 7) {
-      s = [1, 1, 1, 1, 1, 1, 1, smoothstep(0.0, 0.30, u), 1];
-      if (u < 0.10) view = 30;
+      /* Chapter 08's own beat is the stage-8 ramp: the frame starts as the raw HDR clamped
+         to the screen and turns into the graded one as the chapter explains it. Opening on
+         the weather map (view 30) was a non-sequitur in a chapter about the tonemap. */
+      s = [1, 1, 1, 1, 1, 1, 1, smoothstep(0.0, 0.34, u), 1];
     } else {
       s = [1, 1, 1, 1, 1, 1, 1, 1, 1];
     }
