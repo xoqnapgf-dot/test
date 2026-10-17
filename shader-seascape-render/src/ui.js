@@ -324,11 +324,15 @@
       if (app.film === false) this.freeStep(1 / 60, R, app);
       var ro = document.getElementById('roFps');
       if (!ro) return;
-      if (R.stats.fps) ro.textContent = R.stats.fps.toFixed(0);
+      /* One decimal below 10: rounded to a whole number a device drawing one frame every eight
+         seconds reported "0", and a device drawing three a second reported "3" while the frame
+         time beside it said 333 ms. */
+      if (R.stats.fps) ro.textContent = R.stats.fps >= 10 ? R.stats.fps.toFixed(0) : R.stats.fps.toFixed(1);
       document.getElementById('roRes').textContent = R.targets.w + '×' + R.targets.h;
       document.getElementById('roSun').textContent = R.s.sunElev.toFixed(1) + '°';
       document.getElementById('roWind').textContent = R.s.wind.toFixed(1) + ' m/s';
-      document.getElementById('roGPU').textContent = (R.stats.ms || 0).toFixed(1) + ' ms';
+      var fms = R.stats.frameMs === undefined ? (R.stats.ms || 0) : R.stats.frameMs;
+      document.getElementById('roMs').textContent = fms.toFixed(fms >= 100 ? 0 : 1) + ' ms';
       // the readouts glow when the frame is heavy
       ro.classList.toggle('hot', (R.stats.ms || 0) > 26);
     }

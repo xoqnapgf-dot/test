@@ -43,6 +43,10 @@
   }
   var tier = deviceTier();
   window.__tier = tier;   // so a verification run can see which branch the page took
+  /* Which build of this file the browser actually loaded. A stale file:// resource has fooled a
+     verification run before - the page behaved like the previous revision and the measurement
+     made no sense until the file itself was checked. */
+  window.__build = 'wall-clock+frameMs';
   var quality = num('quality', probeMode ? 0.35 : (tier === 'software' ? 0.5 : (window.devicePixelRatio > 1.5 ? 0.7 : 0.85)));
   var terrainRes = num('terrainRes', probeMode ? 768 : (tier === 'software' ? 768 : 2048));
   var renderScale = num('scale', probeMode ? 1.0 : 1.0);
@@ -151,8 +155,20 @@
     var ms = performance.now() - t0;
     R.adapt(ms);
     R.stats.ms = ms;
-    fpsAcc += dt; fpsN++;
-    if (fpsAcc > 0.5) { fpsShown = fpsN / fpsAcc; fpsAcc = 0; fpsN = 0; R.stats.fps = fpsShown; }
+    /* Frames per second of wall time. This used to accumulate the clamped render dt, which caps
+       every frame at 0.05 s: a device drawing one frame every eight seconds then reported 20 fps
+       (and took ten frames - eighty seconds - to report anything at all). */
+    fpsAcc += wall; fpsN++;
+    if (fpsAcc > 0.5) {
+      fpsShown = fpsN / fpsAcc;
+      R.stats.fps = fpsShown;
+      /* The pair the HUD shows has to be the same measurement: the readout says both "fps" and
+         "ms per frame" side by side, and a reader divides one by the other. The last frame's
+         render cost is a different quantity (it excludes the stall at swap), so the interval is
+         what gets displayed - and its reciprocal is exactly the fps beside it. */
+      R.stats.frameMs = 1000 * fpsAcc / fpsN;
+      fpsAcc = 0; fpsN = 0;
+    }
     if (SS.ui) SS.ui.tick(R, app);
     if (SS.timeline && SS.timeline.tickDom) SS.timeline.tickDom(R, app);
     /* The soundtrack is a continuous bed whose mix follows the chapter and the renderer's own
