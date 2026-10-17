@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>汐見 蛍 角色排版图</title>
+<style>
+  :root { --bg: #eeecf7; --panel: #ffffff; --ink: #343846; --deep: #5c549e; --line: #cdc8e8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #17162a; --panel: #211f38; --ink: #e8e6f5; --deep: #b3abee; --line: #3a3760; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.7 system-ui, "Hiragino Sans", "Noto Sans CJK SC", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 4px; color: var(--deep); letter-spacing: .04em; }
+  h2 { font-size: 17px; margin: 40px 0 12px; color: var(--deep); border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  p { margin: 6px 0; }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; align-items: start; margin-top: 20px; }
+  .hero img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 6px 30px rgba(60, 50, 120, .18); }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  figure { margin: 0; background: var(--panel); padding: 10px; border-radius: 6px; }
+  figure img { width: 100%; height: auto; display: block; }
+  figcaption { font-size: 13px; margin-top: 8px; }
+  a { color: var(--deep); }
+  ul { padding-left: 18px; margin: 6px 0; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>汐見 蛍 · 角色排版图</h1>
+  <p>millsage Key.&amp;Vo. / BanG Dream! Our Notes — 同人作品，仅个人使用，不商用。</p>
+
+  <div class="hero">
+    <a href="输出/最终-汐見蛍.png"><img src="输出/最终-汐見蛍.png" alt="最终图：淡紫色角色排版图，汐見蛍弹钢琴回头微笑"></a>
+    <div>
+      <p><strong>最终图</strong>（方向 A · 月白淡紫，2400×3600）</p>
+      <ul>
+        <li><a href="输出/最终-汐見蛍.png">最终 PNG</a></li>
+        <li><a href="输出/最终-汐見蛍-分层.psd">分层 PSD</a>（10 个图层）</li>
+        <li><a href="输出/人物抠图-透明底.png">人物抠图（透明底）</a></li>
+        <li><a href="输出/设计说明.md">设计说明</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>三个方向小图</h2>
+  <div class="grid">
+    <figure><img src="输出/方向A.png" alt="方向A 月白淡紫"><figcaption>A 月白淡紫（选定）</figcaption></figure>
+    <figure><img src="输出/方向B.png" alt="方向B 乐谱拼贴"><figcaption>B 乐谱拼贴</figcaption></figure>
+    <figure><img src="输出/方向C.png" alt="方向C 蛍火夜色"><figcaption>C 蛍火夜色</figcaption></figure>
+  </div>
+
+  <h2>大图自查过程</h2>
+  <div class="grid">
+    <figure><img src="输出/大图-v1.png" alt="大图 v1"><figcaption>v1 初版 → 白边沿渐隐琴键成白带、特写面板撞字、背景线稿像划痕、星星落在手上</figcaption></figure>
+    <figure><img src="输出/大图-v2.png" alt="大图 v2"><figcaption>v2 → 白色线稿抢小字、「楽壇の天使」贴着大字</figcaption></figure>
+    <figure><img src="输出/大图-v3.png" alt="大图 v3"><figcaption>v3 = 最终版</figcaption></figure>
+  </div>
+</main>
+</body>
+</html>
