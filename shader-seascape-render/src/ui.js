@@ -331,8 +331,10 @@
       document.getElementById('roRes').textContent = R.targets.w + '×' + R.targets.h;
       document.getElementById('roSun').textContent = R.s.sunElev.toFixed(1) + '°';
       document.getElementById('roWind').textContent = R.s.wind.toFixed(1) + ' m/s';
+      /* "0.0 ms" in a frozen frame is a claim that a frame costs nothing. Before any frame has
+         been timed - a capture, or the first half second of the page - it is simply not known. */
       var fms = R.stats.frameMs === undefined ? (R.stats.ms || 0) : R.stats.frameMs;
-      document.getElementById('roMs').textContent = fms.toFixed(fms >= 100 ? 0 : 1) + ' ms';
+      document.getElementById('roMs').textContent = fms > 0 ? fms.toFixed(fms >= 100 ? 0 : 1) + ' ms' : '–';
       // the readouts glow when the frame is heavy
       ro.classList.toggle('hot', (R.stats.ms || 0) > 26);
     }

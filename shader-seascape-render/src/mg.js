@@ -1084,9 +1084,9 @@
     }
     line(x0, yOfF(1), x1, yOfF(1), ink(0.1), 1, [1, 4]);
     textFree('F', yOfF(1) + 3, { col: ink(0.36), size: 8.5, x: x0 - 4, align: 'right',
-      try: [[x0 - 4, 'right'], [x0 + 5, 'left']] });
+      try: [[x0 - 4, 'right'], [x0 - 14, 'right'], [x0 + 6, 'left']] });
     textFree('掠射角 θ → 菲涅耳反射率 F', y0 - 12, { col: ink(0.5), size: 9.5, x: x0,
-      short: '掠射角 θ → 反射率 F', try: [x0] });
+      short: '掠射角 θ → 反射率 F', try: [x0, x0 + 70, x0 + 180] });
     text('F(θ) = F₀ + (1−F₀)(1−cos θ)⁵', x1, y1 + 28, { col: ink(0.6), size: 9.5, align: 'right' });
     text('F₀ = ' + F0 + ' · 这一帧覆盖 ' + aBot.toFixed(0) + '\u00b0 … ' + aTop.toFixed(0) + '\u00b0', x0, y1 + 28,
       { col: ink(0.38), size: 9 });
@@ -1102,7 +1102,8 @@
        cut straight through the text. The plate covers the label's box and nothing else. */
     textFree('视野中心 ' + aC.toFixed(1) + '\u00b0 · F ' + fC.toFixed(3), yOfF(fC) + (fRight ? 17 : -7),
       { col: warm(0.92), size: 9.5, x: xOfA(aC) + (fRight ? -6 : 6), align: fRight ? 'right' : 'left',
-        plate: 0.55, try: [[xOfA(aC) + (fRight ? -6 : 6), fRight ? 'right' : 'left']] });
+        plate: 0.55, try: [[xOfA(aC) + (fRight ? -6 : 6), fRight ? 'right' : 'left'],
+                           [x1 - 8, 'right'], [x0 + 8, 'left']] });
     // reflection against transmission, as the water splits them
     var bx0 = S.x1 - S.w * 0.2, by0 = S.y0 + 70;
     scrim(bx0 - 8, by0 - 20, S.x1 + 4, by0 + 52, 0.46, true);   // same reason as the curve's plate

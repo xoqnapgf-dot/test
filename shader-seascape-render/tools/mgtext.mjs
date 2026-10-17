@@ -65,11 +65,12 @@ const box = (s, x, y, tw, align, size) => {
   const x0 = align === 'right' ? x - tw : (align === 'center' ? x - tw / 2 : x);
   return { s, x0, x1: x0 + tw, y0: y - size * 0.80, y1: y + size * 0.26, size };
 };
-let total = 0, all = [];
+let total = 0, all = [], drops = 0;
 console.log('# mg text @' + w + 'x' + h);
 let under = 0;
 for (const r of out) {
-  const bs = r.texts.map((a) => box(a[0], a[1], a[2], a[3], a[4], a[5]));
+  const dropped = r.texts.filter((a) => a[6] === 1);
+  const bs = r.texts.filter((a) => a[6] !== 1).map((a) => box(a[0], a[1], a[2], a[3], a[4], a[5]));
   const bad = [];
   for (const b of bs) {
     for (const o of (r.over || [])) {
@@ -102,8 +103,11 @@ for (const r of out) {
   }
   total += bad.length;
   all = all.concat(bad.map((d) => [r.t].concat(d)));
-  console.log('t ' + String(r.t).padStart(5) + '  ch ' + r.ch + '  labels ' + bs.length + '  collisions ' + bad.length);
+  for (const d of dropped) { drops++; console.log('\n  t ' + r.t + '  canvas label "' + d[0] + '" could not be placed anywhere clear'); }
+  console.log('t ' + String(r.t).padStart(5) + '  ch ' + r.ch + '  labels ' + bs.length + '  collisions ' + bad.length +
+    (dropped.length ? '  dropped ' + dropped.length : ''));
   for (const d of bad) console.log('    "' + d[0] + '" @' + d[1] + '  vs  "' + d[2] + '" @' + d[3] + '  ' + d[4] + ' px2');
 }
-console.log('\ntotal collisions ' + total + ' · canvas labels under a DOM overlay ' + under);
+console.log('\ntotal collisions ' + total + ' · canvas labels under a DOM overlay ' + under +
+  ' · labels that could not be placed ' + drops);
 await browser.close();
