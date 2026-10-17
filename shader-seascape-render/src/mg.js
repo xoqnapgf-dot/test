@@ -443,6 +443,16 @@
     text('相机高度 ' + Math.round(camY) + ' m', x + 26, S.y1 - 24, { col: ink(0.34), size: 9 });
     var steps = [0.25, 0.5, 1, 2, 5, 10, 20, 50], labels = ['250 m', '500 m', '1 km', '2 km', '5 km', '10 km', '20 km', '50 km'];
     var shown = 0;
+    /* Where the height field stops along this heading. The rail runs out to 50 km because the
+       ray keeps meeting the sea plane the whole way, but the terrain tile ends much nearer, and
+       chapter 02 labels that same edge on its profile axis - so the first step past it is marked
+       here, from the same tileDist() the rest of the page measures with. Without this the film
+       showed "10 km" on one chapter's ruler and "7.4 km" on the next chapter's, with nothing
+       linking the two numbers. */
+    var yaw0 = Math.atan2(c.fwd[0], c.fwd[2]);
+    var tileHalf = (R.s.terrainSize || 16384) * 0.5;
+    var tileEdge = tileDist(c.pos[0], c.pos[2], Math.sin(yaw0), Math.cos(yaw0), tileHalf);
+    var past = false;
     for (var i = 0; i < steps.length; i++) {
       var d = steps[i] * 1000;
       if (d <= camY * 1.2) continue;
@@ -454,11 +464,14 @@
       var t = sat((u - 0.03) / 0.26 - i * 0.06);
       if (t <= 0.02) continue;
       shown++;
-      var op = (0.34 + 0.5 * (i / steps.length)) * t;
+      var beyond = d > tileEdge;
+      var op = (0.34 + 0.5 * (i / steps.length)) * t * (beyond ? 0.55 : 1);
       line(x, p[1], x + (i % 2 ? 9 : 15), p[1], ink(op), 1);
       // the height label owns the row above the rail's own caption
       if (Math.abs(p[1] - (S.y1 - 24)) > 15) {
-        text(labels[i], x + (i % 2 ? 15 : 21), p[1] + 3.2, { col: ink(op), size: 9.5 });
+        var lab = labels[i];
+        if (beyond && !past) { lab = labels[i] + ' · 高度场止于 ' + fmtM(tileEdge); past = true; }
+        text(lab, x + (i % 2 ? 15 : 21), p[1] + 3.2, { col: ink(op), size: 9.5 });
       }
     }
     text('d = h / tan θ', x + 26, S.y1 - 8, { col: ink(0.3), size: 9 });

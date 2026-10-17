@@ -32,7 +32,8 @@ shader-seascape-render/
 │   ├── overlays.js     annotation cards, leader lines, chapter meter
 │   ├── instruments.js  the instrument panels (atlas map, sky LUT, weather map, histogram,
 │   │                   bloom pyramid level)
-│   ├── mg.js           the motion-graphics layer: one canvas, nine per-chapter graphics
+│   ├── mg.js           the motion-graphics layer: one canvas, nine per-chapter graphics,
+│   │                   every label placed against the overlay rectangles it paints under
 │   ├── audio.js        the soundtrack, synthesised with Web Audio from the renderer's state
 │   ├── ui.js           transport, keyboard, panel, free-flight camera
 │   └── main.js         boot, the device tier, quality handling, probe hooks, URL overrides
@@ -109,7 +110,7 @@ points at one):
 | --- | --- |
 | `film.mjs --t 5,16,… --out shots/x{t}.png` | render stamps of the film at a given quality/scale/resolution |
 | `layout.mjs [stamps] [W] [H]` | every visible overlay box at each stamp, plus overlapping pairs |
-| `mgtext.mjs [stamps] [W] [H]` | the motion-graphics canvas labels, measured, plus collisions |
+| `mgtext.mjs [stamps] [W] [H]` | the motion-graphics canvas labels, measured: collisions with each other and any that a card, panel or annotation label is painted over |
 | `domdump.mjs 5,16,…` | dump the live DOM geometry of cards and panels |
 | `terrainmap.mjs 512` | the baked height field: table, statistics, and the flight's ground clearance |
 | `filmaudit.mjs 2 1280 720` | caption timing, card/panel/leader visibility, and panel ink at every stamp |
@@ -131,8 +132,11 @@ Space Grotesk (Latin), JetBrains Mono (numerals, telemetry), Noto Sans SC and No
 ## Honest status
 
 * Every frame in this repository was rendered by this code and inspected as an image; the
-  geometry audits above report zero overlapping overlay boxes and zero overlapping
-  motion-graphics labels at 1280×720.
+  audits above report, at nine stamps across the film, zero overlapping overlay boxes, zero
+  overlapping graphics labels, and zero graphics labels painted under a card, a panel or an
+  annotation label. A label that cannot find a clear place is not drawn at all, and the tools
+  report that too - the layer draws its own text, so an overlay audit cannot see it, and the
+  label audit has to be the one that looks at both sides.
 * The **soundtrack was checked as data** (levels, peaks, layer gains), not by ear — no audio
   output was available while building it.
 * Performance depends on the machine. Before the renderer is built the page asks the driver
