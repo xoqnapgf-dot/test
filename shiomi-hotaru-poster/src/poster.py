@@ -1,7 +1,7 @@
 """Character layout poster for 汐見 蛍 (millsage, BanG Dream! Our Notes) - fan art, non-commercial.
 
 usage: python3 src/poster.py <direction> <width> <out.png> [--rev N] [--psd out.psd]
-  direction  A | B | C
+  direction  A | B | C | D   (D = second pass after feedback, closer to the genre)
   --rev N    self-review round baked in (0 = first draft); later rounds keep earlier fixes
   width      output width in px; height is always 1.5x (2:3)
 
@@ -667,7 +667,152 @@ def fireflies(p, n, box, seed, size=(2, 7), color=(244, 236, 170)):
     return lay
 
 
-DESIGNS = {"A": design_a, "B": design_b, "C": design_c}
+# ------------------------------------------------------------ direction D ---
+# Second pass after feedback: closer to the fan "character layout" genre. The
+# whole sheet is built from her own art (crops, close-ups, line art) washed into
+# one lilac hue, light name type sits behind her, she is larger and lifted by a
+# dark offset silhouette, and a haze ties the layers together.
+
+D_BG = (228, 224, 242)
+D_DARK = (157, 148, 210)    # duotone shadow for the background art
+D_LIGHT = (244, 242, 251)
+D_TYPE = (196, 188, 233)
+D_DEEP = (110, 100, 180)
+D_INK = (64, 60, 104)
+WHITE = (255, 255, 255)
+
+
+def art_panel(p, layer, src_box, box, seed=0, border=WHITE, bw=3, frame=None, lines=False, opacity=1.0, line_alpha=0.45):
+    """A rectangle of her own art, duotoned into the sheet colour, with a border."""
+    x0, y0, x1, y1 = box
+    img = duotone(src_cover(src_box, box, p), D_DARK, D_LIGHT, 0.85)
+    if lines:
+        la = lineart(src_cover(src_box, box, p))
+        img.alpha_composite(tinted(Image.merge("RGBA", (la, la, la, la)), D_DEEP, line_alpha))
+    if opacity < 1:
+        img.putalpha(int(255 * opacity))
+    m = Image.new("L", (p.W, p.H))
+    ImageDraw.Draw(m).rectangle([p.u(x0), p.u(y0), p.u(x1), p.u(y1)], fill=255)
+    layer.alpha_composite(image_in_mask(p, img, box, m))
+    d = ImageDraw.Draw(layer)
+    if bw:
+        d.rectangle([p.u(x0), p.u(y0), p.u(x1), p.u(y1)], outline=rgba(border), width=max(1, round(p.u(bw))))
+    if frame:
+        dx, dy, col = frame
+        d.rectangle([p.u(x0 + dx), p.u(y0 + dy), p.u(x1 + dx), p.u(y1 + dy)], outline=rgba(col), width=max(1, round(p.u(1.4))))
+
+
+def big_type(p, layer, s, size, xy, fill_, shadow, sh_off=(6, 6), rotate=0, anchor="lt", tracking=0):
+    im = text_img(p, s, "Anton-Regular.ttf", size, rgba(fill_), tracking=tracking)
+    sh = tinted(im, shadow[:3], shadow[3] / 255 if len(shadow) > 3 else 1)
+    pad = round(p.u(max(abs(sh_off[0]), abs(sh_off[1])))) + 2
+    both = Image.new("RGBA", (im.width + pad * 2, im.height + pad * 2), (0, 0, 0, 0))
+    both.alpha_composite(sh, (pad + round(p.u(sh_off[0])), pad + round(p.u(sh_off[1]))))
+    both.alpha_composite(im, (pad, pad))
+    if rotate:
+        both = both.rotate(rotate, expand=True, resample=Image.BICUBIC)
+    paste_at(layer, both, xy, p, anchor)
+    return both
+
+
+def design_d(p, rev=0):
+    W, H = p.W, p.H
+    s, ox = 0.86, 640 - 1250 * 0.86
+    fig_bottom = 1080 * s
+
+    bg = p.layer("底色 background")
+    bg.paste(Image.new("RGBA", (W, H), rgba(D_BG)))
+
+    art = p.layer("背景复刻 art collage")
+    art_panel(p, art, (0, 0, 1920, 1080), (-30, 70, 760, 514), frame=(14, 14, D_DEEP))       # the whole scene
+    if rev < 1:
+        art_panel(p, art, (1000, 40, 1520, 560), (-160, 900, 640, 1700), lines=True, bw=0)   # her face, huge
+    else:
+        dy = 0 if rev < 2 else 110  # rev 2: her mouth drops off the bottom edge, the eyes stay
+        art_panel(p, art, (1000, 40, 1520, 560), (-160, 900 + dy, 640, 1700 + dy), lines=True, bw=4, line_alpha=0.32)
+    art_panel(p, art, (1300, 120, 1760, 900), (812, 330, 1040, 980), frame=(-12, 12, WHITE))  # hair and hairpins
+    wash = Image.new("RGBA", (W, H), rgba(D_BG, 70))
+    art.alpha_composite(wash)
+
+    deco = p.layer("底层装饰 back deco")
+    d = ImageDraw.Draw(deco)
+    d.rectangle([0, p.u(560), p.u(14), p.u(1000)], fill=rgba(D_DEEP))
+    d.rectangle([p.u(780), 0, p.u(1000), p.u(16)], fill=rgba(D_DEEP))
+    dotgrid(p, d, (30, 20, 250, 50), 15, 2, rgba(D_DEEP, 150))
+    for i in range(30):
+        y = 380 + i * 22
+        d.rectangle([p.u(960), p.u(y), p.u(964), p.u(y + 8)], fill=rgba(WHITE, 220))
+
+    typ = p.layer("大字 name type")
+    big_type(p, typ, "HOTARU", fit_size(p, "HOTARU", "Anton-Regular.ttf", 990, tracking=20), (6, 66), D_TYPE, WHITE + (255,),
+             sh_off=(-5, -5), tracking=20)
+    big_type(p, typ, "SHIOMI", 210, (1004, 330), WHITE, D_TYPE + (255,) if rev < 1 else D_DEEP + (190,),
+             sh_off=(7, 7), rotate=-90, anchor="rt")
+
+    fig = place(p, s, ox, 0, keys_fade=(500, 620))
+    p.layers.append(("错位剪影 offset silhouette", offset(tinted(fig, D_DEEP, 0.6), p.u(24), p.u(8))))
+    p.layers.append(("柔光白边 soft edge", glow(sticker(fig, p.u(2), WHITE, soft=True), p.u(1.5), WHITE, 1.4)))
+    p.layers.append(("人物 character", fig))
+
+    strip = p.layer("前景横条 front strip")
+    d = ImageDraw.Draw(strip)
+    d.rectangle([0, p.u(fig_bottom - 30), W, p.u(fig_bottom + 54)], fill=rgba(WHITE, 150))
+    d.line([(0, p.u(fig_bottom - 30)), (W, p.u(fig_bottom - 30))], fill=rgba(D_DEEP), width=max(1, round(p.u(2))))
+    d.line([(0, p.u(fig_bottom + 54)), (W, p.u(fig_bottom + 54))], fill=rgba(D_DEEP), width=max(1, round(p.u(1))))
+    if rev < 1:
+        p.text(strip, (500, fig_bottom + 26), spaced("millsage") + "   ✦   " + spaced("Key.&Vo."), "CormorantGaramond[wght].ttf", 40,
+               rgba(D_INK), axes=[500], anchor="ms")
+    else:  # the star is drawn: Cormorant has no ✦ glyph
+        p.text(strip, (470, fig_bottom + 26), spaced("millsage"), "CormorantGaramond[wght].ttf", 40, rgba(D_INK), axes=[500], anchor="rs")
+        p.text(strip, (530, fig_bottom + 26), spaced("Key.&Vo."), "CormorantGaramond[wght].ttf", 40, rgba(D_INK), axes=[500], anchor="ls")
+        star4(p, d, 500, fig_bottom + 13, 14, rgba(D_DEEP))
+
+    panel = p.layer("弹琴特写 hands panel")
+    art_panel(p, panel, (560, 560, 1000, 900), (600, 1046, 968, 1330), frame=(-12, -12, D_DEEP), bw=4)
+
+    t = p.layer("文字与装饰 type & deco")
+    d = ImageDraw.Draw(t)
+    chevrons(p, d, 32, 112, 3, 18, rgba(D_DEEP))
+    p.text(t, (96, 120), spaced("BanG Dream!") + "   " + spaced("Our Notes"), "CormorantGaramond[wght].ttf", 26, rgba(D_INK), axes=[600])
+    d.line([(p.u(32), p.u(140)), (p.u(560), p.u(140))], fill=rgba(D_INK, 160), width=max(1, round(p.u(1))))
+
+    # vertical: stack the glyphs, white offset behind like the big type
+    col = Image.new("RGBA", (round(p.u(150)), round(p.u(400))), (0, 0, 0, 0))
+    for i, c in enumerate("汐見蛍"):
+        g = text_img(p, c, "DelaGothicOne-Regular.ttf", 118, rgba(D_DEEP))
+        gs = tinted(g, WHITE, 1)
+        col.alpha_composite(gs, (round(p.u(8)), round(p.u(i * 130 + 6))))
+        col.alpha_composite(g, (round(p.u(2)), round(p.u(i * 130))))
+    paste_at(t, col, (40, 1046), p)
+
+    p.text(t, (200, 1100), "楽壇の天使", "ShipporiMincho-ExtraBold.ttf", 50, rgba(D_INK), tracking=60)
+    p.text(t, (202, 1156), "Hotaru Shiomi", "CormorantGaramond-Italic[wght].ttf", 44, rgba(D_DEEP), axes=[600])
+    for i in range(3):
+        d.rectangle([p.u(204 + i * 20), p.u(1186), p.u(216 + i * 20), p.u(1198)], fill=rgba(D_DEEP))
+    w = p.text(t, (202, 1262), "03.12", "Anton-Regular.ttf", 50, rgba(D_DEEP)) / p.k
+    p.text(t, (300 if rev < 1 else 202 + w + 16, 1262), spaced("BIRTHDAY"), "CormorantGaramond[wght].ttf", 18, rgba(D_INK), axes=[600])
+    p.text(t, (202, 1306), "心優しき音楽の天才。", "ShipporiMincho-Medium.ttf", 21, rgba(D_INK))
+    p.text(t, (202, 1336), "芸術学院中学校 音楽科 3年", "ShipporiMincho-Regular.ttf", 16, rgba(D_INK, 220), tracking=40)
+    dotgrid(p, d, (420, 1240, 560, 1290) if rev < 2 else (476, 1240, 560, 1290), 14, 2, rgba(D_DEEP, 170))
+    corner_marks(p, d, (586, 1032, 982, 1344), 16, rgba(WHITE), 3)
+
+    p.text(t, (500, 1440), spaced("SHIOMI HOTARU"), "CormorantGaramond[wght].ttf", 46,
+           rgba(D_DEEP, 150), axes=[500], tracking=120, anchor="ms")
+    d.line([(p.u(30), p.u(1462)), (p.u(970), p.u(1462))], fill=rgba(D_DEEP, 160), width=max(1, round(p.u(1))))
+    p.text(t, (30, 1488), "fan art  ·  non-commercial", "CormorantGaramond-Italic[wght].ttf", 16, rgba(D_INK, 200), axes=[500])
+    chevrons(p, d, 920, 1481, 3, 12, rgba(D_DEEP))
+
+    for (x, y, r) in [(370, 210, 18), (880, 250, 24), (920, 300, 10), (300, 700, 12)]:
+        star4(p, d, x, y, r, rgba(WHITE))
+        star4(p, d, x, y, r * 0.5, rgba(D_TYPE))
+
+    # haze: a soft copy of everything so far, like the bloom these sheets carry
+    flat = p.flatten().convert("RGBA").filter(ImageFilter.GaussianBlur(p.u(5)))
+    flat.putalpha(int(255 * 0.16))
+    p.layers.append(("柔光 haze", flat))
+
+
+DESIGNS = {"A": design_a, "B": design_b, "C": design_c, "D": design_d}
 
 
 def main(argv):
