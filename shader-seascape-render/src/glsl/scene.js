@@ -212,6 +212,25 @@ void main(){
     depth = tWater;
   }
 
+  // ---------- shoreline coverage
+  // Where the height field crosses sea level inside one pixel, the water/land test is a coin
+  // flip: neighbouring pixels come out deep water and orange rock, and the coastline - which
+  // should be a line - is a stipple of both. (Found by checking that switching the water off,
+  // or dropping its clarity to nothing, left the same speckles, only recoloured.) The honest
+  // fix is to treat the pixel as partial coverage: shade the sea that *would* be there at the
+  // same distance and mix the two colours by how far the hit point sits from sea level,
+  // measured in the pixel's own footprint at that range. Only a one-pixel band does this work.
+  if (landVisible && showWater && tTerrain > 0.0 && uView == 0){
+    float fw = clamp(tTerrain * uPixAngle, 0.75, 260.0);
+    float dy = pTerrain.y - uSeaLevel;
+    if (dy < fw){
+      vec3 wAt = waterShade(ro, rd, tTerrain, tTerrain, quality);
+      float cov = 1.0 - smoothstep(-0.5 * fw, 0.8 * fw, dy);
+      vec3 landA = aerial(shadeTerrain(pTerrain, rd, tTerrain, quality), ro, rd, tTerrain, quality);
+      col = mix(landA, aerial(wAt, ro, rd, tTerrain, quality), cov);
+    }
+  }
+
   // ---------- debug views
   if (uView > 0){
     vec3 dbg = col;
@@ -348,6 +367,30 @@ void main(){
     else if (uView == 29){
       // the water's body term (what comes up from under the surface) and F in B
       dbg = isWater ? vec3(waterDbgBody.r, waterDbgBody.g, waterDbgF) : vec3(0.03);
+    }
+    else if (uView == 130){
+      // DIAG ONLY: what the water body term is made of at this pixel -
+      // R the submerged path length /200 m, G the red-channel attenuation, B the seabed
+      // colour's red channel / 0.2.
+      dbg = isWater ? vec3(saturate(waterDbgA / 200.0), waterDbgB.r, saturate(waterDbgC.r / 0.2)) : vec3(0.0);
+    }
+    else if (uView == 129){
+      // DIAG ONLY: R = a land hit above sea level, G = the sea won, B = the sea is in front
+      // of a terrain hit below sea level (shallow shelf), which is the case a coastline
+      // test has to get right.
+      float r2 = landVisible ? 1.0 : 0.0;
+      float g2 = waterVisible ? 1.0 : 0.0;
+      float b2 = (tTerrain > 0.0 && pTerrain.y <= uSeaLevel && tWater > 0.0) ? 1.0 : 0.0;
+      dbg = vec3(r2, g2, b2);
+    }
+    else if (uView == 128){
+      // DIAG ONLY: is the pixel a land hit above sea level, a land hit below it, or sea?
+      // R = dy (orange near the waterline), G = terrain hit distance (dark = no hit),
+      // B = 1 for a pixel whose water and land answers disagree, i.e. one the coverage
+      // band had to mix.
+      float fw2 = clamp(tTerrain * uPixAngle, 0.75, 260.0);
+      dbg = vec3(saturate(0.5 + (pTerrain.y - uSeaLevel) / 200.0), saturate(tTerrain / 8000.0),
+                 (tTerrain > 0.0 && (pTerrain.y - uSeaLevel) < fw2) ? 1.0 : 0.0);
     }
     else if (uView == 27){
       // live values: R = tWater/2000, G = tTerrain/2000, B = -rd.y. A black channel means

@@ -66,14 +66,18 @@ float farTerrain(vec2 p){
   return h;
 }
 
+// 0 inside the baked tile, 1 beyond its edge feather - shared by the height field and by
+// everything that must fade where the detail texture stops: outside the tile the seabed is
+// still "sea" as far as the surface is concerned, but its material was the clamped last texel.
+float tileEdge(vec2 p){
+  vec2 uv = p / uTerrainSize + 0.5;
+  if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) return 1.0;
+  vec2 d = min(uv, 1.0 - uv);
+  return 1.0 - smoothstep(0.0, 0.055, min(d.x, d.y));
+}
 float terrainHeight(vec2 p){
   vec2 uv = p / uTerrainSize + 0.5;
-  float m = 0.0; // blend factor outside the tile
-  if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) m = 1.0;
-  else {
-    vec2 d = min(uv, 1.0 - uv);
-    m = 1.0 - smoothstep(0.0, 0.055, min(d.x, d.y));
-  }
+  float m = tileEdge(p);
   float h;
   if (m >= 1.0) h = farTerrain(p);
   else {
@@ -159,12 +163,27 @@ Material materialAt(vec3 p, vec3 n, float dist, out float matId){
   float slope = 1.0 - n.y;                       // 0 flat ... 1 vertical
   float height = p.y;
   vec4 t = texture(uTerrain, clamp(p.xz / uTerrainSize + 0.5, 0.0, 1.0));
-  float hardness = t.a;
-  float ao = t.b;
+  // Beyond the tile there is no baked material: the texture lookup clamps to the last texel
+  // of the edge, which is a 300 m beach on the right-hand side of the map and 900 m of rock
+  // on the left - and it painted the whole far shelf orange, because a water pixel shades a
+  // seabed through that texture. Far outside, every per-texel term goes to its neutral value.
+  float outside = tileEdge(p.xz);
+  float hardness = mix(t.a, 0.2, outside);
+  float ao = mix(t.b, 0.85, outside);
 
   float grain = fbmv2(p.xz * 0.09, 3, 2.07, 0.5);
   float strata = fbm2(p.xz * 0.004 + vec2(0.0, p.y * 0.02), 3, 2.2, 0.5, 4096.0);
   float patchN = fbm2(p.xz * 0.0016 + 11.0, 3, 2.0, 0.5, 4096.0);
+  // Detail finer than the pixel is not detail, it is noise. The grain term has an 11 m
+  // wavelength and the strata bands 250 m; over the shallow shelf four kilometres out a
+  // pixel covers 150 m, so both were being point-sampled and the seabed came out as a
+  // per-pixel speckle of sand and rock (the last of the coastal stipple, after the surf and
+  // the refraction miss were dealt with). Fading their contrast as the footprint passes
+  // their wavelength is the cheap, correct area average - and it helps every distant slope.
+  float fpM = clamp(max(length(dFdx(p.xz)), length(dFdy(p.xz))), 0.0, 400.0);
+  float fine = 1.0 - smoothstep(9.0, 46.0, fpM);
+  grain = mix(0.5, grain, fine);
+  strata = mix(0.5, strata, 1.0 - smoothstep(60.0, 320.0, fpM));
 
   // Colours are picked from a cold-coast palette: wet sand, gravel, moss, strata rock, snow.
   vec3 sand   = srgbToLinear(vec3(0.66, 0.58, 0.45)) * (0.86 + 0.3 * grain);

@@ -116,6 +116,9 @@ float whitecapCoverage(float wind){ return 3.84e-6 * pow(max(wind, 0.5), 3.41); 
 // them. Filled in by waterShade and read by the debug views, because "the sea is dark"
 // has three completely different causes and only a direct read tells them apart.
 vec3 waterDbgRefl = vec3(0.0);
+float waterDbgA = 0.0;
+vec3 waterDbgB = vec3(0.0);
+vec3 waterDbgC = vec3(0.0);
 vec3 waterDbgBody = vec3(0.0);
 float waterDbgF = 0.0;
 vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
@@ -124,10 +127,14 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
   // footprint corrected by the surface tilt (1/cos of the local view angle).
   float foot0 = max(uPixAngle * max(t, 1.0), 0.02);
   vec3 n0 = waterNormalFoot(p, t, foot0);
-  // The footprint stretches along a tilted surface by 1/cos, but letting that run away at
-  // a grazing view (it reaches 16x) filters out the very waves that make the horizon
-  // band glitter, so it is clamped.
-  float cosTilt = clamp(abs(dot(-rd, n0)), 0.35, 1.0);
+  // The footprint stretches along the ray by 1/sin(grazing angle), which at the horizon is
+  // tens of times, not the 2.9x this used to be clamped to. That clamp kept twenty-metre
+  // swell alive in the normal where a pixel spans a hundred metres of it; the mirrored ray
+  // then flickered between sky and cliff, and everything shaded from the normal - the
+  // Fresnel mix, the foam's own lighting - picked up the flicker. Keeping the clamp at 2
+  // degrees costs nothing visually because the sun's glitter is a separate, statistical
+  // term, and it is what lets the far sea resolve into a smooth mirror.
+  float cosTilt = clamp(abs(dot(-rd, n0)), 0.02, 1.0);
   vec3 n = waterNormalFoot(p, t, foot0 / cosTilt);
   vec3 up = vec3(0.0, 1.0, 0.0);
 
@@ -159,12 +166,32 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
   // ---- refraction: march under the surface for the sea floor
   vec3 T = refract(rd, n, 1.0 / uWaterIOR);
   if (dot(T, T) < 1e-6) T = rd;
-  float seabedDepth = max(uSeaLevel - terrainHeight(p.xz), 0.0);
+  // The depth that drives the absorption is one sample of a height field eight metres per
+  // texel, and a pixel of the shallow shelf four kilometres out spans a hundred metres of
+  // it - so the depth, and with it the attenuation, was a per-pixel coin flip. (View 129
+  // showed the whole speckled belt to be sea with no terrain hit at all, so the seabed was
+  // not the source either; this sample is.) Two more taps a footprint apart give the mean
+  // depth the pixel actually covers, and attenuation is exponential in depth, so the mean
+  // depth is the right quantity to feed it.
+  float footW = max(uPixAngle * max(t, 1.0) / max(-rd.y, 0.02), 0.0);
+  float dA = max(uSeaLevel - terrainHeight(p.xz + rd.xz * (footW * 0.5)), 0.0);
+  float dB = max(uSeaLevel - terrainHeight(p.xz - rd.xz * (footW * 0.5)), 0.0);
+  float seabedDepth = footW > 12.0 ? (0.25 * dA + 0.25 * dB + 0.5 * max(uSeaLevel - terrainHeight(p.xz), 0.0)) : max(uSeaLevel - terrainHeight(p.xz), 0.0);
   float pathLen = max(seabedDepth, 0.0) / max(abs(T.y), 0.06);
   vec3 seabedCol = vec3(0.0);
   float tBed; vec3 pBed;
-  if (marchTerrain(p + T * 0.4, T, clamp(pathLen * 1.5, 14.0, 1200.0), quality * 0.55, tBed, pBed)){
-    vec3 bn = terrainNormal(pBed, tBed);
+  float tBedMax = clamp(pathLen * 1.5, 14.0, 1200.0);
+  bool bedHit = marchTerrain(p + T * 0.4, T, tBedMax, quality * 0.55, tBed, pBed);
+  // A miss is not a black floor. Under a grazing view the refraction ray crosses the shelf at
+  // a metre per kilometre, and whether the march finds the bed in one pixel and overshoots in
+  // the next is luck - which is why the shallow band out there speckled while the deep water
+  // did not, and why raising the absorption (killing the bed term) or setting the IOR to 1
+  // (removing the refraction) both cleared it. When the march misses, the bed is still there
+  // at the depth we already know: take that point and shade it like any other seabed, so the
+  // body term is continuous across the whole shelf.
+  if (!bedHit){ tBed = min(pathLen, tBedMax); pBed = p + T * tBed; }
+  {
+    vec3 bn = bedHit ? terrainNormal(pBed, tBed) : vec3(0.0, 1.0, 0.0);
     float matId2;
     Material bm = materialAt(pBed, bn, tBed, matId2);
     float ndl = saturate(dot(bn, uSunDir));
@@ -174,9 +201,14 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
                + waveHeightAt(pBed.xz + vec2(0.0, 2.5), t, uWind, 1.0)
                + waveHeightAt(pBed.xz - vec2(0.0, 2.5), t, uWind, 1.0)
                - 4.0 * waveHeightAt(pBed.xz, t, uWind, 1.0)) * 0.25;
-    float caustic = saturate(1.0 - lap * 0.6) * 1.3;
+    // caustics are a 2.5 m pattern: unresolved at distance, where the honest value is
+    // their mean rather than a per-pixel sample of them
+    float causticFade = 1.0 - smoothstep(150.0, 900.0, tBed);
+    if (!bedHit) causticFade = 0.0;
+    float caustic = mix(1.0, saturate(1.0 - lap * 0.6) * 1.3, causticFade);
     vec3 sk2;
-    seabedCol = bm.albedo / PI * sunTransmittanceAt(pBed.y) * uSunIrradiance * ndl * shadowTerrain(pBed, uSunDir);
+    seabedCol = bm.albedo / PI * sunTransmittanceAt(pBed.y) * uSunIrradiance * ndl
+              * (bedHit ? shadowTerrain(pBed, uSunDir) : 1.0);
     seabedCol *= mix(1.0, caustic, 0.7);
     seabedCol += bm.albedo / PI * skyIrradiance(bn, 0.7, sk2) * 0.3;
   }
@@ -190,6 +222,7 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
   vec3 backScatter = (sunTransmittanceAt(uSeaLevel) * uSunIrradiance * vec3(0.10, 0.42, 0.95) * 0.06
                    + skyE3 * vec3(0.25, 0.6, 1.0) * 0.05) * uWaterClarity;
   vec3 body = seabedCol * atten + backScatter * (1.0 - atten);
+  waterDbgA = pathLen; waterDbgB = atten; waterDbgC = seabedCol;
 
   // ---- Fresnel: F0 = ((1.333-1)/(1.333+1))^2 = 0.0204
   float f0 = 0.0204;
@@ -214,15 +247,45 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
   // ---- foam: shoreline swash + wind whitecaps
   float depth = max(uSeaLevel - terrainHeight(p.xz), 0.0);
   float foamNoise = fbmv2(p.xz * 0.32 + vec2(t * 0.03, t * 0.012), 3, 2.1, 0.5);
+  // The swash noise is three metres across; one pixel of the shelf four kilometres out
+  // spans twenty. Thresholding that field per pixel is what turned the whole shallow apron
+  // into a screen door of speckles (switching the foam off cleared it completely, which is
+  // how it was identified). Past a few metres of footprint the mask has to become the
+  // *fraction* of the field that would pass the threshold, so the surf line reads as the
+  // soft band it is at that distance rather than as noise.
+  // The analytic along-ray footprint is the reliable one here: it cannot be confused by a
+  // 2x2 quad that straddles the horizon, and it is exact for a plane.
+  float footRay = uPixAngle * max(t, 1.0) / max(-rd.y, 0.02);
+  float fpFoam = clamp(max(footRay, max(length(dFdx(p.xz)), length(dFdy(p.xz)))), 0.0, 400.0);
+  float foamFade = 1.0 - smoothstep(1.5, 12.0, fpFoam);
   float crestPhase = saturate(0.5 + 0.5 * waveHeightAt(p.xz, t, uWind, uWaveAmp) / (0.06 + 0.010 * uWind * uWind));
-  float foamShore = smoothstep(2.4, 0.10, depth) * smoothstep(0.30, 0.80, foamNoise * 0.55 + 0.55 * crestPhase);
+  // E[fbm] = 0.5, so the thresholded average is the mask evaluated at 0.275 + 0.55*crest.
+  float swashAvg = smoothstep(0.30, 0.80, 0.275 + 0.55 * crestPhase);
+  float swashNow = smoothstep(0.30, 0.80, foamNoise * 0.55 + 0.55 * crestPhase);
+  // The 2.4 m swash band is a *hard threshold on the depth*, and the depth is one sample of
+  // a height field whose roughness is metres over the tens of metres a distant pixel spans.
+  // Per pixel that threshold is a coin flip, which is the other half of the stipple. Two
+  // more taps a footprint apart give the depth range the pixel covers; the mask then uses
+  // the mean of the step over that range instead of the step of one sample of it.
+  float hA = terrainHeight(p.xz + rd.xz * (fpFoam * 0.5));
+  float hB = terrainHeight(p.xz - rd.xz * (fpFoam * 0.5));
+  float dz = max(0.6 * abs(hA - hB), 0.02);
+  float shoreNear = smoothstep(2.4, 0.10, depth);
+  float shoreFar = saturate((2.4 - depth) / (2.0 * dz)) - saturate((0.10 - depth) / (2.0 * dz));
+  float foamShore = mix(shoreNear, shoreFar, 1.0 - foamFade) * mix(swashAvg, swashNow, foamFade);
   float W = whitecapCoverage(uWind);
   float crest = saturate(waveHeightAt(p.xz, t, uWind, uWaveAmp) / (0.10 + 0.020 * uWind * uWind));
   float streak = fbmv2(p.xz * 0.05 + vec2(0.0, t * 0.006), 3, 2.03, 0.5);
-  float capMask = saturate(crest * 1.2 + streak * 0.95 - (1.45 - W * 30.0));
-  float foamWind = smoothstep(0.18, 0.72, capMask) * smoothstep(3.0, 8.0, uWind) * mix(0.30, 1.0, foamNoise);
+  float capNow = saturate(crest * 1.2 + streak * 0.95 - (1.45 - W * 30.0));
+  float capAvg = saturate(crest * 1.2 + 0.475 - (1.45 - W * 30.0));
+  float capMask = mix(capAvg, capNow, foamFade);
+  float foamWind = smoothstep(0.18, 0.72, capMask) * smoothstep(3.0, 8.0, uWind) * mix(0.30, 1.0, mix(0.5, foamNoise, foamFade));
   float foam = saturate((foamShore * 0.95 + foamWind * 0.9) * uFoam);
-  foam *= 1.0 - smoothstep(2000.0, 8000.0, dist) * 0.4;
+  // Foam that survives at six kilometres is not foam any more: what the pixel covers is
+  // metres of sea that is, on average, a little brighter than the water around it. Fading
+  // it is what keeps the far shore from sparkling - the mask itself, however well averaged,
+  // is a threshold on a field finer than the pixel.
+  foam *= 1.0 - smoothstep(600.0, 2600.0, dist);
   if (foam > 0.001){
     vec3 sk4;
     vec3 foamCol = srgbToLinear(vec3(0.87, 0.91, 0.94));
