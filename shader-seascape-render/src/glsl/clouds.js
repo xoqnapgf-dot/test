@@ -31,7 +31,7 @@ uniform float uWind;                  // wind speed, m/s
 
   GLSL.clouds = `
 // p in lattice units; the volume holds 64 cells across and wraps in every axis
-vec4 noiseAt(sampler3D at, vec3 p){ return texture(at, p * (1.0 / 64.0)); }
+vec4 noiseAt(sampler3D at, vec3 p){ return textureLod(at, p * (1.0 / 64.0), 0.0); }
 
 float verticalProfile(float h){
   float base = smoothstep(0.0, 0.045, h);
@@ -45,7 +45,7 @@ float verticalProfile(float h){
 // every direction ends up looking overcast.
 vec2 cloudWeather2(vec2 xz, float t){
   vec2 p = xz + vec2(t * uWind * 3.0, t * uWind * 1.4);
-  return texture(uWeather, p / uWeatherTile).rg;
+  return textureLod(uWeather, p / uWeatherTile, 0.0).rg;
 }
 float cloudWeather(vec2 xz, float t){
   float w = cloudWeather2(xz, t).x;
@@ -100,8 +100,6 @@ bool slabIntersect(vec3 ro, vec3 rd, float lo, float hi, out float t0, out float
   t0 = min(a, b); t1 = max(a, b);
   return t1 > 0.0;
 }
-
-vec3 skyIrradiance(vec3 n, float ao, out vec3 radianceOut);
 
 // Coarse probe used for the shadows clouds cast on the ground and on the sea.
 float cloudShadow(vec3 p, vec3 sunDir){

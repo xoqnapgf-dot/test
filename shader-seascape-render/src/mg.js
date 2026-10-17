@@ -184,6 +184,9 @@
         }
       }
     }
+    if (window.__mglog) {
+      window.__mglog.push([String(s), o.x || 0, y, 0, o.align || 'left', size, 1]);
+    }
     return false;
   }
   function frame(x, y, w, h, col, lw) {
@@ -1038,7 +1041,7 @@
     var sd = sunDirOf(R);
     // the row a flat sea would mirror the sun in, and the spread the surface adds
     var p = projDir(c, [sd[0], -sd[1], sd[2]]);
-    var mss = 0.003 + 0.00512 * Math.max(R.s.wind || 1, 1) - 0.005;
+    var mss = 0.003 + 0.00512 * Math.max(R.s.wind || 1, 1);
     if (p && p[1] > -20 && p[1] < H + 20) {
       var pA = projDir(c, [sd[0], -sd[1] + mss, sd[2]]), pB = projDir(c, [sd[0], -sd[1] - mss, sd[2]]);
       if (pA && pB) {
@@ -1068,6 +1071,7 @@
     var rTop = rayAt(c, c.cx, Math.max(0, horizonRow(c) - 4));
     var aBot = Math.acos(clamp(Math.abs(rBot[1]), 0, 1)) / DEG;
     var aTop = Math.acos(clamp(Math.abs(rTop[1]), 0, 1)) / DEG;
+    if (aBot > aTop) { var tmpA = aBot; aBot = aTop; aTop = tmpA; }
     var cB = Math.cos(aBot * DEG), cT = Math.cos(aTop * DEG);
     var fB = F0 + (1 - F0) * Math.pow(1 - cB, 5), fT = F0 + (1 - F0) * Math.pow(1 - cT, 5);
     box(xOfA(aBot), yOfF(Math.max(fB, fT)), Math.max(2, xOfA(aTop) - xOfA(aBot)), Math.max(2, Math.abs(yOfF(fT) - yOfF(fB))),
@@ -1083,8 +1087,8 @@
       text(Math.round(i * 22.5) + '\u00b0', ax, y1 + 13, { col: ink(0.3), size: 8, align: 'center' });
     }
     line(x0, yOfF(1), x1, yOfF(1), ink(0.1), 1, [1, 4]);
-    textFree('F', yOfF(1) + 3, { col: ink(0.36), size: 8.5, x: x0 - 4, align: 'right',
-      try: [[x0 - 4, 'right'], [x0 - 14, 'right'], [x0 + 6, 'left']] });
+    textFree('F', yOfF(1) + 3, { col: ink(0.36), size: 8.5, x: x1 - 24, align: 'right',
+      try: [[x1 - 24, 'right'], [x0 - 4, 'right'], [x0 - 14, 'right']] });
     textFree('掠射角 θ → 菲涅耳反射率 F', y0 - 12, { col: ink(0.5), size: 9.5, x: x0,
       short: '掠射角 θ → 反射率 F', try: [x0, x0 + 70, x0 + 180] });
     text('F(θ) = F₀ + (1−F₀)(1−cos θ)⁵', x1, y1 + 28, { col: ink(0.6), size: 9.5, align: 'right' });
@@ -1164,9 +1168,9 @@
     var maxSteps = clamp(16 + (R.s.cloudSteps || 0) * 56 + span / 90, 16, 88);
     text('采样 ' + Math.round(maxSteps) + ' 步（上限 88） · 阴影 6 步', x0, y0 - 10, { col: ink(0.5), size: 9 });
     textFree('云量 ' + Math.round((R.s.cloudCover || 0) * 100) + '% · 遮挡 ' + (R.s.cloudSun || 1).toFixed(2) + '\u00d7',
-      y0 - 10, { col: ink(0.4), size: 9, x: S.x1, align: 'right',
+      y1 + 15, { col: ink(0.4), size: 8.5, x: x0, align: 'left',
         short: '云量 ' + Math.round((R.s.cloudCover || 0) * 100) + '%',
-        try: [[S.x1, 'right'], [S.x1 - 170, 'right'], [S.x1 - 320, 'right']] });
+        try: [[x0, 'left'], [x1, 'right']] });
     // the three-lobe phase function, evaluated, in polar coordinates
     var cx = S.x1 - S.w * 0.17, cy = (y0 + y1) * 0.5 + 8, rr = Math.min(76, (y1 - y0) * 0.44);
     scrim(cx - rr - 14, cy - rr - 30, cx + rr + 14, cy + rr + 26, 0.32);

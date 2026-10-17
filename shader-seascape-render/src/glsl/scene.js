@@ -26,7 +26,7 @@ uniform float uSunAzi;
 // ---------------------------------------------------------------- sky
 vec3 sunTransmittanceAt(float height){
   float el = asin(clamp(uSunDir.y, -1.0, 1.0));
-  return texture(uSunTrans, vec2(elevToV(el), heightToV(height))).rgb;
+  return textureLod(uSunTrans, vec2(elevToV(el), heightToV(height)), 0.0).rgb;
 }
 vec3 sunTransmittance(){ return sunTransmittanceAt(0.0); }
 
@@ -114,7 +114,7 @@ vec3 rayDirection(vec2 uv, vec2 res){
 
 // ---------------------------------------------------------------- land
 vec3 shadeTerrain(vec3 p, vec3 rd, float dist, float quality){
-  float aoBaked = texture(uTerrain, clamp(p.xz / uTerrainSize + 0.5, 0.0, 1.0)).b;
+  float aoBaked = textureLod(uTerrain, clamp(p.xz / uTerrainSize + 0.5, 0.0, 1.0), 0.0).b;
   vec3 n = terrainNormal(p, dist);
   if (uStage[2] < 1.0){
     n = normalize(mix(vec3(0.0, 1.0, 0.0), n, smoothstep(0.0, 0.35, uStage[2])));
@@ -157,7 +157,7 @@ vec3 ramp(float t){
   return t < 0.5 ? mix(a, b, t * 2.0) : mix(c, d, saturate((t - 0.5) * 2.0));
 }
 vec3 normalColor(vec3 n){ return n * 0.5 + 0.5; }
-vec3 sampleSkyLUTRaw(vec2 uv){ return texture(uSkyLUT, uv).rgb * uSkyScale; }
+vec3 sampleSkyLUTRaw(vec2 uv){ return textureLod(uSkyLUT, uv, 0.0).rgb * uSkyScale; }
 
 // ---------------------------------------------------------------- main
 void main(){
@@ -168,7 +168,7 @@ void main(){
   float quality = uQuality;
   // blue-noise jitter: the same cost as a hash but it turns marcher banding into
   // fine-grained noise that vanishes under the tonemap and the temporal wobble
-  float jitter = texture(uNoise, screen / 64.0 + vec2(uFrameJitter, 0.0)).r;
+  float jitter = textureLod(uNoise, screen / 64.0 + vec2(uFrameJitter, 0.0), 0.0).r;
 
   bool showSky = uStage[4] > 0.001;
   bool showTerrain = uStage[1] > 0.001;
@@ -300,8 +300,9 @@ void main(){
       // stage stack readout
       float x = gl_FragCoord.x / uRenderRes.x;
       float y = 1.0 - gl_FragCoord.y / uRenderRes.y;
-      int idx = int(floor(x * 9.0));
-      float on = uStage[idx];
+      int idx = clamp(int(floor(x * 9.0)), 0, 8);
+      float on = 0.0;
+      for (int si = 0; si < 9; si++){ if (si == idx) on = uStage[si]; }
       dbg = mix(vec3(0.05, 0.05, 0.07), vec3(0.95, 0.72, 0.35), step(y, 0.14 + 0.66 * on));
     }
     else if (uView == 22){
@@ -338,7 +339,7 @@ void main(){
       vec3 n2 = isLand ? terrainNormal(pTerrain, tTerrain) : vec3(0.0, 1.0, 0.0);
       vec3 amb3;
       vec3 E3 = skyIrradiance(n2, 1.0, amb3);
-      float ao3 = isLand ? texture(uTerrain, clamp(pTerrain.xz / uTerrainSize + 0.5, 0.0, 1.0)).b : 1.0;
+      float ao3 = isLand ? textureLod(uTerrain, clamp(pTerrain.xz / uTerrainSize + 0.5, 0.0, 1.0), 0.0).b : 1.0;
       dbg = vec3(E3.r / PI, skyRadiance(vec3(0.0, 1.0, 0.0)).g, ao3);
     }
     else if (uView == 30){

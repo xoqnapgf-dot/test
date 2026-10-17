@@ -81,7 +81,7 @@ float terrainHeight(vec2 p){
   float h;
   if (m >= 1.0) h = farTerrain(p);
   else {
-    h = unpackHeight(texture(uTerrain, clamp(uv, 0.0, 1.0)));
+    h = unpackHeight(textureLod(uTerrain, clamp(uv, 0.0, 1.0), 0.0));
     if (m > 0.0) h = mix(h, farTerrain(p), m);
   }
   return h;
@@ -162,7 +162,7 @@ struct Material { vec3 albedo; float roughness; float spec; };
 Material materialAt(vec3 p, vec3 n, float dist, out float matId){
   float slope = 1.0 - n.y;                       // 0 flat ... 1 vertical
   float height = p.y;
-  vec4 t = texture(uTerrain, clamp(p.xz / uTerrainSize + 0.5, 0.0, 1.0));
+  vec4 t = textureLod(uTerrain, clamp(p.xz / uTerrainSize + 0.5, 0.0, 1.0), 0.0);
   // Beyond the tile there is no baked material: the texture lookup clamps to the last texel
   // of the edge, which is a 300 m beach on the right-hand side of the map and 900 m of rock
   // on the left - and it painted the whole far shelf orange, because a water pixel shades a
@@ -180,7 +180,9 @@ Material materialAt(vec3 p, vec3 n, float dist, out float matId){
   // per-pixel speckle of sand and rock (the last of the coastal stipple, after the surf and
   // the refraction miss were dealt with). Fading their contrast as the footprint passes
   // their wavelength is the cheap, correct area average - and it helps every distant slope.
-  float fpM = clamp(max(length(dFdx(p.xz)), length(dFdy(p.xz))), 0.0, 400.0);
+  // Evaluated analytically from dist and uPixAngle rather than dFdx/dFdy, so HLSL/D3D11
+  // never sees screen-space derivatives inside a ray-march branch.
+  float fpM = clamp(uPixAngle * max(dist, 1.0) / max(n.y, 0.12), 0.0, 400.0);
   float fine = 1.0 - smoothstep(9.0, 46.0, fpM);
   grain = mix(0.5, grain, fine);
   strata = mix(0.5, strata, 1.0 - smoothstep(60.0, 320.0, fpM));

@@ -34,7 +34,7 @@ uint pcg2(uint x, uint y){ return pcg1(x ^ (pcg1(y) * 1664525u + 1013904223u)); 
 uint pcg3(uint x, uint y, uint z){ return pcg2(pcg1(x ^ (z * 747796405u)) , y ^ (z * 2891336453u)); }
 
 float u2f(uint u){ return float(u) * (1.0 / 4294967296.0); }
-float hash11(float p){ return u2f(pcg1(uint(int(p) + 0x9E3779B9))); }
+float hash11(float p){ return u2f(pcg1(uint(int(p)) + 0x9E3779B9u)); }
 float hash12(vec2 p){ return u2f(pcg2(uint(int(p.x)), uint(int(p.y)))); }
 float hash13(vec3 p){ return u2f(pcg3(uint(int(p.x)), uint(int(p.y)), uint(int(p.z)))); }
 vec2  hash22(vec2 p){ uint h = pcg2(uint(int(p.x)), uint(int(p.y))); return vec2(u2f(h), u2f(pcg1(h))); }

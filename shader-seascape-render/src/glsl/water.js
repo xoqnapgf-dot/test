@@ -254,9 +254,10 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
   // *fraction* of the field that would pass the threshold, so the surf line reads as the
   // soft band it is at that distance rather than as noise.
   // The analytic along-ray footprint is the reliable one here: it cannot be confused by a
-  // 2x2 quad that straddles the horizon, and it is exact for a plane.
+  // 2x2 quad that straddles the horizon, it is exact for a plane, and it avoids dFdx/dFdy
+  // inside non-uniform control flow on D3D11/ANGLE.
   float footRay = uPixAngle * max(t, 1.0) / max(-rd.y, 0.02);
-  float fpFoam = clamp(max(footRay, max(length(dFdx(p.xz)), length(dFdy(p.xz)))), 0.0, 400.0);
+  float fpFoam = clamp(footRay, 0.0, 400.0);
   float foamFade = 1.0 - smoothstep(1.5, 12.0, fpFoam);
   float crestPhase = saturate(0.5 + 0.5 * waveHeightAt(p.xz, t, uWind, uWaveAmp) / (0.06 + 0.010 * uWind * uWind));
   // E[fbm] = 0.5, so the thresholded average is the mask evaluated at 0.275 + 0.55*crest.
@@ -290,7 +291,6 @@ vec3 waterShade(vec3 ro, vec3 rd, float t, float dist, float quality){
     vec3 sk4;
     vec3 foamCol = srgbToLinear(vec3(0.87, 0.91, 0.94));
     float lit = saturate(dot(n, uSunDir));
-    float skv;
     vec3 skyE4 = skyIrradiance(n, 1.0, sk4);
     vec3 fcol = foamCol / PI * (sunTransmittanceAt(p.y) * uSunIrradiance * lit * shadowTerm + skyE4);
     fcol = mix(fcol, col * 1.15, 0.16);

@@ -162,10 +162,10 @@ body.uiHidden #mg { opacity: 0; transition: opacity .5s ease; }
   color: var(--ink);
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity .5s ease, transform .5s ease;
+  transition: opacity .12s ease, transform .12s ease;
   box-shadow: 0 12px 40px rgba(0,0,0,.4);
 }
-#cards .card.on { opacity: 1; transform: none; }
+#cards .card.on { opacity: 1; transform: none; transition: opacity .38s ease .08s, transform .38s ease .08s; }
 #cards .card .b { font-size: .96em; color: var(--ink); }
 #cards .card .h {
   font-family: var(--mono);
@@ -220,10 +220,10 @@ body.uiHidden #mg { opacity: 0; transition: opacity .5s ease; }
   box-shadow: 0 16px 50px rgba(0,0,0,.5);
   opacity: 0;
   transform: translateY(8px) scale(.99);
-  transition: opacity .6s ease, transform .6s ease;
+  transition: opacity .12s ease, transform .12s ease;
   pointer-events: auto;
 }
-.instrument.on { opacity: 1; transform: none; }
+.instrument.on { opacity: 1; transform: none; transition: opacity .42s ease .08s, transform .42s ease .08s; }
 .instrument .cap {
   font-family: var(--mono); font-size: 10px; letter-spacing: .18em;
   color: var(--ink-dim); text-transform: uppercase;

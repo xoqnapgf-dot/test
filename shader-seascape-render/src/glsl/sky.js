@@ -182,7 +182,7 @@ vec2 directionToLut(vec3 dir, float sunElev, float sunAzi){
 // The sun transmittance table is indexed by (elevation, height above sea level):
 // standing on a mountain puts you above part of the air column.
 vec3 sampleSkyLUT(sampler2D lut, vec3 dir, float sunElev, float sunAzi){
-  return texture(lut, directionToLut(dir, sunElev, sunAzi)).rgb;
+  return textureLod(lut, directionToLut(dir, sunElev, sunAzi), 0.0).rgb;
 }
 float heightToV(float h){ return sqrt(saturate(h / 4200.0)); }
 float vToHeight(float v){ return v * v * 4200.0; }

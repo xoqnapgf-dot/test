@@ -92,6 +92,7 @@
   if (!renderer || renderer.failed || renderer.error) {
     bootEl.classList.add('done');
     failEl.hidden = false;
+    failEl.style.display = '';
     if (renderer && renderer.error) failMsg.textContent = '着色器编译或初始化失败：' + renderer.error;
     window.__probe = { ready: false, error: (renderer && renderer.error) || 'no-webgl2' };
     return;
@@ -171,6 +172,7 @@
     }
     if (SS.ui) SS.ui.tick(R, app);
     if (SS.timeline && SS.timeline.tickDom) SS.timeline.tickDom(R, app);
+    if (SS.instruments) SS.instruments.tick(R, app);
     /* The soundtrack is a continuous bed whose mix follows the chapter and the renderer's own
        numbers, so it cannot drift out of sync; the one thing it times off a delta is its swell
        rate, and that gets the film's own advance so a device rendering slowly hears the swells
@@ -197,6 +199,7 @@
   setTimeout(function () {
     bootFill.style.width = '80%';
     bootMsg.textContent = '烘焙大气查找表…';
+    R.s.stages = [1, 0, 0, 0, 0, 0, 0, 0, 0];
     var bt = performance.now();
     R.render(0, true);
     if (window.console && console.log) console.log('[boot] first frame ' + Math.round(performance.now() - bt) + ' ms at ' + R.targets.w + 'x' + R.targets.h);

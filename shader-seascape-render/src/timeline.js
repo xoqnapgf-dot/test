@@ -60,8 +60,15 @@
   var KEYS = [
     { t: 0.0,  x:  2600, z: -2500, y:  900, azi: 128, pitch: -3, fov: 50 },
     { t: 10.5, x:  1900, z: -2200, y:  540, azi:  62, pitch: -2, fov: 50 },
-    { t: 21.0, x:   400, z: -2800, y:  780, azi:  96, pitch: -1, fov: 48 },
-    { t: 31.5, x: -1000, z: -3000, y:  760, azi: 176, pitch:  3, fov: 48 },
+    /* Chapter 03 explains normals, materials and shadows - so it has to be looking at the
+       mountains. The old key at 96 degrees had the camera turning out to sea exactly while
+       the chapter talked about slope and albedo, and eight of its ten seconds were an empty
+       horizon (a full-quality stamp at 26 s was the whole sea). The camera now dollies west
+       along the shore with the range in frame, and the turn to the sunset happens in chapter
+       05, where the sea arrives and the turn is the transition. */
+    { t: 21.0, x:  1400, z: -2700, y:  560, azi:  70, pitch: -1, fov: 48 },
+    { t: 26.5, x:   600, z: -2860, y:  640, azi:  58, pitch:  0, fov: 48 },
+    { t: 31.5, x:  -300, z: -3020, y:  700, azi:  46, pitch:  1, fov: 48 },
     { t: 42.0, x:  1600, z: -2100, y:   70, azi:  44, pitch: -4, fov: 50 },
     { t: 52.5, x:   900, z: -2300, y:   26, azi: 196, pitch: -3, fov: 54 },
     { t: 63.0, x:   100, z: -2400, y:  260, azi: 190, pitch:  8, fov: 52 },
@@ -221,7 +228,7 @@
       formula: 'x·(a·x+b) / (x·(c·x+d)+e)', src: 'Narkowicz 2015 · ACES fit' },
     { chapter: 8, at: [0.665, 0.185], h: 'STEP 09 · 实时',
       body: '每帧重算；分辨率随负载自适应。',
-      formula: '自适应分辨率 0.55 – 1.00', src: '本页所有数字均为实时结果' }
+      formula: '自适应分辨率 0.45 – 1.00', src: '本页所有数字均为实时结果' }
   ];
 
   // ---------------------------------------------------------------- leader lines
@@ -394,6 +401,7 @@
 
     apply: function (t, R, app, force) {
       var pr = progress(t), ch = pr.index, u = pr.u;
+      if (app) app.chapter = ch;
       var cam = spline(t);
       if (app.drag && (app.drag.yaw || app.drag.pitch)) {
         cam.look = rotatedLook(cam.pos, cam.look, app.drag.yaw, app.drag.pitch);

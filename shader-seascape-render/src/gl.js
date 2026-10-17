@@ -38,11 +38,22 @@
       powerPreference: 'high-performance',
       desynchronized: false
     };
-    var gl = canvas.getContext('webgl2', opts);
+    var gl = null;
+    try { gl = canvas.getContext('webgl2', opts); } catch (e) { gl = null; }
+    if (!gl) {
+      try { gl = canvas.getContext('webgl2', { alpha: false, preserveDrawingBuffer: true }); } catch (e2) { gl = null; }
+    }
+    if (!gl) {
+      try { gl = canvas.getContext('webgl2'); } catch (e3) { gl = null; }
+    }
     if (!gl) return null;
+
+    var vao = gl.createVertexArray ? gl.createVertexArray() : null;
+    if (vao) gl.bindVertexArray(vao);
 
     var api = {};
     api.raw = gl;
+    api.vao = vao;
 
     api.float = null;
     api.halfFloat = false;
@@ -198,17 +209,30 @@
     };
 
     api.target = function (w, h, internal, type, filter) {
+      var flt = filter === undefined ? gl.LINEAR : filter;
       var tex = api.texture({
         internal: internal, width: w, height: h,
-        format: gl.RGBA, type: type, filter: filter === undefined ? gl.LINEAR : filter,
+        format: gl.RGBA, type: type, filter: flt,
         wrap: gl.CLAMP_TO_EDGE
       });
       var fbo = gl.createFramebuffer();
       gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
       gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
       var ok = gl.checkFramebufferStatus(gl.FRAMEBUFFER) === gl.FRAMEBUFFER_COMPLETE;
+      if (!ok && internal !== gl.RGBA8) {
+        gl.deleteTexture(tex);
+        internal = gl.RGBA8;
+        type = gl.UNSIGNED_BYTE;
+        tex = api.texture({
+          internal: internal, width: w, height: h,
+          format: gl.RGBA, type: type, filter: flt,
+          wrap: gl.CLAMP_TO_EDGE
+        });
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+        ok = gl.checkFramebufferStatus(gl.FRAMEBUFFER) === gl.FRAMEBUFFER_COMPLETE;
+      }
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-      return { fbo: fbo, tex: tex, w: w, h: h, ok: ok };
+      return { fbo: fbo, tex: tex, w: w, h: h, ok: ok, internal: internal, type: type, filter: flt };
     };
 
     api.resizeTarget = function (t, w, h) {
@@ -265,6 +289,7 @@
 
     api.debugLabel = '';
     api.drawQuad = function (label) {
+      if (vao) gl.bindVertexArray(vao);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       var e = gl.getError();
       if (e) {

@@ -293,6 +293,11 @@
 
   function setCaps(R) {
     if (caps.instAtlas) caps.instAtlas.textContent = (R.s.seaLevel || 0).toFixed(0) + ' m';
+    if (panels.instAtlas) {
+      var noteEl = panels.instAtlas.querySelector('.note');
+      var tres = (R.buildInfo && R.buildInfo.terrainRes) || (R.params && R.params.terrainRes) || 512;
+      if (noteEl) noteEl.textContent = '16 km 瓦片，' + tres + '² 高度场，水线随海平面移动';
+    }
     if (caps.instLUT) caps.instLUT.textContent = R.s.sunElev.toFixed(1) + '°';
     if (caps.instMap) caps.instMap.textContent = R.s.cloudCover.toFixed(2);
     if (caps.instHist) caps.instHist.textContent = (R.lastExposure || 0).toFixed(2) + '×';

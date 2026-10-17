@@ -242,12 +242,16 @@ uniform float uZ;        // lattice z of this slice
 uniform float uSeed;
 out vec4 outColor;
 void main(){
-  vec3 q = vec3(gl_FragCoord.xy / 128.0 * 64.0, uZ) + uSeed;
-  float worley = saturate(1.0 - worley3(q * (1.0 / 8.0), 0.9, 8.0) * 1.3);
-  float base = tileFbm3(q, 16.0, 4, 0.5, 64.0);
-  float detail = tileFbm3(q, 4.0, 3, 0.55, 64.0);
-  float billow = 1.0 - abs(tileFbm3(q, 8.0, 3, 0.5, 64.0) * 2.0 - 1.0);
-  outColor = vec4(worley, base, detail, billow * 0.7 + 0.15);
+  vec3 q = vec3(gl_FragCoord.xy / uRes * 64.0, uZ) + uSeed;
+  if (uSeed < 1.0){
+    float base = tileFbm3(q, 16.0, 4, 0.5, 64.0);
+    float billow = (1.0 - abs(tileFbm3(q, 8.0, 3, 0.5, 64.0) * 2.0 - 1.0)) * 0.7 + 0.15;
+    outColor = vec4(base, base, billow, billow);
+  } else {
+    float worley = saturate(1.0 - worley3(q * (1.0 / 8.0), 0.9, 8.0) * 1.3);
+    float detail = tileFbm3(q, 4.0, 3, 0.55, 64.0);
+    outColor = vec4(worley, detail, detail, worley);
+  }
 }
 `;
 

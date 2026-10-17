@@ -184,14 +184,20 @@
         format: gl.RGBA, type: gl.UNSIGNED_BYTE, filter: gl.LINEAR, wrap: gl.REPEAT });
       var prog = api.program(assemble(null, [GL.volumeShader]));
       prog.locate(['uRes', 'uZ', 'uSeed']);
+      var fbo = gl.createFramebuffer();
+      api.clearUnits(8);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+      gl.viewport(0, 0, VOL, VOL);
+      prog.use();
+      prog.set('uRes', [VOL, VOL]);
+      prog.set('uSeed', seedVal);
       for (var z = 0; z < VOL; z++) {
-        api.bind(api.target3D(tex, z));
-        prog.use();
-        prog.set('uRes', [VOL, VOL]);
+        gl.framebufferTextureLayer(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, tex, 0, z);
         prog.set('uZ', (z + 0.5) / VOL * 64.0);
-        prog.set('uSeed', seedVal);
         api.drawQuad(label);
       }
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.deleteFramebuffer(fbo);
       return tex;
     }
     gen.atlas = buildVolume(0.0, 'noiseVolShape');
