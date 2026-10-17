@@ -36,15 +36,27 @@ const out = await page.evaluate(async (o) => {
     if (window.SS.mg.invalidate) window.SS.mg.invalidate();
     if (window.SS.timeline && window.SS.timeline.tickDom) window.SS.timeline.tickDom(R, app);
     await sleep(80);
-    if (!(window.__mglog || []).length) {  // a throttle that still missed: one more try
-      window.__mglog = [];
-      if (window.SS.mg.invalidate) window.SS.mg.invalidate();
-      if (window.SS.timeline && window.SS.timeline.tickDom) window.SS.timeline.tickDom(R, app);
-      await sleep(80);
-    }
+    /* Tick again before measuring. The annotation labels are DOM and are applied by the same
+       tick as the canvas, so the first draw after a seek can still be looking at the previous
+       chapter's rectangles - measuring there reported placements that are one tick out of date.
+       Settle the DOM, then redraw the layer against it and measure that. */
+    if (window.SS.mg.invalidate) window.SS.mg.invalidate();
+    if (window.SS.timeline && window.SS.timeline.tickDom) window.SS.timeline.tickDom(R, app);
+    await sleep(120);
     const st = window.SS.mg.state();
     const pr = window.SS.timeline.progress(t);
-    rows.push({ t, ch: pr.index, texts: st.texts || [], frames: st.frames, msN: st.msN });
+    /* The DOM overlays the canvas paints under. A canvas label that lands in one of these is
+       not crowded, it is invisible - and the collision test below cannot see them, because it
+       only has the canvas's own labels. Collect them and test against them as well. */
+    const over = [];
+    for (const sel of ['#cards .card.on', '#annot .tl.on', '.instrument.on']) {
+      for (const el of document.querySelectorAll(sel)) {
+        const r = el.getBoundingClientRect();
+        if (r.width < 4 || r.height < 4) continue;
+        over.push([r.left, r.top, r.right, r.bottom, sel]);
+      }
+    }
+    rows.push({ t, ch: pr.index, texts: st.texts || [], frames: st.frames, msN: st.msN, over });
   }
   return rows;
 }, { stamps, w, h });
@@ -55,9 +67,26 @@ const box = (s, x, y, tw, align, size) => {
 };
 let total = 0, all = [];
 console.log('# mg text @' + w + 'x' + h);
+let under = 0;
 for (const r of out) {
   const bs = r.texts.map((a) => box(a[0], a[1], a[2], a[3], a[4], a[5]));
   const bad = [];
+  for (const b of bs) {
+    for (const o of (r.over || [])) {
+      const ox = Math.min(b.x1, o[2]) - Math.max(b.x0, o[0]);
+      const oy = Math.min(b.y1, o[3]) - Math.max(b.y0, o[1]);
+      if (ox > 0 && oy > 0) {
+        const area = ox * oy, small = Math.min((b.x1 - b.x0) * (b.y1 - b.y0), (o[2] - o[0]) * (o[3] - o[1]));
+        if (area > small * 0.08) {
+          under++;
+          console.log('\n  t ' + r.t + '  canvas label "' + b.s + '" @' + b.x0.toFixed(0) + ',' + b.y0.toFixed(0) +
+            ' ' + (b.x1 - b.x0).toFixed(0) + 'x' + (b.y1 - b.y0).toFixed(0) +
+            ' is under ' + o[4] + ' @' + o[0].toFixed(0) + ',' + o[1].toFixed(0) + ' ' +
+            (o[2] - o[0]).toFixed(0) + 'x' + (o[3] - o[1]).toFixed(0) + '  (' + ox.toFixed(0) + 'x' + oy.toFixed(0) + ' px)');
+        }
+      }
+    }
+  }
   for (let i = 0; i < bs.length; i++) {
     for (let j = i + 1; j < bs.length; j++) {
       const a = bs[i], b = bs[j];
@@ -76,5 +105,5 @@ for (const r of out) {
   console.log('t ' + String(r.t).padStart(5) + '  ch ' + r.ch + '  labels ' + bs.length + '  collisions ' + bad.length);
   for (const d of bad) console.log('    "' + d[0] + '" @' + d[1] + '  vs  "' + d[2] + '" @' + d[3] + '  ' + d[4] + ' px2');
 }
-console.log('\ntotal collisions ' + total);
+console.log('\ntotal collisions ' + total + ' · canvas labels under a DOM overlay ' + under);
 await browser.close();

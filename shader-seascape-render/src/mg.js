@@ -28,7 +28,7 @@
 
   var cv = null, g = null, W = 1280, H = 720, dpr = 1, built = false;
   var S = { x0: 0, y0: 0, x1: 0, y1: 0, w: 0, h: 0 };
-  var lastDraw = -1e9, lastTick = 0, cur = -1, frames = 0;
+  var lastDraw = -1e9, lastTick = 0, cur = -1, frames = 0, lastBoxSig = -1;
 
   var F_MONO = '"JetBrains Mono", "Noto Sans SC", ui-monospace, monospace';
   var F_SANS = '"Space Grotesk", "Noto Sans SC", sans-serif';
@@ -97,7 +97,13 @@
     g.textAlign = o.align || 'left';
     g.textBaseline = o.base || 'alphabetic';
     if (o.letter) { s = s.split('').join('\u2009'); }
-    if (window.__mglog) window.__mglog.push([s, x, y, g.measureText(s).width, o.align || 'left', o.size || 9.5]);
+    var lw = g.measureText(s).width, lsz = o.size || 9.5, lal = o.align || 'left';
+    if (window.__mglog) window.__mglog.push([s, x, y, lw, lal, lsz]);
+    /* Record the box for the rest of this frame: a label that is placed later can then keep out
+       of a label that is already on the canvas, which is exactly the judgement a person makes
+       reading it. */
+    var lx0 = lal === 'right' ? x - lw : (lal === 'center' ? x - lw * 0.5 : x);
+    if (frameBoxes.length < 240) frameBoxes.push([lx0 - 1, y - lsz * 0.85, lx0 + lw + 1, y + lsz * 0.3]);
     g.fillText(s, x, y);
   }
   function line(x1, y1, x2, y2, col, w, dash) {
@@ -109,6 +115,77 @@
     g.restore();
   }
   function box(x, y, w, h, col) { g.fillStyle = col; g.fillRect(x, y, w, h); }
+
+  /* Where the DOM overlays are.
+     This canvas is full bleed and paints *under* the cards, the instrument panels and the
+     annotation labels, so a label that lands in one of those rectangles is not "crowded", it
+     is invisible - and the two overlay audits cannot see a canvas label to know. Read with a
+     short TTL (they move on a resize and on a chapter change and nowhere else). */
+  var overlayRects = [];
+  function overlayBoxes() {
+    /* Read every time, not on a timer. A 400 ms cache was enough for the layer to draw a label
+       into a rectangle that an annotation label was fading into - so the label ended up under it
+       anyway, and only the audit could see it. The draw itself is throttled to ~22 Hz, and this
+       is a handful of rects. */
+    overlayRects = [];
+    /* Selected by the class the overlays set when they are *meant* to be on, not by opacity.
+       Opacity was the obvious test and the wrong one: the fade takes 0.6 s, so during it the
+       rectangle is real but the computed opacity is still low, the canvas decides the space is
+       free, paints into it - and then the label arrives and covers it. The class is set on the
+       tick the element becomes part of the frame, which is the moment the space is spoken for. */
+    var sel = ['#cards .card.on', '#annot .tl.on', '.instrument.on'];
+    for (var s = 0; s < sel.length; s++) {
+      var els = document.querySelectorAll(sel[s]);
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i], r = el.getBoundingClientRect();
+        if (r.width < 4 || r.height < 4) continue;
+        overlayRects.push([r.left - 2, r.top - 2, r.right + 2, r.bottom + 2]);
+      }
+    }
+    return overlayRects;
+  }
+  var frameBoxes = [];
+  function hitsOverlay(x0, y0, x1, y1) {
+    var b = overlayBoxes();
+    for (var i = 0; i < b.length; i++) {
+      if (x1 > b[i][0] && x0 < b[i][2] && y1 > b[i][1] && y0 < b[i][3]) return true;
+    }
+    for (i = 0; i < frameBoxes.length; i++) {
+      if (x1 > frameBoxes[i][0] && x0 < frameBoxes[i][2] && y1 > frameBoxes[i][1] && y0 < frameBoxes[i][3]) return true;
+    }
+    return false;
+  }
+  /* A label that refuses to be painted under an overlay: measure it, test the candidate
+     anchors in order, and take the first that is clear. With no candidate clear it draws
+     nothing and returns false - a label nobody can read is worse than no label. */
+  function textFree(s, y, o) {
+    o = o || {};
+    var size = o.size || 9.5;
+    /* o.short: a shorter wording for the same label, tried at the same anchors before the
+       label gives up - the long form carries more, so it is preferred where there is room. */
+    var forms = [s];
+    if (o.short) forms.push(o.short);
+    for (var f = 0; f < forms.length; f++) {
+      var str = forms[f];
+      g.save();
+      g.font = size + 'px ' + (o.mono === false ? F_SANS : F_MONO);
+      var w2 = g.measureText(str).width;
+      g.restore();
+      var tryList = o.try && o.try.length ? o.try : [[o.x, o.align || 'left']];
+      for (var i = 0; i < tryList.length; i++) {
+        var cand = tryList[i];
+        var x = (cand instanceof Array) ? cand[0] : cand;
+        var align = (cand instanceof Array) ? (cand[1] || 'left') : (o.align || 'left');
+        var bx = align === 'right' ? x - w2 : (align === 'center' ? x - w2 * 0.5 : x);
+        if (!hitsOverlay(bx - 3, y - size * 0.85, bx + w2 + 3, y + size * 0.3)) {
+          if (o.plate) box(bx - 3, y - size - 1, w2 + 6, size + 5, 'rgba(9,10,13,' + o.plate + ')');
+          text(str, x, y, { col: o.col, size: size, align: align, mono: o.mono, base: o.base, letter: o.letter });
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   function frame(x, y, w, h, col, lw) {
     g.save(); g.strokeStyle = col; g.lineWidth = lw || 1;
     g.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1); g.restore();
@@ -544,7 +621,10 @@
       dot(sx, yOf(R.s.sunElev), 3, warm(0.9));
       text('太阳', sx + 5, yOf(R.s.sunElev) + 3.2, { col: warm(0.8), size: 8.5 });
     }
-    text('四周的轮廓', x0, yTop - 8, { col: ink(0.5), size: 9.5 });
+    /* The pane title shares its row with chapter 02's own annotation label ('山脊'), which the
+       SVG places just clear of the left card - and that is exactly the pane's top-left corner.
+       The title moves along the row instead of being painted under it. */
+    textFree('四周的轮廓', yTop - 8, { col: ink(0.5), size: 9.5, x: x0, try: [x0, x0 + 100, x0 + 210] });
     text('每 3.3° 取一条方位 · 高度场', x1, yTop - 8, { col: ink(0.3), size: 9, align: 'right' });
     return yBot;
   }
@@ -623,7 +703,7 @@
     var hMax = 2000, sMax = 0.46;
     var nx = 40, ny = 15, cw = (x1 - x0) / nx, chh = (y1 - y0) / ny;
     var grid = terrainGrid(R, 64);
-    scrim(x0 - 28, y0 - 20, x1 + 8, y1 + 30, 0.62, true);
+    scrim(x0 - 30, y0 - 22, x1 + 22, y1 + 34, 0.62, true);
     // the ramps the shader tests, in the shader's own units: slope = 1 - n.y
     for (var j = 0; j < ny; j++) {
       var slope = (1 - (j + 0.5) / ny) * sMax;
@@ -673,21 +753,36 @@
     // axes
     frame(x0, y0, x1 - x0, y1 - y0, ink(0.14));
     text('高度 m · 0 → ' + Math.round(hMax), x0, y1 + 27, { col: ink(0.36), size: 8.5 });
+    /* The end labels are anchored inward: centred on the first and last tick they overhung the
+       plate, so 0 and 2000 were painted half outside their own chart. */
     for (i = 0; i <= 4; i++) {
       var hx = x0 + (i / 4) * (x1 - x0);
       line(hx, y1, hx, y1 + 3, ink(0.2), 1);
-      text(String(Math.round(i / 4 * hMax)), hx, y1 + 13, { col: ink(0.3), size: 8, align: 'center' });
+      text(String(Math.round(i / 4 * hMax)), hx, y1 + 13,
+        { col: ink(0.3), size: 8, align: i === 0 ? 'left' : (i === 4 ? 'right' : 'center') });
     }
     g.save(); g.translate(x0 - 6, (y0 + y1) * 0.5); g.rotate(-Math.PI / 2);
     text('坡度 1−n·y   0 → ' + sMax, 0, 0, { col: ink(0.36), size: 8.5, align: 'center' });
     g.restore();
-    text('材质由坡度与高度决定 · 点 = 高度场里的真实采样', S.x1, y0 - 10, { col: ink(0.34), size: 9, align: 'right' });
-    text('岩 >0.025 坡 · 草 <1200 m · 沙 <13 m · 雪 >1450 m', x0, y0 - 10, { col: ink(0.34), size: 9 });
-    for (var b = 0; b < 4; b++) {
-      var bxp = x0 + ([13, 200, 1200, 1450][b] / hMax) * (x1 - x0);
-      line(bxp, y1 + 2, bxp, y1 + 7, ink(0.3), 1);
+    /* One strip, not two: the second one shared its row with chapter 03's annotation label and
+       was painted under it. Its content - that the dots are the field's own samples - now lives
+       at the end of the remaining line. */
+    text('材质由坡度与高度决定 · 点 = 高度场里的真实采样 · 岩 >0.025 坡', x0, y0 - 10,
+      { col: ink(0.34), size: 9 });
+    /* The material thresholds get labelled where they fall. As bare ticks the 13 m one landed on
+       the frame's own corner stroke (a clipped-looking mark) and 200 m was a tick with nothing
+       attached to it; and the 1200/1450 pair sat in the row of height numbers, crowding them. */
+    var TH = [[13, '沙 <13 m', 'left'], [1200, '草 <1200 m', 'right'], [1450, '雪 >1450 m', 'left']];
+    for (var b = 0; b < TH.length; b++) {
+      var bxp = x0 + (TH[b][0] / hMax) * (x1 - x0);
+      line(bxp, y0 + 3, bxp, y1 - 3, 'rgba(255,192,120,0.26)', 1, [2, 4]);
+      var lx = bxp + (TH[b][2] === 'left' ? 5 : -5);
+      var lw = 0;
+      g.save(); g.font = '8.5px ' + F_MONO; lw = g.measureText(TH[b][1]).width; g.restore();
+      var lbx = TH[b][2] === 'right' ? lx - lw : lx;
+      box(lbx - 3, y0 + 4, lw + 6, 13, 'rgba(9,10,13,0.72)');
+      text(TH[b][1], lx, y0 + 14, { col: warm(0.9), size: 8.5, align: TH[b][2] });
     }
-    line(x0 + (13 / hMax) * (x1 - x0), y1 + 5, x0 + (1450 / hMax) * (x1 - x0), y1 + 5, ink(0.10), 1);
 
     // the sun, and what it does to this frame
     var cxp = S.x1 - 42, cyp = S.y1 - 52, rr = 30;
@@ -772,7 +867,8 @@
           rgb01([disp[0], disp[1], disp[2]], 1));
       }
       frame(x0, y0, x1 - x0, y1 - y0, ink(0.2));
-      text('烘焙的天穹 LUT · 视线方位', x0, y0 - 10, { col: ink(0.5), size: 9 });
+      textFree('烘焙的天穹 LUT · 视线方位', y0 - 10, { col: ink(0.5), size: 9, x: x0,
+        short: '天穹 LUT · 视线方位', try: [x0, x0 + 62, x0 + 250] });
       text('90\u00b0', x1 + 4, y0 + 10, { col: ink(0.36), size: 8.5 });
       text('0\u00b0', x1 + 4, (y0 + y1) * 0.5, { col: ink(0.36), size: 8.5 });
       text('-3\u00b0', x1 + 4, y1 - 2, { col: ink(0.36), size: 8.5 });
@@ -919,7 +1015,8 @@
     dot(wx, wy, 2.6, cool(0.95));
     text('水线 ' + (flooded / (n2 * n2) * 100).toFixed(1) + '% 被淹没', wx + 6, wy - 6, { col: cool(0.85), size: 9 });
     text('高度范围 ' + Math.round(hMin) + ' … ' + Math.round(hMax) + ' m', px1, py1 + 30, { col: ink(0.5), size: 9, align: 'right' });
-    text('纵轴：低于该高度的比例', px1, py0 - 12, { col: ink(0.3), size: 9, align: 'right' });
+    textFree('纵轴：低于该高度的比例', py0 - 12, { col: ink(0.3), size: 9, x: px1, align: 'right',
+      short: '低于该高度的比例', try: [[px1, 'right'], [px1 - 210, 'right']] });
     text('16 km 瓦片 · ' + (n2 * n2) + ' 个采样点', px0, py1 + 15, { col: ink(0.3), size: 8.5 });
   }
 
@@ -936,12 +1033,20 @@
         box(0, yA, W, Math.max(1, yB - yA), 'rgba(255,192,120,0.05)');
       }
       line(0, p[1], W, p[1], warm(0.34), 1, [5, 4]);
-      text('平面海面会把太阳照在这一行 · 斜率方差 ±' + mss.toFixed(4), W - 12, p[1] - 6,
-        { col: warm(0.7), size: 9, align: 'right' });
+      /* The row crosses the whole frame by design, but its label cannot be painted under a card:
+         an earlier version put it at the right edge and, whenever the sun's mirror row fell in
+         the top third, chapter 06's card swallowed it. Plate it and walk the candidates. */
+      textFree('平面海面会把太阳照在这一行 · 斜率方差 ±' + mss.toFixed(4), p[1] - 6,
+        { col: warm(0.7), size: 9, plate: 0.62,
+          try: [[W - 12, 'right'], [S.x1 - 4, 'right'], [12, 'left'], [S.x0 + 4, 'left']] });
     }
     // the Fresnel curve
     var x0 = S.x0 + 2, x1 = S.x0 + S.w * 0.72, y0 = S.y0 + 66, y1 = S.y1 - 40;
-    scrim(x0 - 6, y0 - 20, x1 + 6, y1 + 42, 0.34);
+    /* A hard plate at chapter 03's weight. This chart sits on the sun's own specular path, and
+       the water resolves into bright glint blocks there - at 0.46 they still came through the
+       plate as small light chips sitting on the labels. 0.58 leaves the path visible, which is
+       what the chapter is about, but soft enough to read over. */
+    scrim(x0 - 8, y0 - 20, x1 + 8, y1 + 42, 0.58, true);
     var F0 = 0.0204;
     var xOfA = function (deg) { return x0 + (deg / 90) * (x1 - x0); };
     var yOfF = function (f) { return y1 - sat(f) * (y1 - y0); };
@@ -965,8 +1070,10 @@
       text(Math.round(i * 22.5) + '\u00b0', ax, y1 + 13, { col: ink(0.3), size: 8, align: 'center' });
     }
     line(x0, yOfF(1), x1, yOfF(1), ink(0.1), 1, [1, 4]);
-    text('F', x0 - 4, yOfF(1) + 3, { col: ink(0.36), size: 8.5, align: 'right' });
-    text('掠射角 θ → 菲涅耳反射率 F', x0, y0 - 12, { col: ink(0.5), size: 9.5 });
+    textFree('F', yOfF(1) + 3, { col: ink(0.36), size: 8.5, x: x0 - 4, align: 'right',
+      try: [[x0 - 4, 'right'], [x0 + 5, 'left']] });
+    textFree('掠射角 θ → 菲涅耳反射率 F', y0 - 12, { col: ink(0.5), size: 9.5, x: x0,
+      short: '掠射角 θ → 反射率 F', try: [x0] });
     text('F(θ) = F₀ + (1−F₀)(1−cos θ)⁵', x1, y1 + 28, { col: ink(0.6), size: 9.5, align: 'right' });
     text('F₀ = ' + F0 + ' · 这一帧覆盖 ' + aBot.toFixed(0) + '\u00b0 … ' + aTop.toFixed(0) + '\u00b0', x0, y1 + 28,
       { col: ink(0.38), size: 9 });
@@ -977,12 +1084,15 @@
     line(xOfA(aC), y1, xOfA(aC), yOfF(fC), warm(0.5), 1, [2, 3]);
     dot(xOfA(aC), yOfF(fC), 3, warm(0.95));
     var fRight = aC > 46;
-    text('视野中心 ' + aC.toFixed(1) + '\u00b0 · F ' + fC.toFixed(3),
-      xOfA(aC) + (fRight ? -6 : 6), yOfF(fC) + (fRight ? 17 : -7),
-      { col: warm(0.92), size: 9.5, align: fRight ? 'right' : 'left' });
+    /* On its own plate: this label walks along the curve with the camera, so it lands on the
+       sun's glint in the water as often as not, and a bright glint through the chart's plate
+       cut straight through the text. The plate covers the label's box and nothing else. */
+    textFree('视野中心 ' + aC.toFixed(1) + '\u00b0 · F ' + fC.toFixed(3), yOfF(fC) + (fRight ? 17 : -7),
+      { col: warm(0.92), size: 9.5, x: xOfA(aC) + (fRight ? -6 : 6), align: fRight ? 'right' : 'left',
+        plate: 0.55, try: [[xOfA(aC) + (fRight ? -6 : 6), fRight ? 'right' : 'left']] });
     // reflection against transmission, as the water splits them
     var bx0 = S.x1 - S.w * 0.2, by0 = S.y0 + 70;
-    scrim(bx0 - 8, by0 - 20, S.x1 + 4, by0 + 52, 0.30);
+    scrim(bx0 - 8, by0 - 20, S.x1 + 4, by0 + 52, 0.46, true);   // same reason as the curve's plate
     // one bar, split at this frame's own Fresnel weight, labelled underneath
     box(bx0, by0, S.x1 - bx0, 16, 'rgba(255,192,120,0.30)');
     box(bx0, by0, (S.x1 - bx0) * fC, 16, 'rgba(127,216,232,0.82)');
@@ -1039,8 +1149,10 @@
     // what those two numbers cost: the shader's own step budget, and its shadow samples
     var maxSteps = clamp(16 + (R.s.cloudSteps || 0) * 56 + span / 90, 16, 88);
     text('采样 ' + Math.round(maxSteps) + ' 步（上限 88） · 阴影 6 步', x0, y0 - 10, { col: ink(0.5), size: 9 });
-    text('云量 ' + Math.round((R.s.cloudCover || 0) * 100) + '% · 遮挡 ' + (R.s.cloudSun || 1).toFixed(2) + '\u00d7',
-      S.x1, y0 - 10, { col: ink(0.4), size: 9, align: 'right' });
+    textFree('云量 ' + Math.round((R.s.cloudCover || 0) * 100) + '% · 遮挡 ' + (R.s.cloudSun || 1).toFixed(2) + '\u00d7',
+      y0 - 10, { col: ink(0.4), size: 9, x: S.x1, align: 'right',
+        short: '云量 ' + Math.round((R.s.cloudCover || 0) * 100) + '%',
+        try: [[S.x1, 'right'], [S.x1 - 170, 'right'], [S.x1 - 320, 'right']] });
     // the three-lobe phase function, evaluated, in polar coordinates
     var cx = S.x1 - S.w * 0.17, cy = (y0 + y1) * 0.5 + 8, rr = Math.min(76, (y1 - y0) * 0.44);
     scrim(cx - rr - 14, cy - rr - 30, cx + rr + 14, cy + rr + 26, 0.32);
@@ -1124,7 +1236,8 @@
     line(x0, yOfO(1), x1, yOfO(1), ink(0.10), 1, [1, 4]);
     line(x0, yOfO(0.5), x1, yOfO(0.5), ink(0.08), 1, [1, 4]);
     text('中灰 0.18', x0 + 4, yOfO(0.18) - 4, { col: ink(0.3), size: 8 });
-    text('ACES（Stephen Hill 拟合）', x0, y0 - 12, { col: ink(0.55), size: 9.5 });
+    textFree('ACES（Stephen Hill 拟合）', y0 - 12, { col: ink(0.55), size: 9.5, x: x0,
+      short: 'ACES 拟合', try: [x0, x0 + 170, x0 + 330] });
     text('曝光 ' + (R.lastExposure || 0).toFixed(3) + '\u00d7', x1, y0 - 12, { col: warm(0.8), size: 9.5, align: 'right' });
   }
   function gradeDisplayChannel(lin) {
@@ -1231,6 +1344,11 @@
     var c = (SS.timeline ? SS.timeline.chapters[ch] : null) || { t0: 0, t1: 1 };
     var u = sat((t - c.t0) / Math.max(0.001, c.t1 - c.t0));
     var env = sat((u - 0.03) / 0.16) * sat((1 - u) / 0.09);
+    /* The label log is per draw, not cumulative: tools/mgtext.mjs reads it to measure where the
+       labels ended up, and a log that kept every earlier draw's positions measured labels that
+       are no longer on screen at those coordinates. */
+    if (window.__mglog) window.__mglog.length = 0;
+    frameBoxes.length = 0;
     g.clearRect(0, 0, W, H);
     if (env <= 0.01) { cur = ch; return; }
     var cam_ = cam(R);
@@ -1281,7 +1399,15 @@
       lastTick = now;
       pushMs(Math.max(R.stats && R.stats.ms ? R.stats.ms : 0, gap, 0.1));
       var pr = SS.timeline ? SS.timeline.progress((app && app.time) || 0) : { index: 0 };
-      var changed = (pr.index | 0) !== cur;
+      /* A change in the rectangles the layer has to keep clear is a change worth redrawing for:
+         an annotation label that has just faded in owns space that a canvas label may be sitting
+         in, and waiting out the 45 ms throttle is not the point - the label has to move. */
+      var boxes = overlayBoxes(), sig = boxes.length;
+      for (var bi = 0; bi < boxes.length; bi++) {
+        sig += Math.round(boxes[bi][0] + boxes[bi][1] * 3 + boxes[bi][2] * 7 + boxes[bi][3] * 11);
+      }
+      var changed = (pr.index | 0) !== cur || sig !== lastBoxSig;
+      lastBoxSig = sig;
       if (!changed && now - lastDraw < 45) return true;
       lastDraw = now;
       frames++;
