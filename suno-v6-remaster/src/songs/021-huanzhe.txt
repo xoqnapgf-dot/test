@@ -1,0 +1,92 @@
+#id: 021
+#slug: huanzhe
+#title: 患者
+#album: 《孤独症患者》
+#lang: Mandarin
+#orig: f1:1229-1305
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 84
+#length: about 4:30
+#note: 副歌里「（患者）（孤独症患者）」都是同一句上的回声，已并入上一行（v6 括号=叠唱），两遍副歌的括号位置完全一致。
+#note: verse 1 共 14 行、verse 2 共 17 行，已分别拆成 3 和 2 个小节；「我开始染病 / 我开始犯病」的叠句保持原顺序。
+--- STYLE
+Emotional Chinese alt-rock ballad at 84 BPM in B minor that builds from a hush to a roar, sung in Mandarin Chinese. A male vocalist sings raw, honest and slightly hoarse, close to the microphone and almost spoken in the verses, then wide, broken and sustained in the chorus with a second voice echoing the key words. A clean electric guitar with long delay and a soft piano carry the verses, a warm bass and brushed drums enter in the second half, and the chorus adds a heavy snare, wall-of-sound guitars, strings and layered backing vocals. Proud, solitary and aching mood of a gifted loner who calls his loneliness an incurable disease. Ends on the piano with one distant guitar note. Vocal-forward, wide cinematic mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, comedy, autotune, female lead vocal, fast tempo
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, clean guitar with long delay, a soft piano joins on bar five, a faint computer-fan hum, instrumental only]
+
+[Verse 1 | part 1 of 3, raw honest male voice, almost spoken, guitar and piano only, one breath per line, slightly behind the beat]
+有时我坐在电脑前，
+透过屏幕翻阅世间的一篇篇，
+数不清的作废的诺言，
+数不清的遗忘了的脸，
+二十多年是否寻觅到真正的知己，
+或许到头来仍然只有我自己。
+
+[Verse 1 | part 2 of 3, same voice, slightly harder, warm bass enters, brushed drums begin]
+天赋是把利刃，
+割伤了握住它的每一个人，
+不求命运不信鬼神不拜天地，
+只坚定天上地下唯我独尊的道理。
+
+[Verse 1 | part 3 of 3, voice rising, the two repeated lines are sung with a small pause between them, strings enter softly]
+我开始染病，
+染上名为孤独自傲的绝症，
+我开始犯病，
+对着浩瀚无垠的宇宙尘封了心门。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | wide broken sustained voice, heavy snare and wall of guitars, strings swell, bracketed words are a second voice echoing on the same line, long held line endings]
+我是个孤独症患者，（患者）（患者）
+孤独症患者，（孤独症患者）（孤独症患者）
+让我一个人留在这，
+把遗言镌刻等眼泪成河，
+我是个孤独症患者，（孤独症患者）（患者）
+孤独症患者，（孤独症）（患者）
+让我一个人留在这，
+把遗言镌刻等眼泪成河。
+
+[Verse 2 | part 1 of 2, back to the raw hushed voice, guitar and piano, bass and brushed drums stay, a little more fragile and bitter]
+开始发了疯，继续发着癫，
+就这样空虚度过一年又一年，
+岁月在我身上留存的伤痕，
+哈哈，我只想说一点都不疼，
+我在唱我在跳，我在风雨中招摇，
+我在哭我在笑，我在入梦时舞蹈，
+没有药，没有救我的人，
+没有，没有，什么也没有。
+
+[Verse 2 | part 2 of 2, voice rising with pain, drums harder, strings climbing, the final lines are sung with a pause after each]
+我开始染病，
+染上名为孤独自傲的绝症，
+我开始犯病，
+对着浩瀚无垠的宇宙尘封了心门，
+开始犯病，
+开始犯病，
+治不了的病，
+无药可救的病患，
+我是孤独症患者。
+
+[Drop | 2 bars, strings swell and cut to one beat of full silence, then drums, guitars and strings land together, vocals rest]
+
+[Final Chorus | strongest version, voice broken open on the high notes, backing voices at full volume, wall of guitars, same melody as the first chorus, bracketed words are echoes on the same line]
+我是个孤独症患者，（患者）（患者）
+孤独症患者，（孤独症患者）（孤独症患者）
+让我一个人留在这，
+把遗言镌刻等眼泪成河，
+我是个孤独症患者，（孤独症患者）（患者）
+孤独症患者，（孤独症）（患者）
+让我一个人留在这，
+把遗言镌刻等眼泪成河。
+
+[Outro | 8 bars, drums and guitars fall away, piano plays the intro motif alone, one distant guitar note, then silence, instrumental only]
+[End]

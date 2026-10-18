@@ -1,0 +1,68 @@
+#id: 042
+#slug: zhidaoma
+#title: 知道吗
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:236-280
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 100
+#length: about 3:30
+#note: verse 2 末尾的绕口令「长江沧浪荡苍茫，长桨扬扬闯汪洋…」音节很密，已在标签里要求"每个分句后半拍留白"，并把 BPM 压在 100。
+#note: 「（wa ao！）」是夹在句间的顺序喊叫，保持独立成行。含粗口/自夸词，按原稿保留。
+--- STYLE
+Brash Chinese hip-hop with pop-punk guitars at 100 BPM in G minor, rapped and sung in Mandarin Chinese. A male vocalist raps with a cocky, bratty, rhythmic flow in the verses, then shouts and sings the chorus with an arrogant swagger and a crowd of gang vocals. A bouncing bass, punchy live drums with a snappy snare and a gritty detuned guitar loop carry the verses, a siren-like synth stab accents the beat, and the chorus adds crunchy power chords, handclaps and stadium shouts. Cocky, defiant mood of a self-declared strongest man crushing every rival like a police officer chasing a wanted criminal. Ends on a siren and one power chord. Punchy, bright, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, lo-fi, orchestral strings, smooth jazz, autotune, country
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a siren-like synth stab, a gritty detuned guitar loop, bouncing bass enters on bar three, drums crash in on bar five, instrumental only]
+
+[Verse 1 | cocky bratty rapped voice, bass and drums tight, guitar loop, a clear breath after every line, slightly behind the beat]
+每当我徘徊在十字路口，岁月终究不停留，
+清风卷起满天风尘，不变的是那道伤痕，
+说到底仍旧只有我一个人，再次尘封了自己的心门，
+即使天空压住我的头，我也大声回应no no no，
+每当你陪伴我左右，有谁会再度回首，
+或许到了说再见的时候。
+
+[Chorus | arrogant shouted sung voice, crunchy power chords and handclaps enter, gang vocals double the title line, the parenthesized shout is a single crowd yell between lines]
+知道吗，你看见了吗，
+我就是全世界最帅的帅逼，
+被我击败你只能哭着回去找妈妈，
+我坚韧不倒无可匹敌，
+（wa ao！）
+知道吗，认清现实了吗，
+我是否让你惧怕，是否断绝你的牵挂，
+我是警察，你是通缉犯，等着我擒拿。
+
+[Verse 2 | back to the bratty rapped flow, bass and drums tight, faster, half a beat of air after every phrase]
+大千世界纷纷扰扰多么喧嚣，
+蚊虫叽叽喳喳整天到晚还在叫嚣，
+碾压你们根本无需动脑，
+践踏你们人生逐句高超，
+
+强者都是孤独，只有野狗才会成群，
+放弃陈旧的路数，再努力也不过浮云，
+长江沧浪荡苍茫，长桨扬扬闯汪洋，
+香光煌煌漾廊堂，狂郎放嗓唱狼王！
+
+[Drop | 2 bars, everything cuts to one beat of full silence with only a siren, then the full band slams in, vocals rest]
+
+[Final Chorus | strongest version, shouted at full power, gang vocals at full volume, same melody as the first chorus, the parenthesized shout is a single crowd yell between lines]
+知道吗，你看见了吗，
+我就是全世界最帅的帅逼，
+被我击败你只能哭着回去找妈妈，
+我坚韧不倒无可匹敌，
+（wa ao！）
+知道吗，认清现实了吗，
+我是否让你惧怕，是否断绝你的牵挂，
+我是警察，你是通缉犯，等着我擒拿。
+
+[Outro | 8 bars, drums and bass stop, the siren wails alone, one last power chord, then silence, instrumental only]
+[End]

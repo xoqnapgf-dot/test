@@ -1,0 +1,111 @@
+#id: 063
+#slug: kiri-no-shima-no-echo
+#title: 霧の島のエコー
+#album: 歌词2
+#lang: Japanese
+#orig: f2:1913-1996
+#vocal: Female
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 82
+#length: about 4:30
+#note: 原稿用「[Chorus] [Emotional, Soaring]」这种连续两个方括号的写法，已合并为一个「[Chorus | …]」；[Interlude: …] 写成具体的 8 小节（小提琴独奏 + 指弹吉他 + 轻响鼓）。
+#note: 平假名为主的歌词，原稿用半角空格做停顿，已改成「、」；「——」「(ooh...)」「(lalala...)」保持原样。
+#note: 「むてき(霧笛)」是原稿写法（读 むてき，应为 きてき 的音，若读成「無敵」请用歌词精修）。
+--- STYLE
+Warm Japanese indie-folk pop at 82 BPM in D major, sung in Japanese. A soft female vocalist sings tender and breathy, close to the microphone in the verses, then clear, emotional and soaring in the chorus with warm harmonies above. A fingerpicked acoustic guitar, a warm melodic bass and a soft cajon carry the verses, a violin plays long notes and answers the vocal phrases, a distant foghorn sounds between sections, and the final chorus opens into a full band with a key change. Nostalgic, bittersweet mood of a foggy harbor town, a doughnut split in half, and a lost friend's bass note echoing across the sea. Ends on the guitar fading with violin harmonics, waves and a distant foghorn. Warm, natural, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, screaming, autotune, metal
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, a fingerpicked acoustic guitar, a distant foghorn, soft violin swells, gentle sea waves, instrumental only]
+
+[Verse 1 | soft tender female voice, breathy and close, guitar only, a breath after every line, slightly behind the beat]
+夕ぐれの港に、霧がおりてくる、
+街灯はひとつずつ、にじんでともる、
+さびた、いかりのそばで、潮風がうたう、
+だれかのわすれた声を、はこぶように。
+
+石だたみの坂道、足音がこだまして、
+ふりむけば白い霧、きみの影をさがす、
+とおくで鳴る、むてきの音は、
+海のむこうまで、とどいているかな。
+
+[Pre-Chorus | building, voice lifts gently, violin enters with a long note, bass joins softly]
+波の音にまじって、聞こえた気がしたんだ、
+「まだここにいるよ」と、ささやくような声、
+にぎりしめた手のひら、あたたかい、きおく、
+夜の霧のむこうへ、いま、うたうから。
+
+[Chorus | emotional and soaring, clear voice with warm harmonies above, cajon and bass steady, violin sings the melody between lines, long held line endings]
+霧の島のエコー、きえないこだま、
+きみが弾いた、ひくい音、むねの奥で鳴ってる、
+灯台の光が、夜をひとまわりして、
+また同じ場所で、わたしたちを照らすよ、
+どこにいても、どんなに遠くても、
+この歌は霧をこえて、きっと、きみにとどく、
+(ooh...) ひびけ、とおくまで、
+(ooh...) 霧の島のエコー。
+
+[Verse 2 | back to the soft tender voice, guitar and bass, a little more nostalgic, a smile in the voice]
+あの店のカウンター、砂糖のあまい匂い、
+笑い声とギターの音が、とけあっていた夜、
+ドーナツをふたつに割って、半分こした帰り道、
+「ずっとこのままだね」と、笑っていたのに、
+
+季節は波のように、音もなく過ぎて、
+さんばしの先にひとり、きみは立っていた、
+「ごめんね」も「またね」も、言えないままで、
+汽笛が鳴って、白い霧がすべてを包んだ。
+
+[Pre-Chorus | building, voice lifts gently, violin and bass, a little more emotional than before]
+それでも、げんにふれれば、よみがえるぬくもり、
+四つの音のすきまに、きみの音がひびく、
+うしなったわけじゃない、ただ遠いだけ、
+夜の霧のむこうへ、もういちど、うたう。
+
+[Chorus | same as the first chorus, a little stronger, same melody]
+霧の島のエコー、きえないこだま、
+きみが弾いた、ひくい音、むねの奥で鳴ってる、
+灯台の光が、夜をひとまわりして、
+また同じ場所で、わたしたちを照らすよ、
+どこにいても、どんなに遠くても、
+この歌は霧をこえて、きっと、きみにとどく、
+(ooh...) ひびけ、とおくまで、
+(ooh...) 霧の島のエコー。
+
+[Interlude | 8 bars, an emotional violin solo over fingerpicked guitar and a soft cajon, instrumental only, the bass joins on the last two bars]
+
+[Bridge | quiet and whispered, guitar only with violin harmonics, a pause after each pair of lines, the last line is sung softly and held]
+真夜中の海は、声をあつめる鏡、
+しずんだ言葉たちが、光になってうかぶ、
+この街の霧は、ふしぎな魔法みたいに、
+なくしたものを、そっと返してくれる、
+もしも、ねがいが、ひとつ叶うなら、
+この音を、追い風にして——
+
+[Verse 3 | soft and gradually building, guitar and bass, drums enter softly on the fourth line, a moving discovery in a crowded street]
+知らない街の、ざっとうで、ふと足を止めた、
+聞きおぼえのある、ベースのひびき、
+心臓がはねた、人ごみをかきわけて、
+ふりむいた、その先に、きみがいた、
+なにも言わなくていい、泣かなくていい、
+つないだ音が、ぜんぶ、おぼえているから。
+
+[Final Chorus | triumphant, full band, key change up one step, voice soars with all the harmonies, violin and guitar at full, the last line is held long]
+霧の島のエコー、ほら聞こえるでしょう、
+五つの音がかさなって、ひとつの歌になる、
+灯台の光が、朝をつれてくるまで、
+もう離さないよ、この手も、この音も、
+どこへ行くとしても、なんど迷っても、
+帰る場所はここにある、霧の島のステージ、
+(lalala...) ひびけ、世界のはてまで、
+(lalala...) わたしたちのエコー。
+
+[Outro | 8 bars, the guitar fades, violin harmonics, waves and a distant foghorn, the voice hums softly]
+(ooh... ooh...)
+[End]

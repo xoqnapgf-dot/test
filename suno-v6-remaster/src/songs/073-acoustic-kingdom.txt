@@ -1,0 +1,68 @@
+#id: 073
+#slug: acoustic-kingdom
+#title: 原声的王国
+#title-note: 原稿无标题，取自副歌末句「建立起原声的王国」，暂定此名，可自行改。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:2783-2826
+#dropped: (a Gentle fingerpicking with a majestic reverb, a slow bowing violin)|（It‘s implicitly excited, just like the implicit before the outbreak.）|(Heavy syncopated cajon hits, aggressive flatwound bass groove, shimmering tambourine accents)|(Fast trading solos between lush reverb dreadnought and bright acoustic violin, massive percussive backing)|(Slow ringing chords, fading shaker)
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 112
+#length: about 3:40
+#note: 原稿用 [Mood: …][Energy: …][Instrument: …] 这类半自定义标签，v6 很可能忽略；已改成 Style 里的整曲描述 + 每段的「段落 | 指示」，Energy 的 Low → High → Explosive → Maximum 递进保留在各段指示里。
+#note: 原稿有 5 处括号制作说明（含一句中文全角括号里的英文 "It‘s implicitly excited…"），都会被唱出来，已移进方括号英文指示，不再出现在歌词里。
+#note: 全曲只用木质原声乐器（吉他、小提琴、卡洪鼓、扁线贝斯、铃鼓），所以 Exclude 里放了合成器/电吉他/失真。
+--- STYLE
+Cinematic acoustic folk-rock with explosive percussive energy at 112 BPM in G major, sung in Mandarin Chinese. A female vocalist sings with a clear, strong, youthful voice, hushed and mysterious in the verses, then full and defiant in the chorus with a crowd of stacked harmonies. A fingerpicked dreadnought acoustic guitar with a majestic reverb and a slow bowing violin open the song, heavy syncopated cajon hits, an aggressive flatwound bass groove and shimmering tambourine accents drive the chorus, the guitar and violin trade fast solos, and massive percussive backing builds to an acoustic wall of sound. Proud, young, rebellious mood of wood, metal, sweat and bones building a kingdom of acoustic sound inside a steel forest. Ends on slow ringing chords and a fading shaker. Warm, wide, vocal-forward mix.
+--- EXCLUDE
+electric guitar, synthesizer, electronic drums, distortion, autotune, male lead vocal, Cantonese, English vocals, rap, EDM drop
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a gentle fingerpicked acoustic guitar with a majestic reverb, a slow bowing violin joins on bar five, low energy, cinematic and mysterious, instrumental only]
+
+[Verse 1 | hushed mysterious female voice, close-mic, guitar and violin only, a breath after every line, slightly behind the beat]
+从手工精细雕琢的琴桥，到闪耀璀璨星芒的面板，
+我们积蓄着木材的振动，让这种能量永远流传，
+一块金色的吉他拨片，在手指尖流光溢彩，
+最安静的演奏者，正拉开宏大乐章的序曲。
+松香摩擦着琴弦，弓毛在指板上起舞，
+从最深沉的暗影中，踏上寻找光芒的旅途。
+
+[Pre-Chorus | implicitly excited, like the quiet before an outbreak, the voice lifts, light cajon taps enter, the violin tremolo rises]
+空间的频率开始扭曲，舞台上的双眼已经聚焦，
+台上麦克风静静伫立，等待着完美的破晓，
+没有雾霭的阻挡，只有激动跳跃着的狂热心脏，
+准备迎接那一刻，划破长空的天籁之唱——
+
+[Chorus | part 1 of 2, high energy, full voice and stacked harmonies, strummed guitar and violin sing together, long held line endings]
+感受这共振！感受这纯粹的原声巨浪！
+夺回我们失去的真实，赋予木头以灵魂的光芒！——
+沉重的桦木心跳，在宏大的回声墙壁上冲撞！
+哪怕最娇小的身影也，坚如磐石，挺拔而倔强！
+我们只有木头、金属、汗水和年轻的骨骼，
+却要在这座钢铁森林里，建立起原声的王国！
+
+[Chorus | part 2 of 2, heavy syncopated cajon hits, an aggressive flatwound bass groove, shimmering tambourine accents, the energy explosive, a hard strum on every line]
+飞扬的鼓棒在空气中撕扯，模糊了乖戾的视线，
+千万别低估了她骨子里，永不服输的誓言！
+狂乱的扫弦如狂风暴雨，撕裂了所有的伪装！
+一堵坚不可摧的原声之墙，正在向着生命生长！
+
+[Instrumental Break | 8 bars, fast trading solos between a lush reverb dreadnought guitar and a bright acoustic violin, massive percussive backing, instrumental only]
+
+[Final Chorus | maximum energy, the whole voice and harmonies at full power, the guitar, violin and percussion all at full, same melody as the first chorus, the last line is held long]
+感受这共振！感受这纯粹的原声巨浪！
+夺回我们失去的真实，赋予木头以灵魂的光芒！
+沉重的桦木心跳，在宏大的回声墙壁上冲撞！
+哪怕最娇小的身影也，坚如磐石，挺拔而倔强！
+我们只有木头、金属、汗水和年轻的骨骼，
+却要在这座钢铁森林里，建立起原声的王国！——
+
+[Outro | all instruments fading, slow ringing chords, a fading shaker, instrumental only]
+[End]

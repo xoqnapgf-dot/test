@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>从一条射线到一片海 — 实时着色器解构</title>
+<meta name="description" content="九个步骤，一段 WebGL 着色器，从零实时渲染海、云与夕阳。可拆解、可验证、可自由调参。">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="booting">
+  <canvas id="stage" aria-label="实时渲染画面"></canvas>
+
+  <!-- the motion graphics sit above the picture but below every panel, so they can run
+       full bleed without ever colliding with a card or an instrument -->
+  <canvas id="mg" class="layer" aria-hidden="true"></canvas>
+  <svg id="annot" class="layer" xmlns="http://www.w3.org/2000/svg"></svg>
+
+  <!-- overlay layers -->
+  <div id="hud" class="layer">
+    <header id="titleBlock">
+      <div class="kicker"><span id="chapterNum">00</span><span class="sep">/</span><span id="chapterTotal">09</span></div>
+      <h1 id="chapterTitle">从一条射线到一片海</h1>
+      <div id="chapterSub">WebGL 着色器里的九个步骤</div>
+    </header>
+
+    <div id="readouts">
+      <div class="ro"><span class="k">帧率</span><span class="v" id="roFps">–</span></div>
+      <div class="ro"><span class="k">内部分辨率</span><span class="v" id="roRes">–</span></div>
+      <div class="ro"><span class="k">太阳高度</span><span class="v" id="roSun">–</span></div>
+      <div class="ro"><span class="k">风速</span><span class="v" id="roWind">–</span></div>
+      <div class="ro"><span class="k">帧时间</span><span class="v" id="roMs">–</span></div>
+    </div>
+  </div>
+
+  <div id="cards" class="layer"></div>
+
+  <div id="captionWrap" class="layer">
+    <div id="caption"></div>
+    <div id="captionSub"></div>
+  </div>
+
+  <div id="timeline" class="layer">
+    <div id="track">
+      <div id="played"></div>
+      <div id="chapterMarks"></div>
+      <div id="playhead"></div>
+    </div>
+    <div id="controls">
+      <button id="btnPlay" class="btn" title="播放 / 暂停 (空格)"><span class="glyph" id="glyphPlay"><svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2.6 1.6 L10.2 6 L2.6 10.4 Z" fill="currentColor"/></svg></span></button>
+      <div id="chapterList"></div>
+      <div class="spacer"></div>
+      <button id="btnCaptions" class="btn" title="字幕 (C)">CC</button>
+      <button id="btnPanel" class="btn" title="面板 (P)">面板</button>
+      <button id="btnFull" class="btn" title="全屏 (F)"><svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"><path d="M4.6 1.9H1.9v2.7M7.4 1.9h2.7v2.7M10.1 7.4v2.7H7.4M4.6 10.1H1.9V7.4"/></svg></button>
+      <button id="btnSound" class="btn" title="声音 (M)"><svg viewBox="0 0 14 12" width="13" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.4h2.2L7 1.8v8.4L4.2 7.6H2z" fill="currentColor" stroke="none"/><path d="M9 4.1a2.9 2.9 0 0 1 0 3.8"/><path d="M10.6 2.7a5 5 0 0 1 0 6.6"/></svg></button>
+    </div>
+  </div>
+
+  <aside id="panel">
+    <div class="panelHead">
+      <strong>控制台</strong>
+      <button id="panelClose" class="btn small"><svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M3 3l6 6M9 3l-6 6"/></svg></button>
+    </div>
+    <div id="panelBody"></div>
+  </aside>
+
+  <div id="boot">
+    <div class="bootInner">
+      <div class="bootKicker">实时着色器解构</div>
+      <div class="bootTitle">从一条射线到一片海</div>
+      <div class="bootBar"><div id="bootFill"></div></div>
+      <div class="bootMsg" id="bootMsg">正在生成地形高度场…</div>
+      <noscript>这个页面需要 JavaScript 与 WebGL2。</noscript>
+    </div>
+  </div>
+
+  <div id="fail" hidden style="display:none">
+    <div class="failInner">
+      <h2>无法启动 WebGL2</h2>
+      <p id="failMsg">这台设备或浏览器没有可用的 WebGL2 上下文。请更新浏览器，或改用支持 WebGL2 的设备打开。</p>
+    </div>
+  </div>
+
+  <script src="src/gl.js"></script>
+  <script src="src/glsl/common.js"></script>
+  <script src="src/glsl/sky.js"></script>
+  <script src="src/glsl/bake.js"></script>
+  <script src="src/glsl/terrain.js"></script>
+  <script src="src/glsl/clouds.js"></script>
+  <script src="src/glsl/water.js"></script>
+  <script src="src/glsl/scene.js"></script>
+  <script src="src/glsl/gen.js"></script>
+  <script src="src/glsl/post.js"></script>
+  <script src="src/gen.js"></script>
+  <script src="src/renderer.js"></script>
+  <script src="src/camera.js"></script>
+  <script src="src/timeline.js"></script>
+  <script src="src/captions.js"></script>
+  <script src="src/instruments.js"></script>
+  <script src="src/overlays.js"></script>
+  <script src="src/mg.js"></script>
+  <script src="src/audio.js"></script>
+  <script src="src/ui.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

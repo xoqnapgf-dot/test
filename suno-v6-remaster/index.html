@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-ui="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suno v6 Remaster · Suno v6 リマスター</title>
+<meta name="description" content="75 finished songs rebuilt for Suno v6: title, style, exclude styles, lyrics with detailed in-lyric directions and slider settings. / Suno v6 向けに作り直した完成曲 75 曲の全パラメータ。">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">Suno v6 · Custom Mode</div>
+  <h1><span class="en">Suno v6 Remaster</span><span class="ja">Suno v6 リマスター</span></h1>
+  <p class="sub">
+    <span class="en">Every finished song from the two lyric files, rebuilt as a complete, paste-ready parameter set for Suno v6: title, Style of Music, Exclude Styles, lyrics with detailed in-lyric performance directions, and slider settings.</span>
+    <span class="ja">2 つの歌詞ファイルにある完成済みの全曲を、Suno v6 にそのまま貼れる完全なパラメータ一式に作り直しました。タイトル、Style of Music、Exclude Styles、演出指示つきの歌詞、スライダー設定まで揃っています。</span>
+  </p>
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Language / 言語">
+      <button type="button" data-set-ui="en" aria-pressed="true">English</button>
+      <button type="button" data-set-ui="ja" aria-pressed="false">日本語</button>
+    </div>
+    <span class="stat"><b id="total">75</b> <span class="en">songs · model v6</span><span class="ja">曲 · モデル v6</span></span>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="grid2">
+    <div>
+      <h2><span class="en">How to use</span><span class="ja">使い方</span></h2>
+      <ol class="en">
+        <li>In Suno open <b>Create → Custom (Advanced)</b> and pick model <b>v6</b> (the flagship; not v6-mini, not v6-wild).</li>
+        <li>Paste <b>Title</b>, <b>Style of Music</b> and <b>Lyrics</b>; open <b>More Options</b> and paste <b>Exclude Styles</b>.</li>
+        <li>Set Vocal Gender, Weirdness, Style Influence, Variety and Max Mode as listed on the card.</li>
+        <li>Generate, pick the best take, and fix single lines with v6 Lyrics Precision Editing or Section Editing instead of rerolling the whole song.</li>
+      </ol>
+      <ol class="ja">
+        <li>Suno の <b>Create → Custom (Advanced)</b> を開き、モデルは <b>v6</b>（フラッグシップ。v6-mini・v6-wild ではありません）を選びます。</li>
+        <li><b>Title</b>・<b>Style of Music</b>・<b>Lyrics</b> を貼り付け、<b>More Options</b> を開いて <b>Exclude Styles</b> を貼ります。</li>
+        <li>カードに書かれた Vocal Gender / Weirdness / Style Influence / Variety / Max Mode を設定します。</li>
+        <li>生成してベストテイクを選び、1 行だけ直したいときは曲全体を引き直さず v6 の歌詞精密編集・セクション編集を使います。</li>
+      </ol>
+      <p>
+        <a class="dl" href="suno-v6-all-songs.zip" download><span class="en">Download all songs (zip)</span><span class="ja">全曲まとめて ZIP をダウンロード</span></a>
+        <span class="pw">test</span>
+        <span class="en">← zip password</span><span class="ja">← ZIP のパスワード</span>
+      </p>
+    </div>
+    <div>
+      <h2><span class="en">What was changed</span><span class="ja">何を変えたか</span></h2>
+      <ul class="en">
+        <li><b>Lyric wording is untouched.</b> Only tags, punctuation, line breaks and blank lines were added; a script compares every song with your original text.</li>
+        <li>Each tag sits alone on its own line, the lyrics start on the next line, and sections are separated by a blank line.</li>
+        <li>Intros, interludes, drops and outros say exactly what plays and for how many bars; <code>[Break]</code> / <code>[Drop]</code> spell out the one-beat silence that stops vocals from rushing.</li>
+        <li>Lines end with <code>,</code> or <code>.</code>; dense rap lines use an inline <code>[Silence]</code> instead (never both).</li>
+        <li>Parentheses are sung backing vocals only. Stage directions that were hidden in parentheses were moved into tags; echoes that overlap the lead were merged onto its line, while call-and-response answers keep their own line.</li>
+        <li>All “no X” wishes live in Exclude Styles, never in Style.</li>
+      </ul>
+      <ul class="ja">
+        <li><b>歌詞の文言は一字も変えていません。</b>追加したのはタグ・句読点・改行・空行だけで、全曲をスクリプトで元の歌詞と照合しています。</li>
+        <li>タグは必ず単独の行に置き、歌詞は次の行から始め、セクションの間は 1 行空けます。</li>
+        <li>イントロ・間奏・ドロップ・アウトロは、鳴っている内容と小節数を明記。<code>[Break]</code> / <code>[Drop]</code> で「1 拍の無音」を指定し、走りを抑えます。</li>
+        <li>行末は <code>、</code> または <code>。</code>。詰まったラップ行だけは行末に <code>[Silence]</code> を置き、句読点とは併用しません。</li>
+        <li>丸括弧は「歌われるバックボーカル」だけに使用。括弧に隠れていた演奏指示はタグへ移し、主旋律と重なる合いの手は同じ行に、掛け合いの返事は独立した行にしました。</li>
+        <li>「〜なし」の指定はすべて Exclude Styles に集約し、Style には書きません。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="tools" aria-label="Filter">
+  <input id="q" type="search" autocomplete="off" aria-label="Search / 検索">
+  <div id="chips" class="chips"></div>
+  <div class="stat" id="count" aria-live="polite"></div>
+</section>
+
+<main>
+  <div id="list" class="list"></div>
+  <p id="empty" class="empty" hidden></p>
+</main>
+
+<footer>
+  <p class="en">Everything runs offline from this folder. Sources and the rebuild steps are in <code>README.md</code>; the songs live in <code>src/songs/</code>.</p>
+  <p class="ja">すべてこのフォルダだけでオフラインで動きます。出典と再生成の手順は <code>README.md</code>、曲のソースは <code>src/songs/</code> にあります。</p>
+</footer>
+
+</div>
+<script src="data/songs.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>

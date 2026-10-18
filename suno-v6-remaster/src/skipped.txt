@@ -1,0 +1,21 @@
+These items were NOT remastered (they are not finished songs). / 以下は未処理（完成した曲ではない）。/ 以下未处理（不是写完的歌曲）：
+
+A. Empty templates (section tags only, no lyrics) / 空テンプレート / 只有结构标签、没有歌词的空模板
+   lyrics file 1 (歌词):
+   - 《葬天殇》（葬）（殇）           lines 1752-1785   empty
+   - 《葬天殇》（定天）               lines 1787-1807   only the three words 定天 / 逆天 / 命天
+   - 《破碎的星河》（破碎星河）       lines 2049-2065   empty
+   - 《档案》（The Drifter）          lines 2118-2132   empty
+   - 《我的名字叫真理》（truth）（眼中的太阳）（夜）（雪）（叶）   lines 2261-2342   all empty
+
+B. Unstructured rap scraps / 構造のないラップ草稿 / 无结构的 rap 草稿
+   lyrics file 2 (歌词2):
+   - lines 1635-1646   12 lines, the same chorus that already sits inside 活着的传奇
+   - lines 1649-1682   long untitled rap draft "街头冷风吹过…"
+   - lines 1685-1692   8 lines, near-duplicate of the bridge of 活着的传奇
+   - lines 1695-1718   untitled rap draft "风云再起硝烟漫卷…"
+   - lines 1720-1736   untitled rap draft "建立算法数量探测极限…"
+   Tell me if you want any of these turned into a song and I will add it.
+
+C. Duplicate text / 重複テキスト / 重复文本
+   lyrics file 1, lines 448-500: a plain, tag-free copy of 窃火者 (checked: same wording as song 008).

@@ -1,0 +1,75 @@
+#id: 056
+#slug: algorithm-suffering
+#title: 算法批准的苦难
+#title-note: 原稿无标题，取自副歌末句「我们早活成数据流里被算法批准的苦难」，暂定此名，可自行改。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1308-1348
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 84
+#length: about 3:50
+#note: Bridge 里的四句口号（恒大承诺保交楼 / 鼓励灵活就业 / 双减政策落地 / 动态清零）原稿引号有的没闭合，已按原样保留；写成"冷淡播音腔 + 轻微电流噪声"的念白，不是唱。
+#note: Outro 是被突然停电打断的播报，最后一句「（！操！又停电了！）」按原样放在括号里，作为叠加的低吼；含粗口。
+--- STYLE
+Somber Chinese boom-bap rap with a cold sung hook at 84 BPM in A minor, rapped in Mandarin Chinese. A male rapper delivers a flat, tired, razor-clear flow in the verses with a clear breath after every line, then sings the chorus in a cold, resigned, sustained voice with a layered double. A slow dusty kick and snare, a muted piano loop and a deep bass carry the verses, thin strings hang over the hook, and a faint broadcast-static texture flickers underneath. Bitter, satirical mood of an overbuilt economy, unfinished buildings, red health codes and a nation of voices welded into one tone. Ends on a sudden power cut. Dry, cold, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad only piano, EDM drop, trap hi-hats, upbeat pop, comedy, heavy metal, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a muted piano loop, a faint broadcast static, a slow dusty kick and snare enter on bar five, instrumental only]
+
+[Verse 1 | flat tired rapped voice, piano loop and kick, a clear breath after every line, slightly behind the beat]
+当烂尾楼业主在郑州街头背诵《民法典》条款，
+健康码却突然转红，像被掐住喉管的惊喘，
+村镇银行取款键变成灰色，四零四错误页面，
+而纪委通报的院长，正往瑞士账户转账癌细胞的钱。
+
+[Verse 2 | same flat voice, a deep bass added, a little more bitter]
+教培失业潮撞上三十五岁简历回收站，
+上海团长特权车碾过封控区最后的菜篮，
+江西彩礼货广告贴在精准扶贫宣传栏，
+鹤岗两万块买断的人生，在深圳只够租一年半。
+
+[Chorus | cold resigned sustained sung voice, thin strings enter, a layered double sings the last word of each line, the beat steady]
+这报表里增长的是ICU呼吸机计费器的跳转，
+这屏幕里的平安是热搜撤稿员的彻夜加班，
+当所有喉咙被焊进同一个腔调发声站，
+我们早活成数据流里被算法批准的苦难。
+
+[Verse 3 | back to the flat rapped voice, piano loop and bass, sharper and angrier, a clear breath after every line]
+看洞庭湖抽干鱼虾，种别墅的推土机多忙，
+三甲医院采购单，藏着进口器械百分之两百回扣账，
+贵州扶贫公路塌方时，明星逃税榜正更新，
+苏州和服事件出警速度，超过唐山报警铃。
+
+[Chorus | same as the first chorus, a little colder, same melody]
+这报表里增长的是ICU呼吸机计费器的跳转，
+这屏幕里的平安是热搜撤稿员的彻夜加班，
+当所有喉咙被焊进同一个腔调发声站，
+我们早活成数据流里被算法批准的苦难。
+
+[Spoken Word | a flat cold newsreader voice reads official slogans over faint broadcast static, one slogan at a time with a pause between them, beat paused]
+“恒大承诺保交楼….”
+“鼓励灵活就业，
+“双减政策落地.”
+“动态清零.”
+
+[Drop | 2 bars, the beat slams back in after the pause, piano loop and bass and the full drums, vocals rest]
+
+[Final Chorus | strongest version, voice cold and wide, layered double louder, same melody as the first chorus]
+这报表里增长的是ICU呼吸机计费器的跳转，
+这屏幕里的平安是热搜撤稿员的彻夜加班，
+当所有喉咙被焊进同一个腔调发声站，
+我们早活成数据流里被算法批准的苦难。
+
+[Outro | a flat spoken newsreader voice over fading static, the broadcast cuts out suddenly in a power-cut sound, then silence]
+“我国基尼系数呈…下降趋势..青年失业率.阶段性•
+调整…文化自信…增强….
+（！操！又停电了！）
+[End]

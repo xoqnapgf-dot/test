@@ -1,0 +1,96 @@
+#id: 045
+#slug: xingqiwu
+#title: 星期五
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:455-529
+#vocal: Male
+#model: v6
+#weirdness: 65
+#influence: 65
+#variety: Off
+#max: Off
+#bpm: 134
+#length: about 3:00
+#note: 副歌里「（星期五星期五）」「（星期期期期期五）」是跟在同一句后的回声，已并入上一行行尾；verse 末尾的「（哇嗷！）」「（呜呼！）」也并入上一行。
+#note: 「（唔咦咦啊！唔咦咦啊咦咦！）」是独立的一句怪叫，保持独立成行。含粗俗词，按原稿保留。
+#note: 这是搞怪向的短歌，Max Mode 可关；若想更像喜剧，Weirdness 可调到 70。
+--- STYLE
+Hyper playful Chinese trap-pop with chiptune bounce at 134 BPM in F major, rapped and shouted in Mandarin Chinese. A male vocalist raps with a cheeky, bratty, fast-talking flow in the verses, then chants the chorus with a goofy, elastic, sing-song voice and a crowd of kids answering each line. A bouncy 808 bass, snappy claps, crisp hi-hats and a bright chiptune lead carry the verses, silly cartoon sound effects pop between lines, and the chorus adds stacked gang shouts and a catchy whistle hook. Mischievous, restless mood of a student counting down to Friday, snacks, games and mecha model kits. Ends on a cartoon boing and a laugh. Bright, punchy, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, orchestral strings, heavy metal, lo-fi, smooth jazz, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a bright chiptune lead and a bouncy 808, snappy claps enter on bar three, a cartoon boing on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 2, cheeky bratty fast-talking rap, 808 and claps only, a clear breath after every line, on the beat]
+我在学校，水土不服，
+到处是狗叫，他们蠢笨如猪，
+让我炮制这告示来搞事，
+去搞死要绕吐我的搞笑小兔，
+
+你最好祈祷祷告，而后我对你哀悼追悼，
+你老爹老娘哭嚎，像老鼠被捕鼠囚牢夹爆，
+没错寒窗苦读，可是不学无术，
+在守株待兔，见招拆招快速将你屠戮。
+
+[Verse 1 | part 2 of 2, same bratty rap, hi-hats busier, the bracketed shout at the end is a crowd yell]
+逐渐偏离主题，慢慢分散注意，
+我是斜月三星菩提，猴子给我干着苦力，
+灵感咕力咕力，谁在莫西莫西，（哇嗷！）
+
+[Chorus | goofy elastic chanting voice, kids answer each line on the same line, stacked gang shouts, catchy whistle hook, claps on every beat]
+星期五星期五，（星期五星期五）
+星期星期期期五，（星期期期期期五）
+星期五星期五星期五，
+不要哭别说苦，
+我要撸我要撸，
+噗噗噗嘟嘟嘟，
+不能输别停住。
+
+[Verse 2 | part 1 of 2, back to the cheeky rap, 808 and claps, a clear breath after every line, brisker]
+课代表别吵吵，班长都被我打跑，
+扫把吹不倒，傻逼真不少，
+烦人的组长开始徘徊把作业收，可是数量太少，
+坤坤硬了在鼓裆的昨夜这时候，梦里万家拜朝，
+
+[Verse 2 | part 2 of 2, same rap, the bracketed words are a shouted ad-lib on the same line]
+周末到了我要吃辣条，我要拼高达（机甲赛高！）
+打开空调，拿出游戏机不用病假条！
+看恐怖电影，吓我一跳，
+回到最初的起跑线放鞭炮，
+别搞得我要吐要爆，脑里的暴力要再保持住，（呜呼！）
+
+[Chorus | same as the first chorus, a little louder, same melody]
+星期五星期五，（星期五星期五）
+星期星期期期五，（星期期期期期五）
+星期五星期五星期五，
+不要哭别说苦，
+我要撸我要撸，
+噗噗噗嘟嘟嘟，
+不能输别停住。
+
+[Drop | 2 bars, everything cuts to one beat of full silence with only a cartoon boing, then the full beat slams back in, vocals rest]
+
+[Final Chorus | part 1 of 2, strongest version, voice and kids shouting at full volume, whistle hook, same melody as the first chorus]
+星期五星期五，（星期五星期五）
+星期星期期期五，（星期期期期期五）
+星期五星期五星期五，
+不要哭别说苦，
+我要撸我要撸，
+噗噗噗嘟嘟嘟，
+不能输别停住。
+（唔咦咦啊！唔咦咦啊咦咦！）
+
+[Final Chorus | part 2 of 2, the last words change, the voice goes happier and louder, the last line is held long]
+星期五星期五，（星期五星期五）
+星期星期期期五，（星期期期期期五）
+星期五星期五星期五，
+不辛苦要幸福，
+继续撸继续撸，
+噗噗噗嘟嘟嘟，
+挺住挺住要挺住！
+
+[Outro | 4 bars, the beat stops, the chiptune lead plays a short fanfare, a cartoon boing and a laugh, instrumental only]
+[End]

@@ -1,0 +1,78 @@
+#id: 053
+#slug: interwoven
+#title: Interwoven
+#album: 歌词2
+#lang: English
+#orig: f2:1159-1215
+#dropped: Beat starts, intricate layers of sound build|(Beat hits hard)|(Beat fades out with complex layered vocals and rhymes)
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 90
+#length: about 3:20
+#note: 原稿有三处"制作说明被写进了歌词"：Intro 第一行「Beat starts, intricate layers of sound build」、副歌末尾的「(Beat hits hard)」、Outro 的「(Beat fades out with complex layered vocals and rhymes)」。它们会被直接唱出来，已移进方括号里的英文演出指示，这三句不再出现在歌词里。
+#note: 末尾孤立的「Yo!!!」归入本曲 Outro 的收尾喊叫（文件里它紧贴在本曲之后、下一首之前）。
+--- STYLE
+Melodic hip-hop at 90 BPM in E minor with layered vocal textures, rapped in English. A male rapper delivers a relaxed, confident, warm flow with interwoven internal rhymes, steady and clear in the verses, then lifts into a catchy, anthemic half-sung chorus with doubled voices. A crisp boom-bap kick and snare, a warm bass and a soft electric piano loop carry the verses, a clean guitar plays a bright riff between lines, and the chorus adds a wide pad, a clap and layered vocal harmonies. Hopeful, determined mood of a rapper rising to the top, one rhyme at a time. Ends on the beat fading under overlapping layered voices. Warm, bright, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, country, heavy metal, lo-fi hiss, autotune, orchestral strings, comedy, screaming
+--- LYRICS
+[Intro | 4 bars, the beat starts, intricate layers of sound build one by one, a spoken ad-lib opening over the first bar]
+Yo, step up to the mic, feel the vibe, this is the ride,
+Cannot hide, nowhere left to slide, open wide.
+
+[Verse 1 | relaxed confident rapped voice, boom-bap drums and electric piano, a short breath after every line, slightly behind the beat]
+I gotta find a way, that's the secret key,
+On this rap display, sets my spirit free.
+My mind takes flight, to finally be,
+A blinding light, for all the world to see.
+
+Every line is by design, gonna outshine and define.
+Yeah, my thoughts intertwine, making the pattern bright.
+
+[Chorus | catchy anthemic half-sung voice, doubled voices, wide pad and clap enter, the beat hits hard on the last line]
+This is the rhyme that is the reason,
+Through every hard season that I am facing,
+It's the vibe I believe in,
+The life I am living that I am leading,
+Never stop,
+Just rise to the top,
+Make the whole crowd just drop now, loud now!
+
+[Verse 2 | back to the relaxed confident rap, a little more driven, guitar riff between lines, a short breath after every line]
+From the ground where I started, fueled by pure devotion,
+A distinct sound, putting things in motion.
+I ain't got no doubt, gonna let the whole world know,
+Yeah, I figured it out, watch my confidence grow.
+
+This is the way the story must go, putting on a show,
+Like a river flow, fast, forever, go!
+Got the multi-syllable, sound incredible,
+Always legible, never regrettable.
+
+[Bridge | stripped down to kick, bass and the voice, spoken-rapped and sincere, a pause after the second line, then the beat returns]
+This ambition that I state, is the key to set my spirit free.
+My position sealed by fate, a guarantee.
+Gonna create, the future I wanna see.
+My decision, my destiny, forever great, just watch me!
+
+[Chorus | stronger and wider than the first, same melody, the beat hits hard on the last line]
+This is the rhyme that is the reason,
+Through every hard season that I am facing,
+It's the vibe I believe in,
+The life I am living that I am leading,
+Never stop,
+Just rise to the top,
+Make the whole crowd just drop now, loud now!
+
+[Outro | the voice rides the beat with complex layered vocals and rhymes, the beat slowly fades under them, a final shout at the end]
+Yeah, just the mic and I, reaching for the sky,
+Watching limits die, wave the world goodbye!
+This Flow... forever go... you know...
+The craft... the path... the laugh... blast...
+
+Yo!!!
+[End]

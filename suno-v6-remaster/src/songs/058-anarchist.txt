@@ -1,0 +1,84 @@
+#id: 058
+#slug: anarchist
+#title: 安那其主义者
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1435-1492
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 150
+#length: about 3:20
+#note: 这是极度攻击性的朋克说唱，含大量粗口和政治口号，歌词一字未改。如平台审核拒收，可只用歌词精修替换个别词，其余保留。
+#note: 150 BPM 但副歌写了 half-time feel（主唱走半速），verse 的 rap 在重音上断句，避免抢拍。
+--- STYLE
+Chinese hardcore punk with shouted rap at 150 BPM in E minor, shouted and rapped in Mandarin Chinese. A male vocalist barks the verses in a loud, hoarse, sarcastic rapped delivery with a clear breath after every line, then screams the chorus in a ragged, sustained shout with a crowd of gang vocals chanting the title. Fast distorted power chords, a driving distorted bass and fast live drums with a snare on every backbeat carry the verses, the chorus switches to a half-time feel with huge chords, crash cymbals and gang shouts, and a siren wails in the gaps. Furious, mocking mood of a self-declared anarchist who rejects every ruler and law. Ends on a distorted chord, feedback and a crowd roar. Raw, loud, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, acoustic folk, orchestral strings, country, smooth jazz, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a siren wail, a distorted bass riff, a fast fill on the drums, distorted power chords crash in on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 2, loud hoarse sarcastic rap, power chords and drums, a clear breath after every line, on the beat]
+我是安人，
+不是晚安的安，
+是你安那其爷爷的安，
+我拿着巴枯宁的矛，
+我举着施蒂那的盾牌，
+你会无处可逃，
+因为我还有来自斯普纳的底牌。
+
+[Verse 1 | part 2 of 2, same bark, the last lines are sarcastically calm, almost spoken, with the band dropping to bass and drums]
+没有叛国之罪，
+没有抗法之理，
+国家只是一个虚名，
+建立在血腥上的暴力机器，
+不如跟我一起说声早上好，
+来一块，
+克鲁泡特金的面包，
+再来杯牛奶配上燕麦。
+
+[Chorus | ragged screamed sustained shout, half-time feel, huge chords, crash cymbals, gang vocals chant the title, a short silence between each line]
+我是安那其主义者！
+燃烧瓶是我最爱的玩具！
+我左手炸药包右手发鸭耳大轰！
+我是安那其主义者！
+我操死你列宁野爹！
+我是安那其主义者！
+我砸烂你苏联野爹！
+我是你安那其爷爷！
+我会粉碎你的一切！
+
+[Verse 2 | back to the fast loud rap, power chords and drums, a clear breath after every line, a siren in the gaps, faster]
+自由是我的生命，
+法律是我的敌人，
+不要神佛不要君主，
+不要皇帝不要总统，
+不要主席不要统帅，
+不要狗官员不要条子，
+我们不需要任何权威，
+我们的爱恨从天南到地北，
+我们的意志超越国界线，
+力量会粉碎所有警车和法院。
+
+[Drop | 2 bars, everything cuts to one beat of full silence with only the siren, then the full band slams in at half-time, vocals rest]
+
+[Final Chorus | strongest version, screamed at full power, gang vocals at full volume, half-time feel, the new closing lines are shouted with a crowd roar]
+我是安那其主义者！
+燃烧瓶是我最爱的玩具！
+我左手炸药包右手发鸭耳大轰！
+我是你安那其爷爷！
+我要砸烂公检法！
+我是你安那其爷爷！
+全民暴动就在此刻！
+我是安那其主义者！
+我操死你的妈！
+我操死你的爸！
+你安爹来咯哈哈哈哈哈哈！
+
+[Outro | 8 bars, drums stop, one distorted chord rings out with feedback, a siren fades and a crowd roar, instrumental only]
+[End]

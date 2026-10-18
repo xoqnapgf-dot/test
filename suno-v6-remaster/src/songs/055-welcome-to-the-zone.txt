@@ -1,0 +1,79 @@
+#id: 055
+#slug: welcome-to-the-zone
+#title: Welcome to the zone
+#title-note: 原稿无标题，取自第一句，暂定此名。
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1257-1303
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 88
+#length: about 4:00
+#note: 原稿 [drop] 下面是一条全角方括号的采样说明「［Beat sudden stop, sampling: new broadcast ending song + battery car alarm sound］」，已改成半角方括号里的具体 Drop 描述（新闻联播片尾曲式采样 + 电瓶车警报），不再是易被误读的全角括号。
+#note: 第一句「Welcome to the zone，这里是…」是中英混合，Style 里写了 sung in Mandarin Chinese with a few English words；其余 24 行 verse 都是 12-18 字的长句，按语义加逗号，BPM 88。
+#note: 原稿中的错别字（预爆、睛朗、护土等）是你的原文，一字未改。
+--- STYLE
+Dystopian industrial hip-hop at 88 BPM in B minor, rapped in Mandarin Chinese with a few English words. A male rapper delivers a deadpan, cold, razor-sharp flow with a clear breath after every line, almost like a bored broadcaster reading the news, then spits the chorus in a harder, colder chant with the color words stressed. A distorted sub-bass 808, a stiff mechanical kick and snare, a cold detuned synth drone and static glitches carry the verses, a distant propaganda-style fanfare sample flickers in the gaps, and the chorus adds a heavy industrial riff and cold crowd chants. Dark satirical mood of a cyber city with firewalls, trending lists that forget everything in a second, and a smiling panda gif twitching. Ends on a power cut sound. Cold, hard, vocal-forward mix.
+--- EXCLUDE
+Cantonese, female lead vocal, ballad, acoustic folk, orchestral strings, country, upbeat pop, autotune, comedy
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a cold detuned synth drone, static glitches, a stiff mechanical beat enters on bar three, a distant fanfare sample on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 3, deadpan cold rapped voice, 808 and kick, a clear breath after every line, slightly behind the beat]
+Welcome to the zone，这里是赛博神州的背面，
+防火墙内外温差足够冻裂赤道的纬线，
+热搜榜在零点一秒完成集体失忆手术，
+热搜变四零四，只剩熊猫微笑的GIF在抽搐，
+
+[Verse 1 | part 2 of 3, same flat voice, the synth drone louder, glitches more frequent]
+五千年太长，只争朝夕的魔幻现实主义，
+拆迁队的拆字涂鸦比甲骨文更有仪式，
+广场大屏幕播放着永远睛朗的天气预爆，
+而筒子楼里的叹息在霉斑墙面发酵，
+
+[Verse 1 | part 3 of 3, voice colder, the last two lines are spat slowly]
+红头文件在流水线上盖戳如同印刷冥币，
+农民工的社保卡余额是场行为艺术把戏，
+福布斯新贵们举杯在东方明珠塔尖摇晃，
+而地下铁通道里蜷缩着被扫码时代注销的残像。
+
+[Chorus | harder colder chant, a heavy industrial riff enters, cold crowd chants double the color words, stress the two color words each time]
+红，是热搜消失前最后跳动的字节，
+红，是十字路口监控探头的充血视角，
+灰，是凌晨四点环卫工扫不净的雾霾雪，
+灰，是退休金账簿上越描越淡的墨迹哲学。
+
+[Verse 2 | part 1 of 3, back to the deadpan flow, 808 and kick, riff gone, sarcastic]
+教科书里屈原还在投江，只不过换了水质分析报告，
+孔夫子周游列国被拦下检查暂住证编号，
+公务员考试的论题是论沉默的优越性，
+KTV点播榜前三是没有春天，不准通行，监控爱情，
+
+[Verse 2 | part 2 of 3, same flat voice, faster, glitches tighter]
+房地产商把故宫模型装进盲盒售卖，
+年轻人把脊椎弯成二维码的形状等待被扫描，
+妇产科护土抱着新生儿练习微笑管理课程，
+而产房外电子屏滚动着：感恩，奉献，不准问，
+
+[Verse 2 | part 3 of 3, voice colder, the last two lines are spat slowly]
+白酒瓶里泡着中年男人的肝胆和房贷计算器，
+短视频平台直播着三线城市广场舞维稳奇迹，
+诗人把敏感词磨成粉调进油画颜料，
+画廊里所有作品标题都叫，风景这边独好。
+
+[Drop | 2 bars, the beat stops suddenly, a sampled news-broadcast ending song and a battery car alarm sound over silence, then the full beat slams back in, vocals rest]
+
+[Final Chorus | harder and colder still, heavy industrial riff, crowd chants louder, same melody as the first chorus, stress the two color words each time]
+红，是热搜消失前最后跳动的字节，
+红，是十字路口监控探头的充血视角，
+灰，是凌晨四点环卫工扫不净的雾霾雪，
+灰，是退休金账簿上越描越淡的墨迹哲学。
+
+[Outro | 8 bars, drums and riff fall away, the cold synth drone plays alone, static glitches, then a power cut sound and silence, instrumental only]
+[End]

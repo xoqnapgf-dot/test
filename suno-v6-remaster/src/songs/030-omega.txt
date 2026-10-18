@@ -1,0 +1,116 @@
+#id: 030
+#slug: omega
+#title: Omega
+#album: 《传奇故事》
+#lang: English
+#orig: f1:1911-2047
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 124
+#length: about 4:30
+#note: 原稿每一行之间都隔了空行（会让 Suno 每行都停顿，反而破坏节奏），已改成按语义 2-4 行一组；原稿里的 "(dududu...)" 描述只留在说明里，不再放进歌词。
+#note: 第二遍副歌后半段是疯狂的叠喊（Oh oh oh / Na na na / Dee dee dee…），保持原样，括号行是顺序应答；标签要求"越来越失控"。
+#note: 原稿的三个 [drop] 都写成具体的器乐爆发（噪音 → 更长更失谐 → 最终混乱），尾奏写明"吉他反馈衰减，只剩贝斯和鼓机，然后突然切断"。
+--- STYLE
+Motorik indie post-punk with new-wave synths at 124 BPM in E minor, sung in English. A male vocalist delivers a detached, deadpan monotone in the verses, half-spoken with dry wit, then becomes anthemic and increasingly frantic in the chorus, ending in unhinged shouts. A driving melodic bassline, a tight drum machine beat and a clean shimmering guitar with heavy delay carry the verses, short synth bleeps and percussive hits accent the rhythm, and the chorus adds open-chord guitars, a bright synth lead and gang vocals. Absurd, cosmic and hypnotic mood of a trickster god, five dollars and a crack in space and time. Ends with the bass and drum machine looping and then cutting out abruptly. Punchy, dry, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, country, ballad, orchestral strings, acoustic folk, opera, smooth jazz, trap hi-hats, lo-fi hiss
+--- LYRICS
+[Intro | 8 bars, a driving melodic bassline begins, a tight simple drum machine beat joins, a clean shimmering guitar melody with heavy delay enters on bar five, instrumental only]
+
+[Verse 1 | part 1 of 2, detached monotone male voice, bass and drum machine, short synth bleeps accent the rhythm, a breath after every line, slightly behind the beat]
+Omega.
+Yeah, Omega.
+
+Through the towers tall, it starts to roam,
+Like a ghost it lingers,
+In everybody's dome,
+It doesn't know just what it is today,
+Can't see the cold light from the sun's display,
+Just passes through the window pane,
+And turns into a lightning flash again.
+
+[Verse 1 | part 2 of 2, same monotone, guitar delay louder, percussive hits more frequent]
+Omega.
+Oh yeah, Omega.
+
+Inside the ancient staff, you see,
+It's endlessly destroying its identity,
+Plasma and forces electromagnetic,
+Weave a perfect wedding ring, ecstatic,
+From the past into the future bright,
+Hiding softly in the present light,
+Following the leaves that fall and fly,
+Dancing on the wave crests way up high.
+
+[Drop | 4 bars, instrumental only, the driving bass and drum machine continue, guitars turn distorted and chaotic in a brief intense burst of noise]
+
+[Chorus | powerful and anthemic, guitars play open chords, voice gains intensity, gang vocals double the first line]
+Omega, Omega, Omega,
+Bless you, watch you, then forget ya,
+Five dollars, five dollars, five dollars,
+Spend it, save it, burn it like scholars,
+
+Omega!
+Oh so divine!
+Seal the crack in space and time!
+Open the ancient gate, let futures shine!
+
+[Verse 2 | part 1 of 2, back to the detached monotone, bleeps and hits return, bass drives]
+Omega.
+Haha, Omega.
+
+The trickster god on an elephant arrives,
+New York City's falling, losing all its lives,
+I don't know where the magic can be found,
+Don't know how poker's played on this ground,
+But still my eyes just stare ahead, you see,
+Into the void's deepest mystery.
+
+[Verse 2 | part 2 of 2, same monotone, a little more urgent, the shouted name is sung loud once]
+Omega.
+Hajime! Omega!
+
+"Three" evolves inside infinity,
+Becoming fireworks for eternity,
+Immortal breath is filling up the air,
+The wise man's mask is broken, full of care,
+You don't know who you are, it's plain to see,
+You don't know what you're doing, just like me,
+Just walking toward the abyss, time and again,
+Falling down to hell with me, my friend.
+
+[Drop | 6 bars, instrumental only, another intense break, longer and more dissonant than the first, bass and drum machine keep driving]
+
+[Chorus | part 1 of 2, the music returns with power, voice anthemic, gang vocals double the first line]
+Omega, Omega, Omega,
+Bless you, watch you, then forget ya,
+Five dollars, five dollars, five dollars,
+Spend it, save it, burn it like scholars,
+
+Omega!
+Oh so divine!
+Seal the crack in space and time!
+Open the ancient gate,
+let futures shine!
+
+[Chorus | part 2 of 2, the voice becomes frantic and unhinged, the parenthesized lines are nonsense shouts and ad-libs, getting wilder every line]
+(Oh oh oh oh oh oh)
+(Na na na na na na)
+(Dee dee dee ba ba ba doo doo doo)
+Omega Omega Omega Omega Omega Omega,
+(Five dollars five dollars five dollars five dollars five dollars five dollars)
+Guard me, protect you, watch him, listen to her!
+Don't forget to poop and eat your breakfast, sir!
+Casually smash the fleet right off the map!
+Don't you dare invade the Earth, you sap!
+Oh ah oh la la! (Oh oh oh woo hoo!)
+
+[Instrumental Break | 8 bars, a final chaotic section, the beat distorts or breaks down briefly then rebuilds, guitars and synths create maximum noise, vocals rest]
+
+[Outro | 8 bars, guitars and synths turn into feedback loops that slowly fade out, only the driving bassline and drum machine play on for a few more bars, then cut out abruptly, instrumental only]
+[End]

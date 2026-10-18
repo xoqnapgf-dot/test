@@ -1,0 +1,96 @@
+#id: 003
+#slug: suisei-mushi
+#title: 酔って生夢死
+#album: （酔って生夢死）
+#lang: Japanese
+#orig: f1:93-160
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 112
+#length: about 3:20
+#note: bridge 的「都市/都市/（ネオン）/（飲もう！）」是一唱一和的顺序问答，所以括号保持独立成行（紧跟主唱），并在段落标签里写明括号行是人群应答。
+#note: 酔生夢死 读 すいせいむし；若被读成「よってせいむし」就用歌词精修只改这一处。
+#note: 副歌两个对比（欲望/绝望）靠标签里的"brighter / colder"区分，歌词两遍保持完全相同。
+--- STYLE
+Dark neon synth-rock at 112 BPM with a nocturnal city-pop sourness. A male vocalist sings in Japanese with a smoky, slightly drunk baritone, restrained and spoken-like in the verses, shouting and ragged in the chorus. Driving analog bass, tight live drums with a gated snare, pulsing neon synth arpeggios and an angular clean guitar carry the verses, while the chorus adds distorted rhythm guitars and gang vocals. Hazy, decadent, self-destructive mood of walking a crowded city at night, free and hopeless at once. Ends with the synth arpeggio looping alone and cutting off. Wide stereo mix with punchy low end.
+--- EXCLUDE
+female lead vocal, orchestral strings, acoustic folk, reggae, ballad, children choir, English vocals, lo-fi hiss, opera
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, neon synth arpeggio and gated drums fade in, sub bass pulses on the downbeat, instrumental only]
+
+[Verse 1 | male baritone, half-spoken and weary, bass and drums tight, synth arpeggio quiet, one breath per line, behind the beat]
+新しい日が始まる、
+人混みの街を歩く、
+酔いしれた夜景の中、
+高慢な心を蝕んでいく。
+
+まだ聞いている、考えてる、
+まだ歩き続け、夢見てる、
+ただ遠い故郷は、
+まるで私を見捨てたよう。
+
+[Bridge | chant section, the lead shouts the city and the parenthesized lines are the crowd answering in gang vocals, hard drums, synth stabs]
+都市、
+都市、
+（ネオン）
+（飲もう！）
+都市、
+都市、
+（酔わせて！）
+（この時代に！）
+
+[Chorus | brighter and wide, ragged shouting lead, gang vocals double the title line, distorted guitars join, drums push forward but vocals stay on the beat]
+酔生夢死の人生、
+酒で狂った意識、
+自由を放つ生の中、
+欲望で魂を解き放つ。
+
+酔生夢死の人生、
+殺戮で満たす意識、
+自由を放つ生の中、
+絶望で自分を縛る。
+
+[Verse 2 | back to the weary baritone, drums thin out to kick and hat, guitar harmonics, darker and more intimate]
+全てを捧げて、
+罪を償う運命、
+牢獄から逃れようと、
+この海原で一人漂う。
+
+私は人間の画家、
+私は地獄のピアニスト、
+太陽は私のために踊り、
+月は私にバイオリンを奏でる、
+ああ、何度も繰り返す、
+いつもこんな風に。
+
+[Bridge | chant section again, same call and answer, a little louder, synth stabs sharper]
+都市、
+都市、
+（ネオン）
+（飲もう！）
+都市、
+都市、
+（酔わせて！）
+（この時代に！）
+
+[Drop | 2 bars, everything cuts to one beat of silence, then a heavy synth bass hit and full band slam back in, vocals rest]
+
+[Final Chorus | strongest version, colder and more desperate, gang vocals louder, guitars distorted, same melody as the first chorus]
+酔生夢死の人生、
+酒で狂った意識、
+自由を放つ生の中、
+欲望で魂を解き放つ。
+
+酔生夢死の人生、
+殺戮で満たす意識、
+自由を放つ生の中、
+絶望で自分を縛る。
+
+[Outro | 8 bars, drums and guitars stop, the neon synth arpeggio loops alone for four bars, then cuts off abruptly, instrumental only]
+[End]

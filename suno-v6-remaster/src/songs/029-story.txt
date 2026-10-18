@@ -1,0 +1,125 @@
+#id: 029
+#slug: story
+#title: story
+#album: 《传奇故事》
+#lang: English
+#orig: f1:1814-1907
+#vocal: Male
+#model: v6
+#weirdness: 60
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 112
+#length: about 4:30
+#note: 原稿的内部提示词本身写得不错（吉他+口琴+班卓+滑音吉他+微醺的和声），已保留意图，改成「段落 | 指示」格式并压到 50 词以内；原稿里的 "(dududu...)" 之类括号描述若留在歌词里会被唱出来，不再使用。
+#note: 两个 verse 各 21/22 行，已拆为 3 个小节；副歌里 16 行的一问一答「（…）」括号行保持独立成行（顺序应答），并在标签里写明是微醺的和声团应答。
+#note: 歌词量较大，标签压得很短以控制在 5000 字符以内（实际字数见本文件抬头的计数）。
+--- STYLE
+Alternative country-folk with a deadpan storytelling vocal at 112 BPM in G major, sung in English. A male singer tells the story in a dry, deadpan, slightly sardonic baritone in the verses, then sings the chorus lively and open, with a loose, slightly drunken-sounding backing group answering each line. A twangy fingerpicked acoustic guitar, a simple walking bass and a shuffling drum beat carry the verses, a lonesome harmonica plays short mournful phrases between lines, and the chorus adds a bright banjo, a weeping slide guitar and an upbeat country two-step groove. Absurd, comic and bittersweet mood of a story that cannot exist but happens all the time. Ends on one rousing final chord and a long wailing harmonica note. Warm, natural, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, EDM drop, trap hi-hats, heavy distortion, metal, rap, autotune, opera, synth pads
+--- LYRICS
+[Intro | 8 bars, a lone twangy acoustic guitar riff, a lonesome harmonica plays a short mournful melody, instrumental only]
+
+[Verse 1 | part 1 of 3, deadpan storytelling baritone, acoustic guitar and walking bass only, shuffling drums, a breath after every line]
+This is a story that cannot exist,
+But it happens all the time, you get the gist.
+A pigeon landed on a lamppost high,
+A horse that's eating oats was standing by.
+A gram, a kilo of some blueberry goo,
+Eaten by monkeys in the lava stew.
+When will the homework finally be done?
+Depends how many plates break one by one.
+
+[Verse 1 | part 2 of 3, same dry voice, harmonica answers after every second line]
+Those classic quotes and moments you hold dear,
+With weathered cameras, they thank us with a tear.
+Then David takes the compass hand with a grin,
+And leads an army of jelly to rush in.
+The Himalayan snow begins to wail,
+'Cause they love jogging on the morning trail.
+Don't worry, brother, you'll be safe and sound,
+The emo songs will keep the demons down.
+
+[Verse 1 | part 3 of 3, still deadpan, a tiny build in the bass]
+Your axe will strike on crystals you can't see,
+Antarctic folks love this strange comedy.
+But still they have to pay a higher fee,
+And war is peace for all eternity,
+Its silent scream echoes for you and me.
+
+[Chorus | full band, lively upbeat country two-step, bright banjo and weeping slide guitar, parenthesized lines are answered by a loose slightly drunken backing group]
+This is an absurd story to be told,
+(The sun is beating up the moon so cold)
+This is a bizarre story, brave and bold,
+(I've gone and lost my head, or so I'm told)
+This is a creepy story, getting old,
+(He cannot find his eyes, brave and bold)
+This is a legendary story spun of gold,
+(May Omega bless you, as I'm told)
+This is a sacred story, I've been told,
+(The elders set the lightning to unfold)
+This is a sorry story, left unsold,
+(It was a tale that never got told)
+This is a magic story to unfold,
+(Who says it isn't, brave and bold?)
+This is a mournful story, bleak and cold,
+(Oh-oh-oh-oh-oh-oh-yeah)
+
+[Verse 2 | part 1 of 3, back to the sparse deadpan feel, harmonica weaves in and out]
+The cancer's purified by morning light,
+The dollar bills are a kitten's sweet delight.
+So you should check the publishing date with care,
+And wait for magazines to fill the air.
+Is it a monthly, or a weekly read?
+A yearly journal for our daily need?
+Oh no, perhaps you'll read it every day,
+A happy invisible man stole it away.
+
+[Verse 2 | part 2 of 3, same dry voice, a little more frantic, drums slightly busier]
+Oh no, no, no, no, no, it can't be true,
+The priest can't stop him, what's a man to do?
+Let's start the guilt-trip skill and lock him down,
+Oh no, no, no, no, no, just leave this town.
+Let's eat the movies, watch the snacks instead,
+The upside-down dollar's messing with my head.
+So listen to my order, don't be slow,
+One, two, three, action! Time to start the show.
+
+[Verse 2 | part 3 of 3, deadpan again, quiet bass, harmonica on the last line]
+That foreign text is making my head sore,
+The soccer field just stole my water store.
+The hiking shoes are closing in on me,
+I'll bring a black hole made of TNT.
+Maybe I'm a cigarette, it's true,
+Just sitting here and burning my own butt for you.
+
+[Bridge | very slow and sparse, a few simple chords on acoustic guitar, one long mournful slide guitar note, voice soft and sincere]
+A story with no final page,
+A song that's sung on every stage.
+How long until the curtains fall?
+Perhaps there's no real end at all.
+
+[Drop | 4 bars, instrumental, banjo and harmonica lead the upbeat two-step with full band, vocals rest]
+
+[Final Chorus | full band at full energy, same melody as the first chorus, parenthesized lines answered by the drunken backing group]
+This is an absurd story to be told,
+(The sun is beating up the moon so cold)
+This is a bizarre story, brave and bold,
+(I've gone and lost my head, or so I'm told)
+This is a creepy story, getting old,
+(He cannot find his eyes, brave and bold)
+This is a legendary story spun of gold,
+(May Omega bless you, as I'm told)
+This is a sacred story, I've been told,
+(The elders set the lightning to unfold)
+This is a sorry story, left unsold,
+(It was a tale that never got told)
+This is a magic story to unfold,
+(Who says it isn't, brave and bold?)
+This is a mournful story, bleak and cold,
+(Oh-oh-oh-oh-oh-oh-yeah)
+
+[Outro | final rousing chord from the full band, then only the lonesome harmonica holds one long wailing note, instrumental only]
+[End]

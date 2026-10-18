@@ -1,0 +1,10 @@
+{
+  "name": "shader-seascape-render-tools",
+  "private": true,
+  "type": "module",
+  "description": "Verification harness: headless Chromium + SwiftShader screenshots of the page.",
+  "dependencies": {
+    "@sparticuz/chromium": "*",
+    "puppeteer-core": "*"
+  }
+}

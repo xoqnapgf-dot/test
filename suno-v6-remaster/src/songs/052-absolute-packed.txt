@@ -1,0 +1,65 @@
+#id: 052
+#slug: absolute-packed
+#title: Absolute Packed
+#album: 歌词2
+#lang: English
+#orig: f2:1115-1156
+#vocal: Male
+#model: v6
+#weirdness: 50
+#influence: 70
+#variety: Off
+#max: On
+#bpm: 88
+#length: about 3:10
+#note: 这首是多音节押韵炫技，音节密度极高（单行常 20+ 音节）。处理：BPM 压到 88，Style 写 clear enunciation / space between phrases；每一行单独成行并用空行分成 2 行一组；段落标签要求 "a short breath at every period"。
+#note: 原稿 [Outro] 下面又有 [instrumental outro] 两个叠在一起，已合并成一个具体的尾奏。
+--- STYLE
+Technical multi-syllable hip-hop at 88 BPM in A minor, rapped in English. A male rapper delivers a clear, confident, precisely enunciated flow with room between phrases and layered internal rhymes, switching to a bigger, shouted delivery in the chorus with a few doubled voices. A tight boom-bap kick and snare, a deep warm bass and a bright piano loop carry the verses, shimmering synth bells glitter between lines, and the chorus adds a wide pad, a punchy clap and an uplifting brass stab. Radiant, proud and relentless mood of a rapper whose mind takes flight, shining light on every syllable. Ends on the piano loop alone with a bell tone. Crisp, bright, vocal-forward mix.
+--- EXCLUDE
+female lead vocal, ballad, country, acoustic folk, heavy metal, lo-fi hiss, autotune, orchestral strings, comedy
+--- LYRICS
+[Intro | 8 bars, a bright piano loop, a tight boom-bap kick and snare enter on bar three, shimmering synth bells on the last bar, instrumental only]
+
+[Verse 1 | clear confident rapped voice, precise enunciation, piano and drums only, a short breath at every period, pairs of lines separated by air, slightly behind the beat]
+The intricacy way to be the key under the light bright sight.
+Every sound profound you see it free breaking their might with all your light right.
+
+The way I am going showing this power by the hour shower.
+My mind keeps going showing the power by the hour profound and astounding surrounding.
+
+You see it free the display way with all of its might and its light tight.
+My vocabulary varies necessarily a commentary extraordinary dairy fairies.
+
+[Chorus | bigger shouted delivery, a wide pad and clap enter, doubled voices on the last words of each line, an uplifting brass stab on the downbeat]
+This flow you know is a show right to go so bright tonight!
+A light to show you right, yeah you already know this show is tight!
+The multi-syllable sound incredible all around!
+Completely legible breaking ground profoundly found it!
+My mind takes flight! With all its might! Shining so bright! A dazzling light!
+
+[Verse 2 | back to the clear confident rap, piano and drums, a little faster, a short breath at every period, pairs of lines separated by air]
+I create great art with devotion emotion, the sound found from my story glory.
+This composition ambition I pound all around, fills their territory story forever astounding surrounding.
+
+The state I debate of the nation situation, all around my glory is shining refining consigning.
+I dictate my position with precision, the sound the victory story unending transcending sending it!
+
+So quick so slick in my time committing this crime, beat the clock with a shock rocking the block!
+The quick action takes my time committing this crime so fine.
+
+[Bridge | stripped down to kick, bass and the voice, spoken-rapped and urgent, a short breath at every period, brass stab on the last line]
+From the ashes the flashes and the crumble tumble, end their hesitation frustration and aggravation.
+You will see it free, the might I give to live believe.
+My reputation the declaration, gonna live give its creation the whole nation!
+Breaking the jumble tumble, showing the light so bright right with all my might!
+
+[Final Chorus | strongest version, shouted at full power, doubled voices, brass and clap at full, same melody as the first chorus]
+This flow you know is a show right to go so bright tonight!
+A light to show you right, yeah you already know this show is tight!
+The multi-syllable sound incredible all around!
+Completely legible breaking ground profoundly found it!
+My mind takes flight! With all its might! Shining so bright! A dazzling light!
+
+[Outro | 8 bars, drums and pad fall away, the piano loop plays alone, one shimmering bell tone, then silence, instrumental only]
+[End]

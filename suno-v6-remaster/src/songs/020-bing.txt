@@ -1,0 +1,93 @@
+#id: 020
+#slug: bing
+#title: 病
+#album: 《孤独症患者》
+#lang: Mandarin
+#orig: f1:1161-1226
+#vocal: Male
+#model: v6
+#weirdness: 55
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 122
+#length: about 4:00
+#note: 括号处理：副歌里「（有病）」「（啊！）」「（还在这）」是叠加回声，已并入上一行；verse 2 里「（嘘！）（快看！）（他们打算害你！）（小心！）」是幻听的顺序低语，保持独立成行并在标签里注明。
+#note: verse 1 共 12 行，按 4+4+4 拆成 3 个小节；长句按语义加逗号换气，防止"一口气念完"。
+#note: 「（安静！）」夹在副歌一行的末尾，原样保留。
+--- STYLE
+Manic Chinese art-punk and alt-rock at 122 BPM in E minor, sung in Mandarin Chinese. A male vocalist sings with a strained, urgent, slightly cracked voice, half-spoken and shaky in the verses, then wide, ragged and sustained in the chorus with gang vocals shouting the key word. Angular jangly guitars, a driving melodic bass and tight live drums carry the verses, a warped carnival-like organ wobbles in the background, and the chorus adds distorted power chords, crash cymbals and layered crowd shouts. Unhinged but tender mood of a person who sees upside-down skies, upside-down rainbows and his own double waving at him, the whole world sick. Ends on a single distorted chord and a faint laugh of feedback. Raw, punchy, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, ballad, EDM drop, trap hi-hats, lo-fi, autotune, female lead vocal, orchestral strings
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a wobbling carnival organ and an angular guitar line, bass enters on bar three, drums crash in on the last bar, instrumental only]
+
+[Verse 1 | part 1 of 3, strained half-spoken male voice, bass and guitar tight, drums sparse, a breath at every comma, slightly behind the beat]
+看看这颠倒的天地，听听这黑白不分的潮流，
+荒诞的人世间，等着谁来拯救，
+蒙着心，封闭了自身，关紧了心门，
+看不清数不清的苦恼，怎么也说不出口。
+
+[Verse 1 | part 2 of 3, same shaky voice, drums fuller, organ wobbles louder]
+深夜独自抑郁，抚摸自己的伤痕，
+放不下的执念，缠绕我无边无际的祈求，
+画笔在空中画出太阳，
+画笔在地上画下月亮。
+
+[Verse 1 | part 3 of 3, voice rising, snare gets harder, building toward the chorus]
+一条条彩虹倒挂在眼中，
+蒸发后的色彩，弥漫梦中的朦胧，
+发起了疯，跳起了舞，
+期望如此，能够覆盖我恒久的麻木。
+
+[Chorus | wide ragged sustained voice, distorted power chords, gang vocals shout the key word, crash cymbals, the bracketed words are crowd echoes layered on the same line]
+我们每个人都有病，
+活在这个荒诞的世界，明天看不清，过往记不清，
+可我还在听，还在走着不停，
+啊，我这颗破碎又顽固的心，
+我们每个人都有病，
+握不住自己的命，碰不到幻象中的安定（安静！）
+有病（有病）（有病）
+有病！
+病！
+病的不轻！（啊！）
+
+[Verse 2 | part 1 of 3, voice small and shaky again, bass and a single guitar, the friend inside the body whispers, drums nearly gone]
+我看到从我身体里走出的朋友，
+他对我招招手，
+他说你就是我，我就是你，
+我知道你所有的秘密，
+我知道你埋葬的奇迹。
+
+[Verse 2 | part 2 of 3, the parenthesized lines are whispered hallucinated voices, each one a quick hissed whisper after the previous line, nothing else playing]
+（嘘！）
+（快看！）
+（他们打算害你！）
+（小心！）
+
+[Verse 2 | part 3 of 3, voice cracks upward, drums return, guitars distorted, rising to the chorus]
+破碎的镜子，破碎的我，
+破碎的灵魂，破碎着堕落，
+破碎着堕入冷漠干枯的荒漠，
+漫无边际的黑暗潮水将我淹没，
+期待着，祈祷着，判决着，审判着，
+我在这，我在这（我在这我在这）（还在这）
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then the full band and organ crash back in together, vocals rest]
+
+[Final Chorus | strongest version, voice ragged and loud, gang vocals at full volume, same melody as the first chorus, the bracketed words are crowd echoes layered on the same line]
+我们每个人都有病，
+活在这个荒诞的世界，明天看不清，过往记不清，
+可我还在听，还在走着不停，
+啊，我这颗破碎又顽固的心，
+我们每个人都有病，
+握不住自己的命，碰不到幻象中的安定（安静！）
+有病（有病）（有病）
+有病！
+病！病！
+病的不轻！（啊！）
+
+[Outro | 8 bars, drums stop, the carnival organ wobbles alone, one distorted chord, a faint feedback laugh, then silence, instrumental only]
+[End]

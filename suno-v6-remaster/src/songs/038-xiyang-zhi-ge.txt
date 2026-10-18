@@ -1,0 +1,101 @@
+#id: 038
+#slug: xiyang-zhi-ge
+#title: 夕阳之歌
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:3-65
+#vocal: Female
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 70
+#length: about 4:30
+#note: 最后一遍副歌共 3 段（副歌 → 12 行扩展 → 副歌再现），已拆成 Final Chorus part 1/2/3；末尾「抱着那 / 吉他独坐至天亮」是原稿刻意的断句，保留成两行，中间留一拍。
+#note: 两个 verse 各 12 行、都是 4-9 字的短句，BPM 70 + 逗号换气足够，不需要 [Silence] 标签。
+--- STYLE
+Melancholic Mandopop rock ballad at 70 BPM in E minor, sung in Mandarin Chinese. A female alto sings in a worn, honest and slightly husky voice, close to the microphone in the verses, then opening into a wide, aching and sustained chorus with long held line endings. A fingerpicked acoustic guitar and a soft piano carry the verses, a low string pad and a warm bass enter in the second verse, and the chorus adds a live drum kit, strummed guitars, a cello line and layered backing harmonies. Lonely, theatrical mood of a performer wearing a mask under the spotlight, strings pulling her around like a puppet, silver hair at the window at dawn. Ends on the acoustic guitar alone with one long ringing note. Warm, wide, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, male lead vocal, heavy distortion, comedy, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a fingerpicked acoustic guitar alone, a soft piano answers on bar five, faint stage-curtain room tone, instrumental only]
+
+[Verse 1 | part 1 of 2, worn honest female voice, close-mic, guitar and piano only, one breath per line, slightly behind the beat]
+琴声渐淡，
+困于名为家的羁绊，
+暮退月光漫，
+如影的春色终涣散，
+心中波澜，
+激荡又刹那间虚幻，
+深藏的遗憾，
+成无人角落的轻叹。
+
+[Verse 1 | part 2 of 2, same voice, string pad and warm bass enter, a little more strained and bitter]
+舞台上，
+麻木机械应唱，
+任由提线引我旋转，
+谁知我面具之下是怎样。
+
+[Chorus | wide aching sustained voice, drums and strummed guitars enter, cello answers each pair of lines, backing harmonies in the last two lines]
+一朝弦断眼中无光，
+卸下又披上伪装，
+心若烬灰只剩荒唐，
+寻不见我本相，
+银丝悄然透入窗，
+真心虚伪都不可计量，
+抱着吉他独坐至天亮。
+
+[Verse 2 | part 1 of 2, back to the worn honest voice, guitar and piano with a light bass, looking back, fragile]
+回望来路，
+天真已不知落何处，
+疲惫的双目，
+徘徊在无声中倾诉，
+独自背负，
+受不属于我的错误，
+璀璨的谢幕，
+终是化作我的坟墓。
+
+[Verse 2 | part 2 of 2, voice rising, drums return softly, strings swell, ending with a hopeful line]
+再奔赴，
+忽听琴声回荡，
+总有风泪交织念想，
+但愿每次相见都是安详。
+
+[Chorus | same as the first chorus, a little stronger, same melody]
+一朝弦断眼中无光，
+卸下又披上伪装，
+心若烬灰只剩荒唐，
+寻不见我本相，
+银丝悄然透入窗，
+真心虚伪都不可计量，
+抱着那吉他独坐至天亮。
+
+[Final Chorus | part 1 of 2, the extended words, voice breaking open, full band and strings, the spotlight spinning, a breath after each line]
+众目凝视的我心意乱，
+灵魂深处隐约有呼唤，
+再坠落，
+在没有我的彼岸，
+聚光灯下尽情旋转，
+表情任我来假扮，
+舞姿神态随意切换，
+忽视观众期盼，
+真正的我有千般，
+他人无法窥探的变幻，
+最终是，
+自己与自己相伴。
+
+[Final Chorus | part 2 of 2, the chorus returns at full power, voice wide and aching, the very last line is split with a held beat of silence between its two halves]
+一朝弦断眼中无光，
+卸下又披上伪装，
+心若烬灰只剩荒唐，
+寻不见我本相，
+银丝悄然透入窗，
+真心虚伪都不可计量，
+抱着那，
+吉他独坐至天亮。
+
+[Outro | 8 bars, drums and strings fall away, the acoustic guitar plays the intro motif alone, one long ringing note, then silence, instrumental only]
+[End]

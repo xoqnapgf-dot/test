@@ -1,0 +1,112 @@
+#id: 057
+#slug: infinite-rhyme
+#title: 无限押韵
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:1353-1432
+#vocal: Male
+#model: v6
+#weirdness: 75
+#influence: 60
+#variety: Off
+#max: On
+#bpm: 100
+#length: about 4:30
+#note: 这是纯谐音连环押韵（几乎没有语义），发音完全取决于 Suno 怎么读；建议多生成几次，选读得最顺的一版，再用歌词精修修个别字。
+#note: 最后一个超长 Chorus（28 行）已拆成 4 个小节；原稿每行末尾的空格全部改成逗号/句号，行内的空格（如「一大排几大块 于大海七八块」）改成逗号换气。
+#note: 括号「（哇啊啊啊啪啪啪啪啪呐呐呐）」是夹在中间的拟声叠唱，保持独立成行。含一句粗口。
+--- STYLE
+Hypnotic Chinese tongue-twister rap on a minimal trap beat at 100 BPM in G minor, rapped in Mandarin Chinese. A male rapper delivers a rapid, rhythmic, playful flow with strict internal rhymes and a sharp breath between phrases, chopping syllables like a drum pattern, then chants the chorus in a louder, bouncy, nonsense-syllable style with a few gang shouts. A deep 808 bass, a crisp snare and rolling hi-hats carry the verses over a looping marimba-like pluck, a wobbly synth stab answers the end of each line, and the chorus adds a bigger kick, claps and shouted crowd syllables. Absurd, mischievous mood of an endless rhyme chain, sound over meaning. Ends on a marimba pluck and a laugh. Punchy, bright, vocal-forward mix.
+--- EXCLUDE
+Cantonese, English vocals, female lead vocal, ballad, acoustic folk, orchestral strings, country, heavy metal, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a looping marimba-like pluck, a crisp snare and rolling hi-hats enter on bar three, a wobbly synth stab on the last bar, instrumental only]
+
+[Verse 1 | rapid rhythmic playful rap, 808 and hi-hat rolls, a sharp breath after every line, syllables land on the beat like a drum pattern]
+让老胖洗漱去哦草你是，将奥阳奇招与狗要即使，
+康要让起诉虚楼交集日，绑要钢你好绿头小屁事，
+抢老绑康给央视破药，章药胖浪黑方式国鸟，
+航好烫上陪娘吃磨巧，长焦方向被两次脱掉，
+大体相当甲乙双方，阿里长江炸鸡羊汤，
+卡米两张牙医杨康，加以盲抢杀气让杭。
+
+[Chorus | loud bouncy nonsense-syllable chant, bigger kick and claps, gang shouts on the last syllable of each line, the English-looking syllables are spat clearly]
+可乐么喝，呢这测个，热特呢么，
+乐乐侧着，者则和德，合可歌色，
+隔乐我的得乐，可折火热捏特，
+特色诺克么呢，特乐泼社车河，
+我休假，坡牛呀，错够傻，若求下，
+nos show chia！fo yo pia！
+玻激发，左一下，罗嘀嗒，佛你妈，
+wo piu na！told Molly big ba！
+
+[Verse 2 | part 1 of 2, the rapid playful rap again, shorter lines, 808 and hi-hats, a breath between each line]
+公开赛孟太太，
+宋太宰钟开莱，
+痛痛快快，房东太太！
+一大块激发态，
+记下来李家寨，
+绿化带批下来，
+七八百氯化钙，
+第八代计划外。
+
+[Verse 2 | part 2 of 2, faster, the two-part lines are spat in one breath each with air between, ends on a held word]
+雨花台滴下来，
+戚大帅余下来，
+一大排几大块，于大海七八块，
+利亚太李佳白，于嘉泰曲麻莱，
+踢下来挤下来，碧塔海你亚奈，
+尼巴莱提下来，移下来洗下来，
+七八代须加盖，于亚太李大帅。
+
+[Chorus | same energy as the first chorus, a long chain of rhymed names, claps on every beat]
+郭平梁恰哇活性氧哇她骆秉章他怕，
+阿萨左营港萨达若冰霜发嘎，
+郭景昌哈家博陵王架卡过荥阳卡辣，
+拉闸薄情郎咋下郭鼎堂虾查，
+薄幸郎擦吧若冰霜爸妈所应当那妈，
+马掐落平阳瓦塔握情况鸭鸭。
+
+[Drop | 2 bars, everything cuts to one beat of full silence, then the full beat slams in with a marimba pluck, vocals rest]
+
+[Final Chorus | part 1 of 4, the loudest chant, bouncy and fast, gang shouts on every line end]
+七提一皮底肌离洗，
+比你迷提提里起皮，
+其他提压皮压力哈迪瓜，
+西沙比纳米马地煞立马，
+
+[Final Chorus | part 2 of 4, the rapid chain of rhyming words, one breath for each line, claps steady]
+以及地区必须预期一起第一积极及其一句，
+具体区域低于其余立即体系距离给予依据，
+一批集体气体据悉一级基于厘米予以玉米，
+机器一齐密集地理极其与其提起利息聚集，
+趋于一笔弟弟一一袭击以西低迷一举一体，
+
+[Final Chorus | part 3 of 4, the voice breaks into laughter and nonsense sounds, the parenthesized line is a shouted crowd chant, then the rhyme chain resumes]
+啊啊啊啊啊哈哈哈哈哈哈哈，
+（哇啊啊啊啪啪啪啪啪呐呐呐）
+其他一下计划以下巨大一家一把旗下地下，
+极大一大其它希腊陛下依法立法底下，
+骑马溢价已达壁画激发提价几家，
+抵达泥沙你家密码低下一架，
+抵押虚假起码西夏立马，
+
+[Final Chorus | part 4 of 4, the lines get shorter and faster until they are single words, then the long final lines are spat with full breath, band at full]
+低价里下批发愈加，
+提拔西亚期价，
+西瓜启发，
+哈哈哈，
+挤压第八，
+琵琶息差技法，
+吸纳一发余下利差，
+披挂惧怕绿化低洼余家，
+菊花李家语法历法比价地价，
+细化计价气压七大激化一大立下，
+离家愈发欺诈取下低压绿茶继发提法，
+尼亚七八极佳鱼虾起家疲乏笔法区划笔画，
+利亚议价逆差居家积压提辖皮下底价你爸尼玛。
+
+[Outro | 4 bars, the beat stops, the marimba pluck plays alone, a laugh, then silence, instrumental only]
+[End]

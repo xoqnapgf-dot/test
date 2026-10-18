@@ -1,0 +1,83 @@
+#id: 072
+#slug: sayonara-wa-owari-janai
+#title: さよならは終わりじゃない
+#album: 歌词2
+#lang: Japanese
+#orig: f2:2722-2780
+#vocal: Female
+#model: v6
+#weirdness: 35
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 76
+#length: about 4:00
+#note: 原稿结构标签太简略（[Instrumental] 只有一个词），已补成具体的演奏内容；最后一遍副歌后半的「さよならは終わりじゃない / 胸の中で生きている…」与前半不同，写成 Final Chorus part 2。
+#note: 原稿「明日へ進め　ばいい」「今日を越えて　行く」中间的全角空格切断了词（進め|ばいい、越えて|行く），已按读音接起来写成「明日へ進めばいい」「今日を越えて行く」（只去掉了空格，文字没变）；「私は今　歌う」处保留逗号。
+--- STYLE
+Heartfelt Japanese J-pop piano ballad building into a band anthem at 76 BPM in A-flat major, sung in Japanese. A female vocalist sings tender, clear and slightly trembling, close to the microphone in the verses, then open, bright and sustained in the chorus with a few doubled voices, and a rising full-voiced belt in the final chorus. A felt piano and a soft acoustic guitar carry the verses, a warm bass and brushed drums enter in the pre-chorus, and the chorus adds strings, a clean electric guitar, bigger drums and layered harmonies. Gentle, hopeful mood of a morning walk to the station with an old bag, an unsaid thank-you, an evening glow that still burns, and a promise to meet again under a far sky. Ends on the piano alone with one held chord. Warm, wide, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, screaming, comedy, autotune
+--- LYRICS
+[This is a Japanese song]
+
+[Intro | 8 bars, a felt piano alone, a soft acoustic guitar joins on bar five, a pale morning room tone, instrumental only]
+
+[Verse 1 | tender clear female voice, close-mic, piano and guitar only, a breath after every line, slightly behind the beat]
+朝の窓に、薄紅の風、
+古い鞄を、肩にかける、
+駅へ続く、坂道で、
+君の声を、思い出す。
+
+[Pre-Chorus | warm bass and brushed drums enter, the voice lifts gently, a little firmer]
+言えなかった、ありがとう、
+胸の奥で、まだ揺れてる、
+一歩ずつ、顔を上げて、
+今日を越えて行く。
+
+[Chorus | open bright sustained voice, strings and a clean electric guitar enter, bigger drums, a few doubled voices, long held line endings]
+さよならは、終わりじゃない、
+遠い空で、また会える、
+震える声、抱きしめて、
+私は今、歌う。
+
+[Verse 2 | back to the tender voice, piano, guitar and light bass, a little more wistful]
+雨の匂い、残る校庭、
+白い線を、風が消した、
+並んで見た、夕焼けは、
+今も胸に、焼きついてる。
+
+[Pre-Chorus | warm bass and brushed drums, the voice lifts gently]
+失くしたもの、数えるより、
+手のひらの、温度を信じる、
+涙なら、拭わなくていい、
+明日へ進めばいい。
+
+[Chorus | same as the first chorus, a little stronger, same melody]
+さよならは、終わりじゃない、
+遠い空で、また会える、
+震える声、抱きしめて、
+私は今、歌う。
+
+[Bridge | stripped down, piano and a quiet voice, strings enter slowly on the third line, building]
+もしも道に、迷う夜は、
+あの日の笑顔、灯りにする、
+小さな願い、重ねながら、
+新しい朝へ。
+
+[Instrumental Break | 8 bars, the piano carries the chorus melody, strings and clean guitar answer, drums build, a short silence on the last beat, instrumental only]
+
+[Final Chorus | part 1 of 2, strongest version, voice rises and belts, full band and strings, the last words are held long]
+さよならは、終わりじゃない、
+遠い空で、また会える、
+この声よ、高く強く、
+君のもとへ、届け。
+
+[Final Chorus | part 2 of 2, the closing words, voice softer and warm again, band thins to piano, strings and soft drums]
+さよならは、終わりじゃない、
+胸の中で、生きている、
+震える声、抱きしめて、
+私は今、歩く。
+
+[Outro | 8 bars, the band falls away, the piano plays the intro motif alone, one held chord, then silence, instrumental only]
+[End]

@@ -1,0 +1,79 @@
+#id: 006
+#slug: wheel-of-destiny
+#title: The Wheel of Destiny
+#album: 《命运之轮》
+#lang: English
+#orig: f1:276-325
+#vocal: Female
+#model: v6
+#weirdness: 45
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 84
+#length: about 3:30
+#note: 主歌是 10 行的长段，原文不能删，所以按 4+4+2 拆成三个小节并用空行换气；副歌句尾逗号/句号交替。
+#note: 原稿里 [Drop] 后直接接 Chorus，现在写成 2 小节的"齿轮停转 + 一拍静默"，再进入最后的副歌。
+--- STYLE
+Hypnotic dark synth-pop with dream-pop haze at 84 BPM in A minor. A female alto sings in English, hushed and breathy in the verses and lifting into a wide, airy chorus with layered harmonies, unhurried and slightly behind the beat. A slowly rotating analog arpeggio, a deep warm bass and soft clock-like percussion carry the verses, and the chorus adds a wide pad, a gated snare and a shimmering lead synth that circles back on itself. Dreamlike and fatalistic, like a great wheel turning in the dark. Ends on the arpeggio slowing down until it stops. Vocal-forward mix with spacious reverb.
+--- EXCLUDE
+male lead vocal, rap, screaming, heavy metal guitars, trap hi-hats, country, acoustic folk, orchestral brass, children choir
+--- LYRICS
+[Intro | 8 bars, a slow rotating arpeggio alone, a soft clock-tick percussion enters on bar five, deep bass swells underneath, instrumental only]
+
+[Verse 1 | hushed breathy female voice, arpeggio and bass only, one breath per line, behind the beat, sparse and hypnotic]
+Spinning quietly, turning so slow,
+Silent motions, where shadows glow.
+The fading remnants remain in the past,
+Dreams like bubbles vanish so fast.
+
+I am watching, you are listening,
+Time sings of love that's everlasting.
+Echoes of fate resound and call,
+Telling me everything, I feel it all.
+
+Touching the shore where doubt is found,
+I won't forget the first time we were bound.
+
+[Break | arpeggio holds one note, one beat of silence, singer breathes in]
+
+[Chorus | voice lifts wide and airy, layered harmonies, gated snare and wide pad enter, lead synth circles around the vocal, line endings held]
+Spinning, spinning, round and round,
+The wheel of fate is turning down.
+Stilling, stilling, it comes to rest,
+The universe stirs deep in our chest.
+
+Singing, singing, through the night,
+The endless loop repeats its flight.
+Forgetting, forgetting, all that's known,
+Let the world lead me to my fall, alone.
+
+[Verse 2 | back to the hushed voice, arpeggio and bass, heartbeat kick added, more urgent and fragile]
+Motionless heartbeats, trapped in a maze,
+Struggling silently in a daze.
+A kiss, a tear, rips through my mind,
+Yearning so wild, lost in time.
+
+You are speaking, I am listening,
+Gods sing of life that's shimmering.
+Echoes of moments, soft and bright,
+Telling me everything, I feel the light.
+
+Touching the shore that lies ahead,
+Please don't forget, let my soul be led.
+
+[Drop | 2 bars, the machinery stops, filtered pad swells, one beat of full silence, then the whole band returns together, vocals rest]
+
+[Final Chorus | strongest version, lead belts softly over stacked harmonies, full drums and bright synth, same melody as the first chorus]
+Spinning, spinning, round and round,
+The wheel of fate is turning down.
+Stilling, stilling, it comes to rest,
+The universe stirs deep in our chest.
+
+Singing, singing, through the night,
+The endless loop repeats its flight.
+Forgetting, forgetting, all that's known,
+Let the world lead me to my fall, alone.
+
+[Outro | 8 bars, drums and pad fall away, the rotating arpeggio slows down note by note until it stops, one low bass tone, then silence, instrumental only]
+[End]

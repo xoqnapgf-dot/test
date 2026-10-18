@@ -1,0 +1,113 @@
+#id: 064
+#slug: wuyu
+#title: 雾屿
+#album: 歌词2
+#lang: Mandarin
+#orig: f2:2003-2088
+#vocal: Female
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 80
+#length: about 4:30
+#note: 这是《霧の島のエコー》的中文版，编曲思路相同（指弹吉他 + 小提琴 + 远处雾笛 + 贝斯），所以 Style 里也写了这些乐器；原稿连续方括号写法（[Chorus] [Violin] [Warm Harmonies]）已合并为「段落 | 指示」。
+#note: 「（回声——）」「（曾经——）」是叠加在行尾的长音回声，保持行内括号；最后一遍副歌写了 key change，对应原稿的 [Key Change]。
+--- STYLE
+Warm Mandopop indie-folk at 80 BPM in D major, sung in Mandarin Chinese. A soft female vocalist sings tender and breathy, close to the microphone in the verses, then clear, emotional and soaring in the chorus with warm harmonies above, holding the echo words long. A fingerpicked acoustic guitar, a warm melodic bass and a wooden box drum carry the verses, a violin plays long notes and answers the vocal phrases, a distant foghorn sounds between sections, and the final chorus opens into a full band with a key change. Nostalgic, bittersweet mood of a foggy island town, a tram along the coast, a doughnut split in half, and echoes that stay. Ends on the guitar fading with waves and a distant foghorn. Warm, natural, vocal-forward mix.
+--- EXCLUDE
+male lead vocal, Cantonese, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, screaming, autotune
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, a fingerpicked acoustic guitar, a distant foghorn, soft violin swells, gentle sea waves, instrumental only]
+
+[Verse 1 | soft tender female voice, breathy and close, guitar only, a breath after every line, slightly behind the beat]
+末班电车驶过海岸的坡道，
+车窗把灯火揉成一片橘黄，
+酒馆木门推开一缕咸的风，
+琴弦上还留着昨夜的潮响。
+
+你把甜甜圈掰成两半糖霜，
+说甜的一半留给流浪的人，
+矮桌上咖啡凉成小小的湖，
+倒映着雾里走失的一颗星。
+
+[Pre-Chorus | building, voice lifts gently, violin enters with a long note, bass joins softly]
+调音的指尖停在半空中，
+整座小城屏住了呼吸，
+雾从海面漫上旧窗台，
+有些话趁现在说给你。
+
+[Chorus | warm harmonies, violin sings the melody between lines, the bracketed echo words are held long and soft, cajon and bass steady, long held line endings]
+雾屿的夜漫过防波堤，
+星光沉进黑色的海底，
+你说回声不会骗人（回声——）
+它替我们记得曾经（曾经——）
+灯塔转过第几个四季，
+汽笛应和着谁的姓名，
+如果思念也有涨潮期，
+就让它淹没整座雾屿。
+
+[Verse 2 | back to the soft tender voice, guitar and bass, a little more playful, a smile in the voice]
+提琴在防波堤上练习告白，
+弓弦拉出一道银色的裂缝，
+月亮从裂缝里漏下来一点，
+落在木箱鼓沉睡的年轮中。
+
+贝斯的心跳藏在浓雾深处，
+四根弦数着码头剩下的灯，
+我们把歌声系在浮标上面，
+让它随着洋流去远方看看。
+
+[Pre-Chorus | building, voice lifts gently, violin and bass, a little more emotional than before]
+录下今晚所有的杂音，
+连笑场也不要剪掉它，
+如果某天我们走散了，
+就循着这一段回声找。
+
+[Chorus | same as the first chorus, a little stronger, same melody]
+雾屿的夜漫过防波堤，
+星光沉进黑色的海底，
+你说回声不会骗人（回声——）
+它替我们记得曾经（曾经——）
+灯塔转过第几个四季，
+汽笛应和着谁的姓名，
+如果思念也有涨潮期，
+就让它淹没整座雾屿。
+
+[Interlude | 8 bars, a violin solo over fingerpicked acoustic guitar arpeggios, instrumental only, the bass joins on the last two bars]
+
+[Verse 3 | tender and sparse, only guitar and a few bass notes, the voice soft and slow, the departure told simply]
+后来汽笛真的带走了一个人，
+候车室的灯咬破清晨的雾，
+背包侧袋插着半块甜甜圈，
+甜的一半终于跟着去流浪。
+
+留下来的和弦缺了低音部，
+我们谁也没有去补那个洞，
+只是每晚仍然朝着海演奏，
+相信雾会把歌捎去她耳中。
+
+[Bridge | whispered, the bass guitar plays a solo line under the voice, a pause after each pair of lines, the last line is sung softly and held]
+听，雾的那一边，
+有一把贝斯在应答，
+一样的节拍，一样的心跳，
+原来回声，从未离开。
+
+[Final Chorus | belted, full band, key change up one step, voice soars with all the harmonies, violin and guitar at full, the bracketed echo words held long]
+雾屿的风吹散了别离，
+晨光浮上银色的海面，
+你说回声终会归来（回声——）
+它带我们回到曾经（曾经——）
+灯塔数完最后的四季，
+汽笛唱出了你的姓名，
+如果重逢也有涨潮期，
+就趁它漫过整座雾屿。
+
+[Outro | 8 bars, soft female voice, the guitar fades with waves, the last words are sung softly and held, then a distant foghorn]
+雾散了，灯又亮了，
+回声还在海面上走着，
+（啦——啦——啦——）
+[End]

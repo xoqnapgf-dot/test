@@ -1,0 +1,86 @@
+#id: 019
+#slug: sishui-liunian
+#title: 似水流年
+#album: 《孤独症患者》
+#lang: Mandarin
+#orig: f1:1109-1158
+#vocal: Male
+#model: v6
+#weirdness: 40
+#influence: 65
+#variety: Off
+#max: On
+#bpm: 76
+#length: about 4:10
+#note: 两段主歌各 12 行，原文不能删，已按 4+4+4 拆成 part 1-3，各自带演出指示，防止后半被赶拍。
+#note: 副歌「逝去的归来吧，爱过的回来啊」原稿已有逗号，保留；第二遍副歌多出的 4 行放在同一个 Final Chorus 里并要求"愈唱愈开"。
+#note: 可能读错：还(hái)属于、重现(chóng)、一瓣又一瓣；读错用歌词精修只换那个字。
+--- STYLE
+Nostalgic Mandopop folk-rock at 76 BPM in G major, sung in Mandarin Chinese. A male voice sings warm, slightly husky and honest, close to the microphone and almost spoken in the verses, then opening into a wide, aching and sustained chorus with long held line endings. A fingerpicked acoustic guitar and a soft piano carry the verses, a harmonica answers between phrases, a warm bass and brushed drums enter in the second verse, and the chorus adds strummed guitars, strings, big reverb drums and layered backing harmonies. Wistful, homesick mood of a musician remembering lost years, fireflies in a forest and a guitar that leads him back home. Ends on the guitar alone with one harmonica note. Vocal-forward, natural warm mix.
+--- EXCLUDE
+Cantonese, English vocals, rap, EDM drop, trap hi-hats, heavy distortion, screaming, autotune, female lead vocal
+--- LYRICS
+[This is a Mandarin song]
+
+[Intro | 8 bars, fingerpicked acoustic guitar alone, a soft piano joins on bar five, a lonely harmonica phrase on the last two bars, instrumental only]
+
+[Verse 1 | part 1 of 3, warm husky male voice, close-mic, guitar and piano only, one breath per line, slightly behind the beat]
+再写不出那样的歌曲，
+心灵与人生的共鸣似已离去，
+再遇不见那场迷离双眼的大雨，
+可为何那份模糊仍在我身前延续。
+
+[Verse 1 | part 2 of 3, same voice, a little warmer, harmonica answers after each pair of lines]
+我梦到过刻骨铭心的爱恋，
+许下的承诺直达世界的终焉，
+我唱过青葱岁月峥嵘的理想，
+午夜孤泣的吉他领我重回故乡。
+
+[Verse 1 | part 3 of 3, voice lifting gently, warm bass enters, soft brushed drums begin]
+我偶遇过亿万萤火虫漂泊的森林，
+它们是黑暗中摇曳无定的光明，
+我弹奏过彩虹编织的琴弦，
+白云跳着舞蹦到我面前。
+
+[Break | band stops, one beat of silence, singer breathes in]
+
+[Chorus | wide aching voice, long held line endings, strummed guitars and strings enter, big reverb drums, backing harmonies stack in the last two lines]
+逝去的归来吧，爱过的回来啊，
+当初的那道身影是否还属于她，
+看过的重现吧，听过的回荡啊，
+带我引我回到那个家。
+
+[Verse 2 | part 1 of 3, back to the close honest voice, guitar and piano, bass and brushed drums stay, a little more weary]
+再记不起当初的那张容颜，
+炽热的情意似乎早已变迁，
+再无法回到的那些年，
+他们是否仍孤守在岁月的起点。
+
+[Verse 2 | part 2 of 3, more inward, almost spoken, guitar alone with the harmonica]
+我听过深夜时分自己灵魂的呢喃，
+矛盾与执念在心底最深处纠缠，
+我写过的情愫如浪起时的波澜，
+拍打在岸边最终只得轻叹。
+
+[Verse 2 | part 3 of 3, voice rising with pain, drums return, strings swell slowly]
+我镌刻过恒久持续的不甘，
+再度抚摸我的手指仍旧莫名发颤，
+我品味过枯萎的白花一瓣又一瓣，
+它们如刀割把我一次次摧残。
+
+[Drop | 2 bars, strings swell and cut to one beat of full silence, then drums, bass and strings land together, vocals rest]
+
+[Final Chorus | part 1 of 2, strongest version, voice wide and aching, full band and strings, same melody as the first chorus]
+逝去的归来吧，爱过的回来啊，
+当初的那道身影是否还属于她，
+看过的重现吧，听过的回荡啊，
+带我引我回到那个家。
+
+[Final Chorus | part 2 of 2, the new words, voice breaks open on the high notes then holds the last line long, band at full power]
+爱过的再爱啊，恨过的又恨啊，
+愁肠百结的我如今在哪啊，
+触碰的消散吧，拥抱的淡化啊，
+我苦啊累啊还能哭出来吗。
+
+[Outro | 8 bars, drums and strings fall away, guitar plays the intro motif alone, one harmonica note, then silence, instrumental only]
+[End]
