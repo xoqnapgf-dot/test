@@ -83,9 +83,9 @@ sf.write(f'{work}/voice_track.wav', vt, SR)
 S = {s['id']: s for s in secs}
 plan = [
     ['lofi_p7', 0.0, S['anon']['t0'] + 1.0, 0.0, -20, 1.2, 1.5],
-    ['lofi_p9', S['anon']['t0'] - 0.2, S['soyo-taki']['t0'] + 1.0, 4.0, -20, 1.0, 1.4],
+    ['lofi_p9', S['anon']['t0'] - 0.2, S['soyo']['t0'] + 1.0, 4.0, -20, 1.0, 1.4],
     # the two piano covers are mastered ~22 dB quieter than the Lo-Fi tracks (median −31.5 vs −9 dBFS), hence the higher gain
-    ['haruhikage', S['soyo-taki']['t0'] - 0.2, S['uika']['t0'] + 1.2, 0.0, -2, 1.2, 1.8],
+    ['haruhikage', S['soyo']['t0'] - 0.2, S['uika']['t0'] + 1.2, 0.0, -2, 1.2, 1.8],
     ['imprisoned', S['uika']['t0'] - 0.3, dur, 0.0, -2, 2.0, 3.0],
 ]
 if plan[-1][2] - plan[-1][1] > 181: plan[-1][3] = 0.0   # longer than the track: it simply ends early (fade covers it)

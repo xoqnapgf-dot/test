@@ -1,7 +1,7 @@
 // Drive the page headlessly: export sound-effect cues, grab stills, or encode frames to video.
 //   node tools/render.mjs cues  <out.json>
 //   node tools/render.mjs still <outdir> <t1,t2,...>
-//   node tools/render.mjs video <out.mp4> <fromSec> <toSec> [fps=30]
+//   node tools/render.mjs video <out.mp4> <fromSec> <toSec> [fps=30]   (env RENDER_P=720 renders 720×1280, RENDER_CRF sets quality)
 // Needs Playwright (global install is fine: NODE_PATH=$(npm root -g)) and ffmpeg on PATH.
 import { createRequire } from 'module';
 import http from 'http';
@@ -52,8 +52,9 @@ if (mode === 'cues') {
   console.log('stills', a.split(',').length);
 } else if (mode === 'video') {
   const fps = Number(fpsArg || 30), f0 = Math.round(Number(a) * fps), f1 = Math.round(Number(b) * fps);
-  const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-pix_fmt', 'yuv420p', '-tune', 'animation', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+  const p = Number(process.env.RENDER_P || 1080), scale = p < 1080 ? ['-vf', `scale=${p}:${Math.round(p * 16 / 9 / 2) * 2}:flags=lanczos`] : [];  // "720p" = 720×1280 for this vertical video
+  const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', ...scale,
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', process.env.RENDER_CRF || '19', '-pix_fmt', 'yuv420p', '-tune', 'animation', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const t0 = Date.now();
   for (let f = f0; f < f1; f++) {
     const d = await grab(f / fps, 0.95);

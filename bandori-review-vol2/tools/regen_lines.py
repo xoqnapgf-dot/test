@@ -4,7 +4,7 @@ usage: python regen_lines.py <script.txt> <workdir> <voxcpm2_dir> <lora_dir> <re
 
 rules.json: {"<substring of the subtitle>": {"need": ["<regex>", …], "py": ["<toneless pinyin>", …], "tries": 8}, …}
 The general checks of make_voice_qc.py still apply; the Whisper read-back must also match every `need` regex
-(case-insensitive) and contain every `py` syllable run (e.g. "li xi" for 立希, whatever characters Whisper picks). Used for English/romaji names, where pinyin comparison can't tell a good take from a bad one.
+(case-insensitive) and contain every `py` syllable run (e.g. "ta ki" when Whisper writes the name in characters, whatever characters Whisper picks). Used for English/romaji names, where pinyin comparison can't tell a good take from a bad one.
 """
 import sys, os, json, re, time
 sys.argv, rules_path = sys.argv[:7], sys.argv[7]
@@ -13,6 +13,8 @@ import make_voice_qc as Q  # noqa: E402  (loads models, skips its main loop)
 import soundfile as sf
 
 rules = json.load(open(rules_path))
+if Q.mu is None:   # '-' as timbre dir: judge against this episode's finished lines
+    Q.set_baseline(sorted(Q.glob.glob(f'{Q.work}/voice/*.wav')))
 qc = json.load(open(f'{Q.work}/qc.json'))
 lines = [l for s in Q.parse(Q.script) for l in s['lines']]
 for key_text, rule in rules.items():

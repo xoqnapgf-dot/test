@@ -1,7 +1,7 @@
 // ─── main: assets, render loop, player UI, capture hooks ────────────────────
 
 const IMAGES = ['anon_ep1', 'anon_idea', 'anon_tomori', 'anon_tomori2', 'anon_stage', 'taki_ep2', 'taki_angry', 'taki_drum', 'soyo_ep2', 'soyo_ep9', 'soyo_sad', 'soyo_bass',
-  'tomori_ep1', 'tomori_sing', 'mygo_group', 'mygo_cafe', 'uika_saki_park', 'saki_smile', 'uika_cap', 'uika_nyamu', 'uika_ep11', 'saki_close', 'am_stage', 'am_group',
+  'tomori_ep1', 'tomori_sing', 'mygo_group', 'uika_saki_park', 'saki_smile', 'uika_cap', 'uika_nyamu', 'uika_ep11', 'saki_close', 'am_stage', 'am_group',
   'anon_happy', 'anon_heart', 'anon_shock', 'anon_back', 'anon_soyo', 'soyo_glare', 'soyo_smile', 'soyo_break', 'soyo_silh', 'taki_shout', 'taki_cry', 'soyo_taki', 'taki_brick',
   'uika_dress', 'uika_face', 'uika_glasses', 'misaki_michelle', 'misaki_card', 'misaki_card2', 'kokoro_card', 'arisa_card', 'lock_card', 'lock_card2', 'anon_card', 'soyo_card',
   'taki_card', 'tomori_card', 'misaki_chibi', 'uika_chibi', 'soyo_chibi', 'misaki_chibi2', 'chara_uika', 'chara_sakiko', 'logo3', 'logo18', 'logo21', 'logo45'];

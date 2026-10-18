@@ -4,7 +4,7 @@
 
 const SHOTLIST = {
   intro: [
-    [0, { img: 'misaki_card', fy: 0.4 }], [0, '老邦', { img: 'mygo_cafe' }], [0, '这期', { img: 'am_stage' }],
+    [0, { img: 'misaki_card', fy: 0.4 }], [0, '老邦', { img: 'arisa_card', fy: 0.3 }], [0, '这期', { img: 'am_stage' }],
   ],
   misaki: [
     [0, { img: 'misaki_card', fy: 0.35, pw: [[0, '美咲']] }],
@@ -43,7 +43,7 @@ const SHOTLIST = {
     [13, { img: 'anon_stage', fy: 0.35, z0: 1.15, z1: 1.35 }],
     [14, { img: 'anon_idea', fx: 0.55, z0: 1.1, z1: 1.2 }],
   ],
-  'soyo-taki': [
+  soyo: [
     [0, { img: 'soyo_card', fy: 0.3 }], [0, '一直很不喜欢', { img: 'soyo_glare', fx: 0.42, pw: [[0, '不喜欢']] }],
     [1, { img: 'soyo_smile', out: true }],
     [2, { kind: 'duo', img: 'soyo_smile', fx: 0.5, fy: 0.35, img2: 'soyo_glare', fx2: 0.42, fy2: 0.45 }],
@@ -53,13 +53,15 @@ const SHOTLIST = {
     [6, { img: 'soyo_ep9' }],
     [7, { img: 'soyo_break', fx: 0.45 }],
     [8, { img: 'soyo_glare', fx: 0.42, z0: 1.12, z1: 1.3, pw: [[8, '底线']] }],
-    [9, { img: 'taki_card', fy: 0.3 }],
-    [10, { img: 'taki_shout', fy: 0.4, pw: [[10, '凶']] }],
-    [11, { img: 'taki_ep2', out: true }],
-    [12, { kind: 'duo', img: 'taki_drum', fx: 0.45, fy: 0.45, img2: 'tomori_sing', fx2: 0.45, fy2: 0.4 }],
-    [13, { img: 'soyo_taki', fx: 0.5 }],
-    [14, { img: 'anon_shock', fx: 0.6 }], [14, '立希', { img: 'soyo_taki', fx: 0.6, z0: 1.12, z1: 1.25, pw: [[14, '点破']] }],
-    [15, { img: 'taki_drum', fx: 0.45 }],
+  ],
+  taki: [
+    [0, { img: 'taki_card', fy: 0.3 }],
+    [1, { img: 'taki_shout', fy: 0.4, pw: [[1, '凶']] }],
+    [2, { img: 'taki_ep2', out: true }],
+    [3, { kind: 'duo', img: 'taki_drum', fx: 0.45, fy: 0.45, img2: 'tomori_sing', fx2: 0.45, fy2: 0.4 }],
+    [4, { img: 'soyo_taki', fx: 0.5 }],
+    [5, { img: 'anon_shock', fx: 0.6 }], [5, 'Taki', { img: 'soyo_taki', fx: 0.6, z0: 1.12, z1: 1.25, pw: [[5, '点破']] }],
+    [6, { img: 'taki_drum', fx: 0.45 }],
   ],
   uika: [
     [0, { img: 'am_stage' }], [0, '初华', { img: 'uika_cap', fx: 0.4, fy: 0.4 }],
@@ -87,7 +89,7 @@ const SHOTLIST = {
     [38, { img: 'uika_cap', fx: 0.4, fy: 0.4, out: true }],
   ],
   outro: [
-    [0, { img: 'mygo_cafe' }], [1, { img: 'am_group', out: true }],
+    [0, { img: 'mygo_group' }], [1, { img: 'am_group', out: true }],
   ],
 };
 
@@ -112,11 +114,13 @@ function overlays(c, t) {
     redCircle(c, t, S.at(1, '第一集'), 0.13, 0.78, 0.1, 0.17, S.L(2));
     memePop(c, t, S.at(9, '落井下石'), S.L(10), 'soyo_chibi', 850, 1640, 220, 0.06);
   }
-  if (s.id === 'soyo-taki') {
+  if (s.id === 'soyo') {
     redCircle(c, t, S.at(2, '表'), 0.26, 0.38, 0.14, 0.27, S.L(3));
     redCircle(c, t, S.at(2, '里') + 0.05, 0.71, 0.45, 0.14, 0.3, S.L(3));
     memePop(c, t, S.at(1, '动漫角色') - 0.3, S.L(2), 'soyo_chibi', 830, 1640, 240, 0.06);
-    flash(c, t, S.at(10, '凶'), '255,255,255', 0.3, 0.5);
+  }
+  if (s.id === 'taki') {
+    flash(c, t, S.at(1, '凶'), '255,255,255', 0.3, 0.5);
   }
   if (s.id === 'uika') {
     fastForward(c, t, S.at(2, '跳过') - 0.3, S.L(3));

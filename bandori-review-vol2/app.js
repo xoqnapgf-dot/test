@@ -449,7 +449,7 @@ function drawBackdrop(c, s, s2, mixK) {
 const HEAD = {
   intro: ['BanG Dream!', '邦多利角色个人向点评 · 下', '#ff3b6b'], misaki: ['Hello, Happy World!', '奥泽美咲', '#ffb000'],
   'morfo-ras': ['Morfonica · RAISE A SUILEN', '蝶团 · RAS', '#5b8cff'], anon: ['MyGO!!!!!', '千早爱音', '#ff88aa'],
-  'soyo-taki': ['MyGO!!!!!', '长崎爽世 · 椎名立希', '#e8a35e'], uika: ['Ave Mujica', '三角初华', '#c9a24a'], outro: ['BanG Dream!', '邦多利角色个人向点评 · 下', '#ff3b6b'],
+  soyo: ['MyGO!!!!!', 'Soyo', '#e8b86a'], taki: ['MyGO!!!!!', 'Taki', '#8a8ac4'], uika: ['Ave Mujica', '三角初华', '#c9a24a'], outro: ['BanG Dream!', '邦多利角色个人向点评 · 下', '#ff3b6b'],
 };
 function drawHeader(c, t) {
   const s = sectionAt(t), h = HEAD[s.id]; if (!h) return;
@@ -483,7 +483,7 @@ function drawFooter(c, t) {
 
 const SHOTLIST = {
   intro: [
-    [0, { img: 'misaki_card', fy: 0.4 }], [0, '老邦', { img: 'mygo_cafe' }], [0, '这期', { img: 'am_stage' }],
+    [0, { img: 'misaki_card', fy: 0.4 }], [0, '老邦', { img: 'arisa_card', fy: 0.3 }], [0, '这期', { img: 'am_stage' }],
   ],
   misaki: [
     [0, { img: 'misaki_card', fy: 0.35, pw: [[0, '美咲']] }],
@@ -522,7 +522,7 @@ const SHOTLIST = {
     [13, { img: 'anon_stage', fy: 0.35, z0: 1.15, z1: 1.35 }],
     [14, { img: 'anon_idea', fx: 0.55, z0: 1.1, z1: 1.2 }],
   ],
-  'soyo-taki': [
+  soyo: [
     [0, { img: 'soyo_card', fy: 0.3 }], [0, '一直很不喜欢', { img: 'soyo_glare', fx: 0.42, pw: [[0, '不喜欢']] }],
     [1, { img: 'soyo_smile', out: true }],
     [2, { kind: 'duo', img: 'soyo_smile', fx: 0.5, fy: 0.35, img2: 'soyo_glare', fx2: 0.42, fy2: 0.45 }],
@@ -532,13 +532,15 @@ const SHOTLIST = {
     [6, { img: 'soyo_ep9' }],
     [7, { img: 'soyo_break', fx: 0.45 }],
     [8, { img: 'soyo_glare', fx: 0.42, z0: 1.12, z1: 1.3, pw: [[8, '底线']] }],
-    [9, { img: 'taki_card', fy: 0.3 }],
-    [10, { img: 'taki_shout', fy: 0.4, pw: [[10, '凶']] }],
-    [11, { img: 'taki_ep2', out: true }],
-    [12, { kind: 'duo', img: 'taki_drum', fx: 0.45, fy: 0.45, img2: 'tomori_sing', fx2: 0.45, fy2: 0.4 }],
-    [13, { img: 'soyo_taki', fx: 0.5 }],
-    [14, { img: 'anon_shock', fx: 0.6 }], [14, '立希', { img: 'soyo_taki', fx: 0.6, z0: 1.12, z1: 1.25, pw: [[14, '点破']] }],
-    [15, { img: 'taki_drum', fx: 0.45 }],
+  ],
+  taki: [
+    [0, { img: 'taki_card', fy: 0.3 }],
+    [1, { img: 'taki_shout', fy: 0.4, pw: [[1, '凶']] }],
+    [2, { img: 'taki_ep2', out: true }],
+    [3, { kind: 'duo', img: 'taki_drum', fx: 0.45, fy: 0.45, img2: 'tomori_sing', fx2: 0.45, fy2: 0.4 }],
+    [4, { img: 'soyo_taki', fx: 0.5 }],
+    [5, { img: 'anon_shock', fx: 0.6 }], [5, 'Taki', { img: 'soyo_taki', fx: 0.6, z0: 1.12, z1: 1.25, pw: [[5, '点破']] }],
+    [6, { img: 'taki_drum', fx: 0.45 }],
   ],
   uika: [
     [0, { img: 'am_stage' }], [0, '初华', { img: 'uika_cap', fx: 0.4, fy: 0.4 }],
@@ -566,7 +568,7 @@ const SHOTLIST = {
     [38, { img: 'uika_cap', fx: 0.4, fy: 0.4, out: true }],
   ],
   outro: [
-    [0, { img: 'mygo_cafe' }], [1, { img: 'am_group', out: true }],
+    [0, { img: 'mygo_group' }], [1, { img: 'am_group', out: true }],
   ],
 };
 
@@ -591,11 +593,13 @@ function overlays(c, t) {
     redCircle(c, t, S.at(1, '第一集'), 0.13, 0.78, 0.1, 0.17, S.L(2));
     memePop(c, t, S.at(9, '落井下石'), S.L(10), 'soyo_chibi', 850, 1640, 220, 0.06);
   }
-  if (s.id === 'soyo-taki') {
+  if (s.id === 'soyo') {
     redCircle(c, t, S.at(2, '表'), 0.26, 0.38, 0.14, 0.27, S.L(3));
     redCircle(c, t, S.at(2, '里') + 0.05, 0.71, 0.45, 0.14, 0.3, S.L(3));
     memePop(c, t, S.at(1, '动漫角色') - 0.3, S.L(2), 'soyo_chibi', 830, 1640, 240, 0.06);
-    flash(c, t, S.at(10, '凶'), '255,255,255', 0.3, 0.5);
+  }
+  if (s.id === 'taki') {
+    flash(c, t, S.at(1, '凶'), '255,255,255', 0.3, 0.5);
   }
   if (s.id === 'uika') {
     fastForward(c, t, S.at(2, '跳过') - 0.3, S.L(3));
@@ -630,7 +634,8 @@ function sfxCues() {
   add(s.at(15, '有咲'), 'tick', 0.6);
   s = S['morfo-ras']; add(s.at(1, 'LOCK') + 0.1, 'tick', 0.6);
   s = S.anon; add(s.at(1, '第一集'), 'tick', 0.6); add(s.at(9, '落井下石'), 'pop', 0.6); add(s.at(10, '幼稚'), 'boing', 0.5);
-  s = S['soyo-taki']; add(s.at(1, '动漫角色') - 0.3, 'pop', 0.6); add(s.at(2, '表'), 'tick', 0.6); add(s.at(10, '凶'), 'hit', 0.5);
+  s = S.soyo; add(s.at(1, '动漫角色') - 0.3, 'pop', 0.6); add(s.at(2, '表'), 'tick', 0.6);
+  s = S.taki; add(s.at(1, '凶'), 'hit', 0.5);
   s = S.uika; add(s.at(2, '跳过') - 0.3, 'whoosh', 0.6); add(s.at(4, '小姨'), 'pop', 0.6); add(s.at(8, '一缕光') - 0.2, 'chime', 0.35);
   add(s.at(36, '狗爬'), 'pop', 0.5); add(s.at(39, '小姨'), 'pop', 0.6);
   return out.filter((x) => isFinite(x[0])).sort((a, b) => a[0] - b[0]);
@@ -640,7 +645,7 @@ function sfxCues() {
 // ─── main: assets, render loop, player UI, capture hooks ────────────────────
 
 const IMAGES = ['anon_ep1', 'anon_idea', 'anon_tomori', 'anon_tomori2', 'anon_stage', 'taki_ep2', 'taki_angry', 'taki_drum', 'soyo_ep2', 'soyo_ep9', 'soyo_sad', 'soyo_bass',
-  'tomori_ep1', 'tomori_sing', 'mygo_group', 'mygo_cafe', 'uika_saki_park', 'saki_smile', 'uika_cap', 'uika_nyamu', 'uika_ep11', 'saki_close', 'am_stage', 'am_group',
+  'tomori_ep1', 'tomori_sing', 'mygo_group', 'uika_saki_park', 'saki_smile', 'uika_cap', 'uika_nyamu', 'uika_ep11', 'saki_close', 'am_stage', 'am_group',
   'anon_happy', 'anon_heart', 'anon_shock', 'anon_back', 'anon_soyo', 'soyo_glare', 'soyo_smile', 'soyo_break', 'soyo_silh', 'taki_shout', 'taki_cry', 'soyo_taki', 'taki_brick',
   'uika_dress', 'uika_face', 'uika_glasses', 'misaki_michelle', 'misaki_card', 'misaki_card2', 'kokoro_card', 'arisa_card', 'lock_card', 'lock_card2', 'anon_card', 'soyo_card',
   'taki_card', 'tomori_card', 'misaki_chibi', 'uika_chibi', 'soyo_chibi', 'misaki_chibi2', 'chara_uika', 'chara_sakiko', 'logo3', 'logo18', 'logo21', 'logo45'];

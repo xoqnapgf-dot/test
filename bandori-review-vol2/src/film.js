@@ -153,7 +153,7 @@ function drawBackdrop(c, s, s2, mixK) {
 const HEAD = {
   intro: ['BanG Dream!', '邦多利角色个人向点评 · 下', '#ff3b6b'], misaki: ['Hello, Happy World!', '奥泽美咲', '#ffb000'],
   'morfo-ras': ['Morfonica · RAISE A SUILEN', '蝶团 · RAS', '#5b8cff'], anon: ['MyGO!!!!!', '千早爱音', '#ff88aa'],
-  'soyo-taki': ['MyGO!!!!!', '长崎爽世 · 椎名立希', '#e8a35e'], uika: ['Ave Mujica', '三角初华', '#c9a24a'], outro: ['BanG Dream!', '邦多利角色个人向点评 · 下', '#ff3b6b'],
+  soyo: ['MyGO!!!!!', 'Soyo', '#e8b86a'], taki: ['MyGO!!!!!', 'Taki', '#8a8ac4'], uika: ['Ave Mujica', '三角初华', '#c9a24a'], outro: ['BanG Dream!', '邦多利角色个人向点评 · 下', '#ff3b6b'],
 };
 function drawHeader(c, t) {
   const s = sectionAt(t), h = HEAD[s.id]; if (!h) return;
