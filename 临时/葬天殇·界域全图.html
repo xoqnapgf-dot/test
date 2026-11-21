@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>葬天殇 · 界域全图</title>
+<style>
+:root{
+ --paper:#0A0706; --paper2:#14100F;
+ --line:#3A2F26; --line2:#5E4F41; --lineDim:#2A231F;
+ --silk:#D3C4A6; --silk2:#9E8F79; --silk3:#6B5D4E; --moon:#EFE7D6;
+ --cin:#AE3A2B; --cin2:#D06A55; --cinDim:#4A2019; --cinSilk:#DCB39F;
+ --gold:#B4913F; --goldDim:#5E4A22; --goldSilk:#E0C784;
+ --jade:#3A8C7D; --jade2:#5AB8A6; --jadeDim:#1C4A3F;
+ --violet:#584655; --violet2:#8A7A8C;
+ --song:"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",serif;
+ --kai:"Kaiti SC","STKaiti","KaiTi","Source Han Serif SC",serif;
+ --ease:cubic-bezier(.22,.61,.36,1);
+ --glow: 0 0 20px rgba(180,145,63,0.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--silk);font-family:var(--song);font-size:14px;
+ -webkit-font-smoothing:antialiased;overscroll-behavior:none;
+ -webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+
+#stage{position:fixed;inset:0;cursor:grab;touch-action:none;overflow:hidden;background:#0E0B0A;transition:background .5s linear}
+#stage.grab{cursor:grabbing}
+#world{position:absolute;inset:0;contain:strict}
+.layer{position:absolute;left:0;top:0;transform-origin:0 0;cursor:pointer;will-change:transform,opacity}
+.layer svg{display:block;overflow:visible}
+.layer .nm,.layer .dt,.layer .fine,.layer .fine2,.layer .fine3{opacity:0;transition:opacity .3s linear}
+#grain{position:fixed;inset:0;pointer-events:none;z-index:4;opacity:.2;mix-blend-mode:soft-light;
+ background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
+
+
+
+/* 书脊 - 增强质感 */
+.spine{position:fixed;left:0;top:0;bottom:0;width:56px;z-index:20;display:flex;flex-direction:column;
+ align-items:center;justify-content:space-between;padding:22px 0 18px;pointer-events:none;
+ background:linear-gradient(90deg,rgba(10,7,6,.96),rgba(10,7,6,.35));border-right:1px solid var(--lineDim);
+ box-shadow: 2px 0 8px rgba(0,0,0,0.4);}
+.seal{width:26px;height:26px;border:1.5px solid var(--cin);display:flex;align-items:center;justify-content:center;flex:none;
+ background:rgba(174,58,43,0.1);border-radius:2px;}
+.seal span{font-size:13px;color:var(--cin2);font-weight:600;line-height:1;text-shadow:0 0 4px rgba(208,106,85,0.5);}
+.spine__t{writing-mode:vertical-rl;font-size:24px;letter-spacing:.44em;font-weight:600;text-indent:.44em;color:var(--silk)}
+.spine__t em{font-style:normal;color:var(--cin2)}
+.spine__f{writing-mode:vertical-rl;font-size:11px;letter-spacing:.32em;color:var(--silk3)}
+
+/* 卷题 - 增强视觉效果 */
+.hud{position:fixed;left:78px;top:24px;z-index:20;pointer-events:none;max-width:min(46vw,520px)}
+.hud__z{font-size:12.5px;letter-spacing:.3em;color:var(--silk3);margin-bottom:7px;opacity:0.8;}
+.hud__n{font-size:clamp(28px,3.8vw,44px);font-weight:600;letter-spacing:.2em;color:var(--moon);
+ line-height:1.1;text-shadow:0 2px 22px rgba(16,13,12,.96), 0 0 10px rgba(239,231,214,0.3);}
+.hud__a{font-size:13px;color:var(--silk2);letter-spacing:.14em;margin-top:8px;
+ text-shadow:0 1px 12px rgba(16,13,12,.98);font-family:var(--kai)}
+
+/* 卷宗 - 增强质感 */
+.book{position:fixed;right:0;top:0;bottom:0;width:min(392px,88vw);z-index:22;
+ background:linear-gradient(270deg,rgba(20,16,15,.985),rgba(10,7,6,.94));
+ border-left:1px solid var(--line);display:flex;flex-direction:column;
+ transform:translateX(100%);transition:transform .5s var(--ease);
+ -webkit-user-select:text;user-select:text;box-shadow:-2px 0 12px rgba(0,0,0,0.5);}
+.book.open{transform:translateX(0)}
+.book__tabs{display:flex;border-bottom:1px solid var(--line);flex:none;background:rgba(20,16,15,0.9);}
+.btab{flex:1;background:none;border:none;border-right:1px solid var(--lineDim);color:var(--silk3);
+ font-family:var(--song);font-size:14.5px;letter-spacing:.26em;font-weight:600;padding:16px 0 15px;cursor:pointer;transition:.26s;
+ background:linear-gradient(to bottom, rgba(20,16,15,0.9), rgba(14,11,10,0.9));}
+.btab:last-child{border-right:none}
+.btab:hover{color:var(--silk);background:linear-gradient(to bottom, rgba(30,26,25,0.9), rgba(24,20,19,0.9));}
+.btab[aria-selected="true"]{color:var(--moon);background:rgba(110,95,81,.13);
+ box-shadow:inset 0 -2px 0 var(--cin);}
+.btab[aria-selected="true"]::after{content:"";display:block;height:2px;background:var(--cin);margin:15px -1px -17px;
+ box-shadow:0 0 8px rgba(208,106,85,0.5);}
+.book__body{flex:1;overflow-y:auto;overscroll-behavior:contain;background:rgba(14,11,10,0.95);}
+.book__body::-webkit-scrollbar{width:5px}
+.book__body::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px;}
+.bpane{display:none;padding:24px 26px 46px;background:rgba(14,11,10,0.98);}
+.bpane.on{display:block}
+.tabhandle{position:fixed;top:50%;right:0;z-index:23;transform:translateY(-50%);width:30px;padding:16px 0;
+ background:var(--paper2);border:1px solid var(--line);border-right:none;color:var(--silk2);cursor:pointer;
+ font-family:var(--song);font-size:13px;letter-spacing:.28em;writing-mode:vertical-rl;text-indent:.28em;
+ transition:right .5s var(--ease),color .26s;box-shadow:-1px 0 4px rgba(0,0,0,0.3);}
+.tabhandle:hover{color:var(--moon);background:rgba(30,26,25,0.9);}
+.book.open ~ .tabhandle{right:min(392px,88vw)}
+
+.p__k{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.22em;color:var(--silk3)}
+.p__k em{font-style:normal;color:var(--line2)}
+.p__n{font-size:33px;font-weight:600;letter-spacing:.18em;color:var(--moon);margin:10px 0 3px}
+.p__a{font-size:12.5px;color:var(--silk3);letter-spacing:.14em;margin-bottom:17px;font-family:var(--kai)}
+.p__d{font-size:13.5px;line-height:2.05;color:var(--silk2);margin-bottom:18px;text-align:justify}
+.p__d strong{color:var(--silk);font-weight:600}
+dl.facts{border-top:1px solid var(--lineDim);margin-bottom:17px}
+.fact{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--lineDim);align-items:baseline}
+.fact dt{font-size:12px;letter-spacing:.24em;color:var(--silk3);width:46px;flex:none;font-family:var(--kai)}
+.fact dd{font-size:13px;color:var(--silk);line-height:1.85;flex:1}
+.fact--g dd{color:var(--goldSilk)}
+ul.lmk{list-style:none;margin-bottom:18px}
+.subs{display:flex;flex-wrap:wrap;gap:7px}
+.subs__h{width:100%;font-size:12px;letter-spacing:.24em;color:var(--silk3);margin-bottom:9px;font-family:var(--kai)}
+.chip{background:none;border:1px solid var(--line);color:var(--silk2);font-family:var(--song);font-size:13px;
+ letter-spacing:.12em;font-weight:600;padding:6px 14px;cursor:pointer;transition:.24s}
+.chip:hover{border-color:var(--silk2);color:var(--moon);background:rgba(110,95,81,.1)}
+.chip--u{border-style:dashed;color:var(--silk3)}
+.lmk__h{font-size:12px;letter-spacing:.24em;color:var(--silk3);margin-bottom:9px;font-family:var(--kai)}
+.lmk li{display:flex;gap:9px;font-size:12.5px;color:var(--silk2);padding:5px 0;line-height:1.75}
+.lmk li b{color:var(--silk);font-weight:600;letter-spacing:.1em;flex:none}
+.lmk li::before{content:"·";color:var(--cin);font-size:16px;line-height:1.2;flex:none}
+
+.tier{margin-bottom:26px}
+.tier h3{font-size:17px;letter-spacing:.3em;font-weight:600;color:var(--silk);padding-bottom:9px;border-bottom:1px solid var(--line)}
+.tier p.tn{font-size:12px;color:var(--silk3);line-height:1.9;margin:10px 0 12px;font-family:var(--kai)}
+.step{width:100%;display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:baseline;background:none;
+ border:none;border-bottom:1px solid var(--lineDim);padding:10px 0;cursor:pointer;text-align:left;color:inherit}
+.step:hover{background:rgba(110,95,81,.07)}
+.step__n{font-size:12px;color:var(--silk3);font-family:var(--kai)}
+.step[aria-expanded="true"] .step__n{color:var(--cin2)}
+.step__m{font-size:16px;letter-spacing:.2em;font-weight:600;color:var(--silk)}
+.step__m small{font-size:11.5px;letter-spacing:.08em;color:var(--silk3);margin-left:10px;font-weight:400}
+.step__g{display:block;font-size:11.5px;letter-spacing:.14em;color:var(--silk3);margin-top:4px;font-family:var(--kai)}
+.sbody{display:none;font-size:12.5px;line-height:2;color:var(--silk2);padding:5px 0 15px 42px;text-align:justify}
+.sbody.on{display:block}
+.sbody .nt{display:block;margin-top:9px;font-size:12px;color:var(--goldSilk);border-left:2px solid var(--goldDim);padding-left:10px;font-family:var(--kai)}
+.tier--i .step__m{color:#DED0B4}
+.tier--b .step__m{color:var(--goldSilk)} .tier--b .step__n{color:var(--goldDim)}
+.tier--s .step__m{color:var(--moon);text-shadow:0 0 18px rgba(239,231,214,.32)}
+
+.card{border:1px solid var(--lineDim);padding:17px 18px;margin-bottom:11px;background:rgba(34,28,25,.5)}
+.card__n{font-size:12px;letter-spacing:.2em;color:var(--silk3);margin-bottom:8px;font-family:var(--kai)}
+.card h4{font-size:16px;letter-spacing:.18em;font-weight:600;color:var(--silk);margin-bottom:8px}
+.card p{font-size:12.5px;line-height:2;color:var(--silk2);text-align:justify}
+.card--b{border-left:2px solid var(--cinDim)} .card--b h4{color:var(--cinSilk)}
+.sh{font-size:13px;letter-spacing:.3em;color:var(--silk3);margin:6px 0 16px;font-family:var(--kai)}
+.sh.mt{margin-top:34px}
+.ev{position:relative;padding:0 0 22px 28px;border-left:1px solid var(--lineDim);margin-left:5px}
+.ev:last-child{border-left-color:transparent}
+.ev__d{position:absolute;left:-4px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--line2)}
+.ev--g .ev__d{background:var(--gold)} .ev--b .ev__d{background:var(--cin)}
+.ev__n{font-size:12px;letter-spacing:.2em;color:var(--silk3);font-family:var(--kai)}
+.ev h4{font-size:16px;letter-spacing:.18em;font-weight:600;color:var(--silk);margin:4px 0 7px}
+.ev--g h4{color:var(--goldSilk)} .ev--b h4{color:var(--cinSilk)}
+.ev p{font-size:12.5px;line-height:1.95;color:var(--silk2);text-align:justify}
+.ev__w{display:inline-block;margin-top:8px;font-size:11.5px;letter-spacing:.16em;color:var(--silk3);
+ border:1px solid var(--lineDim);padding:3px 10px;font-family:var(--kai)}
+
+/* 区域索引条 */
+.rail{position:fixed;left:78px;bottom:26px;z-index:20;display:flex;align-items:flex-end;
+ max-width:calc(100vw - 220px);overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.rail::-webkit-scrollbar{display:none}
+.rnode{background:none;border:none;cursor:pointer;padding:0;color:var(--silk3);flex:none;width:30px;
+ display:flex;flex-direction:column;align-items:center;gap:9px;transition:color .26s}
+.rnode:hover{color:var(--silk)}
+.rnode__d{width:5px;height:5px;border-radius:50%;background:var(--lineDim);flex:none;transition:.3s}
+.rnode__t{writing-mode:vertical-rl;font-size:12px;letter-spacing:.1em;font-weight:600;white-space:nowrap;height:70px;text-align:right}
+.rnode.on{color:var(--moon)}
+.rnode.on .rnode__d{background:var(--cin2);box-shadow:0 0 10px rgba(208,106,85,.7);width:7px;height:7px}
+
+.ctl{position:fixed;bottom:26px;right:26px;z-index:21;display:flex;flex-direction:column;gap:8px}
+.cbtn{width:40px;height:40px;background:rgba(26,22,20,.94);border:1px solid var(--line);color:var(--silk2);
+ font-family:var(--song);font-size:16px;font-weight:600;cursor:pointer;transition:.24s;
+ display:flex;align-items:center;justify-content:center}
+.cbtn:hover{border-color:var(--silk2);color:var(--moon)}
+.cbtn.tal{height:66px;border-color:var(--goldDim);color:var(--gold);font-size:13px;letter-spacing:.14em;
+ writing-mode:vertical-rl;text-indent:.14em}
+.cbtn.tal:hover{border-color:var(--gold);color:var(--goldSilk);box-shadow:0 0 22px rgba(180,145,63,.22)}
+
+.tip{position:fixed;left:50%;bottom:126px;transform:translateX(-50%);z-index:24;text-align:center;
+ pointer-events:none;transition:opacity 1s var(--ease)}
+.tip.gone{opacity:0}
+.tip b{display:block;font-size:15px;letter-spacing:.34em;color:var(--silk);font-weight:600;margin-bottom:10px}
+.tip span{font-size:12.5px;letter-spacing:.22em;color:var(--silk3);font-family:var(--kai)}
+
+@media (max-width:900px){
+ .book{width:100vw;border-left:none}
+ .book.open ~ .tabhandle{right:100vw}
+ .spine{width:44px} .hud{left:58px;top:16px;max-width:64vw} .hud__n{font-size:27px}
+ .rail{left:58px;bottom:20px;max-width:calc(100vw - 130px)}
+ .ctl{bottom:20px;right:16px}
+ .book.open ~ .rail,.book.open ~ .ctl{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div id="stage"><div id="world"></div></div>
+<div id="grain" aria-hidden="true"></div>
+
+<div class="spine" aria-hidden="true">
+ <div class="seal"><span>殇</span></div>
+ <div class="spine__t">葬天<em>殇</em></div>
+ <div class="spine__f">界域全图</div>
+</div>
+
+<div class="hud">
+ <div class="hud__z" id="hudZ">全　象</div>
+ <div class="hud__n" id="hudN">诸天</div>
+ <div class="hud__a" id="hudA">一切界域的总称</div>
+</div>
+
+<aside class="book" id="book">
+ <div class="book__tabs" role="tablist">
+  <button class="btab" role="tab" aria-selected="true"  data-pane="pane-geo">地志</button>
+  <button class="btab" role="tab" aria-selected="false" data-pane="pane-rank">境界</button>
+  <button class="btab" role="tab" aria-selected="false" data-pane="pane-law">法度</button>
+  <button class="btab" role="tab" aria-selected="false" data-pane="pane-chr">沿革</button>
+ </div>
+ <div class="book__body">
+  <div class="bpane on" id="pane-geo" role="tabpanel"></div>
+  <div class="bpane" id="pane-rank" role="tabpanel"></div>
+  <div class="bpane" id="pane-law" role="tabpanel"></div>
+  <div class="bpane" id="pane-chr" role="tabpanel"></div>
+ </div>
+</aside>
+<button class="tabhandle" id="tabhandle" aria-expanded="false">卷宗</button>
+
+<nav class="rail" id="rail" aria-label="界域索引"></nav>
+
+<div class="ctl">
+ <button class="cbtn tal" id="talisman" aria-pressed="false" title="通行符 · 显现福地">通行符</button>
+ <button class="cbtn" id="zin" aria-label="向内" title="向内">近</button>
+ <button class="cbtn" id="zout" aria-label="向外" title="向外">远</button>
+ <button class="cbtn" id="zres" aria-label="复归全图" title="复归全图">归</button>
+</div>
+
+<div class="tip" id="tip">
+ <b>滚 轮 深 入 · 拖 曳 观 览</b>
+ <span>一图之内层层相嵌，愈往里愈是此界深处</span>
+</div>
+<script>
+/* ══════════ 舆图笔法 ══════════ */
+var C={
+ ink:"#100D0C", ink2:"#171310",
+ line:"#4A3F36", line2:"#6E5F51", ghost:"#2A231F",
+ silk:"#D3C4A6", silk2:"#9E8F79", silk3:"#6B5D4E", moon:"#EFE7D6",
+ cin:"#AE3A2B", cin2:"#D06A55", cinDim:"#4A2019", cinSilk:"#DCB39F",
+ gold:"#B4913F", goldDim:"#5E4A22", goldSilk:"#E0C784",
+ land:"#B7A57F", landHi:"#CDBC94", landLo:"#8D7C5D", coast:"#E2D3A8",
+ warm:"#96704F", warmLo:"#6B4C36", warmHi:"#BC8F63",
+ dark:"#4C3931", darkLo:"#2A1E1C", darkHi:"#7E5648",
+ violet:"#584655", violetHi:"#9A8093",
+ sea:"#213533", seaLo:"#152322", seaHi:"#3C5A55",
+ pen:"#2C241D", pen2:"#50442F"
+};
+function n2(v){return Math.round(v*10)/10;}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function rnd(s){var x=s;return function(){x=(x*1103515245+12345)%2147483648;return x/2147483648;};}
+
+function spline(p,open){
+ var n=p.length,d="M"+n2(p[0][0])+" "+n2(p[0][1]),lim=open?n-1:n;
+ for(var i=0;i<lim;i++){
+  var a=open?p[Math.max(0,i-1)]:p[(i-1+n)%n], b=p[i%n],
+      c=open?p[i+1]:p[(i+1)%n], e=open?p[Math.min(n-1,i+2)]:p[(i+2)%n];
+  d+=" C"+n2(b[0]+(c[0]-a[0])/6)+" "+n2(b[1]+(c[1]-a[1])/6)+","
+   +n2(c[0]-(e[0]-b[0])/6)+" "+n2(c[1]-(e[1]-b[1])/6)+","+n2(c[0])+" "+n2(c[1]);}
+ return d+(open?"":"Z");}
+
+/* 多频海岸线 */
+function coast(cx,cy,rx,ry,seed,o){
+ o=o||{};var wob=o.wob==null?.32:o.wob,n=o.n||34,lb=o.lobes||3;
+ var R=rnd(seed),p=[],ph=[R()*6.28,R()*6.28,R()*6.28];
+ for(var i=0;i<n;i++){var a=i/n*6.2832;
+  var k=1+wob*(.55*Math.sin(lb*a+ph[0])+.3*Math.sin(7*a+ph[1])+.15*Math.sin(13*a+ph[2]));
+  k*=1+(R()-.5)*.1;
+  p.push([cx+Math.cos(a)*rx*k, cy+Math.sin(a)*ry*k]);}
+ return spline(p);}
+
+/* 陆地：主体 + 岸线晕 + 内缩等深线 */
+function landmass(cx,cy,rx,ry,seed,o){
+ o=o||{};var d=coast(cx,cy,rx,ry,seed,o);
+ var fill=o.fill||C.land, edge=o.edge||C.coast, id=o.id||("l"+seed);
+ var s='<path d="'+d+'" fill="'+fill+'" stroke="'+edge+'" stroke-width="'+(o.sw||3)+'"/>';
+ if(o.halo!==false)s='<path d="'+d+'" fill="none" stroke="'+edge+'" stroke-width="'+((o.sw||3)*3.4)+'" opacity=".13"/>'+s;
+ s+='<clipPath id="'+id+'"><path d="'+d+'"/></clipPath>';
+ return {d:d,svg:s,clip:id};}
+
+/* 山脉 */
+function mts(x,y,n,sc,seed,tone){
+ var R=rnd(seed),s='',f=tone==="warm"?C.warmLo:(tone==="dark"?C.darkLo:C.landLo),
+  st=tone==="warm"?C.warmHi:(tone==="dark"?C.darkHi:C.coast);
+ for(var i=0;i<n;i++){var px=x+i*22*sc,h=(24+R()*26)*sc,w=(16+R()*7)*sc,b=y+(i%2?6*sc:0);
+  s+='<path d="M'+n2(px-w)+' '+n2(b)+'L'+n2(px)+' '+n2(b-h)+'L'+n2(px+w)+' '+n2(b)+'Z" fill="'+f+'" stroke="'+st+'" stroke-width="'+n2(1*sc)+'" stroke-linejoin="round"/>';
+  s+='<path d="M'+n2(px)+' '+n2(b-h)+'L'+n2(px+w*.34)+' '+n2(b-h*.46)+'L'+n2(px+w)+' '+n2(b)+'Z" fill="'+C.pen+'" opacity=".3"/>';}
+ return s;}
+/* 林 */
+function woods(x,y,w,h,n,seed,col){
+ var R=rnd(seed),s='';
+ for(var i=0;i<n;i++){var px=x+R()*w,py=y+R()*h,r=3+R()*3;
+  s+='<path d="M'+n2(px)+' '+n2(py)+'l'+n2(-r)+' '+n2(r*1.5)+'h'+n2(r*2)+'Z" fill="'+(col||C.pen2)+'" opacity="'+n2(.35+R()*.35)+'"/>';}
+ return s;}
+/* 河 */
+function river(pts,w,col){var d=spline(pts,1);
+ return '<path d="'+d+'" fill="none" stroke="'+(col||C.seaHi)+'" stroke-width="'+(w||6)+'" stroke-linecap="round" opacity=".78"/>'
+      +'<path d="'+d+'" fill="none" stroke="'+C.coast+'" stroke-width="'+((w||6)*.26)+'" stroke-linecap="round" opacity=".35"/>';}
+/* 海浪 */
+function waves(x,y,w,h,seed,col,step){
+ var R=rnd(seed),s='',st=step||30;
+ for(var yy=y;yy<y+h;yy+=st){var d="M"+n2(x)+" "+n2(yy+R()*6);
+  for(var xx=x;xx<x+w;xx+=38)d+=" q19 -8 38 0";
+  s+='<path d="'+d+'" fill="none" stroke="'+(col||C.seaHi)+'" stroke-width="1.4" opacity="'+n2(.16+R()*.24)+'"/>';}
+ return s;}
+/* 云雾 */
+function cloud(x,y,w,op,col){var h=w*.22;
+ return '<path d="M'+n2(x)+' '+n2(y+h)+'c'+n2(w*.1)+' '+n2(-h*.95)+' '+n2(w*.3)+' '+n2(-h*.85)+' '+n2(w*.4)+' '+n2(-h*.12)
+ +'c'+n2(w*.12)+' '+n2(-h*.8)+' '+n2(w*.36)+' '+n2(-h*.58)+' '+n2(w*.46)+' 0'
+ +'c'+n2(w*.1)+' '+n2(-h*.22)+' '+n2(w*.2)+' '+n2(h*.04)+' '+n2(w*.14)+' '+n2(h*.12)+'Z" fill="'+(col||"#DCD2B4")+'" opacity="'+(op||.14)+'"/>';}
+/* 星尘 */
+function stars(x,y,w,h,n,seed,col){
+ var R=rnd(seed),s='';
+ for(var i=0;i<n;i++)s+='<circle cx="'+n2(x+R()*w)+'" cy="'+n2(y+R()*h)+'" r="'+n2(.7+R()*1.9)+'" fill="'+(col||C.silk)+'" opacity="'+n2(.08+R()*.42)+'"/>';
+ return s;}
+/* 岛群 */
+function isles(x,y,w,h,n,seed,o){
+ o=o||{};var R=rnd(seed),s='';
+ for(var i=0;i<n;i++){var px=x+R()*w,py=y+R()*h,rx=(o.min||9)+R()*((o.max||26)-(o.min||9)),ry=rx*(.42+R()*.3);
+  if(o.skip&&o.skip(px,py,rx))continue;
+  s+='<path d="'+coast(px,py,rx,ry,(seed+i*97)|0,{wob:.36,n:14,lobes:3})+'" fill="'+(R()>.66?C.landHi:C.land)+'" stroke="'+C.coast+'" stroke-width="1.1" opacity="'+n2(.45+R()*.5)+'"/>';}
+ return s;}
+
+/* ── 文字 ── */
+function T(x,y,t,o){o=o||{};
+ var sw=o.sw!=null?o.sw:Math.max(1.2,Math.min(2.6,(o.size||14)*0.09)),sk=o.stroke||C.ink;
+ var a=['x="'+n2(x)+'" y="'+n2(y)+'"','fill="'+(o.fill||C.silk)+'"','font-size="'+(o.size||14)+'"',
+  'paint-order="stroke"','stroke="'+sk+'"','stroke-width="'+n2(sw)+'"','stroke-linejoin="round"','stroke-linecap="round"'];
+ if(o.cls)a.push('class="'+o.cls+'"');
+ if(o.anchor)a.push('text-anchor="'+o.anchor+'"');
+ if(o.ls!=null)a.push('letter-spacing="'+o.ls+'"');
+ if(o.w)a.push('font-weight="'+o.w+'"');
+ if(o.op!=null)a.push('opacity="'+o.op+'"');
+ if(o.rot)a.push('transform="rotate('+o.rot+' '+n2(x)+' '+n2(y)+')"');
+ return '<text '+a.join(" ")+'>'+esc(t)+'</text>';}
+/* 竖排 */
+function VT(x,y,t,o){o=o||{};var sz=o.size||30,ls=sz*1.16,r='';
+ for(var i=0;i<t.length;i++)r+=T(x,y+i*ls,t.charAt(i),{size:sz,fill:o.fill||C.moon,anchor:"middle",w:o.w,cls:o.cls,stroke:o.stroke,sw:o.sw});
+ return r;}
+/* 区域题名（图面大字，字距开张）—— 大字不描边避免糊，副标题保留细描边 */
+function region(x,y,name,sub,o){
+ o=o||{};var fs=o.size||60,fl=o.fill||C.pen;
+ var lt=(fl===C.moon||fl===C.silk||fl===C.goldSilk||fl===C.cinSilk||fl===C.coast);
+ var sk=lt?C.ink:C.coast;
+ var s=T(x,y,name,{size:fs,fill:fl,anchor:"middle",ls:fs*.3,w:600,cls:o.cls,stroke:"none",sw:0});
+ if(sub)s+=T(x,y+fs*.78,sub,{size:fs*.3,fill:o.sub||C.pen2,anchor:"middle",ls:fs*.12,cls:o.cls2||o.cls,stroke:sk,sw:Math.max(1.2,fs*.025)});
+ return s;}
+/* 地名标注：精致地标 + 引线 + 名 + 类 —— 图标带光晕与虚线装饰环，文字带描边衬底 */
+function mark(x,y,name,kind,o){
+ o=o||{};var side=o.side||"r",fs=o.fs||26,L=o.len||fs*2.2,d=(side==="r"?1:-1),
+  col=o.fill||C.moon,sub=o.sub||C.silk2,r=o.r||7,cls=o.cls?' class="'+o.cls+'"':'';
+ var tx=x+d*(L+10),s='<g'+cls+'>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r*3)+'" fill="'+col+'" opacity=".06"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r*2.3)+'" fill="none" stroke="'+col+'" stroke-width="1" opacity=".35" stroke-dasharray="2 4"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r)+'" fill="'+C.ink+'" stroke="'+col+'" stroke-width="2"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r*.34)+'" fill="'+col+'"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y-r*2.3)+'" r="1.5" fill="'+col+'" opacity=".45"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y+r*2.3)+'" r="1.5" fill="'+col+'" opacity=".45"/>';
+ s+='<circle cx="'+n2(x-r*2.3)+'" cy="'+n2(y)+'" r="1.5" fill="'+col+'" opacity=".45"/>';
+ s+='<circle cx="'+n2(x+r*2.3)+'" cy="'+n2(y)+'" r="1.5" fill="'+col+'" opacity=".45"/>';
+ s+='<path d="M'+n2(x+d*(r*2.3+4))+' '+n2(y)+'H'+n2(tx-d*5)+'" stroke="'+col+'" stroke-width="1.4" opacity=".75"/>';
+ s+=T(tx,y+fs*.34,name,{size:fs,fill:col,anchor:side==="r"?"start":"end",w:600,stroke:C.ink,sw:fs*.12});
+ if(kind)s+=T(tx,y+fs*.34+fs*1.12,kind,{size:fs*.5,fill:sub,anchor:side==="r"?"start":"end",cls:o.kcls,stroke:C.ink,sw:fs*.08});
+ return s+'</g>';}
+/* 小地物标记 —— 精致菱形地标，外光晕+虚线装饰环+中心菱形 */
+function spot(x,y,name,o){
+ o=o||{};var fs=o.fs||22,col=o.fill||C.goldSilk,r=o.r||8;
+ var s='<g'+(o.cls?' class="'+o.cls+'"':'')+'>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r*2.6)+'" fill="'+col+'" opacity=".08"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r*1.8)+'" fill="none" stroke="'+col+'" stroke-width="1" opacity=".4" stroke-dasharray="3 4"/>';
+ s+='<circle cx="'+n2(x)+'" cy="'+n2(y)+'" r="'+n2(r)+'" fill="'+C.ink+'" stroke="'+col+'" stroke-width="1.8"/>';
+ s+='<path d="M'+n2(x)+' '+n2(y-r*.5)+'L'+n2(x+r*.5)+' '+n2(y)+'L'+n2(x)+' '+n2(y+r*.5)+'L'+n2(x-r*.5)+' '+n2(y)+'Z" fill="'+col+'"/>';
+ s+=T(x,y-r-12,name,{size:fs,fill:col,anchor:"middle",w:600,stroke:C.ink,sw:fs*.14});
+ return s+'</g>';}
+/* 亭台屋宇 */
+function hall(x,y,sc,col,edge){
+ var w=46*sc,h=30*sc;
+ return '<g transform="translate('+n2(x)+' '+n2(y)+')">'
+ +'<path d="M'+n2(-w)+' '+n2(h)+'H'+n2(w)+'V'+n2(-h*.2)+'H'+n2(-w)+'Z" fill="'+(col||C.landHi)+'" stroke="'+(edge||C.pen)+'" stroke-width="'+n2(2*sc)+'"/>'
+ +'<path d="M'+n2(-w*1.25)+' '+n2(-h*.2)+'H'+n2(w*1.25)+'L'+n2(w*.62)+' '+n2(-h)+'H'+n2(-w*.62)+'Z" fill="'+(col||C.landHi)+'" stroke="'+(edge||C.pen)+'" stroke-width="'+n2(2*sc)+'"/>'
+ +'<path d="M'+n2(-w*.24)+' '+n2(h)+'V'+n2(h*.2)+'h'+n2(w*.48)+'V'+n2(h)+'" fill="none" stroke="'+(edge||C.pen)+'" stroke-width="'+n2(1.6*sc)+'"/></g>';}
+/* 分幅图廓 */
+function inset(x,y,w,h,title,note,o){
+ o=o||{};var k=o.edge||C.line2;
+ var s='<g class="inset">';
+ s+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+(o.bg||C.ink2)+'" stroke="'+k+'" stroke-width="3"/>';
+ s+='<rect x="'+(x+9)+'" y="'+(y+9)+'" width="'+(w-18)+'" height="'+(h-18)+'" fill="none" stroke="'+k+'" stroke-width="1" opacity=".65"/>';
+ /* 题头 */
+ var tw2=title.length*38+(note?note.length*19+34:0)+70;
+ s+='<rect x="'+(x+26)+'" y="'+(y-27)+'" width="'+tw2+'" height="54" fill="'+C.ink+'" stroke="'+k+'" stroke-width="2.4"/>';
+ s+=T(x+52,y+12,title,{size:34,fill:C.moon,w:600,ls:5});
+ if(note)s+=T(x+52+title.length*39+18,y+10,note,{size:19,fill:C.silk3});
+ return s+'</g>';}
+/* 索引线：从主图某点引至分幅图 */
+function indexLine(pts,label,o){
+ o=o||{};var d=spline(pts,1),col=o.col||C.cin;
+ var s='<g class="idx">';
+ s+='<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="4.5" stroke-dasharray="16 11" opacity="1"/>';
+ var e=pts[pts.length-1],p=pts[pts.length-2];
+ var a=Math.atan2(e[1]-p[1],e[0]-p[0]);
+ s+='<path d="M'+n2(e[0])+' '+n2(e[1])+'L'+n2(e[0]-Math.cos(a-.4)*20)+' '+n2(e[1]-Math.sin(a-.4)*20)
+  +'L'+n2(e[0]-Math.cos(a+.4)*20)+' '+n2(e[1]-Math.sin(a+.4)*20)+'Z" fill="'+col+'"/>';
+ if(label){var m=pts[Math.floor(pts.length/2)]; m=[m[0],m[1]-46];
+  s+='<rect x="'+n2(m[0]-label.length*9-9)+'" y="'+n2(m[1]-18)+'" width="'+n2(label.length*18+18)+'" height="34" fill="'+C.ink+'" stroke="'+col+'" stroke-width="1.4"/>';
+  s+=T(m[0],m[1]+6,label,{size:17,fill:C.cinSilk,anchor:"middle"});}
+ return s+'</g>';}
+/* 经纬网 */
+function graticule(x,y,w,h,step,col,op){
+ var s='<g opacity="'+(op||.13)+'">';
+ for(var gx=x;gx<=x+w;gx+=step)s+='<path d="M'+gx+' '+y+'V'+(y+h)+'" stroke="'+(col||C.line2)+'" stroke-width="1"/>';
+ for(var gy=y;gy<=y+h;gy+=step)s+='<path d="M'+x+' '+gy+'H'+(x+w)+'" stroke="'+(col||C.line2)+'" stroke-width="1"/>';
+ return s+'</g>';}
+/* 方位罗盘 */
+function compass(cx,cy,r,col){
+ var c=col||C.silk2,s='<g>';
+ s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+c+'" stroke-width="2" opacity=".8"/>';
+ s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*.72)+'" fill="none" stroke="'+c+'" stroke-width="1" opacity=".5"/>';
+ for(var k=0;k<8;k++){var a=k*Math.PI/4,L=(k%2?r*.52:r*.96);
+  s+='<path d="M'+n2(cx+Math.cos(a-.12)*r*.16)+' '+n2(cy+Math.sin(a-.12)*r*.16)
+   +'L'+n2(cx+Math.cos(a)*L)+' '+n2(cy+Math.sin(a)*L)
+   +'L'+n2(cx+Math.cos(a+.12)*r*.16)+' '+n2(cy+Math.sin(a+.12)*r*.16)+'Z" fill="'+(k%2?"none":c)+'" stroke="'+c+'" stroke-width="1.4" opacity="'+(k%2?.6:.85)+'"/>';}
+ s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*.1)+'" fill="'+c+'"/>';
+ s+=T(cx,cy-r-14,"北",{size:r*.32,fill:c,anchor:"middle",w:600});
+ return s+'</g>';}
+/* 四角云纹 */
+function corner(x,y,dx,dy,L,col){
+ var c=col||C.line2,s='<g opacity=".75">';
+ s+='<path d="M'+x+' '+(y+dy*L)+'V'+y+'H'+(x+dx*L)+'" fill="none" stroke="'+c+'" stroke-width="3"/>';
+ s+='<path d="M'+(x+dx*16)+' '+(y+dy*(L*.6))+'q0 '+(-dy*L*.3)+' '+(dx*L*.3)+' '+(-dy*L*.3)
+  +'q'+(dx*L*.3)+' 0 '+(dx*L*.3)+' '+(-dy*L*.28)+'" fill="none" stroke="'+c+'" stroke-width="1.6" opacity=".7"/>';
+ return s+'</g>';}
+/* 题签 */
+function cartouche(x,y,name,sub,seal,size){
+ var sz=size||44, by=y+(name.length-1)*sz*1.16+sz*.56;
+ var subH=sub?sub.length*sz*.32*1.16:0;
+ var bw=sz*(sub?1.8:1.06), bh=Math.max(by+sz*.7-y+sz*.95, subH+sz*.95);
+ var s='<g class="cart">';
+ s+='<rect x="'+n2(x-sz*.66)+'" y="'+n2(y-sz*.86)+'" width="'+n2(bw)+'" height="'+n2(bh)+'" fill="rgba(14,11,10,.86)" stroke="'+C.line+'" stroke-width="1.6"/>';
+ s+='<rect x="'+n2(x-sz*.66+5)+'" y="'+n2(y-sz*.86+5)+'" width="'+n2(bw-10)+'" height="'+n2(bh-10)+'" fill="none" stroke="'+C.line+'" stroke-width=".8" opacity=".7"/>';
+ s+=VT(x,y,name,{size:sz,fill:C.moon,w:600});
+ s+='<rect x="'+n2(x-sz*.32)+'" y="'+n2(by)+'" width="'+n2(sz*.64)+'" height="'+n2(sz*.64)+'" fill="none" stroke="'+C.cin+'" stroke-width="2"/>';
+ s+=T(x,by+sz*.48,seal,{size:sz*.4,fill:C.cin2,anchor:"middle",w:600});
+ if(sub)s+=VT(x+sz*.98,y+sz*.06,sub,{size:sz*.32,fill:C.silk2});
+ return s+'</g>';}
+/* ══════════ 嵌套界域 ══════════
+   要点：子层只绘自身疆域，不铺满幅底 —— 疆域之外一律露出父层，
+   故放大即"深入"，而非换图。子层轮廓与父层中该地块同一条路径。 */
+
+var L={};   /* 层 */
+function def(id,o){o.id=id;L[id]=o;return o;}
+
+def("zhutian",{name:"诸天",seal:"〇",W:3000,H:2000,parent:null,shape:"void"});
+def("shangcang",{name:"上苍",seal:"一",W:1600,H:620,parent:"zhutian",at:{x:250,y:170,w:1020},shape:"land",sd:11,wob:.3,lobes:3});
+def("renjian", {name:"人间 · 世界海",seal:"一",W:2000,H:1400,parent:"zhutian",at:{x:300,y:620,w:760},shape:"sea",sd:23,wob:.26,lobes:4});
+def("diyu",    {name:"地狱",seal:"一",W:900,H:600,parent:"zhutian",at:{x:430,y:1520,w:410},shape:"land",sd:31,wob:.34,lobes:4,tone:"dark"});
+def("gaoyuan", {name:"高原",seal:"一",W:520,H:2600,parent:"zhutian",at:{x:1420,y:60,w:380},shape:"land",sd:41,wob:.11,lobes:3,tone:"warm"});
+def("yijie",   {name:"异界",seal:"一",W:1300,H:900,parent:"zhutian",at:{x:1900,y:380,w:950},shape:"land",sd:53,wob:.3,lobes:4,tone:"violet"});
+def("wanjie",  {name:"诸天万界",seal:"一",W:1200,H:560,parent:"zhutian",at:{x:1900,y:1380,w:950},shape:"void"});
+def("xianjie", {name:"仙界",seal:"二",W:1200,H:800,parent:"renjian",at:{x:1180,y:700,w:70},shape:"land",sd:79,wob:.32,lobes:3});
+def("biguandi",{name:"妖尊闭关地",seal:"三",W:1000,H:700,parent:"xianjie",at:{x:520,y:330,w:280},shape:"land",sd:89,wob:.3,lobes:3});
+def("yaozunta",{name:"妖尊塔",seal:"四",W:700,H:1300,parent:"biguandi",at:{x:452,y:242,w:70},shape:"tower"});
+def("sanshiliu",{name:"三十六重天",seal:"五",W:1200,H:900,parent:"yaozunta",at:{x:180,y:634,w:60},shape:"strata"});
+def("shangsan",{name:"上三重天",seal:"六",W:1200,H:320,parent:"sanshiliu",at:{x:300,y:74,w:400},shape:"strata",tone:"gold"});
+def("qingle",  {name:"清乐天",seal:"六",W:1000,H:1000,parent:"sanshiliu",at:{x:480,y:474,w:110},shape:"disc"});
+def("jingan",  {name:"靖安大陆",seal:"七",W:1200,H:800,parent:"qingle",at:{x:516,y:214,w:230},shape:"land",sd:97,wob:.32,lobes:4});
+def("chengyang",{name:"承阳州",seal:"八",W:1000,H:700,parent:"jingan",at:{x:120,y:140,w:400},shape:"land",sd:101,wob:.3,lobes:4});
+def("yuanan",  {name:"远安村",seal:"九",W:900,H:600,parent:"chengyang",at:{x:380,y:300,w:70},shape:"land",sd:107,wob:.34,lobes:3});
+def("fudi",    {name:"福地",seal:"符",W:900,H:600,parent:null,at:{x:0,y:0,w:300},shape:"disc",tone:"gold"});
+
+var TRUNK=["zhutian","renjian","xianjie","biguandi","yaozunta","sanshiliu","qingle","jingan","chengyang","yuanan"];
+(function(){for(var k in L){L[k].kids=[];}
+ for(var k2 in L){var p=L[k2].parent;if(p&&L[p])L[p].kids.push(k2);}})();
+
+/* 疆域轮廓 —— 父层与子层共用，故缩放时形廓连续 */
+function shapeOf(id){
+ var n=L[id],W=n.W,H=n.H;
+ if(n.shape==="disc"){var rx=W*.47,ry=H*.47;
+  return 'M'+(W/2-rx)+' '+(H/2)+'a'+rx+' '+ry+' 0 1 0 '+(2*rx)+' 0a'+rx+' '+ry+' 0 1 0 '+(-2*rx)+' 0Z';}
+ if(n.shape==="tower")return 'M'+(W*.30)+' '+(H*.06)+'L'+(W*.14)+' '+(H*.955)+'H'+(W*.86)+'L'+(W*.70)+' '+(H*.06)+'Z';
+ if(n.shape==="strata")return 'M'+(W*.04)+' '+(H*.03)+'H'+(W*.96)+'V'+(H*.97)+'H'+(W*.04)+'Z';
+ if(n.shape==="void")return 'M0 0H'+W+'V'+H+'H0Z';
+ return coast(W/2,H/2,W*.46,H*.45,n.sd||7,{wob:n.wob||.3,n:36,lobes:n.lobes||3});
+}
+function fillOf(id){var t=L[id].tone;
+ return t==="dark"?C.dark:t==="warm"?C.warm:t==="violet"?C.violet:t==="gold"?"#2A2214":
+  (L[id].shape==="sea"?C.sea:C.land);}
+function edgeOf(id){var t=L[id].tone;
+ return t==="dark"?C.darkHi:t==="warm"?C.warmHi:t==="violet"?C.violetHi:t==="gold"?C.gold:
+  (L[id].shape==="sea"?C.seaHi:C.coast);}
+function ph(id){var n=L[id];return n.at.w*n.H/n.W;}
+/* 子地块在本层中的位置（供绘制引线、注记对位） */
+function kidBox(id){var n=L[id],a=n.at;return {x:a.x,y:a.y,w:a.w,h:ph(id),cx:a.x+a.w/2,cy:a.y+ph(id)/2};}
+/* 在本层中画出子地块的轮廓预示（子层未显时可见，子层显时被其完全覆盖） */
+function kidHint(id,o){o=o||{};
+ var n=L[id],a=n.at,sc=a.w/n.W;
+ return '<g transform="translate('+a.x+' '+a.y+') scale('+n2(sc)+')">'
+  +'<path d="'+shapeOf(id)+'" fill="'+fillOf(id)+'" stroke="'+edgeOf(id)+'" stroke-width="'+n2((o.sw||2.4)/sc)+'"/></g>';}
+
+/* 每层：{tr:地貌, nm:地名, dt:细注} */
+var DR={};
+
+/* 〇 诸天 */
+DR.zhutian=function(){var W=3000,H=2000;
+ var tr='<rect width="'+W+'" height="'+H+'" fill="#0E0B0A"/>'+stars(0,0,W,H,760,7)
+  +graticule(0,0,W,H,150,C.line2,.09);
+ tr+='<g class="fine">';
+ tr+='<rect x="180" y="110" width="1160" height="1740" fill="none" stroke="'+C.line+'" stroke-width="3" stroke-dasharray="18 13" opacity=".5"/>';
+ tr+='<path d="M1270 990H1420M1800 900H1900" stroke="'+C.line2+'" stroke-width="2.6" stroke-dasharray="12 9"/>';
+ tr+='<path d="M340 1900H2660" stroke="'+C.line+'" stroke-width="2"/>';
+ tr+='<circle cx="340" cy="1900" r="9" fill="none" stroke="'+C.line2+'" stroke-width="2"/>';
+ tr+='<circle cx="2660" cy="1900" r="9" fill="none" stroke="'+C.cin+'" stroke-width="2"/>';
+ tr+=compass(1610,1640,86);
+ tr+='</g>';
+ var nm=T(200,1888,"主 位 面",{size:34,fill:C.line2,ls:5});
+ var dt=T(1500,1892,"寂灭：一方受损，另一方减轻压力 —— 除非全灭一方，否则无数纪元后两界俱寂",{size:26,fill:C.silk2,anchor:"middle"})
+  +T(1345,975,"连　接",{size:22,fill:C.line2,anchor:"middle"})
+  +T(1850,885,"连　接",{size:22,fill:C.cinDim,anchor:"middle"})
+  +cartouche(150,180,"葬天殇","界域全图","殇",56);
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 上苍 */
+DR.shangcang=function(){var W=1600,H=620,d=shapeOf("shangcang");
+ var tr='<path d="'+d+'" fill="none" stroke="'+C.coast+'" stroke-width="11" opacity=".12"/>'
+  +'<path d="'+d+'" fill="'+C.land+'" stroke="'+C.coast+'" stroke-width="3.4"/>'
+  +'<clipPath id="kSC"><path d="'+d+'"/></clipPath><g class="fine" clip-path="url(#kSC)">'
+  +mts(220,300,9,1.7,13)+mts(900,240,8,1.9,17)+mts(1250,380,6,1.5,19)
+  +woods(300,360,600,120,60,23)+woods(1000,420,420,110,45,29)
+  +river([[240,430],[520,392],[800,440],[1120,400],[1420,450]],7)
+  +'<path d="'+coast(1180,300,90,44,31,{wob:.3,n:14,lobes:3})+'" fill="'+C.sea+'" stroke="'+C.seaHi+'" stroke-width="2"/>'
+  +'</g>';
+ tr+='<g class="fine"><g transform="translate(700,300)">'
+  +'<ellipse rx="132" ry="46" fill="'+C.landHi+'" stroke="'+C.pen+'" stroke-width="3"/>'
+  +'<ellipse rx="176" ry="62" fill="none" stroke="'+C.pen2+'" stroke-width="2" stroke-dasharray="9 10"/>';
+ for(var k=0;k<6;k++){var a=k*Math.PI/3;
+  tr+='<circle cx="'+n2(Math.cos(a)*176)+'" cy="'+n2(Math.sin(a)*62)+'" r="6" fill="'+C.cin+'"/>';}
+ tr+='</g></g>';
+ var nm=region(700,455,"上　苍","大于人间万倍",{size:82});
+ var dt=mark(700,300,"决斗台","数位准仙帝法阵笼罩 · 同级相搏",{fs:22,side:"r",len:150,fill:C.pen,sub:C.pen2,r:6})
+  +T(800,558,"真一境万年横渡 · 道绝境一念横穿",{size:20,fill:C.pen2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 人间 · 世界海 */
+DR.renjian=function(){var W=2000,H=1400,d=shapeOf("renjian");
+ var tr='<path d="'+d+'" fill="none" stroke="'+C.seaHi+'" stroke-width="14" opacity=".12"/>'
+  +'<path d="'+d+'" fill="'+C.sea+'" stroke="'+C.seaHi+'" stroke-width="4"/>'
+  +'<clipPath id="kRJ"><path d="'+d+'"/></clipPath>'
+  +'<g clip-path="url(#kRJ)">'+waves(40,60,1920,1280,37,C.seaHi,40)+'</g>'
+  +'<g class="fine" clip-path="url(#kRJ)">'
+  +isles(90,110,1820,1180,260,41,{min:7,max:30,skip:function(x,y,r){
+     var b=kidBox("xianjie");return x>b.x-r-14&&x<b.x+b.w+r+14&&y>b.y-r-12&&y<b.y+b.h+r+12;}})
+  +'</g>';
+ var b=kidBox("xianjie");
+ tr+='<g class="fine">'+hall(400,360,1.7,C.land,C.pen)
+  +'<path d="M350 420c-150 110-160 300-36 408 124 106 300 94 396 0" fill="none" stroke="'+C.gold+'" stroke-width="4" stroke-dasharray="15 11" opacity=".85"/>'
+  +'</g><g class="fine3" clip-path="url(#kRJ)">'
+  +isles(90,110,1820,1180,520,141,{min:3,max:11,skip:function(x,y,r){
+     var b=kidBox("xianjie");return x>b.x-r-10&&x<b.x+b.w+r+10&&y>b.y-r-8&&y<b.y+b.h+r+8;}})
+  +'</g><g class="fine2"><circle cx="'+n2(b.cx)+'" cy="'+n2(b.cy)+'" r="92" fill="none" stroke="'+C.cin+'" stroke-width="1.6" stroke-dasharray="7 8"/></g>';
+ var nm=region(1420,300,"人　间","世界海 · 亿万个仙界大小的世界",{size:88,fill:C.moon,sub:C.silk2});
+ var dt=mark(400,360,"天　庭","孟古于仙帝境所立 · 一脉庇护诸天万界",{fs:26,side:"r",len:100,fill:C.moon,sub:C.silk2,r:7})
+  +spot(380,900,"轮回路",{fs:22,fill:C.gold,r:9,cls:"fine"})
+  +T(380,968,"打破天地运行规律而立",{size:16,fill:C.gold,anchor:"middle",stroke:C.ink,sw:2.5})
+  +mark(b.cx,b.cy,"妖尊所栖之界","亿万之一 · 法则完善，可成仙",{fs:28,side:"r",len:130,fill:C.cinSilk,sub:C.silk2,r:8})
+  +T(1560,1180,"其他地区 · 未详",{size:24,fill:C.silk3,anchor:"middle",stroke:C.ink,sw:2.8})
+  +T(700,1320,"仙王境有能力在界海中行进；此海之广，图示已作压缩",{size:22,fill:C.silk3,anchor:"middle",stroke:C.ink,sw:2.8});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 地狱 */
+DR.diyu=function(){var W=900,H=600,d=shapeOf("diyu");
+ var tr='<path d="'+d+'" fill="'+C.dark+'" stroke="'+C.darkHi+'" stroke-width="3.2"/>'
+  +'<clipPath id="kDY"><path d="'+d+'"/></clipPath><g clip-path="url(#kDY)">';
+ for(var j=0;j<7;j++)tr+='<path d="M20 '+(90+j*70)+'q220 -36 440 6t460 -20" fill="none" stroke="'+C.darkHi+'" stroke-width="2" opacity=".34"/>';
+ tr+='</g><g class="fine" clip-path="url(#kDY)">';
+ tr+=river([[130,390],[290,348],[460,398],[640,352],[790,392]],9,C.cin2)
+  +hall(300,230,1.3,C.darkLo,C.cin2)+'</g>';
+ var nm=region(640,500,"地　狱","约人间五分之一",{size:54,fill:C.cinSilk,sub:C.cinDim});
+ var dt=mark(460,398,"魂河","并入天庭后所设",{fs:21,side:"r",len:96,fill:C.cinSilk,sub:C.silk3,r:5})
+  +mark(300,230,"地府","并入天庭后所设",{fs:21,side:"r",len:74,fill:C.cinSilk,sub:C.silk3,r:5});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 高原 */
+DR.gaoyuan=function(){var W=520,H=2600,d=shapeOf("gaoyuan");
+ var tr='<path d="'+d+'" fill="'+C.warm+'" stroke="'+C.warmHi+'" stroke-width="3.4"/>'
+  +'<clipPath id="kGY"><path d="'+d+'"/></clipPath><g clip-path="url(#kGY)">';
+ for(var g=0;g<50;g++){var yy=20+g*54,dd="M-20 "+yy;
+  for(var xx=-20;xx<=560;xx+=58)dd+=" q29 "+((xx/58)%2?-13:13)+" 58 0";
+  tr+='<path d="'+dd+'" fill="none" stroke="'+(g%4===0?C.warmLo:C.warmHi)+'" stroke-width="'+(g%4===0?2.2:1.1)+'" opacity="'+(g%4===0?.5:.26)+'"/>';}
+ tr+='</g><g class="fine" clip-path="url(#kGY)">';
+ tr+=mts(120,600,4,1.6,43,"warm")+mts(180,1700,4,1.5,47,"warm")+mts(90,2200,3,1.3,53,"warm");
+ var ln="M260 40";for(var q=0;q<40;q++)ln+=" l"+((q%2)?34:-34)+" 64";
+ tr+='<path d="'+ln+'" fill="none" stroke="'+C.cin+'" stroke-width="3.4" opacity=".9"/>';
+ tr+='</g>';
+ tr+='<g class="fine"><g transform="translate(260,1300)">'
+  +'<path d="M0-86 74-43v86L0 86-74 43V-43Z" fill="'+C.darkLo+'" stroke="'+C.cin2+'" stroke-width="3.4"/>'
+  +'<path d="M0-50 44-25v50L0 50-44 25V-25Z" fill="none" stroke="'+C.cin+'" stroke-width="2.2"/></g></g>';
+ var nm=VT(260,1780,"高原",{size:66,fill:C.moon,w:600,stroke:C.ink,sw:2.5});
+ var dt=mark(260,1300,"封　印","连环计所封 · 与殇帝决战",{fs:24,side:"l",len:96,fill:C.cinSilk,sub:C.silk2,r:6})
+  +mark(260,600,"前线遗迹","两界顶层修炼者之疆场",{fs:22,side:"r",len:88,fill:C.cinSilk,sub:C.silk2,r:5})
+  +T(260,1950,"无边无际 · 万界坠其上不满一隅",{size:22,fill:C.silk,anchor:"middle"})
+  +T(260,90,"↑ 主位面",{size:22,fill:C.silk2,anchor:"middle"})
+  +T(260,2560,"异界 ↓",{size:22,fill:C.cinSilk,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 异界 */
+DR.yijie=function(){var W=1300,H=900,d=shapeOf("yijie");
+ var tr='<path d="'+d+'" fill="'+C.violet+'" stroke="'+C.violetHi+'" stroke-width="3.4"/>'
+  +'<clipPath id="kYJ"><path d="'+d+'"/></clipPath><g clip-path="url(#kYJ)">';
+ for(var v=0;v<11;v++)tr+='<path d="M20 '+(70+v*80)+'q300 -50 600 8t640 -26" fill="none" stroke="'+C.violetHi+'" stroke-width="2" opacity=".26"/>';
+ tr+='</g><g class="fine" clip-path="url(#kYJ)">';
+ tr+=mts(200,620,7,1.7,59,"dark")+mts(880,300,6,1.6,61,"dark")
+  +woods(260,340,560,220,60,67,C.violetHi)
+  +river([[140,520],[400,460],[660,540],[920,470],[1160,540]],6,"#7A6274")+'</g>';
+ tr+='<g class="fine"><g transform="translate(650,430)">'
+  +'<path d="M0-96 74 0 0 96-74 0Z" fill="'+C.darkLo+'" stroke="'+C.cin2+'" stroke-width="3.6"/>'
+  +'<path d="M0-52 40 0 0 52-40 0Z" fill="none" stroke="'+C.cin+'" stroke-width="2.2"/></g></g>';
+ var nm=region(650,760,"异　界","规模与主位面相当",{size:74,fill:C.moon,sub:C.violetHi});
+ var dt=mark(650,430,"殇　帝","力压众雄不败 · 独战多位顶级修炼者",{fs:26,side:"r",len:120,fill:C.cinSilk,sub:C.silk2,r:7});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 诸天万界 */
+DR.wanjie=function(){var W=1200,H=560,R=rnd(71),tr='<g class="fine">';
+ for(var i=0;i<32;i++){var x=60+R()*1080,y=70+R()*420,r0=14+R()*40;
+  if(R()>.5)tr+='<path d="'+coast(x,y,r0,r0*.6,(73+i*11)|0,{wob:.4,n:14,lobes:3})+'" fill="'+C.landLo+'" stroke="'+C.coast+'" stroke-width="1.6" opacity="'+n2(.45+R()*.45)+'"/>';
+  else tr+='<path d="M'+n2(x-r0)+' '+n2(y)+'L'+n2(x-r0*.2)+' '+n2(y-r0*.8)+'L'+n2(x+r0*.7)+' '+n2(y-r0*.3)+'L'+n2(x+r0*.3)+' '+n2(y+r0*.8)+'Z" fill="'+C.darkLo+'" stroke="'+C.silk3+'" stroke-width="2" opacity="'+n2(.5+R()*.4)+'"/>';}
+ tr+='</g>';
+ var nm=T(600,40,"诸 天 万 界",{size:46,fill:C.silk,anchor:"middle",ls:13,w:600});
+ var dt=T(600,536,"其余破碎的与辉煌的大世界 · 与主线无大关系",{size:22,fill:C.silk3,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 仙界 */
+DR.xianjie=function(){var W=1200,H=800,d=shapeOf("xianjie");
+ var tr='<path d="'+d+'" fill="none" stroke="'+C.coast+'" stroke-width="11" opacity=".12"/>'
+  +'<path d="'+d+'" fill="'+C.land+'" stroke="'+C.coast+'" stroke-width="3.4"/>'
+  +'<clipPath id="kXJ"><path d="'+d+'"/></clipPath><g class="fine" clip-path="url(#kXJ)">'
+  +mts(180,250,6,1.5,101)+mts(790,520,6,1.4,103)+mts(520,160,5,1.2,107)
+  +woods(180,400,380,160,45,109)+woods(840,290,260,130,35,113)
+  +river([[120,460],[330,410],[540,470],[780,420],[1020,480]],6)
+  +river([[540,470],[580,600],[640,700]],4)
+  +mts(380,330,5,1.1,127)+mts(640,610,4,1.0,131)
+  +woods(420,500,340,150,40,137)+'</g>'
+  +'<g class="fine3" clip-path="url(#kXJ)">'
+  +woods(120,240,980,480,240,139)
+  +isles(160,220,900,440,60,149,{min:3,max:8})+'</g>';
+ tr+='<g class="fine">'+hall(880,200,1.0,C.land,C.pen)+hall(200,600,.85,C.land,C.pen)+'</g>';
+ var nm=region(560,640,"仙　界","真实的世界 · 可渡劫成仙",{size:62});
+ var dt=mark(880,200,"太虚殿","破塔后接触 · 绝世天才交手处",{fs:23,side:"l",len:80,fill:C.pen,sub:C.pen2,r:5})
+  +mark(200,600,"瑞梦府 · 迁址","原在清乐天，破塔后由孟古整体搬来立教",{fs:21,side:"r",len:66,fill:C.pen,sub:C.pen2,r:5})
+  +T(600,762,"塔中众生穷尽一生走不到人道顶点，此处才是真实的世界",{size:22,fill:C.pen2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 妖尊闭关地 */
+DR.biguandi=function(){var W=1000,H=700,d=shapeOf("biguandi");
+ var tr='<path d="'+d+'" fill="'+C.landLo+'" stroke="'+C.coast+'" stroke-width="3"/>'
+  +'<clipPath id="kBG"><path d="'+d+'"/></clipPath><g class="fine" clip-path="url(#kBG)">';
+ for(var i=1;i<=5;i++)tr+='<path d="'+coast(500,350,440-i*54,300-i*38,(127+i*7)|0,{wob:.28,n:20,lobes:3})+'" fill="none" stroke="'+C.pen2+'" stroke-width="1.6" opacity="'+n2(.4-i*.05)+'"/>';
+ tr+=mts(120,300,5,1.3,131)+mts(700,460,4,1.2,137)+'</g>';
+ tr+='<g class="fine"><circle cx="820" cy="480" r="46" fill="none" stroke="'+C.pen2+'" stroke-width="1.6"/>'
+  +'<rect x="891" y="516" width="5" height="12" fill="none" stroke="'+C.pen2+'" stroke-width="1"/>'
+  +'<path d="M866 480h30" stroke="'+C.pen2+'" stroke-width="1.2"/></g>';
+ var nm=region(300,180,"妖尊闭关地","塔弃置于此",{size:52});
+ var dt=T(820,556,"此界",{size:19,fill:C.pen2,anchor:"middle"})+T(894,556,"塔",{size:19,fill:C.pen2,anchor:"middle"})
+  +T(500,668,"塔与此界之比，约如矿泉水瓶之于地球；图示已作压缩",{size:21,fill:C.pen2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 妖尊塔 */
+DR.yaozunta=function(){var W=700,H=1300,d=shapeOf("yaozunta"),cx=350;
+ var top=H*.08,bot=H*.94,N=81,hh=(bot-top)/N,TGT=40;
+ var tr='<path d="'+d+'" fill="'+C.landLo+'" stroke="'+C.coast+'" stroke-width="3.4"/>'
+  +'<path d="M'+(cx-26)+' '+n2(top)+'L'+cx+' '+n2(top-46)+'l26 46Z" fill="'+C.landHi+'" stroke="'+C.pen+'" stroke-width="2.4"/>'
+  +'<clipPath id="kYT"><path d="'+d+'"/></clipPath><g clip-path="url(#kYT)">';
+ for(var i=0;i<N;i++){var w=68+(i/N)*90,y=top+i*hh,au=(i<3);
+  if(i===TGT)continue;
+  tr+='<path d="M'+n2(cx-w)+' '+n2(y)+'H'+n2(cx+w)+'" stroke="'+(au?C.gold:C.line2)+'" stroke-width="'+(au?2.6:1.5)+'" opacity="'+(au?1:.7)+'"/>';}
+ var ea=[0,20,40,60,80];
+ for(var e=0;e<ea.length;e++){var ey=top+ea[e]*hh,ew=70+(ea[e]/N)*92;
+  tr+='<path d="M'+n2(cx-ew-20)+' '+n2(ey)+'q'+n2(ew+20)+' -17 '+n2(2*(ew+20))+' 0" fill="none" stroke="'+C.coast+'" stroke-width="2.4"/>';}
+ tr+='<path d="M'+(cx-36)+' '+n2(bot)+'v-54q0-36 36-36t36 36v54Z" fill="'+C.darkLo+'" stroke="'+C.gold+'" stroke-width="2.8"/>';
+ tr+='</g>';
+ var nm=T(cx,H*.032,"妖尊塔",{size:44,fill:C.moon,anchor:"middle",ls:12,w:600});
+ var b=kidBox("sanshiliu");
+ var dt='';
+ for(var e2=0;e2<ea.length;e2++){var ey2=top+ea[e2]*hh;
+  dt+=T(70,ey2+7,(81-ea[e2]<10?"0":"")+(81-ea[e2])+" 层",{size:19,fill:C.silk3});}
+ dt+='<path d="M'+n2(b.x+b.w)+' '+n2(b.cy)+'H'+(W-40)+'" stroke="'+C.cin2+'" stroke-width="2" stroke-dasharray="7 6"/>'
+  +T(W-44,b.cy-10,"三十六重天",{size:24,fill:C.cinSilk,anchor:"end",w:600})
+  +T(W-44,b.cy+18,"八十一层之一 · 层数未详",{size:17,fill:C.silk3,anchor:"end"})
+  +T(cx,bot+38,"塔门 · 大圣尊所掌",{size:20,fill:C.gold,anchor:"middle"})
+  +T(cx+118,top+16,"上三层",{size:19,fill:C.gold})
+  +T(cx,H*.985,"塔堕末法 · 寿命剧减 · 成仙无门",{size:20,fill:C.cin2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 三十六重天 */
+DR.sanshiliu=function(){var W=1200,H=900;
+ var t3=H*.09,N3=36,h3=15,g3=6,x3=W*.20,w3=W*.60,TQ=19;
+ var tr='<path d="'+shapeOf("sanshiliu")+'" fill="#171310" stroke="'+C.line2+'" stroke-width="3"/><g>';
+ for(var k=0;k<N3;k++){var y3=t3+k*(h3+g3),au=(k<3),tq=(k===TQ);
+  if(tq)continue;
+  tr+='<rect x="'+n2(x3)+'" y="'+n2(y3)+'" width="'+n2(w3)+'" height="'+h3+'" rx="3" fill="'+(au?"rgba(180,145,63,.34)":"rgba(183,165,127,.17)")+'" stroke="'+(au?C.gold:C.line2)+'" stroke-width="'+(au?2.2:1.3)+'"/>';}
+ var yb=t3+3*(h3+g3)-g3/2;
+ tr+='<path d="M'+n2(x3-30)+' '+n2(yb)+'H'+n2(x3+w3+30)+'" stroke="'+C.cin+'" stroke-width="2.6" stroke-dasharray="11 8"/>';
+ var bt=t3+N3*(h3+g3)-g3;
+ tr+='<path d="M'+n2(x3-22)+' '+n2(t3)+'h-16v'+n2(3*(h3+g3)-g3)+'h16" fill="none" stroke="'+C.gold+'" stroke-width="2"/>'
+  +'<path d="M'+n2(x3-22)+' '+n2(t3+3*(h3+g3))+'h-16V'+n2(bt)+'h16" fill="none" stroke="'+C.line2+'" stroke-width="2"/>';
+ tr+='</g>';
+ var nm=T(W/2,H*.055,"三 十 六 重 天",{size:44,fill:C.moon,anchor:"middle",ls:12,w:600});
+ var b=kidBox("qingle"),b2=kidBox("shangsan");
+ var dt=T(x3-48,t3+34,"三",{size:26,fill:C.gold,anchor:"end",w:600})
+  +T(x3-48,n2((t3+3*(h3+g3)+bt)/2),"三十三",{size:26,fill:C.silk2,anchor:"end",w:600})
+  +T(x3+w3+40,yb-8,"界壁",{size:21,fill:C.cinSilk,w:600})
+  +T(x3+w3+40,yb+16,"下界大能燃烧本源强攻处",{size:16,fill:C.silk3})
+  +'<path d="M'+n2(b2.x+b2.w)+' '+n2(b2.cy)+'h40" stroke="'+C.gold+'" stroke-width="2"/>'
+  +T(n2(b2.x+b2.w+48),b2.cy-4,"上三重天 · 垄断不死物质",{size:21,fill:C.gold})
+  +'<path d="M'+n2(b.x+b.w)+' '+n2(b.cy)+'h40" stroke="'+C.cin2+'" stroke-width="2"/>'
+  +T(n2(b.x+b.w+48),b.cy-4,"清乐天 · 中等之天",{size:22,fill:C.cinSilk})
+  +T(W/2,H*.955,"上界只取人才，不许回返 —— 孟古以破界符强行离去，公之于众",{size:20,fill:C.silk2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 上三重天 */
+DR.shangsan=function(){var W=1200,H=320;
+ var tr='<path d="'+shapeOf("shangsan")+'" fill="#161208" stroke="'+C.gold+'" stroke-width="3"/><g class="fine">';
+ for(var i=0;i<3;i++){var y=70+i*62;
+  tr+='<rect x="140" y="'+y+'" width="920" height="42" rx="5" fill="rgba(180,145,63,.16)" stroke="'+C.gold+'" stroke-width="2"/>';}
+ tr+='<g transform="translate(830,96)">';
+ for(var k=0;k<7;k++)tr+='<path d="M'+(k*26)+' 0l10-14 10 14-10 14z" fill="none" stroke="'+C.gold+'" stroke-width="1.4" opacity="'+n2(.4+k*.08)+'"/>';
+ tr+='</g></g>';
+ var nm=T(W/2,44,"上 三 重 天",{size:36,fill:C.goldSilk,anchor:"middle",ls:10,w:600});
+ var dt='';
+ for(var j=0;j<3;j++)dt+=T(170,100+j*62,["第三十六重天","第三十五重天","第三十四重天"][j],{size:20,fill:C.gold});
+ dt+=T(830,158,"不死物质 · 所剩无几",{size:18,fill:C.goldDim})
+  +T(W/2,296,"面积宽广无比 · 任由下界自生自灭 · 只取人才不许回返",{size:20,fill:C.silk2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 清乐天 */
+DR.qingle=function(){var W=1000,H=1000,cx=500,cy=500,R0=470;
+ var tr='<circle cx="'+cx+'" cy="'+cy+'" r="'+R0+'" fill="'+C.seaLo+'" stroke="'+C.seaHi+'" stroke-width="3.4"/>'
+  +'<clipPath id="kQL"><circle cx="'+cx+'" cy="'+cy+'" r="'+R0+'"/></clipPath>'
+  +'<g clip-path="url(#kQL)">'+stars(0,0,W,H,240,139);
+ for(var p=0;p<6;p++){var pa=(-90+p*60)*Math.PI/180;
+  tr+='<path d="M'+cx+' '+cy+'L'+n2(cx+Math.cos(pa)*R0)+' '+n2(cy+Math.sin(pa)*R0)+'" stroke="'+C.coast+'" stroke-width="1.6" stroke-dasharray="10 9" opacity=".38"/>';
+  if(p===0)continue;
+  var mid=(-90+p*60+30)*Math.PI/180,px=cx+Math.cos(mid)*R0*.58,py=cy+Math.sin(mid)*R0*.58;
+  tr+='<path d="'+coast(px,py,84,58,(149+p*13)|0,{wob:.32,n:18,lobes:3})+'" fill="'+C.landLo+'" stroke="'+C.coast+'" stroke-width="1.8" opacity=".6"/>';}
+ tr+='<circle cx="'+cx+'" cy="'+cy+'" r="9" fill="'+C.silk2+'"/>';
+ var mJ=(-60)*Math.PI/180, jx=cx+Math.cos(mJ)*R0*.58, jy=cy+Math.sin(mJ)*R0*.58;
+ var rx1=jx-118, ry1=jy+128;                       /* 瑞梦府：近靖安 */
+ var mF=(150)*Math.PI/180, fx=cx+Math.cos(mF)*R0*.62, fy=cy+Math.sin(mF)*R0*.62;  /* 永泽山：对面远方 */
+ tr+='</g><g class="fine2">';
+ tr+=hall(rx1,ry1,1.0,C.landHi,C.pen)
+  +'<circle cx="'+n2(rx1)+'" cy="'+n2(ry1)+'" r="52" fill="none" stroke="'+C.cin+'" stroke-width="1.4" stroke-dasharray="6 7"/>';
+ tr+='<path d="M'+n2(fx-46)+' '+n2(fy+24)+'l46-64 46 64Z" fill="'+C.landLo+'" stroke="'+C.coast+'" stroke-width="2.4"/>'
+  +'<path d="M'+n2(fx)+' '+n2(fy-40)+'l20 28 26 36Z" fill="'+C.pen+'" opacity=".35"/>'
+  +'<circle cx="'+n2(fx)+'" cy="'+n2(fy)+'" r="54" fill="none" stroke="'+C.cin+'" stroke-width="1.4" stroke-dasharray="6 7"/>';
+ tr+='<path d="M'+n2(rx1-40)+' '+n2(ry1-14)+'C'+n2(cx-60)+' '+n2(cy+180)+' '+n2(fx+90)+' '+n2(fy+120)+' '+n2(fx+34)+' '+n2(fy+30)+'" fill="none" stroke="'+C.gold+'" stroke-width="2" stroke-dasharray="9 8" opacity=".75"/>';
+ tr+='</g>';
+ var nm=T(cx,80,"清 乐 天",{size:52,fill:C.moon,anchor:"middle",ls:14,w:600});
+ var mJ2=(-60)*Math.PI/180, jx2=cx+Math.cos(mJ2)*R0*.58, jy2=cy+Math.sin(mJ2)*R0*.58;
+ var mF2=(150)*Math.PI/180, fx2=cx+Math.cos(mF2)*R0*.62, fy2=cy+Math.sin(mF2)*R0*.62;
+ var dt=mark(jx2-118,jy2+128,"瑞梦府","孟古入道之门 · 掌门丘炀，师兄宇正",{fs:23,side:"r",len:62,fill:C.moon,sub:C.silk2,r:5})
+  +mark(fx2,fy2,"永泽山","远方更好的门派 · 丘炀荐其往求道",{fs:23,side:"r",len:66,fill:C.moon,sub:C.silk2,r:5});
+ for(var p2=1;p2<6;p2++){var m2=(-90+p2*60+30)*Math.PI/180;
+  dt+=T(cx+Math.cos(m2)*R0*.58,cy+Math.sin(m2)*R0*.58+7,"未详",{size:21,fill:C.coast,anchor:"middle"});}
+ dt+=T(cx,124,"六域 · 约当太阳系 · 初入通天境即可数分钟横渡",{size:21,fill:C.silk2,anchor:"middle"})
+  +T(cx,972,"清乐天之外，则是虚空星海以及混沌",{size:19,fill:C.silk3,anchor:"middle"})
+  +T(cx,902,"孟古自靖安大陆远安村出，入瑞梦府；掌门丘炀荐其往永泽山求道",{size:20,fill:C.silk2,anchor:"middle"})
+  +T(cx,934,"二门位置原纲未详，姑依「近乡」「远方」之说志于此天",{size:17,fill:C.silk3,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 靖安大陆 */
+DR.jingan=function(){var W=1200,H=800,d=shapeOf("jingan");
+ var tr='<path d="'+d+'" fill="none" stroke="'+C.coast+'" stroke-width="11" opacity=".12"/>'
+  +'<path d="'+d+'" fill="'+C.land+'" stroke="'+C.coast+'" stroke-width="3.4"/>'
+  +'<clipPath id="kJA"><path d="'+d+'"/></clipPath><g class="fine" clip-path="url(#kJA)">'
+  +mts(620,260,7,1.6,151)+mts(880,480,5,1.4,157)+mts(700,600,4,1.2,163)
+  +woods(640,380,380,200,45,167)
+  +river([[180,440],[400,390],[620,450],[860,400],[1080,460]],6)
+  +river([[620,450],[660,570],[700,690]],4);
+ tr+='</g>';
+ tr+='<g class="fine3" clip-path="url(#kJA)">'+woods(140,220,980,440,220,151)
+  +isles(200,260,860,380,44,157,{min:3,max:8})+'</g>';
+ var nm=region(880,180,"靖安大陆","清乐天六域之一",{size:58});
+ var dt=T(760,420,"其余疆土 · 未详",{size:23,fill:C.pen2,anchor:"middle"})
+  +T(1010,420,"其余疆土 · 未详",{size:23,fill:C.pen2,anchor:"middle"})
+  +T(600,772,"孟古自承阳州远安村出，入清乐天之瑞梦府修行，此后走过塔层、界海与上苍",{size:21,fill:C.pen2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 承阳州 */
+DR.chengyang=function(){var W=1000,H=700,d=shapeOf("chengyang");
+ var tr='<path d="'+d+'" fill="'+C.landHi+'" stroke="'+C.coast+'" stroke-width="3.2"/>'
+  +'<clipPath id="kCY"><path d="'+d+'"/></clipPath><g class="fine" clip-path="url(#kCY)">'
+  +mts(140,280,6,1.4,173)+mts(620,220,5,1.5,179)+mts(700,480,4,1.2,181)
+  +woods(200,420,300,160,40,191)
+  +river([[120,400],[300,356],[480,406],[680,360],[880,400]],6)
+  +river([[480,406],[520,510],[560,610]],4);
+ var R=rnd(193);
+ for(var i=0;i<7;i++){var px=180+R()*620,py=220+R()*320;
+  tr+='<path d="M'+n2(px-9)+' '+n2(py)+'l9-11 9 11z" fill="none" stroke="'+C.pen2+'" stroke-width="1.6"/>';}
+ tr+='</g>';
+ tr+='<g class="fine3" clip-path="url(#kCY)">'+woods(120,200,760,400,200,163)
+  +isles(160,240,680,340,36,167,{min:3,max:7})+'</g>';
+ var nm=region(300,180,"承 阳 州","占靖安大陆三分之一",{size:52});
+ var dt=T(500,672,"众门派变换其本源气息之后，将他送入这里的一座村子",{size:21,fill:C.pen2,anchor:"middle"})
+  +T(700,250,"聚落 · 原纲未详",{size:19,fill:C.pen2,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 远安村 */
+DR.yuanan=function(){var W=900,H=600,d=shapeOf("yuanan");
+ var tr='<path d="'+d+'" fill="'+C.landHi+'" stroke="'+C.coast+'" stroke-width="3"/>'
+  +'<clipPath id="kYA"><path d="'+d+'"/></clipPath><g class="fine" clip-path="url(#kYA)">'
+  +mts(120,220,4,1.1,197)+river([[100,400],[260,368],[430,404],[620,370],[800,402]],6);
+ for(var i=0;i<8;i++)tr+='<path d="M'+(180+i*34)+' 470q46 20 96 4" fill="none" stroke="'+C.pen2+'" stroke-width="1.4" opacity=".35"/>';
+ tr+='</g>';
+ tr+='<g class="fine">'+hall(360,330,1.1)+hall(430,344,.9)+hall(300,352,.8)
+  +'<path d="M470 344c110 -24 220 -84 290 -178" fill="none" stroke="'+C.pen+'" stroke-width="2.6" stroke-dasharray="10 8"/>'
+  +'<path d="M760 166l-6 16 14-5z" fill="'+C.cin+'"/></g>';
+ var nm=region(450,150,"远 安 村","起　点",{size:48});
+ var dt=mark(380,330,"村长家","收养孟古者",{fs:21,side:"l",len:70,fill:C.pen,sub:C.pen2,r:5})
+  +T(700,208,"由此启程",{size:21,fill:C.pen})
+  +T(450,528,"父为大寇，母为邪修，为众门派追杀而死；变换其本源气息后送入此村。",{size:20,fill:C.pen2,anchor:"middle"})
+  +T(450,560,"他后来走到了这一切的尽头 —— 而尽头处，他自焚过去现在未来，让所有殇与自己陪葬。",{size:20,fill:"#8C6F60",anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+
+/* 福地 */
+DR.fudi=function(){var W=900,H=600,cx=450,cy=300;
+ var tr='<circle cx="'+cx+'" cy="'+cy+'" r="'+(W*.47)+'" fill="rgba(24,19,10,.94)" stroke="'+C.gold+'" stroke-width="3" stroke-dasharray="9 10"/>'
+  +'<g class="fine"><circle cx="'+cx+'" cy="'+cy+'" r="200" fill="none" stroke="'+C.goldDim+'" stroke-width="1.6"/>';
+ for(var k=0;k<8;k++){var a=k*45*Math.PI/180;
+  var x1=cx+Math.cos(a)*22,y1=cy+Math.sin(a)*22,x2=cx+Math.cos(a)*96,y2=cy+Math.sin(a)*96;
+  var xa=cx+Math.cos(a-.34)*66,ya=cy+Math.sin(a-.34)*66,xb=cx+Math.cos(a+.34)*66,yb=cy+Math.sin(a+.34)*66;
+  tr+='<path d="M'+n2(x1)+' '+n2(y1)+'Q'+n2(xa)+' '+n2(ya)+' '+n2(x2)+' '+n2(y2)+'Q'+n2(xb)+' '+n2(yb)+' '+n2(x1)+' '+n2(y1)+'Z" fill="none" stroke="'+C.gold+'" stroke-width="1.8"/>';}
+ tr+='<circle cx="'+cx+'" cy="'+cy+'" r="13" fill="none" stroke="'+C.goldSilk+'" stroke-width="2"/></g>';
+ var nm=T(cx,110,"福　地",{size:44,fill:C.goldSilk,anchor:"middle",ls:12,w:600});
+ var dt=T(cx,442,"混沌莲 · 孟古所炼化",{size:22,fill:C.gold,anchor:"middle"})
+  +T(cx,480,"一位受伤仙帝的道场，可出现在诸天万界各个地方",{size:20,fill:C.goldDim,anchor:"middle"})
+  +T(cx,514,"持通行符者，可在任何地方显现其投影而入",{size:20,fill:C.goldDim,anchor:"middle"});
+ return {tr:tr,nm:nm,dt:dt};};
+var GEO={
+zhutian:{name:"诸天",alias:"一切界域的总称",W:2400,H:1500,parent:null,depth:0,
+ scale:"无边无际",law:"寂灭之力自外侵蚀，两界相耗",gate:"—",
+ desc:"无边无际的人间，如尘沙般数不胜数的宇宙。主地图由<strong>人间、地狱、上苍</strong>三大板块组成；此外另有一片世外的<strong>高原</strong>，连接主位面与<strong>异界</strong>。有一股寂灭的力量同时侵蚀两个大世界——一方受损，另一方便减轻压力；除非全灭一方，否则无数纪元后两界俱寂，纵是顶层境界的修士也无能为力。",
+ lmk:[{n:"高原",d:"两界顶层修炼者打出来的遗迹，战争最前线"},{n:"诸天万界",d:"其余破碎的与辉煌的大世界"}]},
+
+shangcang:{name:"上苍",alias:"主位面三大板块之一",W:1600,H:640,parent:"zhutian",depth:1,
+ 
+ scale:"大于人间万倍",law:"未详",gate:"真一（仙尊）万年可横渡；道绝（仙帝）一念可横穿",
+ desc:"三大板块中最广者，大于人间万倍，只有<strong>仙尊以上</strong>的存在才能横渡。仙王境虽可自由穿梭诸宇宙、在界海中行进，却仍不足以在此畅行；及至真一境，方能安全往返大界虚空等处。孟古曾在数位准仙帝法阵笼罩的决斗台上与同级比拼，于过程中打破极限，踏入仙尊。",
+ lmk:[{n:"决斗台",d:"数位准仙帝以法阵笼罩，同级相搏之处"}]},
+
+renjian:{name:"人间 · 世界海",alias:"主位面三大板块之一 · 亿万个仙界大小的世界",W:1200,H:800,parent:"zhutian",depth:1,
+ 
+ scale:"由亿万个仙界大小的世界组成的世界海，连同其他地区",law:"因界域而异，自末法至法则完善皆有",gate:"—",
+ desc:"人间的主体是一片<strong>世界海</strong>——亿万个仙界大小的世界共同汇成，连同其他地区，合称人间。上有上苍，下有地狱。孟古后来在此立下天庭与轮回路，并将地狱并入天庭。",
+ lmk:[{n:"世界海",d:"亿万个仙界大小的世界"},{n:"天庭",d:"孟古于仙帝境所建，留一脉庇护诸天万界"},{n:"轮回路",d:"打破天地运行规律而立"}]},
+
+diyu:{name:"地狱",alias:"主位面三大板块之一",W:900,H:580,parent:"zhutian",depth:1,
+ 
+ scale:"约为人间的五分之一大小",law:"未详",gate:"—",
+ desc:"地狱势力曾大面积登场，欲占据人间领土，并收集偷窃许多已故强者的尸体与物品，孟古的几位老友亦在其中。孟古于仙帝境建天庭、立轮回路之后攻打地狱，将其化作天庭的一部分，其中有<strong>魂河</strong>、<strong>地府</strong>等处，完善之后方才前往高原支援前线。",
+ lmk:[{n:"魂河",d:"并入天庭后所设"},{n:"地府",d:"并入天庭后所设"}]},
+
+gaoyuan:{name:"高原",alias:"世外 · 最前线",W:800,H:2400,parent:"zhutian",depth:1,
+ 
+ scale:"无边无际。诸天万界坠其上亦填不满一隅，仙帝也难走完全部地域",law:"行进受压制，唯天元境以上可极速通行",
+ gate:"天元境即使在高原上也有极速行进的能力",
+ desc:"一片处于世外的高原，连接着<strong>主位面</strong>与<strong>异界</strong>，是两界顶层修炼者打出来的一片遗迹，也是战争的最前线。孟古于仙帝境完善天庭后前往此地支援；最终与殇帝的那一战，他设下连环计封印高原，汲取其他所有人的力量——那是开天辟地以来最强的一战。",
+ lmk:[{n:"前线遗迹",d:"两界顶层修炼者打出来的疆场"},{n:"封印",d:"孟古设连环计所封，为与殇帝决战之局"}]},
+
+yijie:{name:"异界",alias:"寂灭之另一端",W:1200,H:900,parent:"zhutian",depth:1,
+ 
+ scale:"大小规模与孟古所处的世界差不多",law:"同受寂灭侵蚀；天元境前往不受压制",gate:"天元境前往异界不受压制",
+ desc:"与主位面规模相当的另一个大世界。此处有一位<strong>殇帝</strong>，与孟古一样是绝世高手，力压众雄不败，可独战多位最顶级的修炼者，多次令孟古的世界受到大损失。两界之间只有一方全灭，另一方才能生存——否则无数纪元后俱归寂灭。孟古达到最高境界后与殇帝同归于尽；无尽纪元后复苏，又不计前嫌将其复活。",
+ lmk:[{n:"殇帝",d:"异界绝世高手，力压众雄不败"}]},
+
+wanjie:{name:"诸天万界",alias:"其余的大世界",W:1200,H:560,parent:"zhutian",depth:1,
+ 
+ scale:"数不胜数",law:"或破碎，或辉煌",gate:"元始（仙王）可自由穿梭在各个宇宙中",
+ desc:"除却人间、地狱、上苍之外，还有其他破碎的和辉煌的大世界，总称诸天万界，但总体与主线没有太大关系。受伤仙帝的那处福地，便可出现在诸天万界的各个地方。",
+ lmk:[{n:"福地投影",d:"可于诸天万界各处显现，持通行符者可入"}]},
+
+shihai:{name:"世界海",alias:"人间之主体",W:1400,H:900,parent:"renjian",depth:2,
+ 
+ scale:"亿万个仙界大小的世界",law:"各世界自有其法则，互不统属",gate:"元始（仙王）有能力在界海中行进",
+ desc:"亿万个仙界大小的世界共同组成的一片汪洋。其中之一，即那位妖族真仙——<strong>妖尊</strong>——所栖身的大界；而孟古出生的整座妖尊塔，不过是这一界之中被弃置的一件旧物。",
+ lmk:[{n:"妖尊所在之界",d:"亿万之一，法则完善，可成仙"}]},
+
+xianjie:{name:"仙界",alias:"妖尊所栖之大界 · 真实的世界",W:1000,H:650,parent:"shihai",depth:3,
+ 
+ scale:"世界海中的一界；与妖尊塔之比，如地球之于矿泉水瓶",law:"法则完善，环境极好，可渡劫成仙",
+ gate:"圣尊极巅破开妖尊塔，方得见此界",
+ desc:"一片可以成仙的大界，法则完善，环境极好。塔中众生穷尽一生也走不到人道领域的顶点，而此处才是<strong>真实的世界</strong>。孟古登临圣尊极巅、斩杀拦路之敌后破开妖尊塔，塔中所有人才第一次真正意义上接触到这里——这也是第一个大地图。他随后把瑞梦府整个搬来此地，在原本的基础上立教。",
+ lmk:[{n:"太虚殿",d:"破塔后接触到的所在，可往彼处与其他绝世天才交手"},{n:"妖尊闭关地",d:"妖尊塔弃置之处"},{n:"瑞梦府",d:"孟古破塔后将其整体迁来此界立教"}]},
+
+biguandi:{name:"妖尊闭关地",alias:"塔之所在",W:1000,H:650,parent:"xianjie",depth:4,
+ 
+ scale:"塔与此界之比，约如矿泉水瓶之于地球",law:"同仙界",gate:"—",
+ desc:"妖尊身处这片可以成仙的大界之中闭关。那座被他遗弃的塔，就静置在此。塔中是三十六重天与其余八十层世界，是亿万生灵的全部宇宙；而在这里，它只是一件被放下太久、忘了收走的旧物。",
+ lmk:[{n:"妖尊塔",d:"一位妖族真仙遗弃之塔，共八十一层世界"}]},
+
+yaozunta:{name:"妖尊塔",alias:"一位妖族真仙遗弃之塔",W:760,H:1400,parent:"biguandi",depth:5,
+ 
+ scale:"塔身与现实可观测宇宙相仿",law:"因长期遗落而堕入末法，人道难至顶点，更遑论成仙破界",
+ gate:"大圣尊掌控进出的大门；圣尊极巅可来去自如，数位联手有可能破开塔身",
+ desc:"塔中共有<strong>八十一层</strong>如三十六重天这般大的世界。唯有从出口离开、或强行打破塔身，才能来到外界。妖尊一般真仙即可炼化一个大宇宙——他便是炼化了一大片世界融入塔中。塔因长期遗落等缘故堕入末法，寿命剧减，成仙无门。孟古生于此塔。",
+ lmk:[{n:"三十六重天",d:"八十一层世界之一，孟古所生之层"},{n:"塔门",d:"离塔的正途，为大圣尊所掌"},{n:"其余八十层",d:"各有法则与文明，多数终生不知塔外"}]},
+
+sanshiliu:{name:"三十六重天",alias:"妖尊塔八十一层世界之一",W:1000,H:800,parent:"yaozunta",depth:6,
+ 
+ scale:"三十六重天叠为一层世界",law:"末法。修士寿命剧减，难以成仙",
+ gate:"准圣尊可在下界来去自如；小圣尊纵横三十六重天与多数塔层",
+ desc:"最上面的<strong>三层天</strong>垄断了所剩无几的不死物质以及修炼资源，面积宽广无比。他们任由下界自生自灭，只是偶尔前往下面的<strong>三十三重天</strong>挖掘人才，同时不允许他们再回去。孟古后来翻阅史书、四处打听，发现了这桩垄断，在被拒绝返回后以破界符强行离去，并将真相公之于众。",
+ lmk:[{n:"上三重天",d:"垄断不死物质与修炼资源，只取人才，不许回返"},{n:"下三十三重天",d:"自生自灭之地，清乐天在其中"},{n:"界壁",d:"下界大能燃烧本源强攻处，终致谈判"}]},
+
+shangsan:{name:"上三重天",alias:"三十六重天最上三层",W:1200,H:340,parent:"sanshiliu",depth:7,
+ 
+ scale:"面积宽广无比",law:"末法，然垄断资源",gate:"—",
+ desc:"垄断了所剩无几的<strong>不死物质</strong>以及修炼资源。任由下界自生自灭，只是偶尔前往下面的三十三重天挖掘人才，同时不允许他们再回去。孟古正是靠出色的实力一路平推，成为前往上界的人选之一；此后翻查史书、四处打听，才发现了这桩垄断，被拒绝返回后以破界符强行离去，并将真相公之于众——由此引来下界顶层战力齐出，欲打破界壁强夺不死物质与资源。",
+ lmk:[{n:"不死物质",d:"所剩无几，为上界所垄断"},{n:"选才之路",d:"只上不下，入选者不许回返"}]},
+
+qingle:{name:"清乐天",alias:"下三十三重天之一 · 中等之天",W:1000,H:1000,parent:"sanshiliu",depth:7,
+ 
+ scale:"约相当于现实世界的太阳系大小",law:"末法",gate:"初入通天境即可数分钟横渡",
+ desc:"由<strong>靖安大陆</strong>与其他五大域共同组成，实力与面积在三十六重天中处于中等水平。清乐天之外，则是虚空星海以及混沌。",
+ lmk:[{n:"靖安大陆",d:"六域之一，孟古故乡所在"},{n:"瑞梦府",d:"孟古入道之门。掌门丘炀，师兄宇正。位置原纲未详"},{n:"永泽山",d:"远方一个更好的门派，丘炀荐孟古往彼求道。位置原纲未详"}]},
+
+wuyu:{name:"其他五大域",alias:"清乐天六域之五",W:900,H:900,parent:"qingle",depth:8,
+ 
+ scale:"与靖安大陆共同组成清乐天",law:"末法",gate:"—",
+ desc:"靖安大陆与其他五大域共同组成了清乐天。此五域之名与形，原纲未详——图中仅以六分之势示其位，不作增补。",lmk:[]},
+
+xuhai:{name:"虚空星海 · 混沌",alias:"清乐天之外",W:1200,H:800,parent:"qingle",depth:8,
+ 
+ scale:"未详",law:"混沌",gate:"元始（仙王）已可在混沌中立下自己的道场，演绎宇宙星空",
+ desc:"清乐天之外则是虚空星海以及混沌。仙王境已能开辟世界、在混沌中立下自己的道场，演绎宇宙星空；真仙能够炼化的宇宙，仙王可以一手托住。",lmk:[]},
+
+jingan:{name:"靖安大陆",alias:"清乐天六域之一",W:1200,H:780,parent:"qingle",depth:8,
+ 
+ scale:"六域之一；承阳州占其三分之一",law:"末法",gate:"—",
+ desc:"清乐天六域之一。<strong>承阳州</strong>占据靖安大陆三分之一的面积；其余疆土，原纲未详。孟古自此地启程，此后走过塔层、界海与上苍，再未回到起点。",
+ lmk:[{n:"承阳州",d:"占大陆三分之一，远安村在其中"}]},
+
+chengyang:{name:"承阳州",alias:"靖安大陆三分之一",W:1000,H:650,parent:"jingan",depth:9,
+ 
+ scale:"占靖安大陆三分之一的面积",law:"末法",gate:"—",
+ desc:"靖安大陆上最大的一块疆土。众门派当年不愿牵连尚在襁褓的孟古，变换其本源气息之后，将他送入这里的一座村子。",
+ lmk:[{n:"远安村",d:"孟古被送入抚养之地"}]},
+
+yuanan:{name:"远安村",alias:"起点",W:1000,H:620,parent:"chengyang",depth:10,
+ 
+ scale:"一村",law:"末法。凡人亦可居",gate:"凡体亦可修道，唯效果不佳",
+ desc:"孟古的父亲是一方大寇，母亲是邪修，被众门派追杀而死。死前众人不愿牵连还是婴儿的孟古，变换他的本源气息后送入此村，希望日后不致因父母之故迁怒于他。他在此长大，成人后决心踏上修炼之路——为寻清身世，也为出人头地，日后好报答村长等人的收养之恩。<br><br>他后来走到了这一切的尽头。而尽头处，他自焚过去现在未来，断裂过往时空，让所有殇与痛与自己陪葬。",
+ lmk:[{n:"村长家",d:"收养孟古者"}]},
+
+fudi:{name:"福地",alias:"一位受伤仙帝的道场 · 浮游于诸天",W:900,H:580,parent:null,depth:-1,
+ 
+ scale:"可出现在诸天万界各个地方",law:"不受界壁约束",gate:"持通行符者，可在任何地方显现其投影而入",
+ desc:"这道场可以出现在诸天万界各个地方，等待有缘人进来带走机缘。孟古在破障境时机缘巧合入内，炼化了一朵<strong>混沌莲</strong>，之后以混沌大道融入本源之心；离开时结交了受伤仙帝的一番弟子，最低也是仙王境界，又顺走了一块<strong>通行符</strong>——从此可在任何地方显现福地投影然后进入。此后他多次重回此地求仙缘、学法，带走仙药珍宝与一块<strong>破界符</strong>。被准仙王追杀时，他显露出这处福地，惊跑数位大人物；后来杀他的那位准仙帝再度出手，也被福地中的一位准仙帝阻止，并放话诸天：境界高于孟古者不得出手，否则必将以牙还牙。",
+ lmk:[{n:"混沌莲",d:"孟古所炼化，以混沌大道融入本源之心"},{n:"通行符",d:"可在任何地方显现福地投影"},{n:"破界符",d:"强行离开上界所用"}]}
+};
+var TIERS=[
+{cls:"",title:"人道领域",note:"人道领域有其顶点。孟古在此路断处强开一条路，登临圣尊极巅，而后破塔。",steps:[
+{n:1,name:"炼体",gate:"",d:"修炼肉身体魄。大部分修炼此体系的修士，都会选择这个境界作为自身的第一个境界。"},
+{n:2,name:"淬魂",gate:"",d:"淬炼神魂，凝聚元神，提高神识与精神攻击。"},
+{n:3,name:"合道",gate:"",d:"与大道沟通、交融，选择适合自己的道，将它们为己所用，可增强攻击力并领悟道法。修炼此境界后，大部分修士都可以御空飞行、动用法术。"},
+{n:4,name:"御一",gate:"",d:"炼体、淬魂、合道三大境界合一，完善修炼成果。此境界可以引动三条路在体内，汇聚成<strong>本源之心</strong>，是这种体系的重点之一。"},
+{n:5,name:"破障",gate:"",d:"破开身体中的障碍，逆转死穴，打通人体穴位，突破更强战力，同时开启各种秘技。每个部位都有可能诞生绝世功法，例如火眼金睛等等。"},
+{n:6,name:"太虚",gate:"",d:"意识空灵，感悟三千大道，选择一种承载于本源之心中。大部分人一生专修一种，也有人可以修炼多种大道，相互融汇。"},
+{n:7,name:"玄门",gate:"秘法 · 非通途",d:"分为天、地、人三门。大部分人只能触摸到某一门的边框，绝世天才则可以开启全部三门。<strong>天门</strong>增强与大道的沟通；<strong>人门</strong>增加悟性并增强元神；<strong>地门</strong>提升力量，叠加在一切攻击之上。此境界为一家族的秘法，是向一位准仙帝始祖借取力量。"},
+{n:8,name:"通天",gate:"清乐天",d:"御一境之后的一个大境界。蜕变肉身，自身道法升华，向圆满接近。这一境界超越大部分修炼此体系的修士，可以称霸一方——<strong>初入通天境，就可数分钟横渡清乐天</strong>。"},
+{n:9,name:"准圣尊",gate:"三十六重天 · 下界",d:"相比通天境综合增幅十到百倍，可以在三十六重天的下界来去自如。"},
+{n:10,name:"小圣尊",gate:"三十六重天 · 多数塔层",d:"纵横三十六重天与多数塔层，碾压准圣尊及以下境界的修士。"},
+{n:11,name:"大圣尊",gate:"妖尊塔 · 门户",d:"有能力一统妖尊塔。妖尊塔中的大圣尊掌控进出的大门，也有能力送后人和弟子外出历练。"},
+{n:12,name:"圣尊极巅",gate:"破塔 · 得见仙界",d:"法则与神通修炼圆满，达到<strong>人道领域的巅峰</strong>。抬手可以崩裂宇宙，一缕气息就能压迫低境界修士；绝世高手可与真仙一战，可杀较弱的真仙。在妖尊塔中可以来去自如，多个圣尊极巅的绝顶人物有可能联手破开妖尊塔。"}]},
+{cls:"tier--i",title:"仙道",note:"末法乃至绝灵世界中造就的仙，须在红尘中度过多世、不断蜕变方能长生，故实力远强于在仙界成仙者，大部分可达仙尊以上。",steps:[
+{n:13,name:"不朽",sub:"真仙",gate:"一个大宇宙",d:"一滴血能保持数个纪元不灭，长生不死，肉身不朽，元神不灭。此层次的<strong>红尘仙</strong>，战力比真仙更强。一般真仙就可以炼化一个大宇宙——例如妖尊，便是炼化了一大片世界融入塔中。真仙可以在有成仙环境的世界中修炼而成，渡过成仙劫成仙；也可以在末法世界甚至绝灵世界造就，这样的真仙实力强劲，直追准仙王甚至真正的仙王。"},
+{n:14,name:"元始",sub:"仙王",gate:"界海 · 时间长河",d:"真正长生不死，肉身不朽，元神不灭，仅修成仙王体就能让体魄更强，极难杀死，除非用特殊方法。若有人念其真名，就会被他们感知，会有异象显化。已经可以开辟世界，在混沌中立下自己的道场，演绎宇宙星空。仙王境便能自由穿梭在各个宇宙中，真仙能够炼化的宇宙也可以一手托住，有能力在界海中行进。能踏足于时间长河，穿梭过去未来，无视岁月的力量，在时光长河进行小规模的修改。"},
+{n:15,name:"真一",sub:"仙尊",gate:"上苍 · 万年横渡",d:"达到此境界便能够在上苍畅行，只需万年就可以横渡上苍，有安全往返大界虚空等地的能力，远强过仙王境。绝世天才有越级与准仙帝一战的可能。"},
+{n:16,name:"临峰",sub:"准仙帝",gate:"各个时空",d:"修炼体系的奠基人，弹指间能毁灭一界域，自身就能蒙蔽天机——无论过去、现在或殒落后都带着迷雾，让人难以看透。在某些纪元则被称之为<strong>帝者</strong>，也被称为<strong>道祖</strong>，多是一个体系的开创者、奠基人、拓路者，实力都极尽强大，远超仙王，有足够的能力游走在各个时空中。"},
+{n:17,name:"道绝",sub:"仙帝 / 路尽级",gate:"上苍 · 一念横穿",d:"诸天间，对走到了进化体系尽头的生灵的一种统称，为道之极致、路之尽头；是所有进化支路已知的最高境界，一念就可以横穿上苍。在不同的体系中有不同的尊称，相当于仙族的仙帝。若无特殊手段，则<strong>仙帝不死，路尽不灭</strong>——只要世间还有人记得他，念他的名字，他就会重归。"}]},
+{cls:"tier--b",title:"超脱",note:"若不能在绝境中复苏、或在破灭中崛起，就无法突破归墟境，只能变成一尊没有自我意识的神像，甚至只有一道虚影——虽然强大，却永远冷眼旁观人世间。",steps:[
+{n:18,name:"天元",gate:"高原 · 异界",d:"修一到三种真义，而后合一。即使在高原上也有极速行进的能力，前往异界不受压制。<strong>有</strong>与<strong>无</strong>是最强大的两种真义，有直通归墟的可能，但大部分都迷失其中，走火入魔，进入无中不能超脱。"},
+{n:19,name:"祭道",gate:"可令仙帝永寂",d:"焚尽规则与秩序，祭掉至高大道。仙帝极尽升华后所到达的最终的境界，迄今为止一切进化路最后的顶点。该境界者可让仙帝永寂。"},
+{n:20,name:"祭我",gate:"超越永恒",d:"彻底的超越者，不死不灭。想要踏入此领域，需要拥有不可磨灭的经历。在这特殊的所在领域，所有大道皆如水流，一念可蒸干。命运、造化、因果、天道等，不过是最为虚弱的泡影，不及伸手触碰就崩灭。这里没有时间，没有空间之感，超越所谓的永恒、道、大千世界、所有时空、宇宙之外、混沌之外，无所不在。"},
+{n:21,name:"归墟",gate:"一切生灵的顶点",d:"万道归于一体，自身就是唯一的道，超越一切境界的存在，是所有生灵能够到达的最高顶点，但古今未来达到者寥寥可数。需在生死间明悟，在有无间转换。这一层次的生灵哪怕是祭我境也无法感知，在归墟境生灵面前一切皆为泡沫。天道、大道、本道都是处在这个层次。<span class=\"nt\">孟古是古今往来唯一以清醒状态登临此境者。其后他斩断归墟境与自身道果，从此世间再无归墟，祭我为最高顶点。</span>"}]},
+{cls:"tier--s",title:"其外",note:"",steps:[
+{n:22,name:"嫣然",gate:"唯一人",d:"孟古单独为千嫣然创造的一个境界，凌驾于一切境界之上。只有千嫣然一人立在这个领域。"}]}];
+
+var LAWS=[
+{t:"灵气与灵石",d:"修士以灵气为基础修炼，包括普遍存在的灵气与日月精华、草木之气、阴阳气、死气等。灵石为凡人和修士的通用货币。"},
+{t:"末法之寿",d:"在末法时代，修士寿命剧减，也难以成仙，只有在红尘中度过多世、不断蜕变才能长生并提高战力。但这种仙，比在仙界中成仙的大部分要强很多，大部分可以达到仙尊以上。"},
+{t:"凡体",d:"凡人并非不能修炼，而是修道天赋和体质等原因导致效果不佳，大部分毫无效果。只有小部分凡人可以修道，也就是凡体。"},
+{t:"寂灭与卖世",d:"大寂灭的力量，祭我境可以阻挡一些，但效果不佳。同时高境界修士可以改变凡人或低层次修炼者的本源，让他们融入自己的大界——这也导致出现很多为了苟活而出卖自己世界的人。"},
+{t:"归墟之门",d:"如果不能在绝境中复苏、或在破灭中崛起，就无法突破归墟境，只能变成一尊没有自我意识的神像，甚至只有一道虚影。虽然强大，但永远冷眼旁观人世间。"}];
+
+var FOES=[
+{t:"殇帝",d:"异界的殇帝，实力强劲，可以独战多位最顶级的修炼者。哪怕主世界顶级实力较多，也时常因为殇帝的原因损失惨重。"},
+{t:"两界之秩序",d:"两界融合后的天道、大道等秩序与法则，化成一个实体的生灵，实力直逼真正的归墟境。"},
+{t:"归墟之败者",d:"想要完全突破归墟境但失败的生灵，虽然实力强大但失去意识，全靠本能行动；以及一些没能完全破入归墟境的存在，只留下一道虚影。在孟古复活千嫣然、于进化路强行开路时出手，本能上认定孟古会对他们和世界本源造成威胁，对孟古造成重创。"},
+{t:"天道大道之局",d:"天道大道布局，将与孟古气质样貌相近的曾经的人设计设局，想要成就自身，融合道义。但被孟古以身入局，被杀后轮回术大圆满。"}];
+
+var CHRON=[
+{t:"遗塔堕入末法",w:"妖尊塔",d:"一位妖族真仙炼化一大片世界融入塔中，其后弃之。塔因长期遗落等原因来到末法世界，连人道领域都难以走到顶点，更别提成仙破界。八十一层世界自此与外界隔绝。"},
+{t:"上界垄断",w:"上三重天",d:"最上面的三层天垄断了所剩无几的不死物质与修炼资源，任由下界自生自灭，只偶尔前往下面的三十三重天挖掘人才，且不允许他们再回去。孟古强行离去并将真相公之于众。"},
+{t:"界壁之战",w:"三十六重天",d:"下界顶层战力齐出，要打破界壁，强夺不死物质和资源。上界虽强者众多，但下界大能皆拼命而战、燃烧本源，最终迫使双方谈判。"},
+{t:"破塔见界",w:"妖尊塔 → 仙界",g:1,d:"人道领域路断，孟古强开一条路，登临圣尊极巅，斩杀拦路之敌后破开妖尊塔，得见全象——塔处在一片废弃的空间中，外面则是妖尊的闭关地。塔中所有人第一次真正意义上接触到真实的世界，也就是第一个大地图，仙界。"},
+{t:"立教仙界",w:"仙界",d:"妖尊的徒弟帮助被困的众人安排住所；孟古则将瑞梦府整个搬到了仙界中，在原本的基础上立教。"},
+{t:"天庭与轮回路",w:"人间",g:1,d:"仙王极巅时欲立下轮回路，打破天地运行规律，本道降下意志惩罚，反被孟古强势掠夺本源气、炼化成逆道镯。至仙帝境建立天庭与轮回路。"},
+{t:"并地狱入天庭",w:"地狱 → 天庭",d:"攻打地狱，将其变作天庭的一部分，设有魂河、地府等地方。"},
+{t:"高原前线",w:"高原",d:"天庭完善之后前往高原支援前线。高原连接主位面与异界，是两界顶层修炼者打出来的一片遗迹，也是战争的最前线。"},
+{t:"封印高原",w:"高原",b:1,d:"与殇帝交战，设下连环计，封印高原，汲取其他所有人的力量。开天辟地以来最强一战——孟古吞噬殇帝融为一体后自爆，与殇帝同归于尽。"},
+{t:"两界修复",w:"人间 · 异界",g:1,d:"在生死间明悟，在有无间复苏，以清醒的状态登临归墟境。之后修复两界的寂灭与矛盾，两界的大道天道也融合，更加和谐更加强大。诸天万界共尊孟古一人。"},
+{t:"万界成墟",w:"诸天万界",b:1,d:"陷入悟境中无数纪元，欲探索与推演最终极、开辟新路。再醒来时诸世成墟，一切都不复存在，万界崩塌，故人几乎死绝，进化路和修炼世界大乱。"},
+{t:"斩归墟 · 断时空",w:"一切",b:1,d:"复活千嫣然与故人，送千嫣然登临归墟之上的境界，映照诸天万界与时间长河化作一片仙界。而后独战十二位同级生灵，重伤后斩断归墟境与自身道果，从此世间再无归墟。终因大战与诅咒本源破损，无法恢复；在目睹大世轮转亿万纪元后，自焚躯体与一切痕迹，斩断古今往来，让时空在此刻断裂。"}];
+
+/* ══════════ 嵌套引擎 ══════════ */
+var $=function(i){return document.getElementById(i);};
+var VW=0,VH=0,cam={x:0,y:0,k:1},K0=1,cur="zhutian",rafId=0,anim=null,fudiOn=false;
+var stage,world,divs={},WT={},lock=null;
+
+function worldOf(id){if(WT[id])return WT[id];var n=L[id],r;
+ if(!n.parent)r={x:0,y:0,s:1};
+ else{var p=worldOf(n.parent),a=n.at;r={x:p.x+a.x*p.s,y:p.y+a.y*p.s,s:p.s*(a.w/n.W)};}
+ WT[id]=r;return r;}
+function ctrOf(id){var w=worldOf(id),n=L[id];return {x:w.x+n.W*w.s/2,y:w.y+n.H*w.s/2};}
+function fitK(id,f){var w=worldOf(id),n=L[id];
+ var k=Math.min(VW*(f||.84)/(n.W*w.s), VH*(f||.84)/(n.H*w.s));
+ return (isFinite(k)&&k>0)?k:1;}
+function depthOf(id){var d=0,n=L[id];while(n.parent){d++;n=L[n.parent];}return d;}
+
+function ramp(v,a,b){return a===b?1:Math.max(0,Math.min(1,(v-a)/(b-a)));}
+function setOp(el,v){if(!el)return;var s=v.toFixed(3);if(el._o!==s){el._o=s;el.style.opacity=s;el.style.display=v<=.008?"none":"";}}
+function ensure(id){if(divs[id])return divs[id];
+ var n=L[id];
+ if(n.tr0==null){var d=DR[id]?DR[id]():{tr:'',nm:'',dt:''};n.tr0=d.tr;n.nm0=d.nm;n.dt0=d.dt;}
+ var el=document.createElement("div");
+ el.className="layer";el.dataset.node=id;el.style.zIndex=String(id==="fudi"?90:depthOf(id)+2);
+ el.innerHTML='<svg width="'+n.W+'" height="'+n.H+'" viewBox="0 0 '+n.W+' '+n.H+'" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">'
+  +'<g class="tr">'+n.tr0+'</g><g class="nm">'+n.nm0+'</g><g class="dt">'+n.dt0+'</g></svg>';
+ world.appendChild(el);
+ el._nm=el.querySelector(".nm");el._dt=el.querySelector(".dt");
+ el._f1=el.querySelectorAll(".fine");el._f2=el.querySelectorAll(".fine2");el._f3=el.querySelectorAll(".fine3");
+ divs[id]=el;return el;}
+
+function render(){
+ var ids=Object.keys(L),best=null,bs=1e9,curS=null,shown=0,bgS=-1,bgC='#0E0B0A';
+ for(var i=0;i<ids.length;i++){var id=ids[i],n=L[id];
+  if(id==="fudi"&&(!fudiOn||!L.fudi.parent)){if(divs[id])divs[id].style.display="none";continue;}
+  var w=worldOf(id),sc=w.s*cam.k,sw=n.W*sc,sh=n.H*sc;
+  var tx=(w.x-cam.x)*cam.k+VW/2, ty=(w.y-cam.y)*cam.k+VH/2;
+  if(sw<VW*.02||sw>VW*34||tx>VW+60||ty>VH+60||tx+sw<-60||ty+sh<-60){
+   if(divs[id])divs[id].style.display="none";continue;}
+  var op=ramp(sw,VW*.02,VW*.075);
+  if(op<=.015){if(divs[id])divs[id].style.display="none";continue;}
+  var el=ensure(id);
+  el.style.display="block";
+  if(el._op!==op.toFixed(3)){el._op=op.toFixed(3);el.style.opacity=el._op;}
+  var _tx=tx.toFixed(1),_ty=ty.toFixed(1),_sc=sc.toFixed(5);
+  if(el._tx!==_tx||el._ty!==_ty||el._sc!==_sc){el._tx=_tx;el._ty=_ty;el._sc=_sc;
+   el.style.transform="translate("+_tx+"px,"+_ty+"px) scale("+_sc+")";}
+  /* 细节按远近递进显隐，绝不骤然消失（增量更新，仅在缩放档位变化时刷新） */
+  var cov=Math.max(sw/VW,sh/VH);
+  if(el._cov==null||Math.abs(cov-el._cov)>.05){
+   el._cov=cov;
+   var o1=Math.min(ramp(sw,VW*.13,VW*.30),1-ramp(sw,VW*12,VW*26));
+   var o2=Math.min(ramp(sw,VW*.12,VW*.32),1-ramp(sw,VW*1.5,VW*3.6));
+   var o3=Math.min(ramp(sw,VW*1.0,VW*2.6),1-ramp(sw,VW*14,VW*30));
+   var oN=Math.min(ramp(sw,VW*.07,VW*.24),1-ramp(sw,VW*2.4,VW*6));
+   var oD=Math.min(ramp(sw,VW*.26,VW*.60),1-ramp(sw,VW*1.8,VW*4.4));
+   var q;
+   for(q=0;q<el._f1.length;q++)setOp(el._f1[q],o1);
+   for(q=0;q<el._f2.length;q++)setOp(el._f2[q],o2);
+   for(q=0;q<el._f3.length;q++)setOp(el._f3[q],o3);
+   setOp(el._nm,oN);setOp(el._dt,oD);
+  }
+  /* 视口中心所压的最大疆域，其色即为底色，故任何时候不露黑 */
+  if(tx<=VW/2&&ty<=VH/2&&tx+sw>=VW/2&&ty+sh>=VH/2&&sw>bgS){bgS=sw;bgC=fillOf(id);}
+  shown++;
+  var sco=Math.abs(Math.log(cov/.85));
+  if(tx>VW/2||tx+sw<VW/2||ty>VH/2||ty+sh<VH/2)sco+=2.6;
+  if(id==="fudi")sco+=.12;
+  if(id===cur)curS=sco;
+  if(sco<bs){bs=sco;best=id;}}
+ if(stage._bg!==bgC){stage._bg=bgC;stage.style.background=bgC;}
+ if(best&&best!==cur&&(curS===null||bs<curS-.2)){cur=best;onCur();}
+ hud();
+ if(shown===0&&!anim){var c=ctrOf(cur);cam.x=c.x;cam.y=c.y;cam.k=fitK(cur,.84);return render();}
+ return shown;}
+function req(){if(rafId)return;rafId=requestAnimationFrame(function(){rafId=0;render();});}
+
+var CN="〇一二三四五六七八九";
+function cnum(n,inr){n=Math.round(n);if(!isFinite(n)||n<=0)return"〇";if(n<10)return CN.charAt(n);
+ if(n<20)return(inr?"一十":"十")+(n%10?CN.charAt(n%10):"");
+ if(n<100)return CN.charAt(Math.floor(n/10))+"十"+(n%10?CN.charAt(n%10):"");
+ if(n<1000){var h=Math.floor(n/100),r=n%100;return CN.charAt(h)+"百"+(r===0?"":(r<10?"零"+CN.charAt(r):cnum(r,1)));}
+ var t=Math.floor(n/1000),r2=n%1000;return CN.charAt(t)+"千"+(r2===0?"":(r2<100?"零"+cnum(r2,1):cnum(r2,1)));}
+function cnZoom(m){if(!isFinite(m)||m<2.2)return"全　象";
+ if(m<1e4)return"深入约"+cnum(m)+"重";
+ if(m<1e8)return"深入约"+cnum(m/1e4)+"万重";
+ return"深入约"+cnum(m/1e8)+"亿重";}
+function hud(){
+ var m=(K0>0&&isFinite(cam.k))?cam.k/K0:1;
+ $("hudZ").textContent=cnZoom(m);
+ var n=L[cur],g=GEO[cur];
+ $("hudN").textContent=n.name;
+ $("hudA").textContent=g?g.alias:"";
+ var rn=document.querySelectorAll(".rnode");
+ for(var i=0;i<rn.length;i++)rn[i].classList.toggle("on",rn[i].dataset.go===cur);}
+function onCur(){drawGeo(cur);if(fudiOn&&!L.fudi.parent)mountFudi();}
+
+function deepVis(cx,cy,ck){
+ cx=(cx==null?cam.x:cx);cy=(cy==null?cam.y:cy);ck=(ck==null?cam.k:ck);
+ var ids=Object.keys(L),bs=1,best="zhutian";
+ for(var i=0;i<ids.length;i++){var id=ids[i];if(id==="fudi")continue;
+  var w=worldOf(id),n=L[id];if(w.s>=bs)continue;
+  var sw=n.W*w.s*ck,sh=n.H*w.s*ck;
+  var mx=(w.x-cx)*ck+VW/2+sw/2,my=(w.y-cy)*ck+VH/2+sh/2;
+  var px=Math.max(sw*.5,VW*.12),py=Math.max(sh*.5,VH*.12);
+  if(mx>-px&&mx<VW+px&&my>-py&&my<VH+py){bs=w.s;best=id;}}
+ return best;}
+function clampK(k,cx,cy){
+ var kmin=Math.min(VW,VH)*.42/L.zhutian.W;
+ var d=deepVis(cx,cy),wd=worldOf(d),nd=L[d];
+ var kmax=Math.max(VW,VH)*2.0/Math.min(nd.W*wd.s,nd.H*wd.s);
+ if(kmax<kmin)kmax=kmin;
+ return Math.max(kmin,Math.min(kmax,k));}
+function clampCam(){
+ /* 自由状态（lock 为空）一律以根界域诸天为钳制边界，避免 cur 随视口切换导致边界突变、画面闪动 */
+ var q=lock||"zhutian",n=L[q],w=worldOf(q),mw=n.W*w.s,mh=n.H*w.s;
+ var px=Math.min(mw*.5,VW*.42/cam.k),py=Math.min(mh*.5,VH*.42/cam.k);
+ cam.x=Math.min(Math.max(cam.x,w.x-px),w.x+mw+px);
+ cam.y=Math.min(Math.max(cam.y,w.y-py),w.y+mh+py);}
+function zoomAt(px,py,f){
+ var nk=clampK(cam.k*f);
+ cam.x+=(px-VW/2)*(1/cam.k-1/nk);cam.y+=(py-VH/2)*(1/cam.k-1/nk);
+ cam.k=nk;clampCam();req();}
+function chainOf(id){var c=[],n=L[id];while(n){c.unshift(n.id||id);if(!n.parent)break;id=n.parent;n=L[id];}return c;}
+function routeTo(a,b){
+ var pa=chainOf(a),pb=chainOf(b),i=0;
+ while(i<pa.length&&i<pb.length&&pa[i]===pb[i])i++;
+ var up=pa.slice(i).reverse(), down=pb.slice(i);
+ var r=up.concat(down);
+ if(!r.length||r[r.length-1]!==b)r.push(b);
+ return r;}
+/* 沿界域之链逐重下潜／上浮，绝不取直线穿过空域 */
+function flyTo(id,ms){
+ if(!L[id])return;
+ if(anim){cancelAnimationFrame(anim);anim=null;}
+ var route=routeTo(cur,id);
+ if(ms===0){var c0=ctrOf(id);lock=id;cam.x=c0.x;cam.y=c0.y;
+  cam.k=Math.max(clampK(fitK(id,.84),c0.x,c0.y),fitK(id,.84));clampCam();render();lock=null;return;}
+ var segs=[];
+ for(var i=0;i<route.length;i++){var q=route[i],c=ctrOf(q);
+  segs.push({id:q,x:c.x,y:c.y,k:Math.max(clampK(fitK(q,.84),c.x,c.y),fitK(q,.84))});}
+ var total=Math.min(2400,520+route.length*190), per=total/Math.max(1,segs.length);
+ var si=0, s0={x:cam.x,y:cam.y,l:Math.log(cam.k)}, t0=performance.now();
+ lock=id;
+ (function step(t){
+  var el=Math.max(0,t-t0);
+  var idx=Math.max(0,Math.min(segs.length-1,Math.floor(el/per)));
+  var p=Math.max(0,Math.min(1,(el-idx*per)/per));
+  if(idx!==si){si=idx;var pv=segs[idx-1]||segs[0];s0={x:pv.x,y:pv.y,l:Math.log(pv.k)};}
+  var e0=segs[idx], e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+  cam.x=s0.x+(e0.x-s0.x)*e;cam.y=s0.y+(e0.y-s0.y)*e;
+  cam.k=Math.exp(s0.l+(Math.log(e0.k)-s0.l)*e);
+  clampCam();render();
+  if(el<total)anim=requestAnimationFrame(step);
+  else{anim=null;lock=null;var cf=ctrOf(id);cam.x=cf.x;cam.y=cf.y;
+   cam.k=Math.max(clampK(fitK(id,.84),cf.x,cf.y),fitK(id,.84));clampCam();render();}
+ })(t0);}
+function mountFudi(){var h=L[cur];if(h.id==="fudi")return;
+ L.fudi.parent=h.id;L.fudi.at={x:h.W*.58,y:h.H*.08,w:h.W*.36};
+ delete WT.fudi;render();}
+
+/* ══════════ 卷宗 ══════════ */
+function drawGeo(id){
+ var n=GEO[id];if(!n)return;
+ var h='<div class="p__k"><span>'+esc(n.kind||"界域")+'</span><em>'+(n.lmk&&n.lmk.length?n.lmk.length+" 处地标":"—")+'</em></div>';
+ h+='<h2 class="p__n">'+esc(n.name)+'</h2><p class="p__a">'+esc(n.alias)+'</p>';
+ h+='<div class="p__d">'+n.desc+'</div>';
+ h+='<dl class="facts"><div class="fact"><dt>尺度</dt><dd>'+esc(n.scale)+'</dd></div>'
+  +'<div class="fact"><dt>法则</dt><dd>'+esc(n.law)+'</dd></div>'
+  +'<div class="fact fact--g"><dt>通行</dt><dd>'+esc(n.gate)+'</dd></div></dl>';
+ if(n.lmk&&n.lmk.length){h+='<ul class="lmk"><div class="lmk__h">地标</div>';
+  for(var i=0;i<n.lmk.length;i++)h+='<li><b>'+esc(n.lmk[i].n)+'</b><span>'+esc(n.lmk[i].d)+'</span></li>';
+  h+='</ul>';}
+ var lay=L[id],nav="";
+ if(lay){
+  if(lay.parent&&L[lay.parent])nav+='<button class="chip chip--u" data-go="'+lay.parent+'">← 出至 '+esc(L[lay.parent].name)+'</button>';
+  for(var j=0;j<lay.kids.length;j++){var kd=lay.kids[j];if(kd==="fudi")continue;
+   nav+='<button class="chip" data-go="'+kd+'">'+esc(L[kd].name)+'</button>';}}
+ if(nav)h+='<div class="subs"><div class="subs__h">此域之内 · 此域之外</div>'+nav+'</div>';
+ $("pane-geo").innerHTML=h;}
+function buildRank(){var o="";
+ for(var t=0;t<TIERS.length;t++){var tr=TIERS[t];
+  o+='<section class="tier '+tr.cls+'"><h3>'+esc(tr.title)+'</h3>';
+  if(tr.note)o+='<p class="tn">'+esc(tr.note)+'</p>';
+  for(var i=0;i<tr.steps.length;i++){var st=tr.steps[i],sid="sb"+st.n;
+   o+='<button class="step" aria-expanded="false" data-step="'+sid+'"><span class="step__n">'
+    +(st.n<10?"0":"")+st.n+'</span><span class="step__m">'+esc(st.name)
+    +(st.sub?'<small>'+esc(st.sub)+'</small>':'')
+    +(st.gate?'<span class="step__g">'+esc(st.gate)+'</span>':'')+'</span></button>'
+    +'<div class="sbody" id="'+sid+'">'+st.d+'</div>';}
+  o+='</section>';}
+ $("pane-rank").innerHTML=o;}
+function buildLaw(){var o='<div class="sh">行世之则</div>';
+ for(var i=0;i<LAWS.length;i++)o+='<article class="card"><div class="card__n">'+(i+1<10?"0":"")+(i+1)+'</div><h4>'+esc(LAWS[i].t)+'</h4><p>'+esc(LAWS[i].d)+'</p></article>';
+ o+='<div class="sh mt">终局之敌</div>';
+ for(var j=0;j<FOES.length;j++)o+='<article class="card card--b"><div class="card__n">'+(j+1<10?"0":"")+(j+1)+'</div><h4>'+esc(FOES[j].t)+'</h4><p>'+esc(FOES[j].d)+'</p></article>';
+ $("pane-law").innerHTML=o;}
+function buildChr(){var o='<div class="sh">疆域沿革 · 只记地图之变</div>';
+ for(var i=0;i<CHRON.length;i++){var e=CHRON[i];
+  o+='<article class="ev'+(e.g?" ev--g":"")+(e.b?" ev--b":"")+'"><span class="ev__d"></span><div class="ev__n">'
+   +(i+1<10?"0":"")+(i+1)+'</div><h4>'+esc(e.t)+'</h4><p>'+esc(e.d)+'</p><span class="ev__w">'+esc(e.w)+'</span></article>';}
+ $("pane-chr").innerHTML=o;}
+function buildRail(){
+ var o="";
+ for(var i=0;i<TRUNK.length;i++)o+='<button class="rnode" data-go="'+TRUNK[i]+'" title="第'+(i<10?CN.charAt(i):"十")+'重"><span class="rnode__t">'+esc(L[TRUNK[i]].name)+'</span><span class="rnode__d"></span></button>';
+ $("rail").innerHTML=o;}
+
+/* ══════════ 事件 ══════════ */
+function bind(){
+ stage.addEventListener("wheel",function(e){e.preventDefault();tipOff();
+  var d=e.deltaY*(e.deltaMode===1?18:(e.deltaMode===2?VH:1));
+  zoomAt(e.clientX,e.clientY,Math.exp(-d*0.0015));},{passive:false});
+ var pts={},np=0,last=null,pinch=null,moved=0;
+ stage.addEventListener("pointerdown",function(e){
+  pts[e.pointerId]={x:e.clientX,y:e.clientY};np++;
+  if(np===1){last={x:e.clientX,y:e.clientY};moved=0;stage.classList.add("grab");}
+  else if(np===2){var k=Object.keys(pts);pinch=Math.hypot(pts[k[0]].x-pts[k[1]].x,pts[k[0]].y-pts[k[1]].y);}
+  try{stage.setPointerCapture(e.pointerId);}catch(_){}});
+ stage.addEventListener("pointermove",function(e){
+  if(!pts[e.pointerId])return;pts[e.pointerId]={x:e.clientX,y:e.clientY};
+  var k=Object.keys(pts);
+  if(np>=2&&pinch){var nd=Math.hypot(pts[k[0]].x-pts[k[1]].x,pts[k[0]].y-pts[k[1]].y);
+   if(nd>0&&pinch>0)zoomAt((pts[k[0]].x+pts[k[1]].x)/2,(pts[k[0]].y+pts[k[1]].y)/2,nd/pinch);
+   pinch=nd;moved=99;tipOff();return;}
+  if(last){var dx=e.clientX-last.x,dy=e.clientY-last.y;moved+=Math.abs(dx)+Math.abs(dy);
+   cam.x-=dx/cam.k;cam.y-=dy/cam.k;last={x:e.clientX,y:e.clientY};
+   if(moved>6)tipOff();clampCam();req();}});
+ function up(e){if(pts[e.pointerId]){delete pts[e.pointerId];np=Math.max(0,np-1);}
+  if(np===1){var _k=Object.keys(pts)[0];last={x:pts[_k].x,y:pts[_k].y};moved=0;}
+  if(np<2)pinch=null;
+  if(np===0){last=null;stage.classList.remove("grab");
+   if(moved<7){var el=e.target,hit=null,gd=0;
+    while(el&&el!==world&&gd++<12){if(el.classList&&el.classList.contains("layer")){hit=el.dataset.node;break;}el=el.parentNode;}
+    if(hit&&hit!==cur){flyTo(hit);tipOff();}}}}
+ stage.addEventListener("pointerup",up);stage.addEventListener("pointercancel",up);
+ stage.addEventListener("dblclick",function(e){e.preventDefault();zoomAt(e.clientX,e.clientY,2.2);tipOff();});
+
+ document.addEventListener("click",function(e){
+  var t=e.target.closest?e.target.closest("[data-go],[data-step],[data-pane]"):null;
+  if(!t)return;
+  if(t.hasAttribute("data-go")&&!stage.contains(t)){flyTo(t.getAttribute("data-go"));tipOff();return;}
+  if(t.hasAttribute("data-step")){var b=$(t.getAttribute("data-step")),op=t.getAttribute("aria-expanded")==="true";
+   t.setAttribute("aria-expanded",op?"false":"true");if(b)b.classList.toggle("on",!op);return;}
+  if(t.hasAttribute("data-pane")){var tb=document.querySelectorAll(".btab");
+   for(var i=0;i<tb.length;i++){var on=tb[i]===t;tb[i].setAttribute("aria-selected",on?"true":"false");
+    $(tb[i].getAttribute("data-pane")).classList.toggle("on",on);}}});
+ document.addEventListener("keydown",function(e){
+  var a=document.activeElement;
+
+  if(e.key==="+"||e.key==="=")zoomAt(VW/2,VH/2,1.35);
+  else if(e.key==="-"||e.key==="_")zoomAt(VW/2,VH/2,1/1.35);
+  else if(e.key==="ArrowLeft"){cam.x-=VW*.12/cam.k;clampCam();req();}
+  else if(e.key==="ArrowRight"){cam.x+=VW*.12/cam.k;clampCam();req();}
+  else if(e.key==="ArrowUp"){cam.y-=VH*.12/cam.k;clampCam();req();}
+  else if(e.key==="ArrowDown"){cam.y+=VH*.12/cam.k;clampCam();req();}
+  else if(e.key==="Escape")flyTo("zhutian");
+  else return;
+  tipOff();});
+ $("zin").onclick=function(){zoomAt(VW/2,VH/2,1.5);tipOff();};
+ $("zout").onclick=function(){zoomAt(VW/2,VH/2,1/1.5);tipOff();};
+ $("zres").onclick=function(){flyTo("zhutian");tipOff();};
+ var tal=$("talisman");
+ tal.onclick=function(){fudiOn=!fudiOn;tal.setAttribute("aria-pressed",fudiOn?"true":"false");
+  if(fudiOn){mountFudi();flyTo("fudi",700);}else{if(divs.fudi)divs.fudi.style.display="none";L.fudi.parent=null;delete WT.fudi;render();}};
+ var bk=$("book"),tg=$("tabhandle");
+ tg.onclick=function(){var o=bk.classList.toggle("open");tg.setAttribute("aria-expanded",o?"true":"false");};
+ window.addEventListener("resize",function(){VW=innerWidth;VH=innerHeight;K0=fitK("zhutian",.84);cam.k=clampK(cam.k);clampCam();render();});
+}
+function tipOff(){var t=$("tip");if(t)t.classList.add("gone");}
+
+/* ══════════ 启动 ══════════ */
+(function init(){
+ stage=$("stage");world=$("world");
+ VW=innerWidth;VH=innerHeight;
+ var c=ctrOf("zhutian");cam.x=c.x;cam.y=c.y;cam.k=fitK("zhutian",.84);K0=cam.k;
+ buildRail();buildRank();buildLaw();buildChr();bind();
+ render();drawGeo("zhutian");
+ setTimeout(tipOff,8000);
+})();
+
+</script>
+</body>
+</html>
