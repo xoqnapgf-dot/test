@@ -1,0 +1,10 @@
+{
+  "name": "ruguo-mingtian-mv-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build tools for the MV: font sources for make_fonts.py; render.mjs uses the Playwright that is installed globally (or `npm i playwright`).",
+  "devDependencies": {
+    "@fontsource/noto-sans-sc": "5.3.1",
+    "@fontsource/noto-serif-sc": "5.3.1"
+  }
+}

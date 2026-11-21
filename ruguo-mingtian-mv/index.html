@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>如果明天我会离开 · 副歌 MV</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="gl"></canvas>
+  <canvas id="ui"></canvas>
+</div>
+
+<div id="start">
+  <div class="card">
+    <div class="eyebrow">副歌 · 47 秒</div>
+    <h1>如果明天我会离开</h1>
+    <button type="button" aria-label="播放"><span></span></button>
+    <p id="msg">实时渲染 · 建议戴耳机</p>
+  </div>
+</div>
+
+<div id="bar">
+  <button id="play" type="button" data-state="play" aria-label="播放"><span></span></button>
+  <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="进度">
+  <span id="time">0:00 / 0:46</span>
+  <button id="layout" type="button" aria-label="横屏 / 竖屏" title="横屏 / 竖屏（L）"><i></i></button>
+  <button id="fs" type="button" aria-label="全屏" title="全屏（F）"><i></i></button>
+</div>
+
+<audio id="audio" preload="auto">
+  <source src="assets/chorus.m4a" type="audio/mp4">
+  <source src="assets/chorus.mp3" type="audio/mpeg">
+</audio>
+
+<script src="src/data.js"></script>
+<script src="src/images.js"></script>
+<script src="src/timeline.js"></script>
+<script src="src/scene.js"></script>
+<script src="src/overlay.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>

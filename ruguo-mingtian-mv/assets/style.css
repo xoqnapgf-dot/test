@@ -1,0 +1,97 @@
+:root {
+  --bg: #0b0807;
+  --ink: #fff7ef;
+  --muted: rgba(255, 247, 239, 0.62);
+  --glass: rgba(20, 14, 12, 0.55);
+  --line: rgba(255, 255, 255, 0.16);
+  --accent: #ffb37a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); overflow: hidden; }
+body {
+  font-family: "MV Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  display: grid; place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+#stage { position: relative; }
+#stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+body.started #stage { cursor: pointer; }
+body.idle, body.idle #stage { cursor: none; }
+
+/* start card */
+#start {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: radial-gradient(120% 90% at 30% 25%, rgba(60, 30, 18, 0.55), rgba(8, 6, 5, 0.92));
+  transition: opacity 0.6s ease, visibility 0.6s;
+  z-index: 3;
+}
+body.started #start { opacity: 0; visibility: hidden; }
+#start .card { text-align: center; padding: 16px; }
+#start .eyebrow { font-size: 14px; letter-spacing: 0.3em; color: var(--muted); }
+#start h1 {
+  font-family: "MV Serif", "Songti SC", serif; font-weight: 600;
+  font-size: clamp(28px, 6vw, 56px); letter-spacing: 0.12em; margin: 14px 0 28px;
+}
+#start button {
+  width: 84px; height: 84px; border-radius: 50%; border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08); cursor: pointer; display: inline-grid; place-items: center;
+  opacity: 0.4; transition: background 0.2s, transform 0.2s, opacity 0.3s;
+}
+body.ready #start button { opacity: 1; }
+#start button:hover { background: rgba(255, 255, 255, 0.16); transform: scale(1.04); }
+#start button span {
+  width: 0; height: 0; margin-left: 6px;
+  border-left: 24px solid var(--ink); border-top: 15px solid transparent; border-bottom: 15px solid transparent;
+}
+#start p { color: var(--muted); font-size: 13px; letter-spacing: 0.15em; margin-top: 22px; }
+
+/* control bar */
+#bar {
+  position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min(720px, calc(100% - 32px));
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--line);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 2; opacity: 0; pointer-events: none;
+}
+body.started #bar { opacity: 1; pointer-events: auto; }
+body.started.idle #bar, body.clean #bar { opacity: 0; pointer-events: none; transform: translate(-50%, 8px); }
+body.export #bar, body.export #start { display: none; }
+#bar button {
+  flex: none; width: 36px; height: 36px; border-radius: 50%; border: 0; cursor: pointer;
+  background: transparent; display: grid; place-items: center; color: var(--ink);
+}
+#bar button:hover { background: rgba(255, 255, 255, 0.1); }
+#play span { display: block; width: 14px; height: 16px; position: relative; }
+#play[data-state="play"] span {
+  width: 0; height: 0; margin-left: 4px;
+  border-left: 14px solid var(--ink); border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+}
+#play[data-state="pause"] span::before, #play[data-state="pause"] span::after {
+  content: ""; position: absolute; top: 0; width: 4px; height: 16px; border-radius: 1px; background: var(--ink);
+}
+#play[data-state="pause"] span::before { left: 2px; }
+#play[data-state="pause"] span::after { right: 2px; }
+#scrub { flex: 1; min-width: 0; accent-color: var(--accent); height: 20px; }
+#time { flex: none; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 84px; text-align: right; }
+#layout i { width: 18px; height: 12px; border: 2px solid var(--ink); border-radius: 3px; display: block; }
+#fs i {
+  width: 16px; height: 16px; display: block; position: relative;
+  background:
+    linear-gradient(var(--ink), var(--ink)) left top / 6px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) left top / 2px 6px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) right top / 6px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) right top / 2px 6px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) left bottom / 6px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) left bottom / 2px 6px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) right bottom / 6px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) right bottom / 2px 6px no-repeat;
+}
+@media (max-width: 480px) {
+  #bar { gap: 6px; padding: 8px 10px; }
+  #time { min-width: 70px; font-size: 12px; }
+}
